@@ -227,43 +227,39 @@
         }
 
         .updates-section {
-            background: linear-gradient(135deg, var(--link-color) 0%, var(--link-hover) 100%);
-            color: #ffffff;
-            padding: 2rem;
+            background-color: var(--header-bg);
+            padding: 1.5rem;
             border-radius: 8px;
             margin: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--link-color);
         }
 
         .updates-section h2 {
-            color: #ffffff;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-color);
+            border-bottom: 2px solid var(--border-color);
             margin-top: 0;
         }
 
         .updates-section .update-item {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 6px;
             margin-top: 1rem;
-            backdrop-filter: blur(10px);
         }
 
         .updates-section .update-date {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.75rem;
             font-weight: 500;
         }
 
-        .updates-section .update-message {
-            line-height: 1.8;
+        @media (prefers-color-scheme: dark) {
+            .updates-section .update-date {
+                color: #999;
+            }
         }
 
-        @media (prefers-color-scheme: dark) {
-            .updates-section {
-                background: linear-gradient(135deg, #4da6ff 0%, #66b3ff 100%);
-            }
+        .updates-section .update-message {
+            line-height: 1.6;
+            color: var(--text-color);
         }
 
         footer {
@@ -332,10 +328,6 @@
             }
 
             .updates-section {
-                padding: 1.5rem;
-            }
-
-            .updates-section .update-item {
                 padding: 1rem;
             }
         }
@@ -368,9 +360,8 @@
             <div class="update-item">
                 <div class="update-date">December 28, 2025 at 16:16 UTC</div>
                 <div class="update-message">
-                    <p><strong>Hello,</strong></p>
                     <p>For now additions and removals are done manually, but I'm working on automating everything.</p>
-                    <p><strong>Best regards,<br>RD</strong></p>
+                    <p><strong>— RD</strong></p>
                 </div>
             </div>
         </section>
