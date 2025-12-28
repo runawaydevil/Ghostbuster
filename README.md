@@ -42,6 +42,12 @@ The directory is compiled from GitHub topic `ghost-theme` and direct repository 
 
 For broken links or requests to add your resources, please send an email to [runawaydevil@pm.me](mailto:runawaydevil@pm.me).
 
+## License
+
+This project is completely free and open source. You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of this project without any restrictions.
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ---
 
 **Maintained by [runawaydevil](https://github.com/runawaydevil)**
