@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghostbuster - Ghost CMS Themes & Tools Directory</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --link-color: #0066cc;
+            --link-hover: #004499;
+            --border-color: #e0e0e0;
+            --header-bg: #f8f9fa;
+            --footer-bg: #f8f9fa;
+            --table-header-bg: #f5f5f5;
+            --table-row-hover: #f9f9f9;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #e0e0e0;
+                --link-color: #4da6ff;
+                --link-hover: #66b3ff;
+                --border-color: #404040;
+                --header-bg: #2a2a2a;
+                --footer-bg: #2a2a2a;
+                --table-header-bg: #333333;
+                --table-row-hover: #2a2a2a;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .subtitle {
+                color: #999;
+            }
+        }
+
+        .github-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #24292e;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .github-button:hover {
+            background-color: #2f363d;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        .github-button:active {
+            transform: translateY(0);
+        }
+
+        .github-button svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .github-button {
+                background-color: #2f363d;
+            }
+
+            .github-button:hover {
+                background-color: #3a4148;
+            }
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            min-width: 600px;
+        }
+
+        th {
+            background-color: var(--table-header-bg);
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--table-row-hover);
+        }
+
+        tr:hover {
+            background-color: var(--table-row-hover);
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .intro {
+            background-color: var(--header-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--link-color);
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            header {
+                padding: 1.5rem 1rem;
+            }
+
+            .logo {
+                max-width: 150px;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="img/rdghost.png" alt="Ghostbuster Logo" class="logo">
+            <h1>Ghostbuster</h1>
+            <p class="subtitle">Ghost CMS Themes & Tools Directory (2022–2025)</p>
+            <a href="https://github.com/runawaydevil/Ghostbuster" target="_blank" rel="noopener noreferrer" class="github-button">
+                <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+                Star on GitHub
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Introduction</h2>
+            <p>This document is a curated directory of Ghost CMS theme repositories and essential tools/resources for theme development, validation, localization, and deployment. Organized to facilitate browsing by origin and category, identify popular themes, and discover tooling for building and maintaining Ghost themes.</p>
+            <p><strong>Note:</strong> GitHub star counts are snapshots from late December 2025 (where available).</p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>ALL THEMES (CONSOLIDATED TABLE)</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Theme Name</th>
+                            <th>Repository URL</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3"><strong>OFFICIAL / TRYGHOST THEMES</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Casper</td>
+                            <td><a href="https://github.com/TryGhost/Casper" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Casper</a></td>
+                            <td>Default Ghost theme; 2.6k stars; most widely-used baseline</td>
+                        </tr>
+                        <tr>
+                            <td>Starter</td>
+                            <td><a href="https://github.com/TryGhost/Starter" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Starter</a></td>
+                            <td>Official development starter theme; 467 stars; template for custom development</td>
+                        </tr>
+                        <tr>
+                            <td>Source</td>
+                            <td><a href="https://github.com/TryGhost/Source" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Source</a></td>
+                            <td>New default theme (Ghost v5.0+); 104 stars; modern, clean foundation</td>
+                        </tr>
+                        <tr>
+                            <td>Alto</td>
+                            <td><a href="https://github.com/TryGhost/Alto" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Alto</a></td>
+                            <td>Clean, minimalist with light/dark mode; 122 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Themes (monorepo)</td>
+                            <td><a href="https://github.com/TryGhost/Themes" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Themes</a></td>
+                            <td>Official theme development monorepo; 89 stars; contains multiple theme references</td>
+                        </tr>
+                        <tr>
+                            <td>London</td>
+                            <td><a href="https://github.com/TryGhost/London" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/London</a></td>
+                            <td>Publication/magazine theme; 264 stars; responsive design</td>
+                        </tr>
+                        <tr>
+                            <td>Massively</td>
+                            <td><a href="https://github.com/TryGhost/Massively" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Massively</a></td>
+                            <td>Magazine/publication theme; 240 stars; media-rich layouts</td>
+                        </tr>
+                        <tr>
+                            <td>Editorial</td>
+                            <td><a href="https://github.com/TryGhost/Editorial" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Editorial</a></td>
+                            <td>Magazine/publication theme; 209 stars; professional publishing layout</td>
+                        </tr>
+                        <tr>
+                            <td>Edge</td>
+                            <td><a href="https://github.com/TryGhost/Edge" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Edge</a></td>
+                            <td>Portfolio/creative showcase theme; 94 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Dawn</td>
+                            <td><a href="https://github.com/TryGhost/Dawn" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Dawn</a></td>
+                            <td>Minimal newsletter theme; 302 stars; email-focused design</td>
+                        </tr>
+                        <tr>
+                            <td>Edition</td>
+                            <td><a href="https://github.com/TryGhost/Edition" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Edition</a></td>
+                            <td>Newsletter theme; 87 stars; clean subscriber experience</td>
+                        </tr>
+                        <tr>
+                            <td>Journal</td>
+                            <td><a href="https://github.com/TryGhost/Journal" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Journal</a></td>
+                            <td>Newsletter theme; 59 stars; typography-focused</td>
+                        </tr>
+                        <tr>
+                            <td>Wave</td>
+                            <td><a href="https://github.com/TryGhost/Wave" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Wave</a></td>
+                            <td>Podcast theme; 81 stars; audio content emphasis</td>
+                        </tr>
+                        <tr>
+                            <td>Lyra</td>
+                            <td><a href="https://github.com/TryGhost/Lyra" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Lyra</a></td>
+                            <td>Paid members theme; 180 stars; membership support built-in</td>
+                        </tr>
+                        <tr>
+                            <td>Roon</td>
+                            <td><a href="https://github.com/TryGhost/Roon" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Roon</a></td>
+                            <td>Minimalist official theme; 143 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Headline</td>
+                            <td><a href="https://github.com/TryGhost/Headline" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Headline</a></td>
+                            <td>Magazine-style theme; 53 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Dope</td>
+                            <td><a href="https://github.com/TryGhost/Dope" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Dope</a></td>
+                            <td>Bold, magazine aesthetic; 58 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Ruby</td>
+                            <td><a href="https://github.com/TryGhost/Ruby" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Ruby</a></td>
+                            <td>Multi-column card layout; 65 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Ease</td>
+                            <td><a href="https://github.com/TryGhost/Ease" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Ease</a></td>
+                            <td>Documentation theme; 88 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Digest</td>
+                            <td><a href="https://github.com/TryGhost/Digest" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Digest</a></td>
+                            <td>Newsletter/digest style; 10 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Bulletin</td>
+                            <td><a href="https://github.com/TryGhost/Bulletin" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Bulletin</a></td>
+                            <td>Newsletter landing-first; 15 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Solo</td>
+                            <td><a href="https://github.com/TryGhost/Solo" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Solo</a></td>
+                            <td>Personal/creator-focused; 44 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Episode</td>
+                            <td><a href="https://github.com/TryGhost/Episode" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Episode</a></td>
+                            <td>Podcast/episodic content theme</td>
+                        </tr>
+                        <tr>
+                            <td>Taste</td>
+                            <td><a href="https://github.com/TryGhost/Taste" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Taste</a></td>
+                            <td>Food/magazine vibe theme; 3 stars</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><strong>HIGHLY POPULAR COMMUNITY THEMES</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Attila</td>
+                            <td><a href="https://github.com/zutrinken/attila" target="_blank" rel="noopener noreferrer">https://github.com/zutrinken/attila</a></td>
+                            <td>Very popular community theme; 1.5k stars; feature-rich</td>
+                        </tr>
+                        <tr>
+                            <td>Liebling</td>
+                            <td><a href="https://github.com/eddiesigner/liebling" target="_blank" rel="noopener noreferrer">https://github.com/eddiesigner/liebling</a></td>
+                            <td>Popular community theme; 1.3k stars; dark mode support; active maintenance</td>
+                        </tr>
+                        <tr>
+                            <td>Simply</td>
+                            <td><a href="https://github.com/godofredoninja/simply" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/simply</a></td>
+                            <td>Medium-inspired style; 703 stars; GPL-3.0 licensed; modern design</td>
+                        </tr>
+                        <tr>
+                            <td>Mapache</td>
+                            <td><a href="https://github.com/godofredoninja/Mapache" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/Mapache</a></td>
+                            <td>Blog/magazine/personal; 638 stars; responsive and elegant</td>
+                        </tr>
+                        <tr>
+                            <td>Next CMS Ghost</td>
+                            <td><a href="https://github.com/styxlab/next-cms-ghost" target="_blank" rel="noopener noreferrer">https://github.com/styxlab/next-cms-ghost</a></td>
+                            <td>Next.js + Ghost starter; 688 stars; TypeScript; static site generation; template repo</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><strong>RESPONSIVE & MINIMALIST THEMES</strong></td>
+                        </tr>
+                        <tr>
+                            <td>MNML</td>
+                            <td><a href="https://github.com/curiositry/mnml-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/curiositry/mnml-ghost-theme</a></td>
+                            <td>Minimal, responsive theme; 301 stars; Ghost 6 compatible; typography-focused; KaTeX math support</td>
+                        </tr>
+                        <tr>
+                            <td>Kaldorei</td>
+                            <td><a href="https://github.com/xiaoluoboding/ghost-theme-kaldorei" target="_blank" rel="noopener noreferrer">https://github.com/xiaoluoboding/ghost-theme-kaldorei</a></td>
+                            <td>Simple, elegant Casper variant; 296 stars; clean and professional</td>
+                        </tr>
+                        <tr>
+                            <td>Caffeine</td>
+                            <td><a href="https://github.com/kelyvin/ghost-caffeine-theme" target="_blank" rel="noopener noreferrer">https://github.com/kelyvin/ghost-caffeine-theme</a></td>
+                            <td>Minimalist Material Design; 334 stars; mobile-optimized</td>
+                        </tr>
+                        <tr>
+                            <td>Fizzy</td>
+                            <td><a href="https://github.com/huangyuzhang/Fizzy-Theme" target="_blank" rel="noopener noreferrer">https://github.com/huangyuzhang/Fizzy-Theme</a></td>
+                            <td>Tasty blogging theme; 288 stars; carousel and responsive features; Handlebars</td>
+                        </tr>
+                        <tr>
+                            <td>Moegi</td>
+                            <td><a href="https://github.com/moegi-design/ghost-theme-Moegi" target="_blank" rel="noopener noreferrer">https://github.com/moegi-design/ghost-theme-Moegi</a></td>
+                            <td>Elegant & fresh theme; 162 stars; active discussions</td>
+                        </tr>
+                        <tr>
+                            <td>Prometheus</td>
+                            <td><a href="https://github.com/halfrost/Prometheus" target="_blank" rel="noopener noreferrer">https://github.com/halfrost/Prometheus</a></td>
+                            <td>Clean & modern with PWA; 128 stars; Progressive Web Apps support</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><strong>DEVELOPER & PROGRAMMING THEMES</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Eindev</td>
+                            <td><a href="https://github.com/ehsanghaffar/eindev-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/ehsanghaffar/eindev-ghost-theme</a></td>
+                            <td>Developer/personal theme; Tailwind CSS + TypeScript; 10 stars</td>
+                        </tr>
+                        <tr>
+                            <td>StayPuft</td>
+                            <td><a href="https://github.com/dlecina/StayPuft" target="_blank" rel="noopener noreferrer">https://github.com/dlecina/StayPuft</a></td>
+                            <td>Programming-oriented Ghost theme</td>
+                        </tr>
+                        <tr>
+                            <td>JOS.StayPuft</td>
+                            <td><a href="https://github.com/joseftw/JOS.StayPuft" target="_blank" rel="noopener noreferrer">https://github.com/joseftw/JOS.StayPuft</a></td>
+                            <td>Developer-oriented theme (alternate repo)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><strong>SPECIALIZED / NICHE THEMES</strong></td>
+                        </tr>
+                        <tr>
+                            <td>X-Learn</td>
+                            <td><a href="https://github.com/xdev-asia-labs/x-learn-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/xdev-asia-labs/x-learn-ghost-theme</a></td>
+                            <td>Online course/learning platform; 3 stars; glass-morphism design; dark mode; multi-language</td>
+                        </tr>
+                        <tr>
+                            <td>Attegi</td>
+                            <td><a href="https://github.com/bunizao/Attegi" target="_blank" rel="noopener noreferrer">https://github.com/bunizao/Attegi</a></td>
+                            <td>Elegant & dynamic theme; 19 stars; mobile-optimized; recent activity</td>
+                        </tr>
+                        <tr>
+                            <td>Atabe</td>
+                            <td><a href="https://github.com/Rami-0/atabe-blog-theme" target="_blank" rel="noopener noreferrer">https://github.com/Rami-0/atabe-blog-theme</a></td>
+                            <td>Custom blog theme for self-hosted Ghost; Handlebars; MIT licensed</td>
+                        </tr>
+                        <tr>
+                            <td>Defalt</td>
+                            <td><a href="https://github.com/ifrederico/defalt" target="_blank" rel="noopener noreferrer">https://github.com/ifrederico/defalt</a></td>
+                            <td>Ghost theme editor with live preview; TypeScript/React; 2 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Photo Portfolio</td>
+                            <td><a href="https://github.com/tfeuerbach/photo-portfolio-ghost" target="_blank" rel="noopener noreferrer">https://github.com/tfeuerbach/photo-portfolio-ghost</a></td>
+                            <td>Self-hosted photo portfolio theme</td>
+                        </tr>
+                        <tr>
+                            <td>Trema</td>
+                            <td><a href="https://github.com/dvdwinden/trema" target="_blank" rel="noopener noreferrer">https://github.com/dvdwinden/trema</a></td>
+                            <td>Custom theme for book newsletter</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><strong>OTHER COMMUNITY THEMES</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Hackersandslackers</td>
+                            <td><a href="https://github.com/hackersandslackers/hackersandslackers-theme" target="_blank" rel="noopener noreferrer">https://github.com/hackersandslackers/hackersandslackers-theme</a></td>
+                            <td>Community theme by Hackers & Slackers</td>
+                        </tr>
+                        <tr>
+                            <td>Undefined</td>
+                            <td><a href="https://github.com/curiositry/undefined-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/curiositry/undefined-ghost-theme</a></td>
+                            <td>Community theme</td>
+                        </tr>
+                        <tr>
+                            <td>Transmission</td>
+                            <td><a href="https://github.com/nickabs/transmission" target="_blank" rel="noopener noreferrer">https://github.com/nickabs/transmission</a></td>
+                            <td>Community theme; 17 stars</td>
+                        </tr>
+                        <tr>
+                            <td>Papillon Ghost</td>
+                            <td><a href="https://github.com/PapillonApp/papillon-ghost" target="_blank" rel="noopener noreferrer">https://github.com/PapillonApp/papillon-ghost</a></td>
+                            <td>Community theme</td>
+                        </tr>
+                        <tr>
+                            <td>The Sharmaz</td>
+                            <td><a href="https://github.com/Sharmaz/the-sharmaz" target="_blank" rel="noopener noreferrer">https://github.com/Sharmaz/the-sharmaz</a></td>
+                            <td>Community theme</td>
+                        </tr>
+                        <tr>
+                            <td>Minimal Ghost Theme</td>
+                            <td><a href="https://github.com/campbellmcgregor/minimal-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/campbellmcgregor/minimal-ghost-theme</a></td>
+                            <td>Minimal community theme</td>
+                        </tr>
+                        <tr>
+                            <td>Stefan Retro</td>
+                            <td><a href="https://github.com/hrdbread/stefan-retro-ghost-them" target="_blank" rel="noopener noreferrer">https://github.com/hrdbread/stefan-retro-ghost-them</a></td>
+                            <td>Retro community theme</td>
+                        </tr>
+                        <tr>
+                            <td>Vite Ghost Theme</td>
+                            <td><a href="https://github.com/biswajit-saha/vite-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/biswajit-saha/vite-ghost-theme</a></td>
+                            <td>Vite-based theme; modern build tooling</td>
+                        </tr>
+                        <tr>
+                            <td>Ghost Custom Theme</td>
+                            <td><a href="https://github.com/saurabverma/ghost_custom_theme" target="_blank" rel="noopener noreferrer">https://github.com/saurabverma/ghost_custom_theme</a></td>
+                            <td>Custom theme starter</td>
+                        </tr>
+                        <tr>
+                            <td>Ghost Theme Pharos</td>
+                            <td><a href="https://github.com/yuanliang/ghost-theme-pharos" target="_blank" rel="noopener noreferrer">https://github.com/yuanliang/ghost-theme-pharos</a></td>
+                            <td>Community theme</td>
+                        </tr>
+                        <tr>
+                            <td>Ghost Handlebars</td>
+                            <td><a href="https://github.com/OpenMaine/ghost-handlebars-theme" target="_blank" rel="noopener noreferrer">https://github.com/OpenMaine/ghost-handlebars-theme</a></td>
+                            <td>Handlebars-based theme starter</td>
+                        </tr>
+                        <tr>
+                            <td>ForumsKubs</td>
+                            <td><a href="https://github.com/AlensAleksandrs/ForumsKubs.theme" target="_blank" rel="noopener noreferrer">https://github.com/AlensAleksandrs/ForumsKubs.theme</a></td>
+                            <td>Community theme</td>
+                        </tr>
+                        <tr>
+                            <td>Open Maker</td>
+                            <td><a href="https://github.com/r-bart/open-maker" target="_blank" rel="noopener noreferrer">https://github.com/r-bart/open-maker</a></td>
+                            <td>Community theme</td>
+                        </tr>
+                        <tr>
+                            <td>Permissive</td>
+                            <td><a href="https://github.com/andyhqtran/permissive" target="_blank" rel="noopener noreferrer">https://github.com/andyhqtran/permissive</a></td>
+                            <td>Community theme</td>
+                        </tr>
+                        <tr>
+                            <td>Ghost STI</td>
+                            <td><a href="https://github.com/InternetFreedomFoundation/ghost-sti" target="_blank" rel="noopener noreferrer">https://github.com/InternetFreedomFoundation/ghost-sti</a></td>
+                            <td>Organization/community theme</td>
+                        </tr>
+                        <tr>
+                            <td>Feeka</td>
+                            <td><a href="https://github.com/afonsojramos/feeka" target="_blank" rel="noopener noreferrer">https://github.com/afonsojramos/feeka</a></td>
+                            <td>Community theme</td>
+                        </tr>
+                        <tr>
+                            <td>Actually Simple</td>
+                            <td><a href="https://github.com/nataliethenerd/actuallysimple-ghost" target="_blank" rel="noopener noreferrer">https://github.com/nataliethenerd/actuallysimple-ghost</a></td>
+                            <td>Very basic Ghost theme</td>
+                        </tr>
+                        <tr>
+                            <td>Ghost Theme Pocket</td>
+                            <td><a href="https://github.com/takipone/ghost-theme-pocket" target="_blank" rel="noopener noreferrer">https://github.com/takipone/ghost-theme-pocket</a></td>
+                            <td>Minimal Ghost theme</td>
+                        </tr>
+                        <tr>
+                            <td>Tresvuits</td>
+                            <td><a href="https://github.com/jomorespi/tresvuits-ghostcms-theme" target="_blank" rel="noopener noreferrer">https://github.com/jomorespi/tresvuits-ghostcms-theme</a></td>
+                            <td>Tailwind CSS + Parcel.js theme</td>
+                        </tr>
+                        <tr>
+                            <td>Gatsby Casper</td>
+                            <td><a href="https://github.com/scttcper/gatsby-casper" target="_blank" rel="noopener noreferrer">https://github.com/scttcper/gatsby-casper</a></td>
+                            <td>Gatsby blog starter based on Casper; 472 stars; now archived</td>
+                        </tr>
+                        <tr>
+                            <td>Pozafly Blog</td>
+                            <td><a href="https://github.com/pozafly/pozafly.github.io" target="_blank" rel="noopener noreferrer">https://github.com/pozafly/pozafly.github.io</a></td>
+                            <td>Personal blog using Ghost theme; Gatsby + React variant</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>THEME COLLECTIONS / PACKS</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Collection Name</th>
+                            <th>Repository URL</th>
+                            <th>Contents</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tourcoder Themes</td>
+                            <td><a href="https://github.com/tourcoder/ghost-themes" target="_blank" rel="noopener noreferrer">https://github.com/tourcoder/ghost-themes</a></td>
+                            <td>Ascend, Ghostium, Liebling, London, Saga, Starter, Uno-Zen, and more</td>
+                            <td>Author notes these may be outdated and require updates</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>TOOLS & RESOURCES</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tool / Resource</th>
+                            <th>Link</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ghost Theme Docs</strong></td>
+                            <td><a href="https://docs.ghost.org/themes" target="_blank" rel="noopener noreferrer">https://docs.ghost.org/themes</a></td>
+                            <td>Official documentation for Handlebars themes, theme structure, custom settings, and validation workflow</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GScan (Theme Validation)</strong></td>
+                            <td>Mentioned in theme docs (CLI usage)</td>
+                            <td>Validates themes for errors/deprecations; used by Ghost during theme upload</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deploy Ghost Themes (GitHub Actions)</strong></td>
+                            <td><a href="https://github.com/TryGhost/action-deploy-theme" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/action-deploy-theme</a></td>
+                            <td>GitHub Action to automate theme deployment; 385 stars</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ghost Theme Locales</strong></td>
+                            <td><a href="https://github.com/priority-vision/ghost-theme-locales" target="_blank" rel="noopener noreferrer">https://github.com/priority-vision/ghost-theme-locales</a></td>
+                            <td>CLI helper for creating localization (locale) files</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Defalt</strong></td>
+                            <td><a href="https://github.com/ifrederico/defalt" target="_blank" rel="noopener noreferrer">https://github.com/ifrederico/defalt</a></td>
+                            <td>Ghost theme editor with live preview; React + TypeScript; 2 stars</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Awesome Ghost</strong></td>
+                            <td><a href="https://github.com/awesomelistsio/awesome-ghost" target="_blank" rel="noopener noreferrer">https://github.com/awesomelistsio/awesome-ghost</a></td>
+                            <td>Curated list of Ghost resources and community projects</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>QUICK REFERENCE BY USE CASE</h2>
+            
+            <h3>Newsletter Themes</h3>
+            <ul>
+                <li><strong>Dawn</strong> — Minimal newsletter (302⭐)</li>
+                <li><strong>Edition</strong> — Newsletter design (87⭐)</li>
+                <li><strong>Journal</strong> — Newsletter typography (59⭐)</li>
+                <li><strong>Bulletin</strong> — Landing-first newsletter (15⭐)</li>
+            </ul>
+
+            <h3>Magazine / Publication Themes</h3>
+            <ul>
+                <li><strong>London</strong> — Publication theme (264⭐)</li>
+                <li><strong>Massively</strong> — Magazine design (240⭐)</li>
+                <li><strong>Editorial</strong> — Professional publishing (209⭐)</li>
+                <li><strong>Simply</strong> — Medium-inspired (703⭐)</li>
+                <li><strong>Mapache</strong> — Blog/magazine/personal (638⭐)</li>
+                <li><strong>Headline</strong> — Magazine-style (53⭐)</li>
+                <li><strong>Dope</strong> — Bold magazine aesthetic (58⭐)</li>
+            </ul>
+
+            <h3>Minimalist / Clean Themes</h3>
+            <ul>
+                <li><strong>Alto</strong> — Minimalist light/dark (122⭐)</li>
+                <li><strong>MNML</strong> — Minimal & responsive (301⭐)</li>
+                <li><strong>Kaldorei</strong> — Simple & elegant (296⭐)</li>
+                <li><strong>Caffeine</strong> — Minimalist Material Design (334⭐)</li>
+            </ul>
+
+            <h3>Portfolio / Creative Showcase</h3>
+            <ul>
+                <li><strong>Edge</strong> — Portfolio theme (94⭐)</li>
+                <li><strong>Photo Portfolio</strong> — Photography-focused</li>
+                <li><strong>Prometheus</strong> — Clean & modern with PWA (128⭐)</li>
+            </ul>
+
+            <h3>Membership & Paid Content</h3>
+            <ul>
+                <li><strong>Lyra</strong> — Paid members theme (180⭐)</li>
+            </ul>
+
+            <h3>Specialized</h3>
+            <ul>
+                <li><strong>Wave</strong> — Podcast content (81⭐)</li>
+                <li><strong>Ease</strong> — Documentation (88⭐)</li>
+                <li><strong>X-Learn</strong> — Online courses (3⭐)</li>
+                <li><strong>Defalt</strong> — Theme editor with live preview</li>
+            </ul>
+
+            <h3>Developer-Friendly</h3>
+            <ul>
+                <li><strong>Eindev</strong> — Tailwind CSS + TypeScript</li>
+                <li><strong>Vite Ghost Theme</strong> — Modern build tooling</li>
+                <li><strong>Starter</strong> — Official dev template (467⭐)</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>NOTES FOR THEME SELECTION</h2>
+            <ol>
+                <li><strong>Official TryGhost themes</strong> are regularly maintained and well-documented.</li>
+                <li><strong>Community themes</strong> vary in maintenance; check last commit date and issue activity.</li>
+                <li><strong>Popular themes</strong> (1k+ stars) have larger user bases and active communities for support.</li>
+                <li><strong>Minimal themes</strong> prioritize typography and performance; suitable for blogs and newsletters.</li>
+                <li><strong>Magazine themes</strong> offer rich media layouts; ideal for publications and image-heavy content.</li>
+                <li><strong>Specialized themes</strong> (courses, podcasts, portfolios) may include built-in features for those use cases.</li>
+                <li>Most themes use <strong>Handlebars</strong> templating; some newer ones support <strong>Tailwind CSS</strong> and build tools like <strong>Vite</strong>.</li>
+            </ol>
+        </section>
+
+        <hr>
+
+        <section>
+            <p><strong>Last Updated:</strong> December 28, 2025</p>
+            <p><strong>Data Source:</strong> GitHub topic <code>ghost-theme</code> & direct repository analysis</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Maintained by <a href="https://github.com/runawaydevil" target="_blank" rel="noopener noreferrer">runawaydevil</a></p>
+            <p>Last updated: December 28, 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
+
