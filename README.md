@@ -1,6 +1,8 @@
 # Ghostbuster
 
-![Ghostbuster Logo](img/rdghost.png)
+<div align="center">
+  <img src="img/rdghost.png" alt="Ghostbuster Logo" style="width: 30%;">
+</div>
 
 ## About
 
@@ -35,6 +37,10 @@ The site includes quick reference sections organized by use case:
 ## Data Source
 
 The directory is compiled from GitHub topic `ghost-theme` and direct repository analysis. Star counts are snapshots from late December 2025 (where available).
+
+## Contact
+
+For broken links or requests to add your resources, please send an email to [runawaydevil@pm.me](mailto:runawaydevil@pm.me).
 
 ---
 
