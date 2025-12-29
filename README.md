@@ -1,5 +1,7 @@
 # Ghostbuster
 
+🌐 **Live Site:** [https://ghostbuster.pro](https://ghostbuster.pro)
+
 <div align="center">
   <img src="https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png" alt="Ghostbuster Logo" style="width: 30%;">
 </div>
