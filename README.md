@@ -1,7 +1,7 @@
 # Ghostbuster
 
 <div align="center">
-  <img src="img/rdghost.png" alt="Ghostbuster Logo" style="width: 30%;">
+  <img src="https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png" alt="Ghostbuster Logo" style="width: 30%;">
 </div>
 
 ## About
