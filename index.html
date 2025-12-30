@@ -437,14 +437,13 @@
         <section class="intro">
             <h2>Introduction</h2>
             <p>This document is a curated directory of Ghost CMS theme repositories and essential tools/resources for theme development, validation, localization, and deployment. Organized to facilitate browsing by origin and category, identify popular themes, and discover tooling for building and maintaining Ghost themes.</p>
-            <p><strong>Note:</strong> GitHub star counts are snapshots from late December 2025 (where available).</p>
         </section>
 
         <section class="updates-section">
             <h2>Updates</h2>
             <div class="updates-container">
                 <div class="update-item">
-                    <div class="update-date">December 29, 2025 at <span id="current-time">12:00</span> UTC</div>
+                    <div class="update-date">December 30, 2025 at 06:35 UTC</div>
                     <div class="update-message">
                         <p>Hello,</p>
                         <p>The system is currently running in automatic mode, and the updates have been successfully applied. Therefore, manual input is not necessary at this time.</p>
@@ -1114,7 +1113,7 @@
     <footer>
         <div class="footer-content">
             <p>Maintained by <a href="https://github.com/runawaydevil" target="_blank" rel="noopener noreferrer">runawaydevil</a></p>
-            <p>Last updated: <span id="last-updated">December 29, 2025</span> at <span id="last-updated-time">12:00</span> UTC</p>
+            <p>Last updated: December 30, 2025 at 06:35 UTC</p>
             <p>For broken links or requests to add your resources, please send an email to <a href="mailto:runawaydevil@pm.me">runawaydevil@pm.me</a></p>
             <p>This project is free and open source. Licensed under <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a> - feel free to use, copy, and modify.</p>
             <p>&copy; <span id="current-year">2025</span> Ghostbuster Directory. All rights reserved.</p>
@@ -1122,70 +1121,13 @@
     </footer>
 
     <script>
-        // Update current time and date
-        function updateDateTime() {
-            const now = new Date();
-            const timeString = now.toTimeString().slice(0, 5); // HH:MM format
-            const currentYear = now.getFullYear();
-            
-            // Update current time in updates section
-            const currentTimeElement = document.getElementById('current-time');
-            if (currentTimeElement) {
-                currentTimeElement.textContent = timeString;
-            }
-            
-            // Update last updated time in footer
-            const lastUpdatedTimeElement = document.getElementById('last-updated-time');
-            if (lastUpdatedTimeElement) {
-                lastUpdatedTimeElement.textContent = timeString;
-            }
-            
-            // Update current year in footer
+        // Update current year only (for copyright)
+        (function() {
             const currentYearElement = document.getElementById('current-year');
             if (currentYearElement) {
-                currentYearElement.textContent = currentYear;
+                currentYearElement.textContent = new Date().getFullYear();
             }
-            
-            // Update last updated date in footer
-            const lastUpdatedElement = document.getElementById('last-updated');
-            if (lastUpdatedElement) {
-                const dateString = now.toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-                lastUpdatedElement.textContent = dateString;
-            }
-        }
-
-        // Toggle older updates visibility
-        function toggleOlderUpdates() {
-            const olderUpdates = document.querySelector('.older-updates');
-            const button = document.querySelector('.show-more-updates');
-            
-            if (olderUpdates.style.display === 'none') {
-                olderUpdates.style.display = 'block';
-                button.textContent = 'Show Less Updates';
-            } else {
-                olderUpdates.style.display = 'none';
-                button.textContent = 'Show More Updates';
-            }
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateDateTime();
-            
-            // Update time every minute
-            setInterval(updateDateTime, 60000);
-        });
-
-        // Update time when page becomes visible (for better accuracy)
-        document.addEventListener('visibilitychange', function() {
-            if (!document.hidden) {
-                updateDateTime();
-            }
-        });
+        })();
     </script>
 </body>
 </html>
