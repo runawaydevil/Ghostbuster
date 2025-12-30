@@ -115,3 +115,6 @@ public
 *.pfx
 config/secrets.json
 secrets/
+
+# Kiro directory
+.kiro/
