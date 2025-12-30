@@ -27,9 +27,6 @@ Utilizes efficient API usage patterns with ETag support, TTL management, and rat
 ### Template Rendering Engine
 Generates responsive HTML directory pages from configurable templates, supporting multiple output formats and customizable presentation layers.
 
-### Human Curation Interface
-Provides override mechanisms allowing manual editorial control over automated classifications, custom categorization, and content exclusion rules.
-
 ## Project Status
 
 Ghostbuster is actively maintained and continuously improved. The system processes hundreds of Ghost theme repositories and maintains an up-to-date directory accessible to the Ghost CMS community.
