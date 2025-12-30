@@ -235,37 +235,19 @@ export async function mergeData(
   }
 
   // Add existing items that weren't processed (not found in new repositories)
+  // IMPORTANT: Always preserve existing items, never delete them
+  // Even if they don't appear in new searches, match ignore rules, or have hidden: true
   for (const existingItem of existingItems) {
     if (!processedRepos.has(existingItem.repo)) {
-      // Check if item should still be ignored
-      if (shouldIgnoreRepository(existingItem.repo, ignoreRules)) {
-        stats.ignored++;
-        changes.push({
-          type: "ignored",
-          repo: existingItem.repo,
-          details: "Existing repository now matches ignore rules"
-        });
-        continue;
-      }
-
-      // Apply current overrides to existing items
+      // Apply current overrides to existing items if they exist
       let updatedItem = existingItem;
       const override = overridesMap.get(existingItem.repo);
       if (override) {
         updatedItem = applyOverride(existingItem, override);
       }
 
-      // Check if item should be hidden after overrides
-      if (updatedItem.hidden) {
-        stats.ignored++;
-        changes.push({
-          type: "ignored",
-          repo: existingItem.repo,
-          details: "Existing repository hidden by override rules"
-        });
-        continue;
-      }
-
+      // Always preserve existing items, even if hidden: true
+      // The hidden field only affects HTML rendering, not storage
       finalItems.push(updatedItem);
     }
   }
@@ -409,37 +391,19 @@ export class DataMerger {
     }
 
     // Add existing items that weren't processed (not found in new items)
+    // IMPORTANT: Always preserve existing items, never delete them
+    // Even if they don't appear in new searches, match ignore rules, or have hidden: true
     for (const existingItem of existingItems) {
       if (!processedRepos.has(existingItem.repo)) {
-        // Check if item should still be ignored
-        if (shouldIgnoreRepository(existingItem.repo, ignoreRules)) {
-          stats.removed++;
-          changes.push({
-            type: "removed",
-            repo: existingItem.repo,
-            details: "Existing repository now matches ignore rules"
-          });
-          continue;
-        }
-
-        // Apply current overrides to existing items
+        // Apply current overrides to existing items if they exist
         let updatedItem = existingItem;
         const override = overridesMap.get(existingItem.repo);
         if (override) {
           updatedItem = applyOverride(existingItem, override);
         }
 
-        // Check if item should be hidden after overrides
-        if (updatedItem.hidden) {
-          stats.removed++;
-          changes.push({
-            type: "removed",
-            repo: existingItem.repo,
-            details: "Existing repository hidden by override rules"
-          });
-          continue;
-        }
-
+        // Always preserve existing items, even if hidden: true
+        // The hidden field only affects HTML rendering, not storage
         finalItems.push(updatedItem);
       }
     }
