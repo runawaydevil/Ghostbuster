@@ -468,7 +468,18 @@
             <p>Last updated: {{lastUpdate}}</p>
             <p>For broken links or requests to add your resources, please send an email to <a href="mailto:{{contactEmail}}">{{contactEmail}}</a></p>
             <p>This project is free and open source. Licensed under <a href="{{licenseUrl}}" target="_blank" rel="noopener noreferrer">{{licenseName}}</a> - feel free to use, copy, and modify.</p>
+            <p>&copy; <span id="current-year">2025</span> Ghostbuster Directory. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Update current year only (for copyright)
+        (function() {
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        })();
+    </script>
 </body>
 </html>
