@@ -42,7 +42,6 @@ export interface TemplateData {
   logoAlt: string;
   githubUrl: string;
   introText: string;
-  noteText: string;
   updateMessage?: string;
   lastUpdate: string;
   categories: CategoryGroup[];
@@ -375,7 +374,6 @@ export class GhostDirectoryRenderer {
       logoAlt: 'Le Ghost Logo',
       githubUrl: options.githubUrl || 'https://github.com/runawaydevil/le-ghost',
       introText: 'This document is a curated directory of Ghost CMS theme repositories and essential tools/resources for theme development, validation, localization, and deployment. Organized to facilitate browsing by origin and category, identify popular themes, and discover tooling for building and maintaining Ghost themes.',
-      noteText: `GitHub star counts are snapshots from ${now.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })} (where available).`,
       updateMessage: options.updateMessage,
       lastUpdate,
       categories,

@@ -5,6 +5,12 @@ on:
   schedule:
     - cron: '0 6 * * 1'
   
+  # Trigger on template changes to regenerate HTML
+  push:
+    branches: [ main ]
+    paths:
+      - 'templates/**'
+  
   # Allow manual triggering
   workflow_dispatch:
     inputs:
