@@ -1,0 +1,75 @@
+# Le Ghost - Canonical Items List
+# This file contains the master list of all Ghost CMS resources
+# Format: Array of GhostItem objects
+
+- id: "TryGhost/Casper"
+  name: "Casper"
+  repo: "TryGhost/Casper"
+  url: "https://github.com/TryGhost/Casper"
+  description: "The default personal blogging theme for Ghost. Clean, minimal, and responsive."
+  category: "Official"
+  tags: ["ghost-theme", "official", "responsive", "minimal", "blog"]
+  stars: 2100
+  pushedAt: "2024-01-15T10:30:00Z"
+  archived: false
+  fork: false
+  license: "MIT"
+  topics: ["ghost", "theme", "handlebars", "responsive"]
+  score: 95
+  confidence: "high"
+  notes: "Official Ghost theme, actively maintained"
+  hidden: false
+
+- id: "TryGhost/Dawn"
+  name: "Dawn"
+  repo: "TryGhost/Dawn"
+  url: "https://github.com/TryGhost/Dawn"
+  description: "A minimal newsletter theme for Ghost, designed for publishers."
+  category: "Official"
+  tags: ["ghost-theme", "official", "newsletter", "minimal", "publisher"]
+  stars: 450
+  pushedAt: "2024-01-10T14:20:00Z"
+  archived: false
+  fork: false
+  license: "MIT"
+  topics: ["ghost", "theme", "newsletter", "handlebars"]
+  score: 92
+  confidence: "high"
+  notes: "Official newsletter-focused theme"
+  hidden: false
+
+- id: "godofredoninja/Mapache"
+  name: "Mapache"
+  repo: "godofredoninja/Mapache"
+  url: "https://github.com/godofredoninja/Mapache"
+  description: "Simple and elegant theme for Ghost. Perfect for personal blogs and magazines."
+  category: "Theme"
+  tags: ["ghost-theme", "elegant", "magazine", "personal", "responsive"]
+  stars: 180
+  pushedAt: "2023-12-20T09:15:00Z"
+  archived: false
+  fork: false
+  license: "MIT"
+  topics: ["ghost", "theme", "blog", "magazine"]
+  score: 85
+  confidence: "high"
+  notes: "Popular community theme with good documentation"
+  hidden: false
+
+- id: "JollyGrin/solarized-dark-ghost-theme"
+  name: "Solarized Dark"
+  repo: "JollyGrin/solarized-dark-ghost-theme"
+  url: "https://github.com/JollyGrin/solarized-dark-ghost-theme"
+  description: "A dark theme for Ghost based on the Solarized color scheme."
+  category: "Theme"
+  tags: ["ghost-theme", "dark", "solarized", "developer", "code"]
+  stars: 45
+  pushedAt: "2023-11-05T16:45:00Z"
+  archived: false
+  fork: false
+  license: "MIT"
+  topics: ["ghost", "theme", "dark", "solarized"]
+  score: 75
+  confidence: "medium"
+  notes: "Good for developer blogs, needs more maintenance"
+  hidden: false

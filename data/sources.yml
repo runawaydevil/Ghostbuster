@@ -1,0 +1,43 @@
+# Le Ghost - Search Sources Configuration
+# This file defines GitHub search queries for discovering Ghost themes
+# Format: Array of SearchQuery objects
+
+- query: "ghost theme in:name,description,readme language:handlebars"
+  maxResults: 100
+  minStars: 5
+
+- query: "ghost-theme topic:ghost language:handlebars"
+  maxResults: 50
+  minStars: 3
+
+- query: "ghost cms theme in:description,readme"
+  maxResults: 75
+  minStars: 10
+
+- query: "handlebars ghost template theme"
+  maxResults: 30
+  minStars: 5
+
+- query: "ghost blog theme responsive"
+  maxResults: 40
+  minStars: 8
+
+- query: "ghost theme minimal clean"
+  maxResults: 25
+  minStars: 5
+
+- query: "ghost theme dark light"
+  maxResults: 20
+  minStars: 3
+
+- query: "ghost theme magazine news"
+  maxResults: 30
+  minStars: 5
+
+- query: "ghost theme portfolio personal"
+  maxResults: 25
+  minStars: 3
+
+- query: "ghost theme business corporate"
+  maxResults: 20
+  minStars: 5

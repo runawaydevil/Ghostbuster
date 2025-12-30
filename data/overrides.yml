@@ -1,0 +1,26 @@
+# Le Ghost - Manual Overrides
+# This file contains manual curation overrides for automated classification
+# Format: Array of Override objects
+
+- repo: "TryGhost/Casper"
+  name: "Casper (Official)"
+  category: "Official"
+  tags_add: ["featured", "recommended"]
+  notes: "Official Ghost theme - always featured"
+
+- repo: "godofredoninja/Mapache"
+  tags_add: ["community-favorite", "well-documented"]
+  notes: "Excellent community theme with great documentation and support"
+
+# Example of hiding a repository that was incorrectly classified
+- repo: "some-user/not-a-theme"
+  hidden: true
+  notes: "Not actually a Ghost theme, incorrectly classified"
+
+# Example of recategorizing a tool as a starter
+- repo: "ghost-foundation/ghost-starter"
+  category: "Starter"
+  name: "Ghost Starter Kit"
+  tags_add: ["beginner-friendly", "tutorial"]
+  tags_remove: ["advanced"]
+  notes: "Better categorized as a starter template"

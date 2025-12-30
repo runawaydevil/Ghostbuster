@@ -3,8 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
     <title>Ghostbuster - Ghost CMS Themes & Tools Directory</title>
+    <meta name="title" content="Ghostbuster - Ghost CMS Themes & Tools Directory">
+    <meta name="description" content="Curated directory of Ghost CMS themes and tools. Discover 500+ themes, official TryGhost themes, community favorites, and development resources for Ghost blogging platform.">
+    <meta name="keywords" content="Ghost CMS, Ghost themes, blog themes, Handlebars templates, Ghost tools, blogging platform, responsive themes, Ghost development">
+    <meta name="author" content="Ghostbuster Directory">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://runawaydevil.github.io/Ghostbuster/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://runawaydevil.github.io/Ghostbuster/">
+    <meta property="og:title" content="Ghostbuster - Ghost CMS Themes & Tools Directory">
+    <meta property="og:description" content="Curated directory of Ghost CMS themes and tools. Discover 500+ themes, official TryGhost themes, community favorites, and development resources for Ghost blogging platform.">
+    <meta property="og:image" content="https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Ghostbuster">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://runawaydevil.github.io/Ghostbuster/">
+    <meta property="twitter:title" content="Ghostbuster - Ghost CMS Themes & Tools Directory">
+    <meta property="twitter:description" content="Curated directory of Ghost CMS themes and tools. Discover 500+ themes, official TryGhost themes, community favorites, and development resources for Ghost blogging platform.">
+    <meta property="twitter:image" content="https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#0066cc">
+    <meta name="msapplication-TileColor" content="#0066cc">
+    <meta name="application-name" content="Ghostbuster">
+    
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ghostbuster",
+        "description": "Curated directory of Ghost CMS themes and tools",
+        "url": "https://runawaydevil.github.io/Ghostbuster/",
+        "author": {
+            "@type": "Person",
+            "name": "runawaydevil",
+            "url": "https://github.com/runawaydevil"
+        },
+        "dateModified": "2025-12-29",
+        "inLanguage": "en-US",
+        "keywords": "Ghost CMS, Ghost themes, blog themes, Handlebars templates, Ghost tools, blogging platform"
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -263,6 +315,38 @@
             color: var(--text-color);
         }
 
+        .updates-container {
+            position: relative;
+        }
+
+        .show-more-updates {
+            background-color: var(--link-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .show-more-updates:hover {
+            background-color: var(--link-hover);
+            transform: translateY(-1px);
+        }
+
+        .show-more-updates:active {
+            transform: translateY(0);
+        }
+
+        .older-updates {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
         footer {
             background-color: var(--footer-bg);
             padding: 2rem 1rem;
@@ -358,12 +442,28 @@
 
         <section class="updates-section">
             <h2>Updates</h2>
-            <div class="update-item">
-                <div class="update-date">December 28, 2025 at 11:20 UTC</div>
-                <div class="update-message">
-                    <p>For now additions and removals are done manually, but I'm working on automating everything.</p>
-                    <p><strong>— RD</strong></p>
+            <div class="updates-container">
+                <div class="update-item">
+                    <div class="update-date">December 29, 2025 at <span id="current-time">12:00</span> UTC</div>
+                    <div class="update-message">
+                        <p>Hello,</p>
+                        <p>The system is currently running in automatic mode, and the updates have been successfully applied. Therefore, manual input is not necessary at this time.</p>
+                        <p>If you need any links removed, please email <a href="mailto:runawaydevil@pm.me">runawaydevil@pm.me</a>.</p>
+                        <p>Thank you.</p>
+                    </div>
                 </div>
+                
+                <div class="older-updates" style="display: none;">
+                    <div class="update-item">
+                        <div class="update-date">December 28, 2025 at 11:20 UTC</div>
+                        <div class="update-message">
+                            <p>For now additions and removals are done manually, but I'm working on automating everything.</p>
+                            <p><strong>— RD</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="show-more-updates" onclick="toggleOlderUpdates()">Show More Updates</button>
             </div>
         </section>
 
@@ -1014,11 +1114,79 @@
     <footer>
         <div class="footer-content">
             <p>Maintained by <a href="https://github.com/runawaydevil" target="_blank" rel="noopener noreferrer">runawaydevil</a></p>
-            <p>Last updated: December 29, 2025</p>
+            <p>Last updated: <span id="last-updated">December 29, 2025</span> at <span id="last-updated-time">12:00</span> UTC</p>
             <p>For broken links or requests to add your resources, please send an email to <a href="mailto:runawaydevil@pm.me">runawaydevil@pm.me</a></p>
             <p>This project is free and open source. Licensed under <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a> - feel free to use, copy, and modify.</p>
+            <p>&copy; <span id="current-year">2025</span> Ghostbuster Directory. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Update current time and date
+        function updateDateTime() {
+            const now = new Date();
+            const timeString = now.toTimeString().slice(0, 5); // HH:MM format
+            const currentYear = now.getFullYear();
+            
+            // Update current time in updates section
+            const currentTimeElement = document.getElementById('current-time');
+            if (currentTimeElement) {
+                currentTimeElement.textContent = timeString;
+            }
+            
+            // Update last updated time in footer
+            const lastUpdatedTimeElement = document.getElementById('last-updated-time');
+            if (lastUpdatedTimeElement) {
+                lastUpdatedTimeElement.textContent = timeString;
+            }
+            
+            // Update current year in footer
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = currentYear;
+            }
+            
+            // Update last updated date in footer
+            const lastUpdatedElement = document.getElementById('last-updated');
+            if (lastUpdatedElement) {
+                const dateString = now.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                lastUpdatedElement.textContent = dateString;
+            }
+        }
+
+        // Toggle older updates visibility
+        function toggleOlderUpdates() {
+            const olderUpdates = document.querySelector('.older-updates');
+            const button = document.querySelector('.show-more-updates');
+            
+            if (olderUpdates.style.display === 'none') {
+                olderUpdates.style.display = 'block';
+                button.textContent = 'Show Less Updates';
+            } else {
+                olderUpdates.style.display = 'none';
+                button.textContent = 'Show More Updates';
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDateTime();
+            
+            // Update time every minute
+            setInterval(updateDateTime, 60000);
+        });
+
+        // Update time when page becomes visible (for better accuracy)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                updateDateTime();
+            }
+        });
+    </script>
 </body>
 </html>
 

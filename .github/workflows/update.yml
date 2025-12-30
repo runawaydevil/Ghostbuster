@@ -1,0 +1,226 @@
+name: Update Ghost Directory
+
+on:
+  # Run weekly on Monday at 6 AM UTC
+  schedule:
+    - cron: '0 6 * * 1'
+  
+  # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run in dry-run mode (no changes)'
+        required: false
+        default: false
+        type: boolean
+      skip_crawl:
+        description: 'Skip repository discovery'
+        required: false
+        default: false
+        type: boolean
+      cleanup_cache:
+        description: 'Clean up expired cache entries'
+        required: false
+        default: false
+        type: boolean
+      verbose:
+        description: 'Enable verbose logging'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.LE_GHOST_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate configuration
+        run: npm run validate
+
+      - name: Cache GitHub API responses
+        uses: actions/cache@v3
+        with:
+          path: cache
+          key: le-ghost-cache-${{ runner.os }}-${{ hashFiles('data/sources.yml') }}
+          restore-keys: |
+            le-ghost-cache-${{ runner.os }}-
+
+      - name: Run update pipeline
+        run: |
+          # Build command with options
+          CMD="npm run update:dev"
+          
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            CMD="$CMD -- --dry-run"
+          fi
+          
+          if [ "${{ github.event.inputs.skip_crawl }}" = "true" ]; then
+            CMD="$CMD -- --skip-crawl"
+          fi
+          
+          if [ "${{ github.event.inputs.cleanup_cache }}" = "true" ]; then
+            CMD="$CMD -- --cleanup-cache"
+          fi
+          
+          if [ "${{ github.event.inputs.verbose }}" = "true" ]; then
+            CMD="$CMD -- --verbose"
+          fi
+          
+          # Add verbose for scheduled runs
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            CMD="$CMD -- --verbose"
+          fi
+          
+          echo "Running: $CMD"
+          eval $CMD
+        env:
+          GITHUB_TOKEN: ${{ secrets.LE_GHOST_TOKEN }}
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet HEAD -- data/items.yml index.html; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected"
+            
+            # Count changes
+            ADDED=$(git diff --numstat HEAD -- data/items.yml | awk '{print $1}' || echo "0")
+            REMOVED=$(git diff --numstat HEAD -- data/items.yml | awk '{print $2}' || echo "0")
+            
+            echo "added_lines=$ADDED" >> $GITHUB_OUTPUT
+            echo "removed_lines=$REMOVED" >> $GITHUB_OUTPUT
+            
+            # Show diff summary
+            echo "## Changes Summary" >> $GITHUB_STEP_SUMMARY
+            echo "- Added lines: $ADDED" >> $GITHUB_STEP_SUMMARY
+            echo "- Removed lines: $REMOVED" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Modified Files:" >> $GITHUB_STEP_SUMMARY
+            git diff --name-only HEAD -- data/items.yml index.html | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Generate PR body
+        if: steps.changes.outputs.has_changes == 'true'
+        id: pr_body
+        run: |
+          # Create PR body with update summary
+          cat > pr_body.md << 'EOF'
+          ## 🤖 Automated Directory Update
+          
+          This pull request contains automated updates to the Ghost CMS themes directory.
+          
+          ### Changes Summary
+          - **Added lines**: ${{ steps.changes.outputs.added_lines }}
+          - **Removed lines**: ${{ steps.changes.outputs.removed_lines }}
+          - **Trigger**: ${{ github.event_name == 'schedule' && 'Scheduled update' || 'Manual trigger' }}
+          - **Timestamp**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          
+          ### Modified Files
+          EOF
+          
+          # Add modified files to PR body
+          git diff --name-only HEAD -- data/items.yml index.html | sed 's/^/- `/' | sed 's/$/`/' >> pr_body.md
+          
+          echo "" >> pr_body.md
+          echo "### Validation" >> pr_body.md
+          echo "- ✅ Configuration validated" >> pr_body.md
+          echo "- ✅ Data integrity checked" >> pr_body.md
+          echo "- ✅ HTML rendered successfully" >> pr_body.md
+          
+          echo "" >> pr_body.md
+          echo "---" >> pr_body.md
+          echo "*This PR was automatically generated by the Le Ghost update pipeline.*" >> pr_body.md
+          
+          # Set output for use in next step
+          echo "body_file=pr_body.md" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.LE_GHOST_TOKEN }}
+          commit-message: |
+            🤖 Automated directory update
+            
+            - Added lines: ${{ steps.changes.outputs.added_lines }}
+            - Removed lines: ${{ steps.changes.outputs.removed_lines }}
+            - Trigger: ${{ github.event_name == 'schedule' && 'Scheduled' || 'Manual' }}
+          title: '🤖 Automated Ghost Directory Update'
+          body-path: ${{ steps.pr_body.outputs.body_file }}
+          branch: automated-update-${{ github.run_number }}
+          delete-branch: true
+          labels: |
+            automated
+            directory-update
+          assignees: runawaydevil
+          reviewers: runawaydevil
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: update-artifacts
+          path: |
+            data/items.yml
+            index.html
+            cache/
+          retention-days: 7
+
+      - name: Post summary
+        if: always()
+        run: |
+          echo "## 📊 Update Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.changes.outputs.has_changes }}" = "true" ]; then
+            echo "✅ **Status**: Changes detected and processed" >> $GITHUB_STEP_SUMMARY
+            if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+              echo "🔍 **Mode**: Dry run (no PR created)" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "🔄 **Action**: Pull request created" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "ℹ️ **Status**: No changes detected" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger**: ${{ github.event_name == 'schedule' && 'Scheduled update' || 'Manual trigger' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_STEP_SUMMARY
+
+  # Cleanup old workflow runs
+  cleanup:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    needs: update
+    
+    steps:
+      - name: Delete old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.LE_GHOST_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 30
+          keep_minimum_runs: 5

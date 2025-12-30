@@ -1,0 +1,23 @@
+# Le Ghost - Ignore Rules
+# This file contains repositories and patterns to permanently exclude
+# Format: Single IgnoreRule object
+
+# Exact repository matches to ignore
+repos:
+  - "spammer/fake-ghost-theme"
+  - "test-user/test-repo"
+  - "archived-user/old-broken-theme"
+  - "malicious-user/suspicious-repo"
+
+# Regex patterns for repositories to ignore
+patterns:
+  - ".*-test$"              # Repositories ending with -test
+  - "^test-.*"              # Repositories starting with test-
+  - ".*-backup$"            # Backup repositories
+  - ".*-fork$"              # Fork repositories with -fork suffix
+  - "^demo-.*"              # Demo repositories
+  - ".*-example$"           # Example repositories
+  - "^tmp-.*"               # Temporary repositories
+  - ".*-deprecated$"        # Deprecated repositories
+  - "^archive-.*"           # Archived repositories
+  - ".*-mirror$"            # Mirror repositories

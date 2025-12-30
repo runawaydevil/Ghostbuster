@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --link-color: #0066cc;
+            --link-hover: #004499;
+            --border-color: #e0e0e0;
+            --header-bg: #f8f9fa;
+            --footer-bg: #f8f9fa;
+            --table-header-bg: #f5f5f5;
+            --table-row-hover: #f9f9f9;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #e0e0e0;
+                --link-color: #4da6ff;
+                --link-hover: #66b3ff;
+                --border-color: #404040;
+                --header-bg: #2a2a2a;
+                --footer-bg: #2a2a2a;
+                --table-header-bg: #333333;
+                --table-row-hover: #2a2a2a;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 1rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            max-width: 168px;
+            height: auto;
+            margin-bottom: 0.01rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-color);
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .subtitle {
+                color: #999;
+            }
+        }
+
+        .github-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background-color: #24292e;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .github-button:hover {
+            background-color: #2f363d;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        .github-button:active {
+            transform: translateY(0);
+        }
+
+        .github-button svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .github-button {
+                background-color: #2f363d;
+            }
+
+            .github-button:hover {
+                background-color: #3a4148;
+            }
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            min-width: 600px;
+        }
+
+        th {
+            background-color: var(--table-header-bg);
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--table-row-hover);
+        }
+
+        tr:hover {
+            background-color: var(--table-row-hover);
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .intro {
+            background-color: var(--header-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--link-color);
+        }
+
+        .updates-section {
+            background-color: var(--header-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--link-color);
+        }
+
+        .updates-section h2 {
+            color: var(--text-color);
+            border-bottom: 2px solid var(--border-color);
+            margin-top: 0;
+        }
+
+        .updates-section .update-item {
+            margin-top: 1rem;
+        }
+
+        .updates-section .update-date {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .updates-section .update-date {
+                color: #999;
+            }
+        }
+
+        .updates-section .update-message {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            header {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                max-width: 140px;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .github-button {
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .updates-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="{{logoUrl}}" alt="{{logoAlt}}" class="logo">
+            <h1>{{title}}</h1>
+            <p class="subtitle">{{subtitle}}</p>
+            <a href="{{githubUrl}}" target="_blank" rel="noopener noreferrer" class="github-button">
+                <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+                Star on GitHub
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Introduction</h2>
+            <p>{{introText}}</p>
+            <p><strong>Note:</strong> {{noteText}}</p>
+        </section>
+
+        {{#if updateMessage}}
+        <section class="updates-section">
+            <h2>Updates</h2>
+            <div class="update-item">
+                <div class="update-date">{{lastUpdate}}</div>
+                <div class="update-message">
+                    <p>{{updateMessage}}</p>
+                </div>
+            </div>
+        </section>
+        {{/if}}
+
+        <hr>
+
+        <section>
+            <h2>ALL THEMES (CONSOLIDATED TABLE)</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Theme Name</th>
+                            <th>Repository URL</th>
+                            <th>Stars</th>
+                            <th>Category</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each categories}}
+                        <tr>
+                            <td colspan="5"><strong>{{this.name}}</strong></td>
+                        </tr>
+                        {{#each this.items}}
+                        <tr>
+                            <td>{{this.name}}</td>
+                            <td><a href="{{this.url}}" target="_blank" rel="noopener noreferrer">{{this.url}}</a></td>
+                            <td>{{this.stars}}</td>
+                            <td>{{this.category}}</td>
+                            <td>{{this.description}}{{#if this.notes}}; {{this.notes}}{{/if}}</td>
+                        </tr>
+                        {{/each}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>TOOLS & RESOURCES</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tool / Resource</th>
+                            <th>Link</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each tools}}
+                        <tr>
+                            <td><strong>{{this.name}}</strong></td>
+                            <td><a href="{{this.url}}" target="_blank" rel="noopener noreferrer">{{this.url}}</a></td>
+                            <td>{{this.description}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>QUICK REFERENCE BY USE CASE</h2>
+            
+            {{#each useCases}}
+            <h3>{{this.name}}</h3>
+            <ul>
+                {{#each this.themes}}
+                <li><strong>{{this.name}}</strong> — {{this.description}} ({{this.stars}}⭐)</li>
+                {{/each}}
+            </ul>
+            {{/each}}
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>NOTES FOR THEME SELECTION</h2>
+            <ol>
+                {{#each selectionNotes}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ol>
+        </section>
+
+        <hr>
+
+        <section>
+            <p><strong>Data Source:</strong> {{dataSource}}</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Maintained by <a href="{{maintainerUrl}}" target="_blank" rel="noopener noreferrer">{{maintainerName}}</a></p>
+            <p>Last updated: {{lastUpdate}}</p>
+            <p>For broken links or requests to add your resources, please send an email to <a href="mailto:{{contactEmail}}">{{contactEmail}}</a></p>
+            <p>This project is free and open source. Licensed under <a href="{{licenseUrl}}" target="_blank" rel="noopener noreferrer">{{licenseName}}</a> - feel free to use, copy, and modify.</p>
+        </div>
+    </footer>
+</body>
+</html>

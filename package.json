@@ -1,0 +1,63 @@
+{
+  "name": "le-ghost",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Automated curation system for Ghost CMS themes directory",
+  "main": "dist/update.js",
+  "scripts": {
+    "build": "tsc",
+    "update": "npm run build && node dist/update.js",
+    "update:dev": "tsx scripts/update.ts",
+    "update:dry": "npm run update:dev -- --dry-run",
+    "update:verbose": "npm run update:dev -- --verbose",
+    "update:skip-crawl": "npm run update:dev -- --skip-crawl",
+    "update:cleanup": "npm run update:dev -- --cleanup-cache",
+    "dev": "tsx scripts/update.ts --verbose",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint scripts/**/*.ts",
+    "lint:fix": "eslint scripts/**/*.ts --fix",
+    "clean": "rimraf dist",
+    "clean:cache": "npm run update:dev -- --cleanup-cache --dry-run",
+    "validate": "npm run build && npm run validate:config && npm run validate:data",
+    "validate:config": "node -e \"import('./dist/config.js').then(m => { const cm = new m.ConfigManager(); const result = cm.validateConfigFile(); console.log(result.valid ? '✅ Config valid' : '❌ Config invalid:', result.errors); })\"",
+    "validate:data": "node -e \"import('./dist/config.js').then(m => { const dl = new m.DataLoader(); const result = dl.validateAll(); console.log(result.valid ? '✅ Data valid' : '❌ Data invalid:', result.errors); })\"",
+    "migrate": "npm run build && node dist/migrate.js",
+    "init": "npm run build && node -e \"import('./dist/config.js').then(m => { const dl = new m.DataLoader(); dl.createDefaultDataFiles(); const cm = new m.ConfigManager(); cm.createDefaultConfig(); console.log('✅ Default configuration and data files created'); })\"",
+    "stats": "npm run build && node -e \"import('./dist/cache-manager.js').then(m => { const cm = m.createCacheManager('cache', 3600000); cm.printStats(); })\""
+  },
+  "keywords": [
+    "ghost",
+    "cms",
+    "themes",
+    "automation",
+    "github"
+  ],
+  "author": "Le Ghost Maintainer",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^20.0.2",
+    "dotenv": "^17.2.3",
+    "handlebars": "^4.7.8",
+    "js-yaml": "^4.1.0",
+    "jsdom": "^23.0.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.54.0",
+    "fast-check": "^3.15.0",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
+    "tsx": "^4.6.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
