@@ -97,14 +97,15 @@ export class DataMigrator {
   /**
    * Extract item data from table row
    */
-  private extractItemFromRow(cells: { [index: number]: Element; length: number }, category: string): GhostItem | null {
+  // eslint-disable-next-line no-undef
+  private extractItemFromRow(cells: ArrayLike<Element>, category: string): GhostItem | null {
     const nameCell = cells[0];
     const urlCell = cells[1];
     const notesCell = cells[2];
 
     const name = nameCell.textContent?.trim();
-    const urlLink = urlCell.querySelector('a');
-    const url = urlLink?.getAttribute('href')?.trim();
+    const urlLink = urlCell.querySelector?.('a');
+    const url = urlLink?.getAttribute?.('href')?.trim();
     const notes = notesCell.textContent?.trim();
 
     if (!name || !url) {

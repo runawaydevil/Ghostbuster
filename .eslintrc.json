@@ -11,6 +11,10 @@
     "ecmaVersion": 2022,
     "sourceType": "module"
   },
+  "globals": {
+    "Element": "readonly",
+    "NodeListOf": "readonly"
+  },
   "plugins": [
     "@typescript-eslint"
   ],

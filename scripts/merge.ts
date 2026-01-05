@@ -52,7 +52,7 @@ export async function loadIgnoreRules(dataDir: string = 'data'): Promise<IgnoreR
     const content = await fs.readFile(ignorePath, 'utf-8');
     return validateIgnoreYaml(content);
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
       // File doesn't exist, return empty rules
       return { repos: [], patterns: [] };
     }
