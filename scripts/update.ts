@@ -274,6 +274,9 @@ export class UpdateOrchestrator {
         
         const updateMessage = this.generateUpdateMessage(result.changes, mergeResult.stats);
         
+        // Get workflow update date from environment variable or use current date
+        const workflowUpdateDate = this.getWorkflowUpdateDate();
+        
         if (!this.options.dryRun) {
           renderer.renderToFile(
             config.rendering.template,
@@ -282,7 +285,8 @@ export class UpdateOrchestrator {
             {
               title: 'Le Ghost - Ghost CMS Themes & Tools Directory',
               subtitle: 'Automated Ghost CMS Directory',
-              updateMessage
+              updateMessage,
+              lastUpdate: workflowUpdateDate
             }
           );
           this.log(`✓ HTML rendered to ${config.rendering.output}`);
@@ -400,6 +404,47 @@ export class UpdateOrchestrator {
       const seconds = Math.floor((ms % 60000) / 1000);
       return `${minutes}m ${seconds}s`;
     }
+  }
+
+  /**
+   * Get workflow update date from environment variable or generate current date
+   */
+  private getWorkflowUpdateDate(): string {
+    // Try to get date from environment variable (set by GitHub Actions workflow)
+    const envDate = process.env.WORKFLOW_UPDATE_DATE;
+    
+    if (envDate) {
+      // If it's an ISO string, format it
+      try {
+        const date = new Date(envDate);
+        if (!isNaN(date.getTime())) {
+          return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          }) + ' at ' + date.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZone: 'UTC'
+          }) + ' UTC';
+        }
+      } catch (error) {
+        // If parsing fails, use as-is (might already be formatted)
+        return envDate;
+      }
+    }
+    
+    // Fallback to current date
+    const now = new Date();
+    return now.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }) + ' at ' + now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'UTC'
+    }) + ' UTC';
   }
 
   /**

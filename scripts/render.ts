@@ -347,6 +347,7 @@ export class GhostDirectoryRenderer {
       maintainerName?: string;
       maintainerUrl?: string;
       contactEmail?: string;
+      lastUpdate?: string;
     } = {}
   ): string {
     const template = readFileSync(templatePath, 'utf-8');
@@ -356,16 +357,20 @@ export class GhostDirectoryRenderer {
     const tools = this.getDefaultTools();
     const selectionNotes = this.getDefaultSelectionNotes();
 
-    const now = new Date();
-    const lastUpdate = now.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }) + ' at ' + now.toLocaleTimeString('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'UTC'
-    }) + ' UTC';
+    // Use provided lastUpdate or generate from current date
+    let lastUpdate = options.lastUpdate;
+    if (!lastUpdate) {
+      const now = new Date();
+      lastUpdate = now.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }) + ' at ' + now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: 'UTC'
+      }) + ' UTC';
+    }
 
     const templateData: TemplateData = {
       title: options.title || 'Le Ghost - Ghost CMS Themes & Tools Directory',
@@ -407,6 +412,7 @@ export class GhostDirectoryRenderer {
       maintainerName?: string;
       maintainerUrl?: string;
       contactEmail?: string;
+      lastUpdate?: string;
     } = {}
   ): void {
     const html = this.renderHTML(templatePath, items, options);

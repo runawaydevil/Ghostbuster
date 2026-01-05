@@ -101,6 +101,7 @@ jobs:
           eval $CMD
         env:
           GITHUB_TOKEN: ${{ secrets.LE_GHOST_TOKEN }}
+          WORKFLOW_UPDATE_DATE: ${{ github.run_started_at }}
 
       - name: Check for changes
         id: changes
