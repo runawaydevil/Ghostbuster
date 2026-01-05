@@ -1,0 +1,4 @@
+# Test sources
+- query: ghost theme test
+  maxResults: 10
+  minStars: 1

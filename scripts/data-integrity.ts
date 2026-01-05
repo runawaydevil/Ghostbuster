@@ -304,9 +304,14 @@ export class DataIntegrityChecker {
     duplicateReport: DuplicateReport;
     consistencyReport: ConsistencyReport;
   } {
+    // #region agent log
+    fetch('http://127.0.0.1:7245/ingest/9caf79dd-e199-41c9-a17c-5cc549aa8744',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'data-integrity.ts:302',message:'cleanDataset() called',data:{inputItemsLength:items.length},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
+    // #endregion
     // First, detect duplicates
     const duplicateReport = this.detectDuplicates(items);
-    
+    // #region agent log
+    fetch('http://127.0.0.1:7245/ingest/9caf79dd-e199-41c9-a17c-5cc549aa8744',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'data-integrity.ts:308',message:'duplicates detected',data:{uniqueItemsLength:duplicateReport.uniqueItems.length,totalDuplicates:duplicateReport.totalDuplicates},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
+    // #endregion
     // Merge duplicates to create clean dataset
     const cleanedItems: GhostItem[] = [];
     
@@ -329,6 +334,10 @@ export class DataIntegrityChecker {
 
     // Validate consistency of cleaned dataset
     const consistencyReport = this.validateConsistency(cleanedItems);
+    
+    // #region agent log
+    fetch('http://127.0.0.1:7245/ingest/9caf79dd-e199-41c9-a17c-5cc549aa8744',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'data-integrity.ts:331',message:'cleanDataset() returning',data:{cleanedItemsLength:cleanedItems.length},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
+    // #endregion
 
     return {
       cleanedItems,

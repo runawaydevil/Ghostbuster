@@ -118,3 +118,4 @@ secrets/
 
 # Kiro directory
 .kiro/
+.cursor/

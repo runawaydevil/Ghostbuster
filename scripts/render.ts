@@ -62,44 +62,157 @@ export interface TemplateData {
 export class TemplateRenderer {
   
   /**
+   * Find outermost {{#each}} block (first one encountered)
+   */
+  private findOutermostEachBlock(text: string): { start: number; end: number; path: string; content: string } | null {
+    const eachRegex = /\{\{#each\s+([^}]+)\}\}/;
+    const match = eachRegex.exec(text);
+    
+    if (!match) return null;
+    
+    const start = match.index;
+    const path = match[1].trim();
+    let depth = 1;
+    let pos = match.index + match[0].length;
+    
+    // Find matching {{/each}} by counting nesting levels
+    while (depth > 0 && pos < text.length) {
+      const nextEach = text.indexOf('{{#each', pos);
+      const nextEnd = text.indexOf('{{/each}}', pos);
+      
+      if (nextEnd === -1) break;
+      
+      if (nextEach !== -1 && nextEach < nextEnd) {
+        depth++;
+        pos = nextEach + 7;
+      } else {
+        depth--;
+        if (depth === 0) {
+          const content = text.substring(start + match[0].length, nextEnd);
+          return { start, end: nextEnd + 9, path, content };
+        }
+        pos = nextEnd + 9;
+      }
+    }
+    
+    return null;
+  }
+
+  /**
    * Render template with data
    */
   render(template: string, data: any): string {
     let result = template;
 
-    // Replace simple variables {{variable}}
+    // Step 1: Process {{#each}} blocks from outermost to innermost
+    // This ensures outer blocks are processed before inner ones
+    while (result.includes('{{#each')) {
+      const block = this.findOutermostEachBlock(result);
+      
+      if (!block) {
+        // No more processable blocks found, break to avoid infinite loop
+        break;
+      }
+      
+      // Resolve array path
+      let array: any;
+      if (block.path.startsWith('this.')) {
+        const prop = block.path.substring(5);
+        const thisContext = (data as any)['this'];
+        if (thisContext) {
+          array = this.getNestedValue(thisContext, prop);
+        } else {
+          // No 'this' context, remove the block
+          result = result.substring(0, block.start) + '' + result.substring(block.end);
+          continue;
+        }
+      } else {
+        // Try to get from data directly first (for properties like 'items', 'themes' that are on the current context)
+        array = data[block.path];
+        // If not found directly, try getNestedValue for nested paths
+        if (array === undefined) {
+          array = this.getNestedValue(data, block.path);
+        }
+        // Also check if it's a property of 'this' if 'this' exists
+        if (array === undefined && (data as any)['this']) {
+          const thisObj = (data as any)['this'];
+          if (thisObj && typeof thisObj === 'object') {
+            array = thisObj[block.path];
+          }
+        }
+      }
+      
+      if (!Array.isArray(array)) {
+        // Not an array, remove the block
+        result = result.substring(0, block.start) + '' + result.substring(block.end);
+        continue;
+      }
+      
+      // Process each item in the array
+      const rendered = array.map(item => {
+        // In Handlebars, within {{#each}}, the context becomes the current item
+        // So we create a new context where the item's properties are directly accessible
+        // Start with the item's properties directly (this is the Handlebars way)
+        const itemContext: any = {};
+        
+        // First, make ALL properties of the item directly accessible
+        // This allows {{name}}, {{items}}, {{themes}}, etc. to work directly
+        if (item && typeof item === 'object') {
+          // Use Object.keys to get all enumerable properties including non-own properties if needed
+          const itemKeys = Object.keys(item);
+          for (const key of itemKeys) {
+            itemContext[key] = (item as any)[key];
+          }
+          // Also check for Symbol properties if any
+          const symbols = Object.getOwnPropertySymbols(item);
+          for (const sym of symbols) {
+            itemContext[sym] = (item as any)[sym];
+          }
+        }
+        
+        // Set 'this' to the current item (for {{this.property}} syntax)
+        itemContext['this'] = item;
+        
+        // Copy parent context properties (for ../ access and other parent data)
+        // But don't overwrite item properties that we just set
+        for (const key in data) {
+          if (key !== 'this' && !(key in itemContext) && Object.prototype.hasOwnProperty.call(data, key)) {
+            itemContext[key] = data[key];
+          }
+        }
+        
+        // Process the content with this item's context
+        // This will recursively handle nested {{#each}} blocks and variables
+        return this.render(block.content, itemContext);
+      }).join('');
+      
+      // Replace the block with rendered content
+      result = result.substring(0, block.start) + rendered + result.substring(block.end);
+    }
+
+    // Step 2: Replace simple variables {{variable}} and {{this.property}}
     result = result.replace(/\{\{([^#/\s}]+)\}\}/g, (match, key) => {
-      const value = this.getNestedValue(data, key.trim());
+      const path = key.trim();
+      let value: any;
+      
+      // Handle 'this.property' paths
+      if (path.startsWith('this.')) {
+        const prop = path.substring(5);
+        const thisContext = (data as any)['this'];
+        if (thisContext) {
+          value = this.getNestedValue(thisContext, prop);
+        }
+      } else {
+        value = this.getNestedValue(data, path);
+      }
+      
       return value !== undefined ? String(value) : '';
     });
 
-    // Handle conditional blocks {{#if condition}}...{{/if}}
+    // Step 3: Handle conditional blocks {{#if condition}}...{{/if}}
     result = result.replace(/\{\{#if\s+([^}]+)\}\}([\s\S]*?)\{\{\/if\}\}/g, (match, condition, content) => {
       const value = this.getNestedValue(data, condition.trim());
       return value ? content : '';
-    });
-
-    // Handle each blocks {{#each array}}...{{/each}}
-    result = result.replace(/\{\{#each\s+([^}]+)\}\}([\s\S]*?)\{\{\/each\}\}/g, (match, arrayPath, content) => {
-      const array = this.getNestedValue(data, arrayPath.trim());
-      if (!Array.isArray(array)) {
-        return '';
-      }
-
-      return array.map(item => {
-        let itemContent = content;
-        
-        // Replace {{this.property}} with item properties
-        itemContent = itemContent.replace(/\{\{this\.([^}]+)\}\}/g, (match: string, prop: string) => {
-          const value = this.getNestedValue(item, prop.trim());
-          return value !== undefined ? String(value) : '';
-        });
-
-        // Replace {{this}} with the item itself (for primitive arrays)
-        itemContent = itemContent.replace(/\{\{this\}\}/g, String(item));
-
-        return itemContent;
-      }).join('');
     });
 
     return result;

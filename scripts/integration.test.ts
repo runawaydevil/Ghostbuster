@@ -4,6 +4,7 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import yaml from 'js-yaml';
 import { existsSync, writeFileSync, readFileSync, unlinkSync, mkdirSync, rmSync } from 'fs';
 import { join } from 'path';
 import { UpdateOrchestrator } from './update.js';
@@ -90,17 +91,18 @@ describe('Integration Tests', () => {
     }
 
     // Create test data files
+    // Use proper YAML format instead of trying to convert JSON
     writeFileSync(
       join(TEST_DATA_DIR, 'items.yml'),
-      `# Test items\n${JSON.stringify(mockItems, null, 2).replace(/"/g, '').replace(/,/g, '')}`
+      `# Test items\n${yaml.dump(mockItems, { indent: 2 })}`
     );
     writeFileSync(
       join(TEST_DATA_DIR, 'sources.yml'),
-      `# Test sources\n${JSON.stringify(mockSources, null, 2).replace(/"/g, '').replace(/,/g, '')}`
+      `# Test sources\n${yaml.dump(mockSources, { indent: 2 })}`
     );
     writeFileSync(
       join(TEST_DATA_DIR, 'overrides.yml'),
-      `# Test overrides\n${JSON.stringify(mockOverrides, null, 2).replace(/"/g, '').replace(/,/g, '')}`
+      `# Test overrides\n${yaml.dump(mockOverrides, { indent: 2 })}`
     );
     writeFileSync(
       join(TEST_DATA_DIR, 'ignore.yml'),
@@ -295,11 +297,13 @@ describe('Integration Tests', () => {
     });
 
     it('should handle large datasets efficiently', () => {
-      // Create larger dataset
+      // Create larger dataset with unique repos
       const largeDataset = Array.from({ length: 100 }, (_, i) => ({
         ...mockItems[0],
         id: `test/repo-${i}`,
         name: `Test Repo ${i}`,
+        repo: `test/repo-${i}`,
+        url: `https://github.com/test/repo-${i}`,
         stars: Math.floor(Math.random() * 1000)
       }));
 

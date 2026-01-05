@@ -1,0 +1,43 @@
+# Test items
+- id: TryGhost/Casper
+  name: Casper
+  repo: TryGhost/Casper
+  url: https://github.com/TryGhost/Casper
+  description: Default Ghost theme
+  category: Official
+  tags:
+    - ghost-theme
+    - handlebars
+  stars: 2600
+  pushedAt: '2024-12-01T10:00:00Z'
+  archived: false
+  fork: false
+  license: MIT
+  topics:
+    - ghost
+    - theme
+  score: 95
+  confidence: high
+  notes: null
+  hidden: false
+- id: eddiesigner/liebling
+  name: Liebling
+  repo: eddiesigner/liebling
+  url: https://github.com/eddiesigner/liebling
+  description: Beautiful Ghost theme
+  category: Theme
+  tags:
+    - ghost-theme
+    - dark-mode
+  stars: 1300
+  pushedAt: '2024-11-15T14:30:00Z'
+  archived: false
+  fork: false
+  license: MIT
+  topics:
+    - ghost
+    - theme
+  score: 88
+  confidence: high
+  notes: null
+  hidden: false

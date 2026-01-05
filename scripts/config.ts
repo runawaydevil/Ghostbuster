@@ -444,11 +444,20 @@ export class DataLoader {
    * Validate all data files without loading
    */
   validateAll(): { valid: boolean; errors: string[] } {
+    // #region agent log
+    fetch('http://127.0.0.1:7245/ingest/9caf79dd-e199-41c9-a17c-5cc549aa8744',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'config.ts:446',message:'validateAll() called',data:{dataDir:this.dataDir},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+    // #endregion
     const errors: string[] = [];
 
     try {
       this.loadItems();
+      // #region agent log
+      fetch('http://127.0.0.1:7245/ingest/9caf79dd-e199-41c9-a17c-5cc549aa8744',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'config.ts:450',message:'loadItems() succeeded',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+      // #endregion
     } catch (error) {
+      // #region agent log
+      fetch('http://127.0.0.1:7245/ingest/9caf79dd-e199-41c9-a17c-5cc549aa8744',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'config.ts:452',message:'loadItems() failed',data:{error:error instanceof Error?error.message:String(error)},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+      // #endregion
       errors.push(`items.yml: ${error instanceof Error ? error.message : String(error)}`);
     }
 
@@ -469,6 +478,10 @@ export class DataLoader {
     } catch (error) {
       errors.push(`sources.yml: ${error instanceof Error ? error.message : String(error)}`);
     }
+    
+    // #region agent log
+    fetch('http://127.0.0.1:7245/ingest/9caf79dd-e199-41c9-a17c-5cc549aa8744',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'config.ts:473',message:'validateAll() returning',data:{valid:errors.length === 0,errorsCount:errors.length,errors},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+    // #endregion
 
     return {
       valid: errors.length === 0,

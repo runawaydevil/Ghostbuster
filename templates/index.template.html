@@ -387,7 +387,7 @@
                         <tr>
                             <td colspan="5"><strong>{{this.name}}</strong></td>
                         </tr>
-                        {{#each this.items}}
+                        {{#each items}}
                         <tr>
                             <td>{{this.name}}</td>
                             <td><a href="{{this.url}}" target="_blank" rel="noopener noreferrer">{{this.url}}</a></td>
@@ -436,7 +436,7 @@
             {{#each useCases}}
             <h3>{{this.name}}</h3>
             <ul>
-                {{#each this.themes}}
+                {{#each themes}}
                 <li><strong>{{this.name}}</strong> — {{this.description}} ({{this.stars}}⭐)</li>
                 {{/each}}
             </ul>
