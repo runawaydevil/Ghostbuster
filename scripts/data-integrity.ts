@@ -2,7 +2,7 @@
  * Data integrity and duplicate detection utilities
  */
 
-import { GhostItem, RepositoryData } from './types.js';
+import { GhostItem } from './types.js';
 
 export interface DuplicateReport {
   duplicates: {
@@ -37,14 +37,11 @@ export class DataIntegrityChecker {
    */
   detectDuplicates(items: GhostItem[]): DuplicateReport {
     const duplicateGroups: Map<string, GhostItem[]> = new Map();
-    const seenRepos = new Set<string>();
-    const seenUrls = new Set<string>();
     const uniqueItems: GhostItem[] = [];
 
     // Group items by repository identifier
     for (const item of items) {
       const repoKey = item.repo.toLowerCase();
-      const urlKey = item.url.toLowerCase();
 
       if (!duplicateGroups.has(repoKey)) {
         duplicateGroups.set(repoKey, []);

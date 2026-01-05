@@ -68,7 +68,7 @@ export class TemplateRenderer {
     let result = template;
 
     // Replace simple variables {{variable}}
-    result = result.replace(/\{\{([^#\/\s}]+)\}\}/g, (match, key) => {
+    result = result.replace(/\{\{([^#/\s}]+)\}\}/g, (match, key) => {
       const value = this.getNestedValue(data, key.trim());
       return value !== undefined ? String(value) : '';
     });
@@ -151,7 +151,7 @@ export class GhostDirectoryRenderer {
     }
 
     // Sort items within each category by stars (descending)
-    for (const [category, categoryItems] of categoryMap) {
+    for (const [, categoryItems] of categoryMap) {
       categoryItems.sort((a, b) => b.stars - a.stars);
     }
 
@@ -359,22 +359,20 @@ export class GhostDirectoryRenderer {
 
     // Use provided lastUpdate or generate from current date
     let lastUpdate = options.lastUpdate;
+    
     if (!lastUpdate) {
       const now = new Date();
-      lastUpdate = now.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      }) + ' at ' + now.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZone: 'UTC'
-      }) + ' UTC';
+      const year = now.getUTCFullYear();
+      const month = now.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' });
+      const day = now.getUTCDate();
+      const hours = String(now.getUTCHours()).padStart(2, '0');
+      const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+      lastUpdate = `${month} ${day}, ${year} at ${hours}:${minutes} UTC`;
     }
 
     const templateData: TemplateData = {
       title: options.title || 'Le Ghost - Ghost CMS Themes & Tools Directory',
-      subtitle: options.subtitle || 'Ghost CMS Themes & Tools Directory (Automated)',
+      subtitle: options.subtitle || 'Ghost CMS Themes & Tools Directory (2022–2026)',
       logoUrl: options.logoUrl || 'https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png',
       logoAlt: 'Le Ghost Logo',
       githubUrl: options.githubUrl || 'https://github.com/runawaydevil/le-ghost',

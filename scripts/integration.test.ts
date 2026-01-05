@@ -74,10 +74,10 @@ const mockOverrides = [
   }
 ];
 
-const mockIgnoreRules = {
-  repos: ['test/ignored-repo'],
-  patterns: ['.*-test$']
-};
+// const mockIgnoreRules = {
+//   repos: ['test/ignored-repo'],
+//   patterns: ['.*-test$']
+// };
 
 describe('Integration Tests', () => {
   beforeEach(() => {
@@ -347,7 +347,7 @@ describe('Integration Tests', () => {
 
       expect(() => {
         // This should fail without GITHUB_TOKEN
-        const dataLoader = new DataLoader(TEST_DATA_DIR);
+        // const dataLoader = new DataLoader(TEST_DATA_DIR);
         // Validation should catch missing token
       }).not.toThrow(); // DataLoader itself doesn't check env vars
 

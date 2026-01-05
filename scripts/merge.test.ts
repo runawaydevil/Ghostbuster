@@ -2,16 +2,12 @@
  * Tests for merge functionality
  */
 
-import { describe, it, expect, beforeEach } from 'vitest';
-import * as fs from 'fs/promises';
-import * as path from 'path';
+import { describe, it, expect } from 'vitest';
 import { 
   applyOverride, 
-  repositoryToGhostItem, 
-  shouldIgnoreRepository,
-  mergeData 
+  repositoryToGhostItem
 } from './merge.js';
-import { GhostItem, Override, IgnoreRule, RepositoryData, ClassificationResult } from './types.js';
+import { GhostItem, Override, RepositoryData, ClassificationResult } from './types.js';
 
 describe('Merge System', () => {
   describe('applyOverride', () => {

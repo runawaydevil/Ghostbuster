@@ -248,7 +248,7 @@ export class ErrorHandler {
     const message = error.message.toLowerCase();
     let code = ErrorCode.UNKNOWN;
     let severity = ErrorSeverity.MEDIUM;
-    let suggestions: string[] = [];
+    const suggestions: string[] = [];
 
     if (message.includes('rate limit')) {
       code = ErrorCode.API_RATE_LIMIT;

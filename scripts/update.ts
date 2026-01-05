@@ -5,7 +5,7 @@
  * Coordinates the entire pipeline: crawl → classify → merge → render
  */
 
-import { getConfigAndData, DataLoader, ConfigManager } from './config.js';
+import { getConfigAndData } from './config.js';
 import { createCrawler } from './crawl.js';
 import { createClassifier } from './classify.js';
 import { createMerger } from './merge.js';
@@ -272,10 +272,11 @@ export class UpdateOrchestrator {
         this.log('🎨 Rendering HTML output');
         const renderer = createRenderer();
         
-        const updateMessage = this.generateUpdateMessage(result.changes, mergeResult.stats);
+        const updateMessage = this.generateUpdateMessage(result.changes);
         
         // Get workflow update date from environment variable or use current date
         const workflowUpdateDate = this.getWorkflowUpdateDate();
+        this.log(`📅 Using update date: ${workflowUpdateDate}`);
         
         if (!this.options.dryRun) {
           renderer.renderToFile(
@@ -284,7 +285,7 @@ export class UpdateOrchestrator {
             mergeResult.items,
             {
               title: 'Le Ghost - Ghost CMS Themes & Tools Directory',
-              subtitle: 'Automated Ghost CMS Directory',
+              subtitle: 'Ghost CMS Themes & Tools Directory (2022–2026)',
               updateMessage,
               lastUpdate: workflowUpdateDate
             }
@@ -329,7 +330,7 @@ export class UpdateOrchestrator {
   /**
    * Generate update message for HTML
    */
-  private generateUpdateMessage(changes: UpdateResult['changes'], stats: any): string {
+  private generateUpdateMessage(changes: UpdateResult['changes']): string {
     const parts = [];
     
     if (changes.added > 0) {
@@ -413,38 +414,34 @@ export class UpdateOrchestrator {
     // Try to get date from environment variable (set by GitHub Actions workflow)
     const envDate = process.env.WORKFLOW_UPDATE_DATE;
     
-    if (envDate) {
+    let dateToFormat: Date;
+    
+    if (envDate && envDate.trim() !== '') {
       // If it's an ISO string, format it
       try {
-        const date = new Date(envDate);
-        if (!isNaN(date.getTime())) {
-          return date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          }) + ' at ' + date.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            timeZone: 'UTC'
-          }) + ' UTC';
+        const parsedDate = new Date(envDate);
+        if (!isNaN(parsedDate.getTime())) {
+          dateToFormat = parsedDate;
+        } else {
+          dateToFormat = new Date();
+          this.log(`⚠️ Invalid WORKFLOW_UPDATE_DATE format: ${envDate}, using current date`, 'warn');
         }
       } catch (error) {
-        // If parsing fails, use as-is (might already be formatted)
-        return envDate;
+        dateToFormat = new Date();
+        this.log(`⚠️ Failed to parse WORKFLOW_UPDATE_DATE: ${envDate}, using current date`, 'warn');
       }
+    } else {
+      dateToFormat = new Date();
     }
     
-    // Fallback to current date
-    const now = new Date();
-    return now.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }) + ' at ' + now.toLocaleTimeString('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'UTC'
-    }) + ' UTC';
+    // Format date consistently: "Month Day, Year at HH:MM UTC"
+    const year = dateToFormat.getUTCFullYear();
+    const month = dateToFormat.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' });
+    const day = dateToFormat.getUTCDate();
+    const hours = String(dateToFormat.getUTCHours()).padStart(2, '0');
+    const minutes = String(dateToFormat.getUTCMinutes()).padStart(2, '0');
+    
+    return `${month} ${day}, ${year} at ${hours}:${minutes} UTC`;
   }
 
   /**

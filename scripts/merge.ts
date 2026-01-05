@@ -18,7 +18,7 @@ export async function loadExistingItems(dataDir: string = 'data'): Promise<Ghost
     const content = await fs.readFile(itemsPath, 'utf-8');
     return validateItemsYaml(content);
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
       // File doesn't exist, return empty array
       return [];
     }
@@ -35,7 +35,7 @@ export async function loadOverrides(dataDir: string = 'data'): Promise<Override[
     const content = await fs.readFile(overridesPath, 'utf-8');
     return validateOverridesYaml(content);
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
       // File doesn't exist, return empty array
       return [];
     }

@@ -183,7 +183,6 @@ jobs:
             automated
             directory-update
           assignees: runawaydevil
-          reviewers: runawaydevil
 
       - name: Upload artifacts
         if: always()

@@ -97,7 +97,7 @@ export class DataMigrator {
   /**
    * Extract item data from table row
    */
-  private extractItemFromRow(cells: NodeListOf<Element>, category: string): GhostItem | null {
+  private extractItemFromRow(cells: { [index: number]: Element; length: number }, category: string): GhostItem | null {
     const nameCell = cells[0];
     const urlCell = cells[1];
     const notesCell = cells[2];
@@ -113,7 +113,7 @@ export class DataMigrator {
     }
 
     // Extract repository info from URL
-    const repoMatch = url.match(/github\.com\/([^\/]+\/[^\/]+)/);
+    const repoMatch = url.match(/github\.com\/([^/]+\/[^/]+)/);
     if (!repoMatch) {
       this.warnings.push(`Invalid GitHub URL: ${url}`);
       return null;
@@ -123,7 +123,7 @@ export class DataMigrator {
     const id = repo;
 
     // Extract star count from notes
-    const starMatch = notes?.match(/(\d+(?:[\.,]\d+)?)\s*k?\s*stars?/i);
+    const starMatch = notes?.match(/(\d+(?:[.,]\d+)?)\s*k?\s*stars?/i);
     let stars = 0;
     if (starMatch) {
       const starText = starMatch[1].replace(',', '');
@@ -250,7 +250,7 @@ export class DataMigrator {
     let notes = originalNotes;
 
     // Remove star count
-    notes = notes.replace(/\d+(?:[\.,]\d+)?k?\s*stars?[;,]?\s*/gi, '');
+    notes = notes.replace(/\d+(?:[.,]\d+)?k?\s*stars?[;,]?\s*/gi, '');
     
     // Remove common prefixes
     notes = notes.replace(/^[;,\s]+/, '');
