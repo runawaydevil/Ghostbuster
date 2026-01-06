@@ -14,8 +14,8 @@
     - self-hosted
     - selfhosted
     - ghost-theme
-  stars: 266614
-  pushedAt: '2026-01-02T10:35:46Z'
+  stars: 266901
+  pushedAt: '2026-01-06T11:03:49Z'
   archived: false
   fork: false
   license: other
@@ -45,7 +45,7 @@
     - beginners-friendly
     - list
     - ghost-theme
-  stars: 81293
+  stars: 81374
   pushedAt: '2025-12-05T20:51:10Z'
   archived: false
   fork: false
@@ -68,8 +68,8 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 75515
-  pushedAt: '2026-01-04T20:18:51Z'
+  stars: 75632
+  pushedAt: '2026-01-06T14:38:46Z'
   archived: false
   fork: false
   license: mit
@@ -92,7 +92,7 @@
     - node
     - nodejs
     - ghost-theme
-  stars: 64430
+  stars: 64461
   pushedAt: '2025-11-22T10:33:15Z'
   archived: false
   fork: false
@@ -132,7 +132,7 @@
     - tutorials
     - web
     - ghost-theme
-  stars: 44098
+  stars: 44208
   pushedAt: '2025-12-31T18:59:20Z'
   archived: false
   fork: false
@@ -166,8 +166,8 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 34850
-  pushedAt: '2025-12-08T10:40:08Z'
+  stars: 34855
+  pushedAt: '2026-01-05T09:42:09Z'
   archived: false
   fork: false
   license: null
@@ -192,7 +192,7 @@
     - github
     - github-actions
     - ghost-theme
-  stars: 27279
+  stars: 27284
   pushedAt: '2024-09-01T20:32:39Z'
   archived: false
   fork: false
@@ -220,7 +220,7 @@
     - awesome
     - awesome-list
     - ghost-theme
-  stars: 24882
+  stars: 24896
   pushedAt: '2025-12-17T18:00:55Z'
   archived: false
   fork: false
@@ -263,7 +263,7 @@
     - ssh
     - wireguard
     - ghost-theme
-  stars: 18200
+  stars: 18220
   pushedAt: '2025-06-27T01:51:16Z'
   archived: false
   fork: false
@@ -306,8 +306,8 @@
     - security
     - vulnerability
     - ghost-theme
-  stars: 7461
-  pushedAt: '2026-01-05T06:45:44Z'
+  stars: 7464
+  pushedAt: '2026-01-06T18:46:54Z'
   archived: false
   fork: false
   license: null
@@ -339,7 +339,7 @@
     - machine-learning
     - resources
     - ghost-theme
-  stars: 6096
+  stars: 6097
   pushedAt: '2025-07-12T00:49:03Z'
   archived: false
   fork: false
@@ -371,7 +371,7 @@
     - css
     - list
     - ghost-theme
-  stars: 5457
+  stars: 5455
   pushedAt: '2024-10-30T07:00:24Z'
   archived: false
   fork: false
@@ -434,7 +434,7 @@
     - awesome-list
     - website
     - ghost-theme
-  stars: 3582
+  stars: 3585
   pushedAt: '2025-12-11T20:25:03Z'
   archived: false
   fork: false
@@ -462,7 +462,7 @@
     - security
     - security-tools
     - ghost-theme
-  stars: 3515
+  stars: 3519
   pushedAt: '2025-08-24T10:21:47Z'
   archived: false
   fork: false
@@ -488,7 +488,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 3217
+  stars: 3222
   pushedAt: '2025-06-05T18:28:31Z'
   archived: false
   fork: false
@@ -544,7 +544,7 @@
     - nlp
     - openai
     - ghost-theme
-  stars: 2781
+  stars: 2783
   pushedAt: '2026-01-04T17:07:44Z'
   archived: false
   fork: false
@@ -602,7 +602,7 @@
     - research-tools
     - tools
     - ghost-theme
-  stars: 2481
+  stars: 2483
   pushedAt: '2023-08-15T11:00:30Z'
   archived: false
   fork: false
@@ -656,7 +656,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 1729
+  stars: 1732
   pushedAt: '2025-12-20T00:06:50Z'
   archived: false
   fork: false
@@ -683,7 +683,7 @@
     - nodejs
     - ruby
     - ghost-theme
-  stars: 1727
+  stars: 1728
   pushedAt: '2022-12-17T05:12:03Z'
   archived: false
   fork: false
@@ -801,8 +801,8 @@
     - n8n-workflow
     - n8n-workflows
     - ghost-theme
-  stars: 1615
-  pushedAt: '2026-01-05T04:00:38Z'
+  stars: 1624
+  pushedAt: '2026-01-06T04:00:41Z'
   archived: false
   fork: false
   license: null
@@ -834,8 +834,8 @@
     - selfhosted
     - selfhosting
     - ghost-theme
-  stars: 1461
-  pushedAt: '2026-01-04T22:29:23Z'
+  stars: 1467
+  pushedAt: '2026-01-05T22:30:06Z'
   archived: false
   fork: false
   license: null
@@ -866,7 +866,7 @@
     - static-site
     - static-site-generator
     - ghost-theme
-  stars: 1359
+  stars: 1358
   pushedAt: '2025-06-24T16:08:58Z'
   archived: false
   fork: false
@@ -912,7 +912,7 @@
     - pentesting-tools
     - web
     - ghost-theme
-  stars: 1259
+  stars: 1260
   pushedAt: '2025-12-04T06:55:03Z'
   archived: false
   fork: false
@@ -1002,7 +1002,7 @@
     - baas
     - mbaas
     - ghost-theme
-  stars: 1061
+  stars: 1063
   pushedAt: '2024-10-15T12:36:07Z'
   archived: false
   fork: false
@@ -1081,7 +1081,7 @@
     - mobirise
     - website-builder
     - ghost-theme
-  stars: 939
+  stars: 940
   pushedAt: '2025-09-16T12:18:27Z'
   archived: false
   fork: false
@@ -1116,7 +1116,7 @@
     - static-site
     - static-site-generator
     - ghost-theme
-  stars: 829
+  stars: 830
   pushedAt: '2025-07-09T16:22:37Z'
   archived: false
   fork: false
@@ -1159,8 +1159,8 @@
     - termux-tools
     - vulnerability-assessment
     - ghost-theme
-  stars: 710
-  pushedAt: '2026-01-04T17:22:27Z'
+  stars: 713
+  pushedAt: '2026-01-06T14:43:02Z'
   archived: false
   fork: false
   license: other
@@ -1243,7 +1243,7 @@
     - static-site-generator
     - typescript
     - ghost-theme
-  stars: 688
+  stars: 689
   pushedAt: '2023-08-01T08:09:32Z'
   archived: false
   fork: false
@@ -1296,7 +1296,7 @@
     - tailwindcss
     - tool-for-nextjs
     - ghost-theme
-  stars: 668
+  stars: 671
   pushedAt: '2025-12-10T10:39:54Z'
   archived: false
   fork: false
@@ -1465,7 +1465,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 595
+  stars: 594
   pushedAt: '2024-09-27T16:58:01Z'
   archived: false
   fork: false
@@ -1491,7 +1491,7 @@
     - ui-builder
     - visual-editor
     - ghost-theme
-  stars: 561
+  stars: 563
   pushedAt: '2025-12-31T00:39:59Z'
   archived: false
   fork: false
@@ -1515,7 +1515,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 525
+  stars: 524
   pushedAt: '2024-05-20T07:35:48Z'
   archived: false
   fork: false
@@ -1577,8 +1577,8 @@
     - mcp-servers
     - model-context-protocol
     - ghost-theme
-  stars: 507
-  pushedAt: '2025-12-30T19:41:44Z'
+  stars: 513
+  pushedAt: '2026-01-05T23:36:26Z'
   archived: false
   fork: false
   license: mit
@@ -1614,7 +1614,7 @@
     - shodan
     - shodan-dorks
     - ghost-theme
-  stars: 474
+  stars: 476
   pushedAt: '2025-02-13T15:06:08Z'
   archived: false
   fork: false
@@ -1675,7 +1675,7 @@
     - toolkits
     - tools
     - ghost-theme
-  stars: 449
+  stars: 450
   pushedAt: '2025-12-29T15:21:33Z'
   archived: false
   fork: false
@@ -1719,7 +1719,7 @@
     - webdeveloper
     - webdevelopment
     - ghost-theme
-  stars: 393
+  stars: 447
   pushedAt: '2025-02-03T12:08:00Z'
   archived: false
   fork: false
@@ -1766,7 +1766,7 @@
     - non-convex-optimization
     - phase-transitions
     - ghost-theme
-  stars: 382
+  stars: 383
   pushedAt: '2025-12-09T21:38:57Z'
   archived: false
   fork: false
@@ -1838,7 +1838,7 @@
     - chinese-translation
     - nodejs
     - ghost-theme
-  stars: 364
+  stars: 365
   pushedAt: '2020-01-20T09:48:16Z'
   archived: false
   fork: false
@@ -1859,7 +1859,7 @@
   category: Tool
   tags:
     - ghost-theme
-  stars: 344
+  stars: 345
   pushedAt: '2023-05-10T13:04:23Z'
   archived: false
   fork: false
@@ -1896,6 +1896,24 @@
     - react
     - vue
   score: 24
+  confidence: low
+  notes: null
+  hidden: false
+- id: viktorbezdek/awesome-github-projects
+  name: awesome-github-projects
+  repo: viktorbezdek/awesome-github-projects
+  url: https://github.com/viktorbezdek/awesome-github-projects
+  description: Curated list of GitHub projects I starred over the years
+  category: Theme
+  tags:
+    - ghost-theme
+  stars: 309
+  pushedAt: '2025-12-24T00:54:36Z'
+  archived: false
+  fork: false
+  license: cc0-1.0
+  topics: []
+  score: 23
   confidence: low
   notes: null
   hidden: false
@@ -1961,24 +1979,6 @@
     - typography
   score: 84
   confidence: high
-  notes: null
-  hidden: false
-- id: viktorbezdek/awesome-github-projects
-  name: awesome-github-projects
-  repo: viktorbezdek/awesome-github-projects
-  url: https://github.com/viktorbezdek/awesome-github-projects
-  description: Curated list of GitHub projects I starred over the years
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 300
-  pushedAt: '2025-12-24T00:54:36Z'
-  archived: false
-  fork: false
-  license: cc0-1.0
-  topics: []
-  score: 23
-  confidence: low
   notes: null
   hidden: false
 - id: hueitan/made-in-taiwan
@@ -2107,7 +2107,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 253
+  stars: 254
   pushedAt: '2023-10-19T18:00:27Z'
   archived: false
   fork: false
@@ -2166,7 +2166,7 @@
     - sdui
     - server-driven-ui
     - ghost-theme
-  stars: 214
+  stars: 216
   pushedAt: '2025-12-18T06:40:35Z'
   archived: false
   fork: false
@@ -2499,7 +2499,7 @@
     - webapp
     - ghost-theme
   stars: 127
-  pushedAt: '2026-01-04T06:04:09Z'
+  pushedAt: '2026-01-06T06:23:20Z'
   archived: false
   fork: false
   license: other
@@ -2570,7 +2570,7 @@
     - newsletter
     - publishing
     - ghost-theme
-  stars: 104
+  stars: 105
   pushedAt: '2025-12-31T18:01:43Z'
   archived: false
   fork: false
@@ -2628,7 +2628,7 @@
     - publishing
     - ghost-theme
   stars: 89
-  pushedAt: '2026-01-05T03:37:05Z'
+  pushedAt: '2026-01-06T10:31:50Z'
   archived: false
   fork: false
   license: mit
@@ -4107,5 +4107,45 @@
     - monochrome-theme
   score: 41
   confidence: low
+  notes: null
+  hidden: false
+- id: SolitudeRA/Solitude-Interface
+  name: Solitude-Interface
+  repo: SolitudeRA/Solitude-Interface
+  url: https://github.com/SolitudeRA/Solitude-Interface
+  description: >-
+    A modern, high-performance personal blog interface built with Astro + React + TailwindCSS, powered by Ghost CMS as
+    headless backend. Features multi-language support (zh/ja/en), dark/light themes, and multiple post types.
+  category: Theme
+  tags:
+    - astro
+    - astro-theme
+    - blog
+    - ghost-cms
+    - headless-cms
+    - i18n
+    - react
+    - static-site
+    - tailwindcss
+    - typescipt
+    - ghost-theme
+  stars: 3
+  pushedAt: '2026-01-06T16:16:59Z'
+  archived: false
+  fork: false
+  license: mit
+  topics:
+    - astro
+    - astro-theme
+    - blog
+    - ghost-cms
+    - headless-cms
+    - i18n
+    - react
+    - static-site
+    - tailwindcss
+    - typescipt
+  score: 69
+  confidence: medium
   notes: null
   hidden: false
