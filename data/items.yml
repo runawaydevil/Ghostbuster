@@ -14,8 +14,8 @@
     - self-hosted
     - selfhosted
     - ghost-theme
-  stars: 266901
-  pushedAt: '2026-01-06T11:03:49Z'
+  stars: 267728
+  pushedAt: '2026-01-11T10:14:51Z'
   archived: false
   fork: false
   license: other
@@ -45,7 +45,7 @@
     - beginners-friendly
     - list
     - ghost-theme
-  stars: 81374
+  stars: 81572
   pushedAt: '2025-12-05T20:51:10Z'
   archived: false
   fork: false
@@ -68,8 +68,8 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 75632
-  pushedAt: '2026-01-06T14:38:46Z'
+  stars: 75989
+  pushedAt: '2026-01-11T14:26:24Z'
   archived: false
   fork: false
   license: mit
@@ -92,7 +92,7 @@
     - node
     - nodejs
     - ghost-theme
-  stars: 64461
+  stars: 64514
   pushedAt: '2025-11-22T10:33:15Z'
   archived: false
   fork: false
@@ -132,7 +132,7 @@
     - tutorials
     - web
     - ghost-theme
-  stars: 44208
+  stars: 44381
   pushedAt: '2025-12-31T18:59:20Z'
   archived: false
   fork: false
@@ -166,7 +166,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 34855
+  stars: 34860
   pushedAt: '2026-01-05T09:42:09Z'
   archived: false
   fork: false
@@ -192,7 +192,7 @@
     - github
     - github-actions
     - ghost-theme
-  stars: 27284
+  stars: 27298
   pushedAt: '2024-09-01T20:32:39Z'
   archived: false
   fork: false
@@ -220,7 +220,7 @@
     - awesome
     - awesome-list
     - ghost-theme
-  stars: 24896
+  stars: 24937
   pushedAt: '2025-12-17T18:00:55Z'
   archived: false
   fork: false
@@ -228,6 +228,54 @@
   topics:
     - awesome
     - awesome-list
+  score: 28
+  confidence: low
+  notes: null
+  hidden: false
+- id: hesreallyhim/awesome-claude-code
+  name: awesome-claude-code
+  repo: hesreallyhim/awesome-claude-code
+  url: https://github.com/hesreallyhim/awesome-claude-code
+  description: A curated list of awesome commands, files, and workflows for Claude Code
+  category: Theme
+  tags:
+    - agentic-code
+    - agentic-coding
+    - ai-workflow-optimization
+    - ai-workflows
+    - anthropic
+    - anthropic-claude
+    - awesome
+    - awesome-list
+    - awesome-lists
+    - awesome-resources
+    - claude
+    - claude-code
+    - coding-agent
+    - coding-agents
+    - coding-assistant
+    - ghost-theme
+  stars: 19999
+  pushedAt: '2026-01-12T06:12:05Z'
+  archived: false
+  fork: false
+  license: other
+  topics:
+    - agentic-code
+    - agentic-coding
+    - ai-workflow-optimization
+    - ai-workflows
+    - anthropic
+    - anthropic-claude
+    - awesome
+    - awesome-list
+    - awesome-lists
+    - awesome-resources
+    - claude
+    - claude-code
+    - coding-agent
+    - coding-agents
+    - coding-assistant
   score: 28
   confidence: low
   notes: null
@@ -263,7 +311,7 @@
     - ssh
     - wireguard
     - ghost-theme
-  stars: 18220
+  stars: 18287
   pushedAt: '2025-06-27T01:51:16Z'
   archived: false
   fork: false
@@ -306,8 +354,8 @@
     - security
     - vulnerability
     - ghost-theme
-  stars: 7464
-  pushedAt: '2026-01-06T18:46:54Z'
+  stars: 7473
+  pushedAt: '2026-01-12T00:45:34Z'
   archived: false
   fork: false
   license: null
@@ -339,7 +387,7 @@
     - machine-learning
     - resources
     - ghost-theme
-  stars: 6097
+  stars: 6095
   pushedAt: '2025-07-12T00:49:03Z'
   archived: false
   fork: false
@@ -371,7 +419,7 @@
     - css
     - list
     - ghost-theme
-  stars: 5455
+  stars: 5459
   pushedAt: '2024-10-30T07:00:24Z'
   archived: false
   fork: false
@@ -405,7 +453,7 @@
     - face-tracking
     - face-transfer
     - ghost-theme
-  stars: 4718
+  stars: 4722
   pushedAt: '2023-02-09T07:02:58Z'
   archived: false
   fork: false
@@ -434,8 +482,8 @@
     - awesome-list
     - website
     - ghost-theme
-  stars: 3585
-  pushedAt: '2025-12-11T20:25:03Z'
+  stars: 3588
+  pushedAt: '2026-01-10T15:20:36Z'
   archived: false
   fork: false
   license: cc0-1.0
@@ -462,7 +510,7 @@
     - security
     - security-tools
     - ghost-theme
-  stars: 3519
+  stars: 3522
   pushedAt: '2025-08-24T10:21:47Z'
   archived: false
   fork: false
@@ -488,7 +536,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 3222
+  stars: 3232
   pushedAt: '2025-06-05T18:28:31Z'
   archived: false
   fork: false
@@ -510,7 +558,7 @@
     - labs
     - toml
     - ghost-theme
-  stars: 3091
+  stars: 3092
   pushedAt: '2025-07-30T18:04:02Z'
   archived: false
   fork: false
@@ -544,8 +592,8 @@
     - nlp
     - openai
     - ghost-theme
-  stars: 2783
-  pushedAt: '2026-01-04T17:07:44Z'
+  stars: 2793
+  pushedAt: '2026-01-11T17:44:57Z'
   archived: false
   fork: false
   license: cc0-1.0
@@ -574,7 +622,7 @@
   category: Tool
   tags:
     - ghost-theme
-  stars: 2690
+  stars: 2693
   pushedAt: '2023-10-18T18:27:08Z'
   archived: false
   fork: false
@@ -602,7 +650,7 @@
     - research-tools
     - tools
     - ghost-theme
-  stars: 2483
+  stars: 2489
   pushedAt: '2023-08-15T11:00:30Z'
   archived: false
   fork: false
@@ -656,7 +704,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 1732
+  stars: 1735
   pushedAt: '2025-12-20T00:06:50Z'
   archived: false
   fork: false
@@ -683,7 +731,7 @@
     - nodejs
     - ruby
     - ghost-theme
-  stars: 1728
+  stars: 1729
   pushedAt: '2022-12-17T05:12:03Z'
   archived: false
   fork: false
@@ -732,7 +780,7 @@
     - winui3
     - wsl
     - ghost-theme
-  stars: 1698
+  stars: 1703
   pushedAt: '2025-06-27T02:07:45Z'
   archived: false
   fork: false
@@ -773,7 +821,7 @@
     - projects
     - top-charts
     - ghost-theme
-  stars: 1656
+  stars: 1659
   pushedAt: '2025-10-16T20:29:23Z'
   archived: false
   fork: false
@@ -801,8 +849,8 @@
     - n8n-workflow
     - n8n-workflows
     - ghost-theme
-  stars: 1624
-  pushedAt: '2026-01-06T04:00:41Z'
+  stars: 1659
+  pushedAt: '2026-01-12T04:00:07Z'
   archived: false
   fork: false
   license: null
@@ -834,8 +882,8 @@
     - selfhosted
     - selfhosting
     - ghost-theme
-  stars: 1467
-  pushedAt: '2026-01-05T22:30:06Z'
+  stars: 1480
+  pushedAt: '2026-01-11T22:29:27Z'
   archived: false
   fork: false
   license: null
@@ -912,7 +960,7 @@
     - pentesting-tools
     - web
     - ghost-theme
-  stars: 1260
+  stars: 1264
   pushedAt: '2025-12-04T06:55:03Z'
   archived: false
   fork: false
@@ -951,7 +999,7 @@
   tags:
     - obsidian-md
     - ghost-theme
-  stars: 1169
+  stars: 1170
   pushedAt: '2025-09-14T19:25:12Z'
   archived: false
   fork: false
@@ -1002,7 +1050,7 @@
     - baas
     - mbaas
     - ghost-theme
-  stars: 1063
+  stars: 1065
   pushedAt: '2024-10-15T12:36:07Z'
   archived: false
   fork: false
@@ -1026,7 +1074,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 1014
+  stars: 1013
   pushedAt: '2025-12-23T00:07:01Z'
   archived: false
   fork: false
@@ -1116,7 +1164,7 @@
     - static-site
     - static-site-generator
     - ghost-theme
-  stars: 830
+  stars: 834
   pushedAt: '2025-07-09T16:22:37Z'
   archived: false
   fork: false
@@ -1159,8 +1207,8 @@
     - termux-tools
     - vulnerability-assessment
     - ghost-theme
-  stars: 713
-  pushedAt: '2026-01-06T14:43:02Z'
+  stars: 719
+  pushedAt: '2026-01-11T20:12:12Z'
   archived: false
   fork: false
   license: other
@@ -1243,7 +1291,7 @@
     - static-site-generator
     - typescript
     - ghost-theme
-  stars: 689
+  stars: 690
   pushedAt: '2023-08-01T08:09:32Z'
   archived: false
   fork: false
@@ -1296,7 +1344,7 @@
     - tailwindcss
     - tool-for-nextjs
     - ghost-theme
-  stars: 671
+  stars: 672
   pushedAt: '2025-12-10T10:39:54Z'
   archived: false
   fork: false
@@ -1378,7 +1426,7 @@
     - theme
     - community-favorite
     - well-documented
-  stars: 639
+  stars: 638
   pushedAt: '2022-12-27T22:45:07Z'
   archived: false
   fork: false
@@ -1465,7 +1513,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 594
+  stars: 593
   pushedAt: '2024-09-27T16:58:01Z'
   archived: false
   fork: false
@@ -1491,8 +1539,8 @@
     - ui-builder
     - visual-editor
     - ghost-theme
-  stars: 563
-  pushedAt: '2025-12-31T00:39:59Z'
+  stars: 566
+  pushedAt: '2026-01-09T20:25:51Z'
   archived: false
   fork: false
   license: mit
@@ -1533,31 +1581,13 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 523
+  stars: 522
   pushedAt: '2021-05-31T01:28:48Z'
   archived: false
   fork: false
   license: other
   topics: []
   score: 24
-  confidence: low
-  notes: null
-  hidden: false
-- id: onevcat/vno
-  name: vno
-  repo: onevcat/vno
-  url: https://github.com/onevcat/vno
-  description: Vno, just another ghost theme
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 515
-  pushedAt: '2018-04-22T12:29:16Z'
-  archived: false
-  fork: false
-  license: null
-  topics: []
-  score: 44
   confidence: low
   notes: null
   hidden: false
@@ -1577,8 +1607,8 @@
     - mcp-servers
     - model-context-protocol
     - ghost-theme
-  stars: 513
-  pushedAt: '2026-01-05T23:36:26Z'
+  stars: 519
+  pushedAt: '2026-01-09T03:17:01Z'
   archived: false
   fork: false
   license: mit
@@ -1592,6 +1622,24 @@
     - mcp-servers
     - model-context-protocol
   score: 28
+  confidence: low
+  notes: null
+  hidden: false
+- id: onevcat/vno
+  name: vno
+  repo: onevcat/vno
+  url: https://github.com/onevcat/vno
+  description: Vno, just another ghost theme
+  category: Theme
+  tags:
+    - ghost-theme
+  stars: 515
+  pushedAt: '2018-04-22T12:29:16Z'
+  archived: false
+  fork: false
+  license: null
+  topics: []
+  score: 44
   confidence: low
   notes: null
   hidden: false
@@ -1614,7 +1662,7 @@
     - shodan
     - shodan-dorks
     - ghost-theme
-  stars: 476
+  stars: 480
   pushedAt: '2025-02-13T15:06:08Z'
   archived: false
   fork: false
@@ -1632,66 +1680,6 @@
     - shodan
     - shodan-dorks
   score: 29
-  confidence: low
-  notes: null
-  hidden: false
-- id: jobbole/awesome-nodejs-cn
-  name: awesome-nodejs-cn
-  repo: jobbole/awesome-nodejs-cn
-  url: https://github.com/jobbole/awesome-nodejs-cn
-  description: Node.js 资源大全中文版，内容包括：命令行工具、日志、调试、HTTP、构建工具、文件系统、模板、Web 框架、流程控制、文本、图片和数据校验等。由「开源前哨」和「前端大全」微信公号团队维护更新。
-  category: Theme
-  tags:
-    - javascript
-    - nodejs
-    - ghost-theme
-  stars: 451
-  pushedAt: '2020-12-26T10:48:53Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - javascript
-    - nodejs
-  score: 26
-  confidence: low
-  notes: null
-  hidden: false
-- id: adoyle-h/my-development-tools
-  name: my-development-tools
-  repo: adoyle-h/my-development-tools
-  url: https://github.com/adoyle-h/my-development-tools
-  description: ADoyle 的开发工具箱
-  category: Tool
-  tags:
-    - applications
-    - awesome
-    - awesome-list
-    - checklist
-    - development-tools
-    - productivity
-    - software
-    - toolbox
-    - toolkits
-    - tools
-    - ghost-theme
-  stars: 450
-  pushedAt: '2025-12-29T15:21:33Z'
-  archived: false
-  fork: false
-  license: bsd-3-clause
-  topics:
-    - applications
-    - awesome
-    - awesome-list
-    - checklist
-    - development-tools
-    - productivity
-    - software
-    - toolbox
-    - toolkits
-    - tools
-  score: 28
   confidence: low
   notes: null
   hidden: false
@@ -1719,7 +1707,7 @@
     - webdeveloper
     - webdevelopment
     - ghost-theme
-  stars: 447
+  stars: 471
   pushedAt: '2025-02-03T12:08:00Z'
   archived: false
   fork: false
@@ -1745,6 +1733,66 @@
   confidence: low
   notes: null
   hidden: false
+- id: adoyle-h/my-development-tools
+  name: my-development-tools
+  repo: adoyle-h/my-development-tools
+  url: https://github.com/adoyle-h/my-development-tools
+  description: ADoyle 的开发工具箱
+  category: Tool
+  tags:
+    - applications
+    - awesome
+    - awesome-list
+    - checklist
+    - development-tools
+    - productivity
+    - software
+    - toolbox
+    - toolkits
+    - tools
+    - ghost-theme
+  stars: 451
+  pushedAt: '2025-12-29T15:21:33Z'
+  archived: false
+  fork: false
+  license: bsd-3-clause
+  topics:
+    - applications
+    - awesome
+    - awesome-list
+    - checklist
+    - development-tools
+    - productivity
+    - software
+    - toolbox
+    - toolkits
+    - tools
+  score: 28
+  confidence: low
+  notes: null
+  hidden: false
+- id: jobbole/awesome-nodejs-cn
+  name: awesome-nodejs-cn
+  repo: jobbole/awesome-nodejs-cn
+  url: https://github.com/jobbole/awesome-nodejs-cn
+  description: Node.js 资源大全中文版，内容包括：命令行工具、日志、调试、HTTP、构建工具、文件系统、模板、Web 框架、流程控制、文本、图片和数据校验等。由「开源前哨」和「前端大全」微信公号团队维护更新。
+  category: Theme
+  tags:
+    - javascript
+    - nodejs
+    - ghost-theme
+  stars: 451
+  pushedAt: '2020-12-26T10:48:53Z'
+  archived: false
+  fork: false
+  license: null
+  topics:
+    - javascript
+    - nodejs
+  score: 26
+  confidence: low
+  notes: null
+  hidden: false
 - id: MinghuiChen43/awesome-deep-phenomena
   name: awesome-deep-phenomena
   repo: MinghuiChen43/awesome-deep-phenomena
@@ -1767,7 +1815,7 @@
     - phase-transitions
     - ghost-theme
   stars: 383
-  pushedAt: '2025-12-09T21:38:57Z'
+  pushedAt: '2026-01-07T19:25:03Z'
   archived: false
   fork: false
   license: mit
@@ -1808,7 +1856,7 @@
     - static-site
     - ghost-theme
   stars: 366
-  pushedAt: '2025-12-31T18:10:09Z'
+  pushedAt: '2026-01-08T21:10:51Z'
   archived: false
   fork: false
   license: mit
@@ -1851,6 +1899,24 @@
   confidence: low
   notes: null
   hidden: false
+- id: viktorbezdek/awesome-github-projects
+  name: awesome-github-projects
+  repo: viktorbezdek/awesome-github-projects
+  url: https://github.com/viktorbezdek/awesome-github-projects
+  description: Curated list of GitHub projects I starred over the years
+  category: Theme
+  tags:
+    - ghost-theme
+  stars: 350
+  pushedAt: '2025-12-24T00:54:36Z'
+  archived: false
+  fork: false
+  license: cc0-1.0
+  topics: []
+  score: 23
+  confidence: low
+  notes: null
+  hidden: false
 - id: ByteHackr/HackingTools-2
   name: HackingTools-2
   repo: ByteHackr/HackingTools-2
@@ -1859,7 +1925,7 @@
   category: Tool
   tags:
     - ghost-theme
-  stars: 345
+  stars: 346
   pushedAt: '2023-05-10T13:04:23Z'
   archived: false
   fork: false
@@ -1899,24 +1965,6 @@
   confidence: low
   notes: null
   hidden: false
-- id: viktorbezdek/awesome-github-projects
-  name: awesome-github-projects
-  repo: viktorbezdek/awesome-github-projects
-  url: https://github.com/viktorbezdek/awesome-github-projects
-  description: Curated list of GitHub projects I starred over the years
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 309
-  pushedAt: '2025-12-24T00:54:36Z'
-  archived: false
-  fork: false
-  license: cc0-1.0
-  topics: []
-  score: 23
-  confidence: low
-  notes: null
-  hidden: false
 - id: TryGhost/Dawn
   name: Dawn
   repo: TryGhost/Dawn
@@ -1931,7 +1979,7 @@
     - publishing
     - ghost-theme
   stars: 302
-  pushedAt: '2025-12-15T06:49:28Z'
+  pushedAt: '2026-01-07T22:45:13Z'
   archived: false
   fork: false
   license: mit
@@ -2027,7 +2075,7 @@
     - responsive-theme
     - theme
     - ghost-theme
-  stars: 289
+  stars: 288
   pushedAt: '2023-06-20T22:33:43Z'
   archived: false
   fork: false
@@ -2084,8 +2132,8 @@
     - magazine
     - publishing
     - ghost-theme
-  stars: 265
-  pushedAt: '2025-12-15T06:49:27Z'
+  stars: 264
+  pushedAt: '2026-01-07T22:45:17Z'
   archived: false
   fork: false
   license: mit
@@ -2143,7 +2191,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 224
+  stars: 226
   pushedAt: '2025-03-30T03:22:21Z'
   archived: false
   fork: false
@@ -2192,7 +2240,7 @@
     - stars
     - ghost-theme
   stars: 201
-  pushedAt: '2026-01-04T00:58:51Z'
+  pushedAt: '2026-01-12T00:59:04Z'
   archived: false
   fork: false
   license: null
@@ -2332,8 +2380,8 @@
     - awesome-list
     - list
     - ghost-theme
-  stars: 156
-  pushedAt: '2026-01-03T02:49:49Z'
+  stars: 157
+  pushedAt: '2026-01-07T02:58:03Z'
   archived: false
   fork: false
   license: null
@@ -2541,7 +2589,7 @@
     - publishing
     - ghost-theme
   stars: 122
-  pushedAt: '2025-12-15T06:49:29Z'
+  pushedAt: '2026-01-07T22:45:18Z'
   archived: false
   fork: false
   license: mit
@@ -2571,7 +2619,7 @@
     - publishing
     - ghost-theme
   stars: 105
-  pushedAt: '2025-12-31T18:01:43Z'
+  pushedAt: '2026-01-12T02:15:08Z'
   archived: false
   fork: false
   license: mit
@@ -2601,7 +2649,7 @@
     - publishing
     - ghost-theme
   stars: 95
-  pushedAt: '2025-12-15T06:49:26Z'
+  pushedAt: '2026-01-07T22:45:26Z'
   archived: false
   fork: false
   license: mit
@@ -2628,7 +2676,7 @@
     - publishing
     - ghost-theme
   stars: 89
-  pushedAt: '2026-01-06T10:31:50Z'
+  pushedAt: '2026-01-12T02:23:36Z'
   archived: false
   fork: false
   license: mit
@@ -2655,7 +2703,7 @@
     - publishing
     - ghost-theme
   stars: 88
-  pushedAt: '2025-12-15T06:49:26Z'
+  pushedAt: '2026-01-07T22:45:13Z'
   archived: false
   fork: false
   license: mit
@@ -2683,7 +2731,7 @@
     - publishing
     - ghost-theme
   stars: 81
-  pushedAt: '2025-12-15T06:49:30Z'
+  pushedAt: '2026-01-07T22:45:17Z'
   archived: false
   fork: false
   license: mit
@@ -2765,7 +2813,7 @@
     - publishing
     - ghost-theme
   stars: 65
-  pushedAt: '2025-12-15T06:49:27Z'
+  pushedAt: '2026-01-07T22:45:12Z'
   archived: false
   fork: false
   license: mit
@@ -2792,7 +2840,7 @@
     - publishing
     - ghost-theme
   stars: 60
-  pushedAt: '2025-12-15T06:49:24Z'
+  pushedAt: '2026-01-07T22:45:15Z'
   archived: false
   fork: false
   license: mit
@@ -2819,7 +2867,7 @@
     - publishing
     - ghost-theme
   stars: 54
-  pushedAt: '2025-12-15T06:49:20Z'
+  pushedAt: '2026-01-07T22:45:12Z'
   archived: false
   fork: false
   license: mit
@@ -2999,7 +3047,7 @@
     - personal
     - ghost-theme
   stars: 44
-  pushedAt: '2025-12-15T06:49:22Z'
+  pushedAt: '2026-01-07T22:45:12Z'
   archived: false
   fork: false
   license: mit
@@ -3344,7 +3392,7 @@
     - publishing
     - ghost-theme
   stars: 15
-  pushedAt: '2025-12-15T06:49:29Z'
+  pushedAt: '2026-01-07T22:45:14Z'
   archived: false
   fork: false
   license: mit
@@ -3375,44 +3423,6 @@
   confidence: low
   notes: null
   hidden: false
-- id: dyzdyz010/wonderland_ghost_theme
-  name: wonderland_ghost_theme
-  repo: dyzdyz010/wonderland_ghost_theme
-  url: https://github.com/dyzdyz010/wonderland_ghost_theme
-  description: Wonderland - A simple, clean theme for Ghost. https://duyizhuo.com
-  category: Theme
-  tags:
-    - blog
-    - clean
-    - desktop
-    - ghost
-    - responsive
-    - simple
-    - smartphone
-    - tablet
-    - theme
-    - wonderland
-    - ghost-theme
-  stars: 15
-  pushedAt: '2018-08-29T00:59:46Z'
-  archived: false
-  fork: false
-  license: mit
-  topics:
-    - blog
-    - clean
-    - desktop
-    - ghost
-    - responsive
-    - simple
-    - smartphone
-    - tablet
-    - theme
-    - wonderland
-  score: 86
-  confidence: high
-  notes: null
-  hidden: false
 - id: metaory/jsonresume-theme-legacy
   name: jsonresume-theme-legacy
   repo: metaory/jsonresume-theme-legacy
@@ -3437,6 +3447,44 @@
     - pin
   score: 35
   confidence: low
+  notes: null
+  hidden: false
+- id: dyzdyz010/wonderland_ghost_theme
+  name: wonderland_ghost_theme
+  repo: dyzdyz010/wonderland_ghost_theme
+  url: https://github.com/dyzdyz010/wonderland_ghost_theme
+  description: Wonderland - A simple, clean theme for Ghost. https://duyizhuo.com
+  category: Theme
+  tags:
+    - blog
+    - clean
+    - desktop
+    - ghost
+    - responsive
+    - simple
+    - smartphone
+    - tablet
+    - theme
+    - wonderland
+    - ghost-theme
+  stars: 14
+  pushedAt: '2018-08-29T00:59:46Z'
+  archived: false
+  fork: false
+  license: mit
+  topics:
+    - blog
+    - clean
+    - desktop
+    - ghost
+    - responsive
+    - simple
+    - smartphone
+    - tablet
+    - theme
+    - wonderland
+  score: 86
+  confidence: high
   notes: null
   hidden: false
 - id: Zazama/TrueStyle
@@ -3530,7 +3578,7 @@
     - theme
     - ghost-theme
   stars: 11
-  pushedAt: '2025-12-31T12:39:21Z'
+  pushedAt: '2026-01-07T17:48:47Z'
   archived: false
   fork: false
   license: mit
@@ -3584,7 +3632,7 @@
     - publishing
     - ghost-theme
   stars: 10
-  pushedAt: '2025-12-15T06:49:30Z'
+  pushedAt: '2026-01-07T22:45:08Z'
   archived: false
   fork: false
   license: mit
@@ -3636,7 +3684,7 @@
     - ghost-theme
     - ghost-theme
   stars: 8
-  pushedAt: '2025-12-31T08:30:35Z'
+  pushedAt: '2026-01-08T02:48:56Z'
   archived: false
   fork: false
   license: mit
@@ -3795,6 +3843,36 @@
   confidence: high
   notes: null
   hidden: false
+- id: IrisThemes/verdin
+  name: verdin
+  repo: IrisThemes/verdin
+  url: https://github.com/IrisThemes/verdin
+  description: Verdin - A Personal Ghost Blog Theme @ https://iristhemes.com/themes/verdin
+  category: Theme
+  tags:
+    - ghost
+    - ghost-blog
+    - ghost-blog-theme
+    - ghost-cms
+    - ghost-theme
+    - ghost-themes
+    - ghost-theme
+  stars: 5
+  pushedAt: '2023-10-05T10:22:59Z'
+  archived: false
+  fork: false
+  license: null
+  topics:
+    - ghost
+    - ghost-blog
+    - ghost-blog-theme
+    - ghost-cms
+    - ghost-theme
+    - ghost-themes
+  score: 87
+  confidence: high
+  notes: null
+  hidden: false
 - id: stefanbc/Ingia
   name: Ingia
   repo: stefanbc/Ingia
@@ -3918,7 +3996,7 @@
     - publishing
     - ghost-theme
   stars: 4
-  pushedAt: '2025-12-15T06:49:26Z'
+  pushedAt: '2026-01-07T22:45:09Z'
   archived: false
   fork: false
   license: mit
@@ -3929,36 +4007,6 @@
     - publishing
   score: 52
   confidence: low
-  notes: null
-  hidden: false
-- id: IrisThemes/verdin
-  name: verdin
-  repo: IrisThemes/verdin
-  url: https://github.com/IrisThemes/verdin
-  description: Verdin - A Personal Ghost Blog Theme @ https://iristhemes.com/themes/verdin
-  category: Theme
-  tags:
-    - ghost
-    - ghost-blog
-    - ghost-blog-theme
-    - ghost-cms
-    - ghost-theme
-    - ghost-themes
-    - ghost-theme
-  stars: 4
-  pushedAt: '2023-10-05T10:22:59Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - ghost
-    - ghost-blog
-    - ghost-blog-theme
-    - ghost-cms
-    - ghost-theme
-    - ghost-themes
-  score: 87
-  confidence: high
   notes: null
   hidden: false
 - id: aspirethemes/east
@@ -4130,7 +4178,7 @@
     - typescipt
     - ghost-theme
   stars: 3
-  pushedAt: '2026-01-06T16:16:59Z'
+  pushedAt: '2026-01-11T21:59:51Z'
   archived: false
   fork: false
   license: mit

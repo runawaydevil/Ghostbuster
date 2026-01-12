@@ -3,9 +3,9 @@
 This pull request contains automated updates to the Ghost CMS themes directory.
 
 ### Changes Summary
-- **Added lines**: 110
-- **Removed lines**: 70
-- **Trigger**: Manual trigger
+- **Added lines**: 275
+- **Removed lines**: 227
+- **Trigger**: Scheduled update
 - **Timestamp**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
 
 ### Modified Files
