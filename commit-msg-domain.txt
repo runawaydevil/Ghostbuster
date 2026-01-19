@@ -1,0 +1,28 @@
+feat: Configure custom domain ghostbuster.pro for GitHub Pages
+
+## Changes
+
+### Custom Domain Setup
+- **Updated all URLs**: Changed from runawaydevil.github.io/Ghostbuster to ghostbuster.pro
+  - Updated README.md with new live directory URL
+  - Updated sitemap.xml with new domain
+  - Updated robots.txt with new sitemap URL
+  - CNAME file already configured for custom domain
+
+### Deployment Workflow
+- **Added CNAME to deployment**: Ensures custom domain persists after each deploy
+- **Updated workflow triggers**: Added CNAME and deploy.yml to trigger paths
+  - Changes to CNAME will now trigger automatic deployment
+  - Changes to deploy workflow will trigger redeployment
+
+## Impact
+- Site will be accessible at https://ghostbuster.pro/
+- Site will be accessible at https://ghostbuster.pro/stale.html
+- SEO improved with proper sitemap and robots.txt
+- Custom domain configuration persists across deployments
+
+## Next Steps
+After this commit is pushed:
+1. Workflow will automatically deploy to GitHub Pages
+2. Configure DNS records for ghostbuster.pro to point to GitHub Pages
+3. Enable HTTPS in GitHub Pages settings (automatic with custom domain)

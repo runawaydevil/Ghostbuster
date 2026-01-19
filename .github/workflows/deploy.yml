@@ -9,6 +9,8 @@ on:
       - 'stale.html'
       - 'data/items.yml'
       - 'templates/**'
+      - 'CNAME'
+      - '.github/workflows/deploy.yml'
   
   # Allow manual deployment
   workflow_dispatch:
