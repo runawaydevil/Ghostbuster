@@ -69,16 +69,8 @@ export class StalenessDetector {
    * 
    * An item is considered stale if its pushedAt date is older than
    * the current date minus the threshold months.
-   * 
-   * **Note**: Official items (category === 'Official') are never considered stale
-   * as they are maintained by TryGhost and should always appear in the main directory.
    */
   isStale(item: GhostItem): boolean {
-    // Official items are never stale
-    if (item.category === 'Official') {
-      return false;
-    }
-    
     const monthsStale = this.calculateMonthsStale(item.pushedAt);
     return monthsStale > this.config.thresholdMonths;
   }

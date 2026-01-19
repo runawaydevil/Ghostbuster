@@ -169,35 +169,6 @@ describe('StalenessDetector', () => {
       const staleItem = createTestItem(beyondThreshold.toISOString());
       expect(detector.isStale(staleItem)).toBe(true);
     });
-
-    it('should never mark Official items as stale', () => {
-      // Create an official item that hasn't been updated in 2 years
-      const veryOldDate = new Date();
-      veryOldDate.setUTCFullYear(veryOldDate.getUTCFullYear() - 2);
-      
-      const officialItem: GhostItem = {
-        id: 'TryGhost/Casper',
-        name: 'Casper',
-        repo: 'TryGhost/Casper',
-        url: 'https://github.com/TryGhost/Casper',
-        description: 'Official Ghost theme',
-        category: 'Official',
-        tags: ['ghost-theme', 'official'],
-        stars: 2600,
-        pushedAt: veryOldDate.toISOString(),
-        archived: false,
-        fork: false,
-        license: 'MIT',
-        topics: ['ghost', 'theme'],
-        score: 95,
-        confidence: 'high',
-        notes: null,
-        hidden: false
-      };
-
-      // Official items should never be stale, regardless of age
-      expect(detector.isStale(officialItem)).toBe(false);
-    });
   });
 
   describe('createStalenessDetector factory', () => {
