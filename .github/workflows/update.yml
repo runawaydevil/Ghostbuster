@@ -111,7 +111,7 @@ jobs:
       - name: Check for changes and commit
         id: changes
         run: |
-          if git diff --quiet HEAD -- data/items.yml index.html; then
+          if git diff --quiet HEAD -- data/items.yml index.html data/stale-items.db stale.html; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "No changes detected"
           else
@@ -131,7 +131,27 @@ jobs:
             echo "- Removed lines: $REMOVED" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "### Modified Files:" >> $GITHUB_STEP_SUMMARY
-            git diff --name-only HEAD -- data/items.yml index.html | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
+            git diff --name-only HEAD -- data/items.yml index.html data/stale-items.db stale.html | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
+            
+            # Add staleness statistics if stale-items.db exists
+            if [ -f "data/stale-items.db" ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### 🕐 Staleness Statistics:" >> $GITHUB_STEP_SUMMARY
+              
+              # Extract statistics from the database using sqlite3
+              TOTAL_STALE=$(sqlite3 data/stale-items.db "SELECT COUNT(*) FROM stale_items;" 2>/dev/null || echo "0")
+              AVG_MONTHS=$(sqlite3 data/stale-items.db "SELECT ROUND(AVG(monthsStale), 1) FROM stale_items;" 2>/dev/null || echo "0")
+              
+              echo "- Total stale items: $TOTAL_STALE" >> $GITHUB_STEP_SUMMARY
+              echo "- Average months stale: $AVG_MONTHS" >> $GITHUB_STEP_SUMMARY
+              
+              # Count by category
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "**Stale items by category:**" >> $GITHUB_STEP_SUMMARY
+              sqlite3 data/stale-items.db "SELECT category, COUNT(*) as count FROM stale_items GROUP BY category ORDER BY count DESC;" 2>/dev/null | while IFS='|' read -r category count; do
+                echo "- $category: $count" >> $GITHUB_STEP_SUMMARY
+              done || echo "- Unable to retrieve category breakdown" >> $GITHUB_STEP_SUMMARY
+            fi
           fi
 
       - name: Commit and push changes
@@ -153,13 +173,22 @@ jobs:
           - Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
           
           Changes:
-          $(git diff --name-only HEAD -- data/items.yml index.html | sed 's/^/  - /')
+          $(git diff --name-only HEAD -- data/items.yml index.html data/stale-items.db stale.html | sed 's/^/  - /')
           
           Automated by Ghostbuster update pipeline
           EOF
           
           # Stage and commit changes
           git add data/items.yml index.html
+          
+          # Add stale items files if they exist
+          if [ -f "data/stale-items.db" ]; then
+            git add data/stale-items.db
+          fi
+          if [ -f "stale.html" ]; then
+            git add stale.html
+          fi
+          
           git commit -F commit_message.txt
           
           # Push to main
@@ -211,7 +240,9 @@ jobs:
           name: update-artifacts
           path: |
             data/items.yml
+            data/stale-items.db
             index.html
+            stale.html
             cache/
           retention-days: 7
 

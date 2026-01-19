@@ -22,6 +22,15 @@ export interface GhostItem {
   hidden: boolean;              // Hide from HTML output
 }
 
+/**
+ * StaleItem extends GhostItem with staleness tracking metadata
+ * Used to track items that haven't been updated within the staleness threshold
+ */
+export interface StaleItem extends GhostItem {
+  staleDetectedAt: string;      // ISO timestamp when item became stale
+  monthsStale: number;          // Calculated staleness duration in months
+}
+
 export interface Override {
   repo: string;                 // "owner/repo"
   name?: string;               // Override display name

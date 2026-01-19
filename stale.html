@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Ghost - Not Updated Recently</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏰</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --link-color: #0066cc;
+            --link-hover: #004499;
+            --border-color: #e0e0e0;
+            --header-bg: #fff8e6;
+            --footer-bg: #f8f9fa;
+            --table-header-bg: #fff4d9;
+            --table-row-hover: #fffbf0;
+            --warning-bg: #fff3cd;
+            --warning-border: #ffc107;
+            --warning-text: #856404;
+            --stats-bg: #fff8e6;
+            --stats-border: #ffb300;
+            --stale-accent: #ff9800;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #e0e0e0;
+                --link-color: #4da6ff;
+                --link-hover: #66b3ff;
+                --border-color: #404040;
+                --header-bg: #2a2200;
+                --footer-bg: #2a2a2a;
+                --table-header-bg: #3a3000;
+                --table-row-hover: #2a2400;
+                --warning-bg: #3a3000;
+                --warning-border: #cc8800;
+                --warning-text: #ffcc66;
+                --stats-bg: #2a2200;
+                --stats-border: #cc8800;
+                --stale-accent: #ff9800;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 1rem 1rem;
+            text-align: center;
+            border-bottom: 3px solid var(--stale-accent);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            max-width: 168px;
+            height: auto;
+            margin-bottom: 0.01rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-color);
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .subtitle {
+                color: #999;
+            }
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .github-button, .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .github-button {
+            background-color: #24292e;
+            color: #ffffff;
+        }
+
+        .github-button:hover {
+            background-color: #2f363d;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        .back-button {
+            background-color: var(--stale-accent);
+            color: #ffffff;
+        }
+
+        .back-button:hover {
+            background-color: #f57c00;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        .github-button:active, .back-button:active {
+            transform: translateY(0);
+        }
+
+        .github-button svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .github-button {
+                background-color: #2f363d;
+            }
+
+            .github-button:hover {
+                background-color: #3a4148;
+            }
+
+            .back-button {
+                background-color: #cc7700;
+            }
+
+            .back-button:hover {
+                background-color: #e68900;
+            }
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .warning-section {
+            background-color: var(--warning-bg);
+            border: 2px solid var(--warning-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .warning-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .warning-content h2 {
+            color: var(--warning-text);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            border-bottom: none;
+            font-size: 1.5rem;
+        }
+
+        .warning-content p {
+            color: var(--warning-text);
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .warning-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .statistics-section {
+            background-color: var(--stats-bg);
+            border: 2px solid var(--stats-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .statistics-section h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--stats-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--stale-accent);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            min-width: 600px;
+        }
+
+        th {
+            background-color: var(--table-header-bg);
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--table-row-hover);
+        }
+
+        tr:hover {
+            background-color: var(--table-row-hover);
+        }
+
+        .last-update-cell {
+            color: var(--stale-accent);
+            font-weight: 500;
+        }
+
+        .months-stale {
+            color: #666;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .months-stale {
+                color: #999;
+            }
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .intro {
+            background-color: var(--header-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--stale-accent);
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            header {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                max-width: 140px;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+
+            .warning-section {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .warning-icon {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .github-button, .back-button {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .github-button, .back-button {
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .warning-section {
+                padding: 1rem;
+            }
+
+            .statistics-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png" alt="Le Ghost Logo" class="logo">
+            <h1>Le Ghost - Not Updated Recently</h1>
+            <p class="subtitle">Ghost CMS Themes & Tools Not Updated Recently</p>
+            <div class="button-group">
+                <a href="index.html" class="back-button">
+                    ← Back to Active Items
+                </a>
+                <a href="https://github.com/runawaydevil/le-ghost" target="_blank" rel="noopener noreferrer" class="github-button">
+                    <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Star on GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="warning-section">
+            <div class="warning-icon">⚠️</div>
+            <div class="warning-content">
+                <h2>Not Updated Recently</h2>
+                <p><strong>These items have not been updated in over 12 months. They may still work but are not actively maintained.</strong></p>
+                <p>These themes and resources have not received updates in over 12 months. While they may still function correctly, they are not actively maintained and may not be compatible with the latest version of Ghost CMS.</p>
+                <p>Consider checking the repository for recent activity or looking for actively maintained alternatives in the <a href="index.html">main directory</a>.</p>
+            </div>
+        </section>
+
+        
+        <section class="statistics-section">
+            <h2>Stale Items Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value">70</span>
+                    <span class="stat-label">Total Stale Items</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">48.3%</span>
+                    <span class="stat-label">Of All Items</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">54.7</span>
+                    <span class="stat-label">Avg. Months Stale</span>
+                </div>
+            </div>
+        </section>
+        
+
+        <hr>
+
+        <section>
+            <h2>STALE THEMES (CONSOLIDATED TABLE)</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Theme Name</th>
+                            <th>Repository URL</th>
+                            <th>Stars</th>
+                            <th>Category</th>
+                            <th>Last Updated</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td colspan="6"><strong>OFFICIAL / TRYGHOST THEMES</strong></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Casper (Official)</td>
+                            <td><a href="https://github.com/TryGhost/Casper" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Casper</a></td>
+                            <td>2100</td>
+                            <td>Official</td>
+                            <td class="last-update-cell">
+                                January 15, 2024
+                                
+                                <br><span class="months-stale">(24 months ago)</span>
+                                
+                            </td>
+                            <td>The default personal blogging theme for Ghost. Clean, minimal, and responsive.; Official Ghost theme - always featured</td>
+                        </tr>
+                        
+                        
+                        <tr>
+                            <td colspan="6"><strong>HIGHLY POPULAR COMMUNITY THEMES</strong></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>awesome-actions</td>
+                            <td><a href="https://github.com/sdras/awesome-actions" target="_blank" rel="noopener noreferrer">https://github.com/sdras/awesome-actions</a></td>
+                            <td>27298</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 1, 2024
+                                
+                                <br><span class="months-stale">(16 months ago)</span>
+                                
+                            </td>
+                            <td>A curated list of awesome actions to use on GitHub</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>awesome-css</td>
+                            <td><a href="https://github.com/awesome-css-group/awesome-css" target="_blank" rel="noopener noreferrer">https://github.com/awesome-css-group/awesome-css</a></td>
+                            <td>5459</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 30, 2024
+                                
+                                <br><span class="months-stale">(15 months ago)</span>
+                                
+                            </td>
+                            <td>:art: A curated contents of amazing CSS :)</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>awesome-Face_Recognition</td>
+                            <td><a href="https://github.com/ChanChiChoi/awesome-Face_Recognition" target="_blank" rel="noopener noreferrer">https://github.com/ChanChiChoi/awesome-Face_Recognition</a></td>
+                            <td>4722</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 9, 2023
+                                
+                                <br><span class="months-stale">(35 months ago)</span>
+                                
+                            </td>
+                            <td>papers about Face Detection; Face Alignment; Face Recognition && Face Identification && Face Verification && Face Representation; Face Reconstruction; Face Tracking; Face Super-Resolution && Face Deblurring; Face Generation && Face Synthesis; Face Transfer; Face Anti-Spoofing; Face Retrieval;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>awesome-resources</td>
+                            <td><a href="https://github.com/lyfeyaj/awesome-resources" target="_blank" rel="noopener noreferrer">https://github.com/lyfeyaj/awesome-resources</a></td>
+                            <td>1729</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 17, 2022
+                                
+                                <br><span class="months-stale">(37 months ago)</span>
+                                
+                            </td>
+                            <td>Awesome resources for coding and learning: open source projects, websites, books e.g.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>awesome-appwrite</td>
+                            <td><a href="https://github.com/appwrite/awesome-appwrite" target="_blank" rel="noopener noreferrer">https://github.com/appwrite/awesome-appwrite</a></td>
+                            <td>1065</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 15, 2024
+                                
+                                <br><span class="months-stale">(15 months ago)</span>
+                                
+                            </td>
+                            <td>Carefully curated list of awesome Appwrite resources 💪</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>awesome-gatsby</td>
+                            <td><a href="https://github.com/prayash/awesome-gatsby" target="_blank" rel="noopener noreferrer">https://github.com/prayash/awesome-gatsby</a></td>
+                            <td>1008</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 15, 2023
+                                
+                                <br><span class="months-stale">(35 months ago)</span>
+                                
+                            </td>
+                            <td>⚛️ 📄 🚀 Awesome list for the mighty Gatsby.js, a blazing fast React static site generator.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Mapache</td>
+                            <td><a href="https://github.com/godofredoninja/Mapache" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/Mapache</a></td>
+                            <td>638</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 27, 2022
+                                
+                                <br><span class="months-stale">(37 months ago)</span>
+                                
+                            </td>
+                            <td>You can use the theme Mapache for ghost in: Blog - Magazine - Landing page - Personal page -  Photographers. and in many other things; Excellent community theme with great documentation and support</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>crisp</td>
+                            <td><a href="https://github.com/kathyqian/crisp" target="_blank" rel="noopener noreferrer">https://github.com/kathyqian/crisp</a></td>
+                            <td>626</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 15, 2022
+                                
+                                <br><span class="months-stale">(48 months ago)</span>
+                                
+                            </td>
+                            <td>A minimalist, responsive, and open-source two-column theme for the Ghost publishing platform</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>categorized-raycast-extensions</td>
+                            <td><a href="https://github.com/marekbrze/categorized-raycast-extensions" target="_blank" rel="noopener noreferrer">https://github.com/marekbrze/categorized-raycast-extensions</a></td>
+                            <td>593</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 27, 2024
+                                
+                                <br><span class="months-stale">(16 months ago)</span>
+                                
+                            </td>
+                            <td>Easily find Raycast Extensions!🚀</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>categorized-obsidian-plugins</td>
+                            <td><a href="https://github.com/marekbrze/categorized-obsidian-plugins" target="_blank" rel="noopener noreferrer">https://github.com/marekbrze/categorized-obsidian-plugins</a></td>
+                            <td>524</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 20, 2024
+                                
+                                <br><span class="months-stale">(20 months ago)</span>
+                                
+                            </td>
+                            <td>Easily find Obsidian plugins!🚀</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>awesome-selfhosted-cn</td>
+                            <td><a href="https://github.com/haiiiiiyun/awesome-selfhosted-cn" target="_blank" rel="noopener noreferrer">https://github.com/haiiiiiyun/awesome-selfhosted-cn</a></td>
+                            <td>522</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 31, 2021
+                                
+                                <br><span class="months-stale">(56 months ago)</span>
+                                
+                            </td>
+                            <td>可以在本地搭建的网络服务和 Web 应用列表。</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>vno</td>
+                            <td><a href="https://github.com/onevcat/vno" target="_blank" rel="noopener noreferrer">https://github.com/onevcat/vno</a></td>
+                            <td>515</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 22, 2018
+                                
+                                <br><span class="months-stale">(93 months ago)</span>
+                                
+                            </td>
+                            <td>Vno, just another ghost theme</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>awesome-nodejs-cn</td>
+                            <td><a href="https://github.com/jobbole/awesome-nodejs-cn" target="_blank" rel="noopener noreferrer">https://github.com/jobbole/awesome-nodejs-cn</a></td>
+                            <td>451</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 26, 2020
+                                
+                                <br><span class="months-stale">(61 months ago)</span>
+                                
+                            </td>
+                            <td>Node.js 资源大全中文版，内容包括：命令行工具、日志、调试、HTTP、构建工具、文件系统、模板、Web 框架、流程控制、文本、图片和数据校验等。由「开源前哨」和「前端大全」微信公号团队维护更新。</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>awesome-nodejs-cn</td>
+                            <td><a href="https://github.com/gamedilong/awesome-nodejs-cn" target="_blank" rel="noopener noreferrer">https://github.com/gamedilong/awesome-nodejs-cn</a></td>
+                            <td>365</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 20, 2020
+                                
+                                <br><span class="months-stale">(72 months ago)</span>
+                                
+                            </td>
+                            <td>nodejs优秀资源集</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>F2E-Tutorial-Collect</td>
+                            <td><a href="https://github.com/OXOYO/F2E-Tutorial-Collect" target="_blank" rel="noopener noreferrer">https://github.com/OXOYO/F2E-Tutorial-Collect</a></td>
+                            <td>313</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 17, 2023
+                                
+                                <br><span class="months-stale">(33 months ago)</span>
+                                
+                            </td>
+                            <td>web全栈书签收藏整理。</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>made-in-taiwan</td>
+                            <td><a href="https://github.com/hueitan/made-in-taiwan" target="_blank" rel="noopener noreferrer">https://github.com/hueitan/made-in-taiwan</a></td>
+                            <td>292</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 9, 2021
+                                
+                                <br><span class="months-stale">(49 months ago)</span>
+                                
+                            </td>
+                            <td>[NEED SUPPORT] 🇹🇼 (Taiwan #1) A list of neat projects made in Taiwan (MIT)</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Fizzy-Theme</td>
+                            <td><a href="https://github.com/huangyuzhang/Fizzy-Theme" target="_blank" rel="noopener noreferrer">https://github.com/huangyuzhang/Fizzy-Theme</a></td>
+                            <td>288</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 20, 2023
+                                
+                                <br><span class="months-stale">(31 months ago)</span>
+                                
+                            </td>
+                            <td>🥤A tasty blogging theme for Ghost.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>DPlatform-Shell</td>
+                            <td><a href="https://github.com/DFabric/DPlatform-Shell" target="_blank" rel="noopener noreferrer">https://github.com/DFabric/DPlatform-Shell</a></td>
+                            <td>274</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 19, 2018
+                                
+                                <br><span class="months-stale">(93 months ago)</span>
+                                
+                            </td>
+                            <td>Deploy self-hosted apps easily: simple, bloat-free, independent installation</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Awesome-Pentest</td>
+                            <td><a href="https://github.com/Muhammd/Awesome-Pentest" target="_blank" rel="noopener noreferrer">https://github.com/Muhammd/Awesome-Pentest</a></td>
+                            <td>254</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 19, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>Awesome Penetration Testing   A collection of awesome penetration testing resources</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>awesome-nodejs-cn</td>
+                            <td><a href="https://github.com/Pines-Cheng/awesome-nodejs-cn" target="_blank" rel="noopener noreferrer">https://github.com/Pines-Cheng/awesome-nodejs-cn</a></td>
+                            <td>236</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 12, 2018
+                                
+                                <br><span class="months-stale">(96 months ago)</span>
+                                
+                            </td>
+                            <td>Nodejs 资源大全中文版，正在翻译中。。。</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>GitHub-Chinese-Top-Charts</td>
+                            <td><a href="https://github.com/pinkie-ljz/GitHub-Chinese-Top-Charts" target="_blank" rel="noopener noreferrer">https://github.com/pinkie-ljz/GitHub-Chinese-Top-Charts</a></td>
+                            <td>170</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 13, 2020
+                                
+                                <br><span class="months-stale">(62 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>TreehouseShow</td>
+                            <td><a href="https://github.com/MHM5000/TreehouseShow" target="_blank" rel="noopener noreferrer">https://github.com/MHM5000/TreehouseShow</a></td>
+                            <td>167</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 6, 2020
+                                
+                                <br><span class="months-stale">(64 months ago)</span>
+                                
+                            </td>
+                            <td>TeamTreeHouse's Weekly show notes</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>PHP-Webshells-Collection</td>
+                            <td><a href="https://github.com/x-o-r-r-o/PHP-Webshells-Collection" target="_blank" rel="noopener noreferrer">https://github.com/x-o-r-r-o/PHP-Webshells-Collection</a></td>
+                            <td>165</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 19, 2020
+                                
+                                <br><span class="months-stale">(68 months ago)</span>
+                                
+                            </td>
+                            <td>Most Wanted Private and Public PHP Web Shells Can Be Downloaded Here. (Educational Purpose Only)</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>ghost-theme-Moegi</td>
+                            <td><a href="https://github.com/moegi-design/ghost-theme-Moegi" target="_blank" rel="noopener noreferrer">https://github.com/moegi-design/ghost-theme-Moegi</a></td>
+                            <td>161</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 16, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>An elegant & fresh ghost theme.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Portfolio-Free-Ghost-Theme</td>
+                            <td><a href="https://github.com/GavickPro/Portfolio-Free-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/GavickPro/Portfolio-Free-Ghost-Theme</a></td>
+                            <td>127</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 17, 2017
+                                
+                                <br><span class="months-stale">(100 months ago)</span>
+                                
+                            </td>
+                            <td>Simple portfolio theme for Ghost </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>CoderGhostTheme</td>
+                            <td><a href="https://github.com/mbejda/CoderGhostTheme" target="_blank" rel="noopener noreferrer">https://github.com/mbejda/CoderGhostTheme</a></td>
+                            <td>127</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 15, 2018
+                                
+                                <br><span class="months-stale">(96 months ago)</span>
+                                
+                            </td>
+                            <td>Coder Ghost Theme for Showcasing Projects</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Perfetta-Free-Ghost-Theme</td>
+                            <td><a href="https://github.com/GavickPro/Perfetta-Free-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/GavickPro/Perfetta-Free-Ghost-Theme</a></td>
+                            <td>70</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 14, 2015
+                                
+                                <br><span class="months-stale">(127 months ago)</span>
+                                
+                            </td>
+                            <td>Simple restaurant blog theme for Ghost</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>FauxGhost</td>
+                            <td><a href="https://github.com/jimbobbennett/FauxGhost" target="_blank" rel="noopener noreferrer">https://github.com/jimbobbennett/FauxGhost</a></td>
+                            <td>54</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 3, 2016
+                                
+                                <br><span class="months-stale">(117 months ago)</span>
+                                
+                            </td>
+                            <td>FauxGhost Ghost blog theme</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Paway</td>
+                            <td><a href="https://github.com/godofredoninja/Paway" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/Paway</a></td>
+                            <td>53</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 17, 2022
+                                
+                                <br><span class="months-stale">(41 months ago)</span>
+                                
+                            </td>
+                            <td>Personal photographer blog theme for Ghost. Beautiful, minimal and sensitive.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>buster</td>
+                            <td><a href="https://github.com/daanbeverdam/buster" target="_blank" rel="noopener noreferrer">https://github.com/daanbeverdam/buster</a></td>
+                            <td>49</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 1, 2018
+                                
+                                <br><span class="months-stale">(96 months ago)</span>
+                                
+                            </td>
+                            <td>A responsive, clean card theme for the Ghost blogging platform.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>biron-ghost-theme</td>
+                            <td><a href="https://github.com/brightthemes/biron-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/brightthemes/biron-ghost-theme</a></td>
+                            <td>47</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 9, 2023
+                                
+                                <br><span class="months-stale">(36 months ago)</span>
+                                
+                            </td>
+                            <td>Biron Free Ghost Theme </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Orre-Theme-for-Ghost</td>
+                            <td><a href="https://github.com/lacke/Orre-Theme-for-Ghost" target="_blank" rel="noopener noreferrer">https://github.com/lacke/Orre-Theme-for-Ghost</a></td>
+                            <td>45</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 3, 2016
+                                
+                                <br><span class="months-stale">(118 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Solarized Dark</td>
+                            <td><a href="https://github.com/JollyGrin/solarized-dark-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/JollyGrin/solarized-dark-ghost-theme</a></td>
+                            <td>45</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 5, 2023
+                                
+                                <br><span class="months-stale">(26 months ago)</span>
+                                
+                            </td>
+                            <td>A dark theme for Ghost based on the Solarized color scheme.; Good for developer blogs, needs more maintenance</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>aesto</td>
+                            <td><a href="https://github.com/Inoryum-Ltd/aesto" target="_blank" rel="noopener noreferrer">https://github.com/Inoryum-Ltd/aesto</a></td>
+                            <td>43</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 16, 2024
+                                
+                                <br><span class="months-stale">(24 months ago)</span>
+                                
+                            </td>
+                            <td>Free Ghost theme with membership support. Minimal content focused design with multi author supported. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>MinimalisticBlogTheme</td>
+                            <td><a href="https://github.com/rriegger/MinimalisticBlogTheme" target="_blank" rel="noopener noreferrer">https://github.com/rriegger/MinimalisticBlogTheme</a></td>
+                            <td>39</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 19, 2014
+                                
+                                <br><span class="months-stale">(134 months ago)</span>
+                                
+                            </td>
+                            <td>Responsive Ghost CMS Blog Theme</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>GhostSolo</td>
+                            <td><a href="https://github.com/lukencode/GhostSolo" target="_blank" rel="noopener noreferrer">https://github.com/lukencode/GhostSolo</a></td>
+                            <td>27</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 6, 2022
+                                
+                                <br><span class="months-stale">(37 months ago)</span>
+                                
+                            </td>
+                            <td>A Ghost theme for solo bloggers.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>DayAndNight</td>
+                            <td><a href="https://github.com/semeano/DayAndNight" target="_blank" rel="noopener noreferrer">https://github.com/semeano/DayAndNight</a></td>
+                            <td>25</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 4, 2015
+                                
+                                <br><span class="months-stale">(130 months ago)</span>
+                                
+                            </td>
+                            <td>Simple responsive theme for Ghost</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Asgar</td>
+                            <td><a href="https://github.com/stefanbc/Asgar" target="_blank" rel="noopener noreferrer">https://github.com/stefanbc/Asgar</a></td>
+                            <td>24</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 5, 2023
+                                
+                                <br><span class="months-stale">(28 months ago)</span>
+                                
+                            </td>
+                            <td>A two-column, clean and minimalist theme for @TryGhost</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>donnie-dark</td>
+                            <td><a href="https://github.com/kulttuuri/donnie-dark" target="_blank" rel="noopener noreferrer">https://github.com/kulttuuri/donnie-dark</a></td>
+                            <td>20</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 23, 2019
+                                
+                                <br><span class="months-stale">(73 months ago)</span>
+                                
+                            </td>
+                            <td>Donnie Dark is dark, responsive, customizable theme for Ghost 0.5+ blogs. Name of the theme is hats-off for a great movie.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>mno</td>
+                            <td><a href="https://github.com/mythsman/mno" target="_blank" rel="noopener noreferrer">https://github.com/mythsman/mno</a></td>
+                            <td>18</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 27, 2024
+                                
+                                <br><span class="months-stale">(20 months ago)</span>
+                                
+                            </td>
+                            <td>Mno, just another ghost theme</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>spooky-slate</td>
+                            <td><a href="https://github.com/meowomancer/spooky-slate" target="_blank" rel="noopener noreferrer">https://github.com/meowomancer/spooky-slate</a></td>
+                            <td>18</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 3, 2015
+                                
+                                <br><span class="months-stale">(129 months ago)</span>
+                                
+                            </td>
+                            <td>A basic theme for the Ghost blogging platform</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>so-clean</td>
+                            <td><a href="https://github.com/Hashable/so-clean" target="_blank" rel="noopener noreferrer">https://github.com/Hashable/so-clean</a></td>
+                            <td>18</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 10, 2020
+                                
+                                <br><span class="months-stale">(67 months ago)</span>
+                                
+                            </td>
+                            <td>A clean and simple theme for Ghost blogging platform</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>sheet</td>
+                            <td><a href="https://github.com/brianokeefe/sheet" target="_blank" rel="noopener noreferrer">https://github.com/brianokeefe/sheet</a></td>
+                            <td>17</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 24, 2017
+                                
+                                <br><span class="months-stale">(100 months ago)</span>
+                                
+                            </td>
+                            <td>Sheet is a clean, responsive theme for Ghost v1.x.x blogs.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>wonderland_ghost_theme</td>
+                            <td><a href="https://github.com/dyzdyz010/wonderland_ghost_theme" target="_blank" rel="noopener noreferrer">https://github.com/dyzdyz010/wonderland_ghost_theme</a></td>
+                            <td>14</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 29, 2018
+                                
+                                <br><span class="months-stale">(89 months ago)</span>
+                                
+                            </td>
+                            <td>Wonderland - A simple, clean theme for Ghost. https://duyizhuo.com</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>TrueStyle</td>
+                            <td><a href="https://github.com/Zazama/TrueStyle" target="_blank" rel="noopener noreferrer">https://github.com/Zazama/TrueStyle</a></td>
+                            <td>13</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 15, 2015
+                                
+                                <br><span class="months-stale">(127 months ago)</span>
+                                
+                            </td>
+                            <td>A bootstrap theme for Ghost</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>bees</td>
+                            <td><a href="https://github.com/jyotirmaybarman/bees" target="_blank" rel="noopener noreferrer">https://github.com/jyotirmaybarman/bees</a></td>
+                            <td>12</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 14, 2024
+                                
+                                <br><span class="months-stale">(18 months ago)</span>
+                                
+                            </td>
+                            <td>A website using this theme -</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Callisto-Ghost-Theme</td>
+                            <td><a href="https://github.com/jckyeh/Callisto-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/jckyeh/Callisto-Ghost-Theme</a></td>
+                            <td>12</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 12, 2019
+                                
+                                <br><span class="months-stale">(77 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost theme for a minimal personal blog and portfolio</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Ruby-sales</td>
+                            <td><a href="https://github.com/cathysarisky/Ruby-sales" target="_blank" rel="noopener noreferrer">https://github.com/cathysarisky/Ruby-sales</a></td>
+                            <td>11</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 4, 2022
+                                
+                                <br><span class="months-stale">(40 months ago)</span>
+                                
+                            </td>
+                            <td>A Ghost theme with Stripe sales add-on</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>spook</td>
+                            <td><a href="https://github.com/calebanthony/spook" target="_blank" rel="noopener noreferrer">https://github.com/calebanthony/spook</a></td>
+                            <td>9</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 8, 2021
+                                
+                                <br><span class="months-stale">(51 months ago)</span>
+                                
+                            </td>
+                            <td>Base Ghost theme built on Bootstrap 4 with Font Awesome</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>triangle</td>
+                            <td><a href="https://github.com/HaeckDesign/triangle" target="_blank" rel="noopener noreferrer">https://github.com/HaeckDesign/triangle</a></td>
+                            <td>7</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 31, 2024
+                                
+                                <br><span class="months-stale">(24 months ago)</span>
+                                
+                            </td>
+                            <td>Triangle Ghost Theme is fully responsive blog styled Ghost theme built w/ UIKit and a few clever features.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>ghost-theme-1ite</td>
+                            <td><a href="https://github.com/uvexz/ghost-theme-1ite" target="_blank" rel="noopener noreferrer">https://github.com/uvexz/ghost-theme-1ite</a></td>
+                            <td>6</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 9, 2022
+                                
+                                <br><span class="months-stale">(40 months ago)</span>
+                                
+                            </td>
+                            <td>A lite theme for Ghost</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>WasabiBlog</td>
+                            <td><a href="https://github.com/zkSNACKs/WasabiBlog" target="_blank" rel="noopener noreferrer">https://github.com/zkSNACKs/WasabiBlog</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 22, 2022
+                                
+                                <br><span class="months-stale">(46 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>ghost-iffy</td>
+                            <td><a href="https://github.com/InternetFreedomFoundation/ghost-iffy" target="_blank" rel="noopener noreferrer">https://github.com/InternetFreedomFoundation/ghost-iffy</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 2, 2023
+                                
+                                <br><span class="months-stale">(32 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost theme for the Internet Freedom Foundation site</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>storyteller</td>
+                            <td><a href="https://github.com/solaymanhaider/storyteller" target="_blank" rel="noopener noreferrer">https://github.com/solaymanhaider/storyteller</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 4, 2021
+                                
+                                <br><span class="months-stale">(59 months ago)</span>
+                                
+                            </td>
+                            <td>A free ghost theme for story writers. Responsive, Modern, Simple, and Auto Dark Mode.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>verdin</td>
+                            <td><a href="https://github.com/IrisThemes/verdin" target="_blank" rel="noopener noreferrer">https://github.com/IrisThemes/verdin</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 5, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>Verdin - A Personal Ghost Blog Theme @ https://iristhemes.com/themes/verdin</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Ingia</td>
+                            <td><a href="https://github.com/stefanbc/Ingia" target="_blank" rel="noopener noreferrer">https://github.com/stefanbc/Ingia</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 3, 2023
+                                
+                                <br><span class="months-stale">(36 months ago)</span>
+                                
+                            </td>
+                            <td>A free, open source theme for Ghost</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>papillon-ghost</td>
+                            <td><a href="https://github.com/PapillonApp/papillon-ghost" target="_blank" rel="noopener noreferrer">https://github.com/PapillonApp/papillon-ghost</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 25, 2024
+                                
+                                <br><span class="months-stale">(18 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost blogging theme for the articles of the open-source Papillon project.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>east</td>
+                            <td><a href="https://github.com/aspirethemes/east" target="_blank" rel="noopener noreferrer">https://github.com/aspirethemes/east</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 21, 2023
+                                
+                                <br><span class="months-stale">(28 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>ghost-theme-ghoststead</td>
+                            <td><a href="https://github.com/ghoststead/ghost-theme-ghoststead" target="_blank" rel="noopener noreferrer">https://github.com/ghoststead/ghost-theme-ghoststead</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 12, 2021
+                                
+                                <br><span class="months-stale">(57 months ago)</span>
+                                
+                            </td>
+                            <td>Default Ghost theme for GhostStead sites.  Built using Bootstrap 5.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>ghali</td>
+                            <td><a href="https://github.com/terrighost/ghali" target="_blank" rel="noopener noreferrer">https://github.com/terrighost/ghali</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 3, 2021
+                                
+                                <br><span class="months-stale">(59 months ago)</span>
+                                
+                            </td>
+                            <td>Free Ghost v3 theme for fashion, travel and style blogs</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>maxima</td>
+                            <td><a href="https://github.com/aspirethemes/maxima" target="_blank" rel="noopener noreferrer">https://github.com/aspirethemes/maxima</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 21, 2023
+                                
+                                <br><span class="months-stale">(28 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>aspire</td>
+                            <td><a href="https://github.com/aspirethemes/aspire" target="_blank" rel="noopener noreferrer">https://github.com/aspirethemes/aspire</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 21, 2023
+                                
+                                <br><span class="months-stale">(28 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        
+                        <tr>
+                            <td colspan="6"><strong>STARTER & DEVELOPMENT THEMES</strong></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>next-cms-ghost</td>
+                            <td><a href="https://github.com/styxlab/next-cms-ghost" target="_blank" rel="noopener noreferrer">https://github.com/styxlab/next-cms-ghost</a></td>
+                            <td>690</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                August 1, 2023
+                                
+                                <br><span class="months-stale">(29 months ago)</span>
+                                
+                            </td>
+                            <td>Publish flaring fast blogs with Next.js and Ghost CMS</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>starter-snowpack-tailwind</td>
+                            <td><a href="https://github.com/clupprich/starter-snowpack-tailwind" target="_blank" rel="noopener noreferrer">https://github.com/clupprich/starter-snowpack-tailwind</a></td>
+                            <td>15</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                January 24, 2022
+                                
+                                <br><span class="months-stale">(48 months ago)</span>
+                                
+                            </td>
+                            <td>A boilerplate for a ghost theme, powered by Snowpack & Tailwind CSS.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Pliny</td>
+                            <td><a href="https://github.com/ascott1/Pliny" target="_blank" rel="noopener noreferrer">https://github.com/ascott1/Pliny</a></td>
+                            <td>7</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                February 28, 2015
+                                
+                                <br><span class="months-stale">(131 months ago)</span>
+                                
+                            </td>
+                            <td>A starter theme for Ghost using Sass and Grunt</td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>STALE TOOLS & RESOURCES</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tool / Resource</th>
+                            <th>Link</th>
+                            <th>Last Updated</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><strong>Penetration-Testing</strong></td>
+                            <td><a href="https://github.com/wtsxDev/Penetration-Testing" target="_blank" rel="noopener noreferrer">https://github.com/wtsxDev/Penetration-Testing</a></td>
+                            <td class="last-update-cell">
+                                October 18, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>List of awesome penetration testing resources, tools and other shiny things</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><strong>awesome-research</strong></td>
+                            <td><a href="https://github.com/emptymalei/awesome-research" target="_blank" rel="noopener noreferrer">https://github.com/emptymalei/awesome-research</a></td>
+                            <td class="last-update-cell">
+                                August 15, 2023
+                                
+                                <br><span class="months-stale">(29 months ago)</span>
+                                
+                            </td>
+                            <td>:seedling: a curated list of tools to help you with your research/life; I built a front end around this repo, please use the link below [This repo is deprecated. Instead, I maintain all the contents using the following website]</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><strong>HackingTools-2</strong></td>
+                            <td><a href="https://github.com/ByteHackr/HackingTools-2" target="_blank" rel="noopener noreferrer">https://github.com/ByteHackr/HackingTools-2</a></td>
+                            <td class="last-update-cell">
+                                May 10, 2023
+                                
+                                <br><span class="months-stale">(32 months ago)</span>
+                                
+                            </td>
+                            <td>A collection of awesome lists for hackers, pentesters & security researchers.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><strong>awesome-jamstack</strong></td>
+                            <td><a href="https://github.com/BolajiAyodeji/awesome-jamstack" target="_blank" rel="noopener noreferrer">https://github.com/BolajiAyodeji/awesome-jamstack</a></td>
+                            <td class="last-update-cell">
+                                August 15, 2024
+                                
+                                <br><span class="months-stale">(17 months ago)</span>
+                                
+                            </td>
+                            <td>:notebook_with_decorative_cover: Curated list of resources: books, videos, articles, speaker decks, tools about using the Jamstack.</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <p><strong>Data Source:</strong> GitHub API & automated discovery</p>
+            <p><strong>Staleness Threshold:</strong> Items not updated in 12 months</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Maintained by <a href="https://github.com/runawaydevil" target="_blank" rel="noopener noreferrer">RunawayDevil</a></p>
+            <p>Last updated: January 19, 2026 at 05:17 UTC</p>
+            <p>For broken links or requests to add your resources, please send an email to <a href="mailto:runawaydevil@pm.me">runawaydevil@pm.me</a></p>
+            <p>This project is free and open source. Licensed under <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a> - feel free to use, copy, and modify.</p>
+            <p>&copy; <span id="current-year">2025</span> Ghostbuster Directory. No rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Update current year
+        (function() {
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        })();
+    </script>
+</body>
+</html>

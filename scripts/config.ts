@@ -20,34 +20,85 @@ import { GhostItem, Override, IgnoreRule, SearchQuery, CrawlerConfig } from './t
 
 /**
  * System configuration interface
+ * Defines all configuration options for the Le Ghost system
  */
 export interface SystemConfig {
+  /** Crawler configuration for discovering Ghost themes */
   crawler: CrawlerConfig;
+  
+  /** Classification thresholds and weights for scoring repositories */
   classification: {
+    /** Score thresholds for confidence levels */
     thresholds: {
+      /** Minimum score for high confidence (default: 80) */
       high: number;
+      /** Minimum score for medium confidence (default: 60) */
       medium: number;
+      /** Minimum score for low confidence (default: 40) */
       low: number;
     };
+    /** Weights for different scoring factors (must sum to 1.0) */
     weights: {
+      /** Weight for topic matching (default: 0.4) */
       topics: number;
+      /** Weight for README analysis (default: 0.3) */
       readme: number;
+      /** Weight for file structure analysis (default: 0.2) */
       structure: number;
+      /** Weight for penalty factors (default: 0.1) */
       penalties: number;
     };
   };
+  
+  /** HTML rendering configuration */
   rendering: {
+    /** Path to the HTML template file */
     template: string;
+    /** Path where the generated HTML will be saved */
     output: string;
+    /** Ordered list of categories for organizing items */
     categories: readonly string[];
   };
+  
+  /** GitHub API configuration */
   github: {
+    /** GitHub personal access token for API authentication */
     token: string;
+  };
+  
+  /** Staleness tracking configuration */
+  staleness: {
+    /** Enable or disable staleness tracking feature */
+    enabled: boolean;
+    /** Number of months without updates before an item is considered stale */
+    thresholdMonths: number;
+    /** Path to the SQLite database file for storing stale items */
+    databasePath: string;
+    /** Path to the HTML template for rendering stale items page */
+    renderTemplate: string;
+    /** Path where the generated stale items HTML will be saved */
+    renderOutput: string;
   };
 }
 
 /**
  * Default configuration values
+ * These values are used when no user configuration is provided
+ * 
+ * @example
+ * ```typescript
+ * // Use default configuration
+ * const config = DEFAULT_CONFIG;
+ * 
+ * // Or merge with custom values
+ * const customConfig = {
+ *   ...DEFAULT_CONFIG,
+ *   staleness: {
+ *     ...DEFAULT_CONFIG.staleness,
+ *     thresholdMonths: 6  // Override just the threshold
+ *   }
+ * };
+ * ```
  */
 export const DEFAULT_CONFIG = {
   crawler: {
@@ -78,6 +129,13 @@ export const DEFAULT_CONFIG = {
     template: 'templates/index.template.html',
     output: 'index.html',
     categories: ['Official', 'Theme', 'Tool', 'Starter']
+  },
+  staleness: {
+    enabled: true,
+    thresholdMonths: 12,
+    databasePath: 'data/stale-items.db',
+    renderTemplate: 'templates/stale.template.html',
+    renderOutput: 'stale.html'
   }
 } as const;
 
@@ -210,6 +268,55 @@ export class ConfigValidator {
   }
 
   /**
+   * Validate staleness configuration
+   * Ensures all staleness settings are valid and properly typed
+   * 
+   * @param config - The staleness configuration object to validate
+   * @returns Validated staleness configuration
+   * @throws {ValidationError} If configuration is invalid
+   * 
+   * @example
+   * ```typescript
+   * const stalenessConfig = {
+   *   enabled: true,
+   *   thresholdMonths: 12,
+   *   databasePath: 'data/stale-items.db',
+   *   renderTemplate: 'templates/stale.template.html',
+   *   renderOutput: 'stale.html'
+   * };
+   * 
+   * const validated = ConfigValidator.validateStalenessConfig(stalenessConfig);
+   * ```
+   */
+  static validateStalenessConfig(config: any): SystemConfig['staleness'] {
+    if (!config || typeof config !== 'object') {
+      throw new ValidationError('Staleness config must be an object');
+    }
+
+    if (typeof config.enabled !== 'boolean') {
+      throw new ValidationError('staleness.enabled must be a boolean');
+    }
+
+    if (typeof config.thresholdMonths !== 'number' || config.thresholdMonths <= 0 || !Number.isInteger(config.thresholdMonths)) {
+      throw new ValidationError('staleness.thresholdMonths must be a positive integer');
+    }
+
+    if (typeof config.databasePath !== 'string') {
+      throw new ValidationError('staleness.databasePath must be a string');
+    }
+
+    if (typeof config.renderTemplate !== 'string') {
+      throw new ValidationError('staleness.renderTemplate must be a string');
+    }
+
+    if (typeof config.renderOutput !== 'string') {
+      throw new ValidationError('staleness.renderOutput must be a string');
+    }
+
+    return config as SystemConfig['staleness'];
+  }
+
+  /**
    * Validate complete system configuration
    */
   static validateSystemConfig(config: any): SystemConfig {
@@ -223,7 +330,8 @@ export class ConfigValidator {
       rendering: this.validateRenderingConfig(config.rendering),
       github: {
         token: config.github?.token || process.env.GITHUB_TOKEN || ''
-      }
+      },
+      staleness: this.validateStalenessConfig(config.staleness)
     };
   }
 }
@@ -287,7 +395,8 @@ export class ConfigManager {
       rendering: DEFAULT_CONFIG.rendering,
       github: {
         token: process.env.GITHUB_TOKEN || ''
-      }
+      },
+      staleness: DEFAULT_CONFIG.staleness
     };
 
     this.saveConfig(defaultConfig);
@@ -325,6 +434,11 @@ export class ConfigManager {
     // Merge rendering config
     if (userConfig.rendering) {
       Object.assign(merged.rendering, userConfig.rendering);
+    }
+
+    // Merge staleness config
+    if (userConfig.staleness) {
+      Object.assign(merged.staleness, userConfig.staleness);
     }
 
     // Add GitHub token

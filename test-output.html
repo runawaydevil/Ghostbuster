@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
+    <title>Le Ghost - Ghost CMS Themes & Tools Directory</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
     <style>
         * {
@@ -84,29 +84,19 @@
             }
         }
 
-        .button-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
-
-        .github-button, .stale-button {
+        .github-button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            margin-top: 0.5rem;
             padding: 0.6rem 1.2rem;
+            background-color: #24292e;
+            color: #ffffff;
             text-decoration: none;
             border-radius: 6px;
             font-weight: 500;
             font-size: 0.95rem;
             transition: background-color 0.2s, transform 0.1s;
-        }
-
-        .github-button {
-            background-color: #24292e;
-            color: #ffffff;
         }
 
         .github-button:hover {
@@ -115,18 +105,7 @@
             transform: translateY(-1px);
         }
 
-        .stale-button {
-            background-color: #ff9800;
-            color: #ffffff;
-        }
-
-        .stale-button:hover {
-            background-color: #f57c00;
-            text-decoration: none;
-            transform: translateY(-1px);
-        }
-
-        .github-button:active, .stale-button:active {
+        .github-button:active {
             transform: translateY(0);
         }
 
@@ -143,14 +122,6 @@
 
             .github-button:hover {
                 background-color: #3a4148;
-            }
-
-            .stale-button {
-                background-color: #cc7700;
-            }
-
-            .stale-button:hover {
-                background-color: #e68900;
             }
         }
 
@@ -352,18 +323,9 @@
                 font-size: 1rem;
             }
 
-            .github-button, .stale-button {
+            .github-button {
                 font-size: 0.85rem;
                 padding: 0.6rem 1.2rem;
-            }
-
-            .button-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .github-button, .stale-button {
-                justify-content: center;
             }
 
             .updates-section {
@@ -375,40 +337,25 @@
 <body>
     <header>
         <div class="header-content">
-            <img src="{{logoUrl}}" alt="{{logoAlt}}" class="logo">
-            <h1>{{title}}</h1>
-            <p class="subtitle">{{subtitle}}</p>
-            <div class="button-group">
-                <a href="stale.html" class="stale-button">
-                    ⏰ View Stale Items
-                </a>
-                <a href="{{githubUrl}}" target="_blank" rel="noopener noreferrer" class="github-button">
-                    <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-                    </svg>
-                    Star on GitHub
-                </a>
-            </div>
+            <img src="https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png" alt="Le Ghost Logo" class="logo">
+            <h1>Le Ghost - Ghost CMS Themes & Tools Directory</h1>
+            <p class="subtitle">Ghost CMS Themes & Tools Directory (2022–2026)</p>
+            <a href="https://github.com/runawaydevil/le-ghost" target="_blank" rel="noopener noreferrer" class="github-button">
+                <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+                Star on GitHub
+            </a>
         </div>
     </header>
 
     <main>
         <section class="intro">
             <h2>Introduction</h2>
-            <p>{{introText}}</p>
+            <p>This document is a curated directory of Ghost CMS theme repositories and essential tools/resources for theme development, validation, localization, and deployment. Organized to facilitate browsing by origin and category, identify popular themes, and discover tooling for building and maintaining Ghost themes.</p>
         </section>
 
-        {{#if updateMessage}}
-        <section class="updates-section">
-            <h2>Updates</h2>
-            <div class="update-item">
-                <div class="update-date">{{lastUpdate}}</div>
-                <div class="update-message">
-                    <p>{{updateMessage}}</p>
-                </div>
-            </div>
-        </section>
-        {{/if}}
+        
 
         <hr>
 
@@ -426,20 +373,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each categories}}
+                        
                         <tr>
-                            <td colspan="5"><strong>{{this.name}}</strong></td>
+                            <td colspan="5"><strong>OFFICIAL / TRYGHOST THEMES</strong></td>
                         </tr>
-                        {{#each items}}
+                        
                         <tr>
-                            <td>{{this.name}}</td>
-                            <td><a href="{{this.url}}" target="_blank" rel="noopener noreferrer">{{this.url}}</a></td>
-                            <td>{{this.stars}}</td>
-                            <td>{{this.category}}</td>
-                            <td>{{this.description}}{{#if this.notes}}; {{this.notes}}{{/if}}</td>
+                            <td>Casper</td>
+                            <td><a href="https://github.com/TryGhost/Casper" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Casper</a></td>
+                            <td>2600</td>
+                            <td>Official</td>
+                            <td>Default Ghost theme</td>
                         </tr>
-                        {{/each}}
-                        {{/each}}
+                        
+                        
+                        <tr>
+                            <td colspan="5"><strong>HIGHLY POPULAR COMMUNITY THEMES</strong></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Liebling</td>
+                            <td><a href="https://github.com/eddiesigner/liebling" target="_blank" rel="noopener noreferrer">https://github.com/eddiesigner/liebling</a></td>
+                            <td>1300</td>
+                            <td>Theme</td>
+                            <td>Beautiful Ghost theme</td>
+                        </tr>
+                        
+                        
                     </tbody>
                 </table>
             </div>
@@ -459,13 +419,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each tools}}
+                        
                         <tr>
-                            <td><strong>{{this.name}}</strong></td>
-                            <td><a href="{{this.url}}" target="_blank" rel="noopener noreferrer">{{this.url}}</a></td>
-                            <td>{{this.description}}</td>
+                            <td><strong>Ghost Theme Docs</strong></td>
+                            <td><a href="https://docs.ghost.org/themes" target="_blank" rel="noopener noreferrer">https://docs.ghost.org/themes</a></td>
+                            <td>Official documentation for Handlebars themes, theme structure, custom settings, and validation workflow</td>
                         </tr>
-                        {{/each}}
+                        
+                        <tr>
+                            <td><strong>GScan (Theme Validation)</strong></td>
+                            <td><a href="https://github.com/TryGhost/gscan" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/gscan</a></td>
+                            <td>Validates themes for errors/deprecations; used by Ghost during theme upload</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><strong>Deploy Ghost Themes (GitHub Actions)</strong></td>
+                            <td><a href="https://github.com/TryGhost/action-deploy-theme" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/action-deploy-theme</a></td>
+                            <td>GitHub Action to automate theme deployment</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><strong>Ghost Theme Locales</strong></td>
+                            <td><a href="https://github.com/priority-vision/ghost-theme-locales" target="_blank" rel="noopener noreferrer">https://github.com/priority-vision/ghost-theme-locales</a></td>
+                            <td>CLI helper for creating localization (locale) files</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><strong>Awesome Ghost</strong></td>
+                            <td><a href="https://github.com/awesomelistsio/awesome-ghost" target="_blank" rel="noopener noreferrer">https://github.com/awesomelistsio/awesome-ghost</a></td>
+                            <td>Curated list of Ghost resources and community projects</td>
+                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -476,14 +460,7 @@
         <section>
             <h2>QUICK REFERENCE BY USE CASE</h2>
             
-            {{#each useCases}}
-            <h3>{{this.name}}</h3>
-            <ul>
-                {{#each themes}}
-                <li><strong>{{this.name}}</strong> — {{this.description}} ({{this.stars}}⭐)</li>
-                {{/each}}
-            </ul>
-            {{/each}}
+            
         </section>
 
         <hr>
@@ -491,26 +468,38 @@
         <section>
             <h2>NOTES FOR THEME SELECTION</h2>
             <ol>
-                {{#each selectionNotes}}
-                <li>{{this}}</li>
-                {{/each}}
+                
+                <li><strong>Official TryGhost themes</strong> are regularly maintained and well-documented.</li>
+                
+                <li><strong>Community themes</strong> vary in maintenance; check last commit date and issue activity.</li>
+                
+                <li><strong>Popular themes</strong> (1k+ stars) have larger user bases and active communities for support.</li>
+                
+                <li><strong>Minimal themes</strong> prioritize typography and performance; suitable for blogs and newsletters.</li>
+                
+                <li><strong>Magazine themes</strong> offer rich media layouts; ideal for publications and image-heavy content.</li>
+                
+                <li><strong>Specialized themes</strong> (courses, podcasts, portfolios) may include built-in features for those use cases.</li>
+                
+                <li>Most themes use <strong>Handlebars</strong> templating; some newer ones support <strong>Tailwind CSS</strong> and build tools like <strong>Vite</strong>.</li>
+                
             </ol>
         </section>
 
         <hr>
 
         <section>
-            <p><strong>Data Source:</strong> {{dataSource}}</p>
+            <p><strong>Data Source:</strong> GitHub API & automated discovery</p>
         </section>
     </main>
 
     <footer>
         <div class="footer-content">
-            <p>Maintained by <a href="{{maintainerUrl}}" target="_blank" rel="noopener noreferrer">{{maintainerName}}</a></p>
-            <p>Last updated: {{lastUpdate}}</p>
+            <p>Maintained by <a href="https://github.com/runawaydevil" target="_blank" rel="noopener noreferrer">RunawayDevil</a></p>
+            <p>Last updated: January 19, 2026 at 04:18 UTC</p>
             <p>Next update: <span id="next-update">Calculating...</span></p>
-            <p>For broken links or requests to add your resources, please send an email to <a href="mailto:{{contactEmail}}">{{contactEmail}}</a></p>
-            <p>This project is free and open source. Licensed under <a href="{{licenseUrl}}" target="_blank" rel="noopener noreferrer">{{licenseName}}</a> - feel free to use, copy, and modify.</p>
+            <p>For broken links or requests to add your resources, please send an email to <a href="mailto:runawaydevil@pm.me">runawaydevil@pm.me</a></p>
+            <p>This project is free and open source. Licensed under <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a> - feel free to use, copy, and modify.</p>
             <p>&copy; <span id="current-year">2025</span> Ghostbuster Directory. No rights reserved.</p>
         </div>
     </footer>

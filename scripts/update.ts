@@ -25,23 +25,60 @@ export interface UpdateOptions {
   cacheCleanup?: boolean;
 }
 
+/**
+ * Result of an update operation
+ * Contains statistics, changes, errors, and duration information
+ */
 export interface UpdateResult {
+  /** Whether the update completed successfully */
   success: boolean;
+  
+  /** Statistics about the update operation */
   stats: {
+    /** Number of repositories crawled from GitHub */
     crawled: number;
+    /** Number of repositories classified */
     classified: number;
+    /** Number of items after merging with existing data */
     merged: number;
+    /** Number of items rendered to HTML */
     rendered: number;
+    /** Number of GitHub API calls made */
     apiCalls: number;
+    /** Number of cache hits (API calls avoided) */
     cacheHits: number;
+    /** Number of errors encountered */
     errors: number;
+    
+    /** Staleness tracking statistics (only present if staleness tracking is enabled) */
+    stale?: {
+      /** Total number of stale items in database */
+      total: number;
+      /** Number of items newly detected as stale in this run */
+      newlyStale: number;
+      /** Number of previously stale items that were reactivated */
+      reactivated: number;
+      /** Percentage of total items that are stale */
+      percentage: number;
+      /** Average number of months items have been stale */
+      averageMonthsStale: number;
+    };
   };
+  
+  /** Changes made to the dataset */
   changes: {
+    /** Number of new items added */
     added: number;
+    /** Number of existing items updated */
     updated: number;
+    /** Number of items removed */
     removed: number;
   };
+  
+  /** Array of error messages encountered during the update */
   errors: string[];
+  
+  /** Duration of the update operation in milliseconds */
   duration: number;
 }
 
@@ -257,6 +294,147 @@ export class UpdateOrchestrator {
       this.log(`✓ Merged data: ${mergeResult.stats.added} added, ${mergeResult.stats.updated} updated, ${mergeResult.stats.removed} removed`);
       this.log(`✓ Final dataset: ${mergeResult.items.length} items`);
 
+      /**
+       * Step 6.5: Staleness Detection and Database Management
+       * 
+       * This step identifies items that haven't been updated within the configured
+       * staleness threshold and manages them in a separate database and HTML page.
+       * 
+       * Process:
+       * 1. Detect stale items by comparing pushedAt dates against threshold
+       * 2. Check for reactivated items (previously stale, now active)
+       * 3. Update merge result to only include active items
+       * 4. Create database backup before modifications
+       * 5. Validate database integrity
+       * 6. Insert/update stale items in database
+       * 7. Remove reactivated items from database
+       * 8. Render stale items HTML page with statistics
+       * 
+       * **Validates: Requirements 1.1-1.5, 2.1-2.6, 3.1-3.7, 4.1-4.5, 5.1-5.5, 8.1-8.5**
+       */
+      let stalenessStats: any = null;
+      if (config.staleness.enabled) {
+        try {
+          this.log('🕐 Detecting stale items');
+          
+          // Import staleness modules
+          const { createStalenessDetector } = await import('./stale-detector.js');
+          const { createStaleDatabaseManager } = await import('./stale-database.js');
+          const { createStaleRenderer } = await import('./stale-renderer.js');
+          
+          // Create staleness detector
+          const stalenessDetector = createStalenessDetector({
+            thresholdMonths: config.staleness.thresholdMonths,
+            databasePath: config.staleness.databasePath
+          });
+          
+          // Detect staleness
+          const stalenessResult = await stalenessDetector.detectStaleness(mergeResult.items);
+          
+          this.log(`✓ Staleness detection: ${stalenessResult.stats.activeCount} active, ${stalenessResult.stats.newlyStale} newly stale, ${stalenessResult.stats.reactivated} reactivated`);
+          
+          // Update merge result to only include active items
+          mergeResult.items = stalenessResult.activeItems;
+          
+          // Initialize database manager
+          const dbManager = createStaleDatabaseManager(config.staleness.databasePath);
+          await dbManager.initialize();
+          
+          try {
+            // Create database backup before modifications
+            if (!this.options.dryRun) {
+              try {
+                const backupPath = await dbManager.backup();
+                this.log(`✓ Database backup created: ${backupPath}`);
+              } catch (error) {
+                this.log(`⚠️ Failed to create database backup: ${error instanceof Error ? error.message : String(error)}`, 'warn');
+              }
+            }
+            
+            // Validate database integrity
+            const integrityResult = await dbManager.validateIntegrity();
+            if (!integrityResult.valid) {
+              this.log(`⚠️ Database integrity issues found: ${integrityResult.errors.join(', ')}`, 'warn');
+              this.errors.push(...integrityResult.errors);
+            }
+            
+            // Insert/update newly stale items
+            if (!this.options.dryRun) {
+              for (const staleItem of stalenessResult.staleItems) {
+                await dbManager.upsertStaleItem(staleItem);
+              }
+              this.log(`✓ Updated ${stalenessResult.staleItems.length} stale items in database`);
+            }
+            
+            // Remove reactivated items from database
+            if (!this.options.dryRun) {
+              for (const reactivatedItem of stalenessResult.reactivatedItems) {
+                await dbManager.removeStaleItem(reactivatedItem.id);
+              }
+              if (stalenessResult.reactivatedItems.length > 0) {
+                this.log(`✓ Removed ${stalenessResult.reactivatedItems.length} reactivated items from database`);
+              }
+            }
+            
+            // Render stale items page
+            this.log('🎨 Rendering stale items HTML');
+            const allStaleItems = await dbManager.getAllStaleItems();
+            const staleRenderer = createStaleRenderer();
+            const totalItems = mergeResult.items.length + allStaleItems.length;
+            const staleStats = staleRenderer.generateStatistics(allStaleItems, totalItems);
+            
+            if (!this.options.dryRun) {
+              try {
+                staleRenderer.renderToFile(
+                  config.staleness.renderTemplate,
+                  config.staleness.renderOutput,
+                  allStaleItems,
+                  {
+                    title: 'Le Ghost - Not Updated Recently',
+                    subtitle: 'Ghost CMS Themes & Tools Not Updated Recently',
+                    warningMessage: `These items have not been updated in over ${config.staleness.thresholdMonths} months. They may still work but are not actively maintained.`,
+                    thresholdMonths: config.staleness.thresholdMonths,
+                    lastUpdate: this.getWorkflowUpdateDate(),
+                    statistics: staleStats
+                  }
+                );
+                this.log(`✓ Stale HTML rendered to ${config.staleness.renderOutput}`);
+              } catch (error) {
+                const errorMsg = `Failed to render stale HTML: ${error instanceof Error ? error.message : String(error)}`;
+                this.log(errorMsg, 'error');
+                this.errors.push(errorMsg);
+                result.stats.errors++;
+              }
+            } else {
+              this.log('⏭️ Skipping stale HTML render (--dry-run)');
+            }
+            
+            // Store statistics for summary
+            stalenessStats = {
+              total: allStaleItems.length,
+              newlyStale: stalenessResult.stats.newlyStale,
+              reactivated: stalenessResult.stats.reactivated,
+              percentage: staleStats.percentageOfTotal,
+              averageMonthsStale: staleStats.averageMonthsStale
+            };
+            
+            result.stats.stale = stalenessStats;
+            
+          } finally {
+            // Clean up database connection
+            dbManager.close();
+          }
+        } catch (error) {
+          const errorMsg = `Staleness detection failed: ${error instanceof Error ? error.message : String(error)}`;
+          this.log(errorMsg, 'error');
+          this.errors.push(errorMsg);
+          result.stats.errors++;
+          // Continue with pipeline - don't let staleness detection failure break the main pipeline
+        }
+      } else {
+        this.log('⏭️ Staleness detection disabled in configuration');
+      }
+
       // Step 7: Save updated data
       if (!this.options.dryRun) {
         this.log('💾 Saving updated items data');
@@ -376,7 +554,20 @@ export class UpdateOrchestrator {
 ├─────────────────────────────────────────┤
 │ API calls: ${String(result.stats.apiCalls).padStart(24)} │
 │ Cache hits: ${String(result.stats.cacheHits).padStart(23)} │
-│ Errors: ${String(result.stats.errors).padStart(27)} │
+│ Errors: ${String(result.stats.errors).padStart(27)} │`;
+
+    // Add staleness statistics if available
+    if (result.stats.stale) {
+      summary += `
+├─────────────────────────────────────────┤
+│ Stale items total: ${String(result.stats.stale.total).padStart(16)} │
+│ Newly stale: ${String(result.stats.stale.newlyStale).padStart(22)} │
+│ Reactivated: ${String(result.stats.stale.reactivated).padStart(22)} │
+│ Stale percentage: ${String(result.stats.stale.percentage).padStart(17)}% │
+│ Avg months stale: ${String(result.stats.stale.averageMonthsStale).padStart(17)} │`;
+    }
+
+    summary += `
 └─────────────────────────────────────────┘`;
 
     if (result.errors.length > 0) {
@@ -510,6 +701,7 @@ Examples:
 // Run CLI if this file is executed directly
 if (import.meta.url === `file://${process.argv[1]}` || 
     import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` ||
-    process.argv[1].includes('update.js')) {
+    process.argv[1].includes('update.js') ||
+    process.argv[1].includes('update.ts')) {
   main().catch(console.error);
 }

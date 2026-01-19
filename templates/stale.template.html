@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏰</text></svg>">
     <style>
         * {
             margin: 0;
@@ -18,10 +18,16 @@
             --link-color: #0066cc;
             --link-hover: #004499;
             --border-color: #e0e0e0;
-            --header-bg: #f8f9fa;
+            --header-bg: #fff8e6;
             --footer-bg: #f8f9fa;
-            --table-header-bg: #f5f5f5;
-            --table-row-hover: #f9f9f9;
+            --table-header-bg: #fff4d9;
+            --table-row-hover: #fffbf0;
+            --warning-bg: #fff3cd;
+            --warning-border: #ffc107;
+            --warning-text: #856404;
+            --stats-bg: #fff8e6;
+            --stats-border: #ffb300;
+            --stale-accent: #ff9800;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -31,10 +37,16 @@
                 --link-color: #4da6ff;
                 --link-hover: #66b3ff;
                 --border-color: #404040;
-                --header-bg: #2a2a2a;
+                --header-bg: #2a2200;
                 --footer-bg: #2a2a2a;
-                --table-header-bg: #333333;
-                --table-row-hover: #2a2a2a;
+                --table-header-bg: #3a3000;
+                --table-row-hover: #2a2400;
+                --warning-bg: #3a3000;
+                --warning-border: #cc8800;
+                --warning-text: #ffcc66;
+                --stats-bg: #2a2200;
+                --stats-border: #cc8800;
+                --stale-accent: #ff9800;
             }
         }
 
@@ -51,7 +63,7 @@
             background-color: var(--header-bg);
             padding: 1rem 1rem;
             text-align: center;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 3px solid var(--stale-accent);
         }
 
         .header-content {
@@ -92,7 +104,7 @@
             margin-top: 0.5rem;
         }
 
-        .github-button, .stale-button {
+        .github-button, .back-button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -115,18 +127,18 @@
             transform: translateY(-1px);
         }
 
-        .stale-button {
-            background-color: #ff9800;
+        .back-button {
+            background-color: var(--stale-accent);
             color: #ffffff;
         }
 
-        .stale-button:hover {
+        .back-button:hover {
             background-color: #f57c00;
             text-decoration: none;
             transform: translateY(-1px);
         }
 
-        .github-button:active, .stale-button:active {
+        .github-button:active, .back-button:active {
             transform: translateY(0);
         }
 
@@ -145,11 +157,11 @@
                 background-color: #3a4148;
             }
 
-            .stale-button {
+            .back-button {
                 background-color: #cc7700;
             }
 
-            .stale-button:hover {
+            .back-button:hover {
                 background-color: #e68900;
             }
         }
@@ -199,6 +211,81 @@
             text-decoration: underline;
         }
 
+        .warning-section {
+            background-color: var(--warning-bg);
+            border: 2px solid var(--warning-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .warning-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .warning-content h2 {
+            color: var(--warning-text);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            border-bottom: none;
+            font-size: 1.5rem;
+        }
+
+        .warning-content p {
+            color: var(--warning-text);
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .warning-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .statistics-section {
+            background-color: var(--stats-bg);
+            border: 2px solid var(--stats-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .statistics-section h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--stats-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--stale-accent);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .table-wrapper {
             overflow-x: auto;
             margin: 2rem 0;
@@ -234,6 +321,23 @@
             background-color: var(--table-row-hover);
         }
 
+        .last-update-cell {
+            color: var(--stale-accent);
+            font-weight: 500;
+        }
+
+        .months-stale {
+            color: #666;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .months-stale {
+                color: #999;
+            }
+        }
+
         ul {
             margin: 1rem 0;
             padding-left: 2rem;
@@ -253,43 +357,7 @@
             padding: 1.5rem;
             border-radius: 8px;
             margin: 2rem 0;
-            border-left: 4px solid var(--link-color);
-        }
-
-        .updates-section {
-            background-color: var(--header-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            border-left: 4px solid var(--link-color);
-        }
-
-        .updates-section h2 {
-            color: var(--text-color);
-            border-bottom: 2px solid var(--border-color);
-            margin-top: 0;
-        }
-
-        .updates-section .update-item {
-            margin-top: 1rem;
-        }
-
-        .updates-section .update-date {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 0.75rem;
-            font-weight: 500;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .updates-section .update-date {
-                color: #999;
-            }
-        }
-
-        .updates-section .update-message {
-            line-height: 1.6;
-            color: var(--text-color);
+            border-left: 4px solid var(--stale-accent);
         }
 
         footer {
@@ -341,6 +409,33 @@
             th, td {
                 padding: 0.5rem;
             }
+
+            .warning-section {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .warning-icon {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .github-button, .back-button {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -352,21 +447,16 @@
                 font-size: 1rem;
             }
 
-            .github-button, .stale-button {
+            .github-button, .back-button {
                 font-size: 0.85rem;
                 padding: 0.6rem 1.2rem;
             }
 
-            .button-group {
-                flex-direction: column;
-                align-items: stretch;
+            .warning-section {
+                padding: 1rem;
             }
 
-            .github-button, .stale-button {
-                justify-content: center;
-            }
-
-            .updates-section {
+            .statistics-section {
                 padding: 1rem;
             }
         }
@@ -379,8 +469,8 @@
             <h1>{{title}}</h1>
             <p class="subtitle">{{subtitle}}</p>
             <div class="button-group">
-                <a href="stale.html" class="stale-button">
-                    ⏰ View Stale Items
+                <a href="index.html" class="back-button">
+                    ← Back to Active Items
                 </a>
                 <a href="{{githubUrl}}" target="_blank" rel="noopener noreferrer" class="github-button">
                     <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
@@ -393,18 +483,31 @@
     </header>
 
     <main>
-        <section class="intro">
-            <h2>Introduction</h2>
-            <p>{{introText}}</p>
+        <section class="warning-section">
+            <div class="warning-icon">⚠️</div>
+            <div class="warning-content">
+                <h2>Not Updated Recently</h2>
+                <p><strong>{{warningMessage}}</strong></p>
+                <p>These themes and resources have not received updates in over {{thresholdMonths}} months. While they may still function correctly, they are not actively maintained and may not be compatible with the latest version of Ghost CMS.</p>
+                <p>Consider checking the repository for recent activity or looking for actively maintained alternatives in the <a href="index.html">main directory</a>.</p>
+            </div>
         </section>
 
-        {{#if updateMessage}}
-        <section class="updates-section">
-            <h2>Updates</h2>
-            <div class="update-item">
-                <div class="update-date">{{lastUpdate}}</div>
-                <div class="update-message">
-                    <p>{{updateMessage}}</p>
+        {{#if statistics}}
+        <section class="statistics-section">
+            <h2>Stale Items Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value">{{statistics.totalStale}}</span>
+                    <span class="stat-label">Total Stale Items</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{{statistics.percentageOfTotal}}%</span>
+                    <span class="stat-label">Of All Items</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{{statistics.averageMonthsStale}}</span>
+                    <span class="stat-label">Avg. Months Stale</span>
                 </div>
             </div>
         </section>
@@ -413,7 +516,7 @@
         <hr>
 
         <section>
-            <h2>ALL THEMES (CONSOLIDATED TABLE)</h2>
+            <h2>STALE THEMES (CONSOLIDATED TABLE)</h2>
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -422,13 +525,14 @@
                             <th>Repository URL</th>
                             <th>Stars</th>
                             <th>Category</th>
+                            <th>Last Updated</th>
                             <th>Notes</th>
                         </tr>
                     </thead>
                     <tbody>
                         {{#each categories}}
                         <tr>
-                            <td colspan="5"><strong>{{this.name}}</strong></td>
+                            <td colspan="6"><strong>{{this.name}}</strong></td>
                         </tr>
                         {{#each items}}
                         <tr>
@@ -436,6 +540,12 @@
                             <td><a href="{{this.url}}" target="_blank" rel="noopener noreferrer">{{this.url}}</a></td>
                             <td>{{this.stars}}</td>
                             <td>{{this.category}}</td>
+                            <td class="last-update-cell">
+                                {{this.pushedAt}}
+                                {{#if this.monthsStale}}
+                                <br><span class="months-stale">({{this.monthsStale}} months ago)</span>
+                                {{/if}}
+                            </td>
                             <td>{{this.description}}{{#if this.notes}}; {{this.notes}}{{/if}}</td>
                         </tr>
                         {{/each}}
@@ -448,13 +558,14 @@
         <hr>
 
         <section>
-            <h2>TOOLS & RESOURCES</h2>
+            <h2>STALE TOOLS & RESOURCES</h2>
             <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
                             <th>Tool / Resource</th>
                             <th>Link</th>
+                            <th>Last Updated</th>
                             <th>Purpose</th>
                         </tr>
                     </thead>
@@ -463,6 +574,12 @@
                         <tr>
                             <td><strong>{{this.name}}</strong></td>
                             <td><a href="{{this.url}}" target="_blank" rel="noopener noreferrer">{{this.url}}</a></td>
+                            <td class="last-update-cell">
+                                {{this.pushedAt}}
+                                {{#if this.monthsStale}}
+                                <br><span class="months-stale">({{this.monthsStale}} months ago)</span>
+                                {{/if}}
+                            </td>
                             <td>{{this.description}}</td>
                         </tr>
                         {{/each}}
@@ -474,33 +591,8 @@
         <hr>
 
         <section>
-            <h2>QUICK REFERENCE BY USE CASE</h2>
-            
-            {{#each useCases}}
-            <h3>{{this.name}}</h3>
-            <ul>
-                {{#each themes}}
-                <li><strong>{{this.name}}</strong> — {{this.description}} ({{this.stars}}⭐)</li>
-                {{/each}}
-            </ul>
-            {{/each}}
-        </section>
-
-        <hr>
-
-        <section>
-            <h2>NOTES FOR THEME SELECTION</h2>
-            <ol>
-                {{#each selectionNotes}}
-                <li>{{this}}</li>
-                {{/each}}
-            </ol>
-        </section>
-
-        <hr>
-
-        <section>
             <p><strong>Data Source:</strong> {{dataSource}}</p>
+            <p><strong>Staleness Threshold:</strong> Items not updated in {{thresholdMonths}} months</p>
         </section>
     </main>
 
@@ -508,7 +600,6 @@
         <div class="footer-content">
             <p>Maintained by <a href="{{maintainerUrl}}" target="_blank" rel="noopener noreferrer">{{maintainerName}}</a></p>
             <p>Last updated: {{lastUpdate}}</p>
-            <p>Next update: <span id="next-update">Calculating...</span></p>
             <p>For broken links or requests to add your resources, please send an email to <a href="mailto:{{contactEmail}}">{{contactEmail}}</a></p>
             <p>This project is free and open source. Licensed under <a href="{{licenseUrl}}" target="_blank" rel="noopener noreferrer">{{licenseName}}</a> - feel free to use, copy, and modify.</p>
             <p>&copy; <span id="current-year">2025</span> Ghostbuster Directory. No rights reserved.</p>
@@ -516,41 +607,11 @@
     </footer>
 
     <script>
-        // Update current year and calculate next update
+        // Update current year
         (function() {
             const currentYearElement = document.getElementById('current-year');
             if (currentYearElement) {
                 currentYearElement.textContent = new Date().getFullYear();
-            }
-
-            // Calculate next Monday at 6 AM UTC (scheduled update time)
-            const nextUpdateElement = document.getElementById('next-update');
-            if (nextUpdateElement) {
-                const now = new Date();
-                const nextMonday = new Date(now);
-                
-                // Get days until next Monday (1 = Monday, 0 = Sunday)
-                const currentDay = now.getUTCDay();
-                const daysUntilMonday = currentDay === 0 ? 1 : currentDay === 1 ? 7 : (8 - currentDay);
-                
-                nextMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
-                nextMonday.setUTCHours(6, 0, 0, 0);
-                
-                // If it's Monday and before 6 AM UTC, next update is today
-                if (currentDay === 1 && now.getUTCHours() < 6) {
-                    nextMonday.setUTCDate(now.getUTCDate());
-                }
-                
-                // Format date
-                const months = ['January', 'February', 'March', 'April', 'May', 'June', 
-                               'July', 'August', 'September', 'October', 'November', 'December'];
-                const month = months[nextMonday.getUTCMonth()];
-                const day = nextMonday.getUTCDate();
-                const year = nextMonday.getUTCFullYear();
-                const hours = String(nextMonday.getUTCHours()).padStart(2, '0');
-                const minutes = String(nextMonday.getUTCMinutes()).padStart(2, '0');
-                
-                nextUpdateElement.textContent = `${month} ${day}, ${year} at ${hours}:${minutes} UTC`;
             }
         })();
     </script>
