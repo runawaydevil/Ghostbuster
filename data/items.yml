@@ -14,8 +14,8 @@
     - self-hosted
     - selfhosted
     - ghost-theme
-  stars: 267728
-  pushedAt: '2026-01-11T10:14:51Z'
+  stars: 268895
+  pushedAt: '2026-01-18T19:53:55Z'
   archived: false
   fork: false
   license: other
@@ -45,7 +45,7 @@
     - beginners-friendly
     - list
     - ghost-theme
-  stars: 81572
+  stars: 81799
   pushedAt: '2025-12-05T20:51:10Z'
   archived: false
   fork: false
@@ -68,8 +68,8 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 75989
-  pushedAt: '2026-01-11T14:26:24Z'
+  stars: 76575
+  pushedAt: '2026-01-17T18:13:58Z'
   archived: false
   fork: false
   license: mit
@@ -92,8 +92,8 @@
     - node
     - nodejs
     - ghost-theme
-  stars: 64514
-  pushedAt: '2025-11-22T10:33:15Z'
+  stars: 64623
+  pushedAt: '2026-01-14T09:40:35Z'
   archived: false
   fork: false
   license: cc0-1.0
@@ -132,7 +132,7 @@
     - tutorials
     - web
     - ghost-theme
-  stars: 44381
+  stars: 44575
   pushedAt: '2025-12-31T18:59:20Z'
   archived: false
   fork: false
@@ -166,7 +166,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 34860
+  stars: 34874
   pushedAt: '2026-01-05T09:42:09Z'
   archived: false
   fork: false
@@ -186,7 +186,7 @@
     - awesome
     - awesome-list
     - ghost-theme
-  stars: 24937
+  stars: 24989
   pushedAt: '2025-12-17T18:00:55Z'
   archived: false
   fork: false
@@ -202,9 +202,12 @@
   name: awesome-claude-code
   repo: hesreallyhim/awesome-claude-code
   url: https://github.com/hesreallyhim/awesome-claude-code
-  description: A curated list of awesome commands, files, and workflows for Claude Code
+  description: >-
+    A curated list of awesome skills, hooks, slash-commands, agent orchestrators, applications, and plugins for Claude
+    Code by Anthropic
   category: Theme
   tags:
+    - agent-skills
     - agentic-code
     - agentic-coding
     - ai-workflow-optimization
@@ -220,13 +223,16 @@
     - coding-agent
     - coding-agents
     - coding-assistant
+    - coding-assistants
+    - llm
     - ghost-theme
-  stars: 19999
-  pushedAt: '2026-01-12T06:12:05Z'
+  stars: 20925
+  pushedAt: '2026-01-19T06:13:11Z'
   archived: false
   fork: false
   license: other
   topics:
+    - agent-skills
     - agentic-code
     - agentic-coding
     - ai-workflow-optimization
@@ -242,6 +248,8 @@
     - coding-agent
     - coding-agents
     - coding-assistant
+    - coding-assistants
+    - llm
   score: 28
   confidence: low
   notes: null
@@ -277,7 +285,7 @@
     - ssh
     - wireguard
     - ghost-theme
-  stars: 18287
+  stars: 18349
   pushedAt: '2025-06-27T01:51:16Z'
   archived: false
   fork: false
@@ -320,8 +328,8 @@
     - security
     - vulnerability
     - ghost-theme
-  stars: 7473
-  pushedAt: '2026-01-12T00:45:34Z'
+  stars: 7484
+  pushedAt: '2026-01-19T00:45:29Z'
   archived: false
   fork: false
   license: null
@@ -353,7 +361,7 @@
     - machine-learning
     - resources
     - ghost-theme
-  stars: 6095
+  stars: 6097
   pushedAt: '2025-07-12T00:49:03Z'
   archived: false
   fork: false
@@ -383,7 +391,7 @@
     - awesome-list
     - website
     - ghost-theme
-  stars: 3588
+  stars: 3600
   pushedAt: '2026-01-10T15:20:36Z'
   archived: false
   fork: false
@@ -411,7 +419,7 @@
     - security
     - security-tools
     - ghost-theme
-  stars: 3522
+  stars: 3528
   pushedAt: '2025-08-24T10:21:47Z'
   archived: false
   fork: false
@@ -437,7 +445,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 3232
+  stars: 3238
   pushedAt: '2025-06-05T18:28:31Z'
   archived: false
   fork: false
@@ -459,7 +467,7 @@
     - labs
     - toml
     - ghost-theme
-  stars: 3092
+  stars: 3095
   pushedAt: '2025-07-30T18:04:02Z'
   archived: false
   fork: false
@@ -493,8 +501,8 @@
     - nlp
     - openai
     - ghost-theme
-  stars: 2793
-  pushedAt: '2026-01-11T17:44:57Z'
+  stars: 2800
+  pushedAt: '2026-01-18T18:39:45Z'
   archived: false
   fork: false
   license: cc0-1.0
@@ -515,6 +523,38 @@
   confidence: low
   notes: null
   hidden: false
+- id: nusquama/n8nworkflows.xyz
+  name: n8nworkflows.xyz
+  repo: nusquama/n8nworkflows.xyz
+  url: https://github.com/nusquama/n8nworkflows.xyz
+  description: N8N Workflows Catalog
+  category: Theme
+  tags:
+    - n8n
+    - n8n-automation
+    - n8n-node
+    - n8n-nodes
+    - n8n-template
+    - n8n-workflow
+    - n8n-workflows
+    - ghost-theme
+  stars: 1833
+  pushedAt: '2026-01-19T04:00:09Z'
+  archived: false
+  fork: false
+  license: null
+  topics:
+    - n8n
+    - n8n-automation
+    - n8n-node
+    - n8n-nodes
+    - n8n-template
+    - n8n-workflow
+    - n8n-workflows
+  score: 6
+  confidence: low
+  notes: null
+  hidden: false
 - id: uhub/awesome-go
   name: awesome-go
   repo: uhub/awesome-go
@@ -523,8 +563,8 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 1735
-  pushedAt: '2025-12-20T00:06:50Z'
+  stars: 1736
+  pushedAt: '2026-01-15T00:07:23Z'
   archived: false
   fork: false
   license: null
@@ -563,7 +603,7 @@
     - winui3
     - wsl
     - ghost-theme
-  stars: 1703
+  stars: 1708
   pushedAt: '2025-06-27T02:07:45Z'
   archived: false
   fork: false
@@ -604,7 +644,7 @@
     - projects
     - top-charts
     - ghost-theme
-  stars: 1659
+  stars: 1674
   pushedAt: '2025-10-16T20:29:23Z'
   archived: false
   fork: false
@@ -614,38 +654,6 @@
     - projects
     - top-charts
   score: 24
-  confidence: low
-  notes: null
-  hidden: false
-- id: nusquama/n8nworkflows.xyz
-  name: n8nworkflows.xyz
-  repo: nusquama/n8nworkflows.xyz
-  url: https://github.com/nusquama/n8nworkflows.xyz
-  description: N8N Workflows Catalog
-  category: Theme
-  tags:
-    - n8n
-    - n8n-automation
-    - n8n-node
-    - n8n-nodes
-    - n8n-template
-    - n8n-workflow
-    - n8n-workflows
-    - ghost-theme
-  stars: 1659
-  pushedAt: '2026-01-12T04:00:07Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - n8n
-    - n8n-automation
-    - n8n-node
-    - n8n-nodes
-    - n8n-template
-    - n8n-workflow
-    - n8n-workflows
-  score: 6
   confidence: low
   notes: null
   hidden: false
@@ -665,8 +673,8 @@
     - selfhosted
     - selfhosting
     - ghost-theme
-  stars: 1480
-  pushedAt: '2026-01-11T22:29:27Z'
+  stars: 1497
+  pushedAt: '2026-01-18T22:29:22Z'
   archived: false
   fork: false
   license: null
@@ -743,7 +751,7 @@
     - pentesting-tools
     - web
     - ghost-theme
-  stars: 1264
+  stars: 1267
   pushedAt: '2025-12-04T06:55:03Z'
   archived: false
   fork: false
@@ -782,7 +790,7 @@
   tags:
     - obsidian-md
     - ghost-theme
-  stars: 1170
+  stars: 1174
   pushedAt: '2025-09-14T19:25:12Z'
   archived: false
   fork: false
@@ -805,7 +813,7 @@
     - made-in-nigeria
     - nigeria
     - ghost-theme
-  stars: 1086
+  stars: 1087
   pushedAt: '2026-01-04T20:37:52Z'
   archived: false
   fork: false
@@ -827,8 +835,8 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 1013
-  pushedAt: '2025-12-23T00:07:01Z'
+  stars: 1017
+  pushedAt: '2026-01-18T00:06:44Z'
   archived: false
   fork: false
   license: null
@@ -854,7 +862,7 @@
     - mobirise
     - website-builder
     - ghost-theme
-  stars: 940
+  stars: 942
   pushedAt: '2025-09-16T12:18:27Z'
   archived: false
   fork: false
@@ -889,7 +897,7 @@
     - static-site
     - static-site-generator
     - ghost-theme
-  stars: 834
+  stars: 835
   pushedAt: '2025-07-09T16:22:37Z'
   archived: false
   fork: false
@@ -932,8 +940,8 @@
     - termux-tools
     - vulnerability-assessment
     - ghost-theme
-  stars: 719
-  pushedAt: '2026-01-11T20:12:12Z'
+  stars: 716
+  pushedAt: '2026-01-18T13:15:23Z'
   archived: false
   fork: false
   license: other
@@ -1021,7 +1029,7 @@
     - tailwindcss
     - tool-for-nextjs
     - ghost-theme
-  stars: 672
+  stars: 674
   pushedAt: '2025-12-10T10:39:54Z'
   archived: false
   fork: false
@@ -1089,8 +1097,8 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 632
-  pushedAt: '2025-12-18T00:06:05Z'
+  stars: 633
+  pushedAt: '2026-01-13T00:06:21Z'
   archived: false
   fork: false
   license: null
@@ -1165,8 +1173,8 @@
     - mcp-servers
     - model-context-protocol
     - ghost-theme
-  stars: 519
-  pushedAt: '2026-01-09T03:17:01Z'
+  stars: 524
+  pushedAt: '2026-01-16T21:30:46Z'
   archived: false
   fork: false
   license: mit
@@ -1202,7 +1210,7 @@
     - shodan
     - shodan-dorks
     - ghost-theme
-  stars: 480
+  stars: 478
   pushedAt: '2025-02-13T15:06:08Z'
   archived: false
   fork: false
@@ -1247,7 +1255,7 @@
     - webdeveloper
     - webdevelopment
     - ghost-theme
-  stars: 471
+  stars: 478
   pushedAt: '2025-02-03T12:08:00Z'
   archived: false
   fork: false
@@ -1292,7 +1300,7 @@
     - tools
     - ghost-theme
   stars: 451
-  pushedAt: '2025-12-29T15:21:33Z'
+  pushedAt: '2026-01-18T14:32:14Z'
   archived: false
   fork: false
   license: bsd-3-clause
@@ -1308,6 +1316,24 @@
     - toolkits
     - tools
   score: 28
+  confidence: low
+  notes: null
+  hidden: false
+- id: viktorbezdek/awesome-github-projects
+  name: awesome-github-projects
+  repo: viktorbezdek/awesome-github-projects
+  url: https://github.com/viktorbezdek/awesome-github-projects
+  description: Curated list of GitHub projects I starred over the years
+  category: Theme
+  tags:
+    - ghost-theme
+  stars: 415
+  pushedAt: '2026-01-18T00:54:42Z'
+  archived: false
+  fork: false
+  license: cc0-1.0
+  topics: []
+  score: 23
   confidence: low
   notes: null
   hidden: false
@@ -1332,7 +1358,7 @@
     - non-convex-optimization
     - phase-transitions
     - ghost-theme
-  stars: 383
+  stars: 386
   pushedAt: '2026-01-07T19:25:03Z'
   archived: false
   fork: false
@@ -1373,8 +1399,8 @@
     - netlify-template
     - static-site
     - ghost-theme
-  stars: 366
-  pushedAt: '2026-01-08T21:10:51Z'
+  stars: 367
+  pushedAt: '2026-01-19T06:38:02Z'
   archived: false
   fork: false
   license: mit
@@ -1389,26 +1415,8 @@
     - netlify
     - netlify-template
     - static-site
-  score: 70
+  score: 67
   confidence: medium
-  notes: null
-  hidden: false
-- id: viktorbezdek/awesome-github-projects
-  name: awesome-github-projects
-  repo: viktorbezdek/awesome-github-projects
-  url: https://github.com/viktorbezdek/awesome-github-projects
-  description: Curated list of GitHub projects I starred over the years
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 350
-  pushedAt: '2025-12-24T00:54:36Z'
-  archived: false
-  fork: false
-  license: cc0-1.0
-  topics: []
-  score: 23
-  confidence: low
   notes: null
   hidden: false
 - id: TryGhost/Dawn
@@ -1511,7 +1519,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 226
+  stars: 225
   pushedAt: '2025-03-30T03:22:21Z'
   archived: false
   fork: false
@@ -1534,7 +1542,7 @@
     - sdui
     - server-driven-ui
     - ghost-theme
-  stars: 216
+  stars: 218
   pushedAt: '2025-12-18T06:40:35Z'
   archived: false
   fork: false
@@ -1560,7 +1568,7 @@
     - stars
     - ghost-theme
   stars: 201
-  pushedAt: '2026-01-12T00:59:04Z'
+  pushedAt: '2026-01-18T00:58:28Z'
   archived: false
   fork: false
   license: null
@@ -1602,8 +1610,8 @@
     - awesome-list
     - list
     - ghost-theme
-  stars: 157
-  pushedAt: '2026-01-07T02:58:03Z'
+  stars: 156
+  pushedAt: '2026-01-16T02:59:10Z'
   archived: false
   fork: false
   license: null
@@ -1676,8 +1684,8 @@
     - servers
     - webapp
     - ghost-theme
-  stars: 127
-  pushedAt: '2026-01-06T06:23:20Z'
+  stars: 128
+  pushedAt: '2026-01-18T06:25:33Z'
   archived: false
   fork: false
   license: other
@@ -1748,8 +1756,8 @@
     - newsletter
     - publishing
     - ghost-theme
-  stars: 105
-  pushedAt: '2026-01-12T02:15:08Z'
+  stars: 106
+  pushedAt: '2026-01-19T03:58:40Z'
   archived: false
   fork: false
   license: mit
@@ -1806,7 +1814,7 @@
     - publishing
     - ghost-theme
   stars: 89
-  pushedAt: '2026-01-12T02:23:36Z'
+  pushedAt: '2026-01-19T03:37:44Z'
   archived: false
   fork: false
   license: mit
@@ -1979,7 +1987,7 @@
     - publishing
     - ghost-theme
   stars: 54
-  pushedAt: '2026-01-07T22:45:12Z'
+  pushedAt: '2026-01-13T09:17:38Z'
   archived: false
   fork: false
   license: mit
@@ -2073,6 +2081,38 @@
   confidence: high
   notes: null
   hidden: false
+- id: bunizao/Attegi
+  name: Attegi
+  repo: bunizao/Attegi
+  url: https://github.com/bunizao/Attegi
+  description: >-
+    Attegi is an elegant and dynamic Ghost theme, with a modern design, deep support for Ghost, and specially optimized
+    for mobile devices.
+  category: Theme
+  tags:
+    - blog
+    - blog-theme
+    - blogging
+    - ghost
+    - ghost-theme
+    - theme
+    - ghost-theme
+  stars: 21
+  pushedAt: '2026-01-15T15:17:59Z'
+  archived: false
+  fork: false
+  license: mit
+  topics:
+    - blog
+    - blog-theme
+    - blogging
+    - ghost
+    - ghost-theme
+    - theme
+  score: 90
+  confidence: high
+  notes: null
+  hidden: false
 - id: TryGhost/Bulletin
   name: Bulletin
   repo: TryGhost/Bulletin
@@ -2148,7 +2188,7 @@
     - theme
     - ghost-theme
   stars: 11
-  pushedAt: '2026-01-07T17:48:47Z'
+  pushedAt: '2026-01-18T18:30:29Z'
   archived: false
   fork: false
   license: mit
@@ -2354,7 +2394,7 @@
     - typescipt
     - ghost-theme
   stars: 3
-  pushedAt: '2026-01-11T21:59:51Z'
+  pushedAt: '2026-01-18T15:00:33Z'
   archived: false
   fork: false
   license: mit

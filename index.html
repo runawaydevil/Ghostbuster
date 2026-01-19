@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Updated: 2026-01-19 - Apply staleness to all items including Official -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,19 +84,29 @@
             }
         }
 
-        .github-button {
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .github-button, .stale-button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            margin-top: 0.5rem;
             padding: 0.6rem 1.2rem;
-            background-color: #24292e;
-            color: #ffffff;
             text-decoration: none;
             border-radius: 6px;
             font-weight: 500;
             font-size: 0.95rem;
             transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .github-button {
+            background-color: #24292e;
+            color: #ffffff;
         }
 
         .github-button:hover {
@@ -106,7 +115,18 @@
             transform: translateY(-1px);
         }
 
-        .github-button:active {
+        .stale-button {
+            background-color: #ff9800;
+            color: #ffffff;
+        }
+
+        .stale-button:hover {
+            background-color: #f57c00;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        .github-button:active, .stale-button:active {
             transform: translateY(0);
         }
 
@@ -123,6 +143,14 @@
 
             .github-button:hover {
                 background-color: #3a4148;
+            }
+
+            .stale-button {
+                background-color: #cc7700;
+            }
+
+            .stale-button:hover {
+                background-color: #e68900;
             }
         }
 
@@ -324,9 +352,18 @@
                 font-size: 1rem;
             }
 
-            .github-button {
+            .github-button, .stale-button {
                 font-size: 0.85rem;
                 padding: 0.6rem 1.2rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .github-button, .stale-button {
+                justify-content: center;
             }
 
             .updates-section {
@@ -341,12 +378,17 @@
             <img src="https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png" alt="Le Ghost Logo" class="logo">
             <h1>Le Ghost - Ghost CMS Themes & Tools Directory</h1>
             <p class="subtitle">Ghost CMS Themes & Tools Directory (2022–2026)</p>
-            <a href="https://github.com/runawaydevil/le-ghost" target="_blank" rel="noopener noreferrer" class="github-button">
-                <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-                </svg>
-                Star on GitHub
-            </a>
+            <div class="button-group">
+                <a href="stale.html" class="stale-button">
+                    ⏰ View Stale Items
+                </a>
+                <a href="https://github.com/runawaydevil/le-ghost" target="_blank" rel="noopener noreferrer" class="github-button">
+                    <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Star on GitHub
+                </a>
+            </div>
         </div>
     </header>
 
@@ -360,9 +402,9 @@
         <section class="updates-section">
             <h2>Updates</h2>
             <div class="update-item">
-                <div class="update-date">January 12, 2026 at 06:26 UTC</div>
+                <div class="update-date">January 19, 2026 at 06:43 UTC</div>
                 <div class="update-message">
-                    <p>Automated update: 1 new themes discovered, 141 themes updated.</p>
+                    <p>Automated update: 69 new themes discovered, 74 themes updated.</p>
                 </div>
             </div>
         </section>
@@ -390,17 +432,9 @@
                         </tr>
                         
                         <tr>
-                            <td>Casper (Official)</td>
-                            <td><a href="https://github.com/TryGhost/Casper" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Casper</a></td>
-                            <td>2100</td>
-                            <td>Official</td>
-                            <td>The default personal blogging theme for Ghost. Clean, minimal, and responsive.; Official Ghost theme - always featured</td>
-                        </tr>
-                        
-                        <tr>
                             <td>eleventy-starter-ghost</td>
                             <td><a href="https://github.com/TryGhost/eleventy-starter-ghost" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/eleventy-starter-ghost</a></td>
-                            <td>366</td>
+                            <td>367</td>
                             <td>Official</td>
                             <td>A starter template to build websites with Ghost & Eleventy</td>
                         </tr>
@@ -432,7 +466,7 @@
                         <tr>
                             <td>Source</td>
                             <td><a href="https://github.com/TryGhost/Source" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Source</a></td>
-                            <td>105</td>
+                            <td>106</td>
                             <td>Official</td>
                             <td>The default theme for Ghost</td>
                         </tr>
@@ -533,7 +567,7 @@
                         <tr>
                             <td>awesome-selfhosted</td>
                             <td><a href="https://github.com/awesome-selfhosted/awesome-selfhosted" target="_blank" rel="noopener noreferrer">https://github.com/awesome-selfhosted/awesome-selfhosted</a></td>
-                            <td>267728</td>
+                            <td>268895</td>
                             <td>Theme</td>
                             <td>A list of Free Software network services and web applications which can be hosted on your own servers</td>
                         </tr>
@@ -541,7 +575,7 @@
                         <tr>
                             <td>awesome-for-beginners</td>
                             <td><a href="https://github.com/MunGell/awesome-for-beginners" target="_blank" rel="noopener noreferrer">https://github.com/MunGell/awesome-for-beginners</a></td>
-                            <td>81572</td>
+                            <td>81799</td>
                             <td>Theme</td>
                             <td>A list of awesome beginners-friendly projects.</td>
                         </tr>
@@ -549,7 +583,7 @@
                         <tr>
                             <td>servers</td>
                             <td><a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer">https://github.com/modelcontextprotocol/servers</a></td>
-                            <td>75989</td>
+                            <td>76575</td>
                             <td>Theme</td>
                             <td>Model Context Protocol Servers</td>
                         </tr>
@@ -557,7 +591,7 @@
                         <tr>
                             <td>awesome-nodejs</td>
                             <td><a href="https://github.com/sindresorhus/awesome-nodejs" target="_blank" rel="noopener noreferrer">https://github.com/sindresorhus/awesome-nodejs</a></td>
-                            <td>64514</td>
+                            <td>64623</td>
                             <td>Theme</td>
                             <td>:zap: Delightful Node.js packages and resources</td>
                         </tr>
@@ -565,31 +599,23 @@
                         <tr>
                             <td>awesome-javascript</td>
                             <td><a href="https://github.com/sorrycc/awesome-javascript" target="_blank" rel="noopener noreferrer">https://github.com/sorrycc/awesome-javascript</a></td>
-                            <td>34860</td>
+                            <td>34874</td>
                             <td>Theme</td>
                             <td>🐢 A collection of awesome browser-side  JavaScript libraries, resources and shiny things.</td>
                         </tr>
                         
                         <tr>
-                            <td>awesome-actions</td>
-                            <td><a href="https://github.com/sdras/awesome-actions" target="_blank" rel="noopener noreferrer">https://github.com/sdras/awesome-actions</a></td>
-                            <td>27298</td>
-                            <td>Theme</td>
-                            <td>A curated list of awesome actions to use on GitHub</td>
-                        </tr>
-                        
-                        <tr>
                             <td>awesome-claude-code</td>
                             <td><a href="https://github.com/hesreallyhim/awesome-claude-code" target="_blank" rel="noopener noreferrer">https://github.com/hesreallyhim/awesome-claude-code</a></td>
-                            <td>19999</td>
+                            <td>20925</td>
                             <td>Theme</td>
-                            <td>A curated list of awesome commands, files, and workflows for Claude Code</td>
+                            <td>A curated list of awesome skills, hooks, slash-commands, agent orchestrators, applications, and plugins for Claude Code by Anthropic</td>
                         </tr>
                         
                         <tr>
                             <td>Self-Hosting-Guide</td>
                             <td><a href="https://github.com/mikeroyal/Self-Hosting-Guide" target="_blank" rel="noopener noreferrer">https://github.com/mikeroyal/Self-Hosting-Guide</a></td>
-                            <td>18287</td>
+                            <td>18349</td>
                             <td>Theme</td>
                             <td>Self-Hosting Guide. Learn all about  locally hosting (on premises & private web servers) and managing software applications by yourself or your organization. Including Cloud, LLMs, WireGuard, Automation, Home Assistant, and Networking.</td>
                         </tr>
@@ -597,7 +623,7 @@
                         <tr>
                             <td>PoC-in-GitHub</td>
                             <td><a href="https://github.com/nomi-sec/PoC-in-GitHub" target="_blank" rel="noopener noreferrer">https://github.com/nomi-sec/PoC-in-GitHub</a></td>
-                            <td>7473</td>
+                            <td>7484</td>
                             <td>Theme</td>
                             <td>📡 PoC auto collect from GitHub. ⚠️ Be careful Malware.</td>
                         </tr>
@@ -605,31 +631,15 @@
                         <tr>
                             <td>useful-java-links</td>
                             <td><a href="https://github.com/Vedenin/useful-java-links" target="_blank" rel="noopener noreferrer">https://github.com/Vedenin/useful-java-links</a></td>
-                            <td>6095</td>
+                            <td>6097</td>
                             <td>Theme</td>
                             <td>A list of useful Java frameworks, libraries, software and hello worlds examples</td>
                         </tr>
                         
                         <tr>
-                            <td>awesome-css</td>
-                            <td><a href="https://github.com/awesome-css-group/awesome-css" target="_blank" rel="noopener noreferrer">https://github.com/awesome-css-group/awesome-css</a></td>
-                            <td>5459</td>
-                            <td>Theme</td>
-                            <td>:art: A curated contents of amazing CSS :)</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>awesome-Face_Recognition</td>
-                            <td><a href="https://github.com/ChanChiChoi/awesome-Face_Recognition" target="_blank" rel="noopener noreferrer">https://github.com/ChanChiChoi/awesome-Face_Recognition</a></td>
-                            <td>4722</td>
-                            <td>Theme</td>
-                            <td>papers about Face Detection; Face Alignment; Face Recognition && Face Identification && Face Verification && Face Representation; Face Reconstruction; Face Tracking; Face Super-Resolution && Face Deblurring; Face Generation && Face Synthesis; Face Transfer; Face Anti-Spoofing; Face Retrieval;</td>
-                        </tr>
-                        
-                        <tr>
                             <td>awesome-static-generators</td>
                             <td><a href="https://github.com/myles/awesome-static-generators" target="_blank" rel="noopener noreferrer">https://github.com/myles/awesome-static-generators</a></td>
-                            <td>3588</td>
+                            <td>3600</td>
                             <td>Theme</td>
                             <td>A curated list of static web site generators.</td>
                         </tr>
@@ -637,7 +647,7 @@
                         <tr>
                             <td>discount-for-student-dev</td>
                             <td><a href="https://github.com/AchoArnold/discount-for-student-dev" target="_blank" rel="noopener noreferrer">https://github.com/AchoArnold/discount-for-student-dev</a></td>
-                            <td>3232</td>
+                            <td>3238</td>
                             <td>Theme</td>
                             <td>This is list of discounts on software (SaaS, PaaS, IaaS, etc.) and other offerings for developers who are students</td>
                         </tr>
@@ -645,7 +655,7 @@
                         <tr>
                             <td>awesome-cms</td>
                             <td><a href="https://github.com/postlight/awesome-cms" target="_blank" rel="noopener noreferrer">https://github.com/postlight/awesome-cms</a></td>
-                            <td>3092</td>
+                            <td>3095</td>
                             <td>Theme</td>
                             <td>📚 A collection of open and closed source Content Management Systems (CMS) for your perusal.</td>
                         </tr>
@@ -653,47 +663,39 @@
                         <tr>
                             <td>awesome-ChatGPT-repositories</td>
                             <td><a href="https://github.com/taishi-i/awesome-ChatGPT-repositories" target="_blank" rel="noopener noreferrer">https://github.com/taishi-i/awesome-ChatGPT-repositories</a></td>
-                            <td>2793</td>
+                            <td>2800</td>
                             <td>Theme</td>
                             <td>A curated list of resources dedicated to open source GitHub repositories related to ChatGPT and OpenAI API</td>
                         </tr>
                         
                         <tr>
-                            <td>awesome-go</td>
-                            <td><a href="https://github.com/uhub/awesome-go" target="_blank" rel="noopener noreferrer">https://github.com/uhub/awesome-go</a></td>
-                            <td>1735</td>
-                            <td>Theme</td>
-                            <td>A curated list of awesome Go frameworks, libraries and software.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>awesome-resources</td>
-                            <td><a href="https://github.com/lyfeyaj/awesome-resources" target="_blank" rel="noopener noreferrer">https://github.com/lyfeyaj/awesome-resources</a></td>
-                            <td>1729</td>
-                            <td>Theme</td>
-                            <td>Awesome resources for coding and learning: open source projects, websites, books e.g.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>GitHub-Chinese-Top-Charts</td>
-                            <td><a href="https://github.com/ChHsiching/GitHub-Chinese-Top-Charts" target="_blank" rel="noopener noreferrer">https://github.com/ChHsiching/GitHub-Chinese-Top-Charts</a></td>
-                            <td>1659</td>
-                            <td>Theme</td>
-                            <td>🇨🇳 GitHub中文排行榜，帮助你发现高分优秀中文项目。</td>
-                        </tr>
-                        
-                        <tr>
                             <td>n8nworkflows.xyz</td>
                             <td><a href="https://github.com/nusquama/n8nworkflows.xyz" target="_blank" rel="noopener noreferrer">https://github.com/nusquama/n8nworkflows.xyz</a></td>
-                            <td>1659</td>
+                            <td>1833</td>
                             <td>Theme</td>
                             <td>N8N Workflows Catalog</td>
                         </tr>
                         
                         <tr>
+                            <td>awesome-go</td>
+                            <td><a href="https://github.com/uhub/awesome-go" target="_blank" rel="noopener noreferrer">https://github.com/uhub/awesome-go</a></td>
+                            <td>1736</td>
+                            <td>Theme</td>
+                            <td>A curated list of awesome Go frameworks, libraries and software.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>GitHub-Chinese-Top-Charts</td>
+                            <td><a href="https://github.com/ChHsiching/GitHub-Chinese-Top-Charts" target="_blank" rel="noopener noreferrer">https://github.com/ChHsiching/GitHub-Chinese-Top-Charts</a></td>
+                            <td>1674</td>
+                            <td>Theme</td>
+                            <td>🇨🇳 GitHub中文排行榜，帮助你发现高分优秀中文项目。</td>
+                        </tr>
+                        
+                        <tr>
                             <td>awesome-homelab</td>
                             <td><a href="https://github.com/miantiao-me/awesome-homelab" target="_blank" rel="noopener noreferrer">https://github.com/miantiao-me/awesome-homelab</a></td>
-                            <td>1480</td>
+                            <td>1497</td>
                             <td>Theme</td>
                             <td>Curating Top Open Source Apps for Homelab Enthusiasts</td>
                         </tr>
@@ -709,39 +711,23 @@
                         <tr>
                             <td>bramses-highly-opinionated-vault-2023</td>
                             <td><a href="https://github.com/bramses/bramses-highly-opinionated-vault-2023" target="_blank" rel="noopener noreferrer">https://github.com/bramses/bramses-highly-opinionated-vault-2023</a></td>
-                            <td>1170</td>
+                            <td>1174</td>
                             <td>Theme</td>
                             <td>A highly opinionated, fully featured Obsidian vault that can get you from Zero to Zettelkasten lickety split!</td>
                         </tr>
                         
                         <tr>
-                            <td>awesome-appwrite</td>
-                            <td><a href="https://github.com/appwrite/awesome-appwrite" target="_blank" rel="noopener noreferrer">https://github.com/appwrite/awesome-appwrite</a></td>
-                            <td>1065</td>
-                            <td>Theme</td>
-                            <td>Carefully curated list of awesome Appwrite resources 💪</td>
-                        </tr>
-                        
-                        <tr>
                             <td>awesome-javascript</td>
                             <td><a href="https://github.com/uhub/awesome-javascript" target="_blank" rel="noopener noreferrer">https://github.com/uhub/awesome-javascript</a></td>
-                            <td>1013</td>
+                            <td>1017</td>
                             <td>Theme</td>
                             <td>A curated list of awesome JavaScript frameworks, libraries and software.</td>
                         </tr>
                         
                         <tr>
-                            <td>awesome-gatsby</td>
-                            <td><a href="https://github.com/prayash/awesome-gatsby" target="_blank" rel="noopener noreferrer">https://github.com/prayash/awesome-gatsby</a></td>
-                            <td>1008</td>
-                            <td>Theme</td>
-                            <td>⚛️ 📄 🚀 Awesome list for the mighty Gatsby.js, a blazing fast React static site generator.</td>
-                        </tr>
-                        
-                        <tr>
                             <td>Mobirise</td>
                             <td><a href="https://github.com/Mobirise/Mobirise" target="_blank" rel="noopener noreferrer">https://github.com/Mobirise/Mobirise</a></td>
-                            <td>940</td>
+                            <td>942</td>
                             <td>Theme</td>
                             <td>AI Website Builder, Open Source, Bootstrap 5</td>
                         </tr>
@@ -749,7 +735,7 @@
                         <tr>
                             <td>awesome-astro</td>
                             <td><a href="https://github.com/one-aalam/awesome-astro" target="_blank" rel="noopener noreferrer">https://github.com/one-aalam/awesome-astro</a></td>
-                            <td>834</td>
+                            <td>835</td>
                             <td>Theme</td>
                             <td>Curated resources on building sites with Astro, a brand new way to build static and server rendered sites, with cross-framework components, styling and reactive store support.</td>
                         </tr>
@@ -771,27 +757,11 @@
                         </tr>
                         
                         <tr>
-                            <td>Mapache</td>
-                            <td><a href="https://github.com/godofredoninja/Mapache" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/Mapache</a></td>
-                            <td>638</td>
-                            <td>Theme</td>
-                            <td>You can use the theme Mapache for ghost in: Blog - Magazine - Landing page - Personal page -  Photographers. and in many other things; Excellent community theme with great documentation and support</td>
-                        </tr>
-                        
-                        <tr>
                             <td>awesome-css</td>
                             <td><a href="https://github.com/uhub/awesome-css" target="_blank" rel="noopener noreferrer">https://github.com/uhub/awesome-css</a></td>
-                            <td>632</td>
+                            <td>633</td>
                             <td>Theme</td>
                             <td>A curated list of awesome CSS frameworks, libraries and software.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>crisp</td>
-                            <td><a href="https://github.com/kathyqian/crisp" target="_blank" rel="noopener noreferrer">https://github.com/kathyqian/crisp</a></td>
-                            <td>626</td>
-                            <td>Theme</td>
-                            <td>A minimalist, responsive, and open-source two-column theme for the Ghost publishing platform</td>
                         </tr>
                         
                         <tr>
@@ -803,14 +773,6 @@
                         </tr>
                         
                         <tr>
-                            <td>categorized-raycast-extensions</td>
-                            <td><a href="https://github.com/marekbrze/categorized-raycast-extensions" target="_blank" rel="noopener noreferrer">https://github.com/marekbrze/categorized-raycast-extensions</a></td>
-                            <td>593</td>
-                            <td>Theme</td>
-                            <td>Easily find Raycast Extensions!🚀</td>
-                        </tr>
-                        
-                        <tr>
                             <td>ui-builder</td>
                             <td><a href="https://github.com/olliethedev/ui-builder" target="_blank" rel="noopener noreferrer">https://github.com/olliethedev/ui-builder</a></td>
                             <td>566</td>
@@ -819,83 +781,35 @@
                         </tr>
                         
                         <tr>
-                            <td>categorized-obsidian-plugins</td>
-                            <td><a href="https://github.com/marekbrze/categorized-obsidian-plugins" target="_blank" rel="noopener noreferrer">https://github.com/marekbrze/categorized-obsidian-plugins</a></td>
-                            <td>524</td>
-                            <td>Theme</td>
-                            <td>Easily find Obsidian plugins!🚀</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>awesome-selfhosted-cn</td>
-                            <td><a href="https://github.com/haiiiiiyun/awesome-selfhosted-cn" target="_blank" rel="noopener noreferrer">https://github.com/haiiiiiyun/awesome-selfhosted-cn</a></td>
-                            <td>522</td>
-                            <td>Theme</td>
-                            <td>可以在本地搭建的网络服务和 Web 应用列表。</td>
-                        </tr>
-                        
-                        <tr>
                             <td>awesome-mcp-servers</td>
                             <td><a href="https://github.com/TensorBlock/awesome-mcp-servers" target="_blank" rel="noopener noreferrer">https://github.com/TensorBlock/awesome-mcp-servers</a></td>
-                            <td>519</td>
+                            <td>524</td>
                             <td>Theme</td>
                             <td>A comprehensive collection of Model Context Protocol (MCP) servers</td>
                         </tr>
                         
                         <tr>
-                            <td>vno</td>
-                            <td><a href="https://github.com/onevcat/vno" target="_blank" rel="noopener noreferrer">https://github.com/onevcat/vno</a></td>
-                            <td>515</td>
-                            <td>Theme</td>
-                            <td>Vno, just another ghost theme</td>
-                        </tr>
-                        
-                        <tr>
                             <td>shodan-dorks</td>
                             <td><a href="https://github.com/nullfuzz-pentest/shodan-dorks" target="_blank" rel="noopener noreferrer">https://github.com/nullfuzz-pentest/shodan-dorks</a></td>
-                            <td>480</td>
+                            <td>478</td>
                             <td>Theme</td>
                             <td>Shodan Dorks</td>
                         </tr>
                         
                         <tr>
-                            <td>awesome-nodejs-cn</td>
-                            <td><a href="https://github.com/jobbole/awesome-nodejs-cn" target="_blank" rel="noopener noreferrer">https://github.com/jobbole/awesome-nodejs-cn</a></td>
-                            <td>451</td>
-                            <td>Theme</td>
-                            <td>Node.js 资源大全中文版，内容包括：命令行工具、日志、调试、HTTP、构建工具、文件系统、模板、Web 框架、流程控制、文本、图片和数据校验等。由「开源前哨」和「前端大全」微信公号团队维护更新。</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>awesome-deep-phenomena</td>
-                            <td><a href="https://github.com/MinghuiChen43/awesome-deep-phenomena" target="_blank" rel="noopener noreferrer">https://github.com/MinghuiChen43/awesome-deep-phenomena</a></td>
-                            <td>383</td>
-                            <td>Theme</td>
-                            <td>A curated list of papers of interesting empirical study and insight on deep learning. Continually updating...</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>awesome-nodejs-cn</td>
-                            <td><a href="https://github.com/gamedilong/awesome-nodejs-cn" target="_blank" rel="noopener noreferrer">https://github.com/gamedilong/awesome-nodejs-cn</a></td>
-                            <td>365</td>
-                            <td>Theme</td>
-                            <td>nodejs优秀资源集</td>
-                        </tr>
-                        
-                        <tr>
                             <td>awesome-github-projects</td>
                             <td><a href="https://github.com/viktorbezdek/awesome-github-projects" target="_blank" rel="noopener noreferrer">https://github.com/viktorbezdek/awesome-github-projects</a></td>
-                            <td>350</td>
+                            <td>415</td>
                             <td>Theme</td>
                             <td>Curated list of GitHub projects I starred over the years</td>
                         </tr>
                         
                         <tr>
-                            <td>F2E-Tutorial-Collect</td>
-                            <td><a href="https://github.com/OXOYO/F2E-Tutorial-Collect" target="_blank" rel="noopener noreferrer">https://github.com/OXOYO/F2E-Tutorial-Collect</a></td>
-                            <td>313</td>
+                            <td>awesome-deep-phenomena</td>
+                            <td><a href="https://github.com/MinghuiChen43/awesome-deep-phenomena" target="_blank" rel="noopener noreferrer">https://github.com/MinghuiChen43/awesome-deep-phenomena</a></td>
+                            <td>386</td>
                             <td>Theme</td>
-                            <td>web全栈书签收藏整理。</td>
+                            <td>A curated list of papers of interesting empirical study and insight on deep learning. Continually updating...</td>
                         </tr>
                         
                         <tr>
@@ -907,49 +821,9 @@
                         </tr>
                         
                         <tr>
-                            <td>made-in-taiwan</td>
-                            <td><a href="https://github.com/hueitan/made-in-taiwan" target="_blank" rel="noopener noreferrer">https://github.com/hueitan/made-in-taiwan</a></td>
-                            <td>292</td>
-                            <td>Theme</td>
-                            <td>[NEED SUPPORT] 🇹🇼 (Taiwan #1) A list of neat projects made in Taiwan (MIT)</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Fizzy-Theme</td>
-                            <td><a href="https://github.com/huangyuzhang/Fizzy-Theme" target="_blank" rel="noopener noreferrer">https://github.com/huangyuzhang/Fizzy-Theme</a></td>
-                            <td>288</td>
-                            <td>Theme</td>
-                            <td>🥤A tasty blogging theme for Ghost.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>DPlatform-Shell</td>
-                            <td><a href="https://github.com/DFabric/DPlatform-Shell" target="_blank" rel="noopener noreferrer">https://github.com/DFabric/DPlatform-Shell</a></td>
-                            <td>274</td>
-                            <td>Theme</td>
-                            <td>Deploy self-hosted apps easily: simple, bloat-free, independent installation</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Awesome-Pentest</td>
-                            <td><a href="https://github.com/Muhammd/Awesome-Pentest" target="_blank" rel="noopener noreferrer">https://github.com/Muhammd/Awesome-Pentest</a></td>
-                            <td>254</td>
-                            <td>Theme</td>
-                            <td>Awesome Penetration Testing   A collection of awesome penetration testing resources</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>awesome-nodejs-cn</td>
-                            <td><a href="https://github.com/Pines-Cheng/awesome-nodejs-cn" target="_blank" rel="noopener noreferrer">https://github.com/Pines-Cheng/awesome-nodejs-cn</a></td>
-                            <td>236</td>
-                            <td>Theme</td>
-                            <td>Nodejs 资源大全中文版，正在翻译中。。。</td>
-                        </tr>
-                        
-                        <tr>
                             <td>awesome-mcp-servers</td>
                             <td><a href="https://github.com/PipedreamHQ/awesome-mcp-servers" target="_blank" rel="noopener noreferrer">https://github.com/PipedreamHQ/awesome-mcp-servers</a></td>
-                            <td>226</td>
+                            <td>225</td>
                             <td>Theme</td>
                             <td>A collection of MCP servers</td>
                         </tr>
@@ -957,7 +831,7 @@
                         <tr>
                             <td>composify</td>
                             <td><a href="https://github.com/composify-js/composify" target="_blank" rel="noopener noreferrer">https://github.com/composify-js/composify</a></td>
-                            <td>216</td>
+                            <td>218</td>
                             <td>Theme</td>
                             <td>Server Driven UI made easy</td>
                         </tr>
@@ -979,139 +853,19 @@
                         </tr>
                         
                         <tr>
-                            <td>GitHub-Chinese-Top-Charts</td>
-                            <td><a href="https://github.com/pinkie-ljz/GitHub-Chinese-Top-Charts" target="_blank" rel="noopener noreferrer">https://github.com/pinkie-ljz/GitHub-Chinese-Top-Charts</a></td>
-                            <td>170</td>
-                            <td>Theme</td>
-                            <td>null</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>TreehouseShow</td>
-                            <td><a href="https://github.com/MHM5000/TreehouseShow" target="_blank" rel="noopener noreferrer">https://github.com/MHM5000/TreehouseShow</a></td>
-                            <td>167</td>
-                            <td>Theme</td>
-                            <td>TeamTreeHouse's Weekly show notes</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>PHP-Webshells-Collection</td>
-                            <td><a href="https://github.com/x-o-r-r-o/PHP-Webshells-Collection" target="_blank" rel="noopener noreferrer">https://github.com/x-o-r-r-o/PHP-Webshells-Collection</a></td>
-                            <td>165</td>
-                            <td>Theme</td>
-                            <td>Most Wanted Private and Public PHP Web Shells Can Be Downloaded Here. (Educational Purpose Only)</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>ghost-theme-Moegi</td>
-                            <td><a href="https://github.com/moegi-design/ghost-theme-Moegi" target="_blank" rel="noopener noreferrer">https://github.com/moegi-design/ghost-theme-Moegi</a></td>
-                            <td>161</td>
-                            <td>Theme</td>
-                            <td>An elegant & fresh ghost theme.</td>
-                        </tr>
-                        
-                        <tr>
                             <td>awesome-repositories</td>
                             <td><a href="https://github.com/eagleusb/awesome-repositories" target="_blank" rel="noopener noreferrer">https://github.com/eagleusb/awesome-repositories</a></td>
-                            <td>157</td>
+                            <td>156</td>
                             <td>Theme</td>
                             <td>Personal representation of my 4k github repositories stars.</td>
                         </tr>
                         
                         <tr>
-                            <td>Portfolio-Free-Ghost-Theme</td>
-                            <td><a href="https://github.com/GavickPro/Portfolio-Free-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/GavickPro/Portfolio-Free-Ghost-Theme</a></td>
-                            <td>127</td>
-                            <td>Theme</td>
-                            <td>Simple portfolio theme for Ghost </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>CoderGhostTheme</td>
-                            <td><a href="https://github.com/mbejda/CoderGhostTheme" target="_blank" rel="noopener noreferrer">https://github.com/mbejda/CoderGhostTheme</a></td>
-                            <td>127</td>
-                            <td>Theme</td>
-                            <td>Coder Ghost Theme for Showcasing Projects</td>
-                        </tr>
-                        
-                        <tr>
                             <td>fucking-awesome-selfhosted</td>
                             <td><a href="https://github.com/Correia-jpv/fucking-awesome-selfhosted" target="_blank" rel="noopener noreferrer">https://github.com/Correia-jpv/fucking-awesome-selfhosted</a></td>
-                            <td>127</td>
+                            <td>128</td>
                             <td>Theme</td>
                             <td>A list of Free Software network services and web applications which can be hosted on your own servers. With repository stars⭐ and forks🍴</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Perfetta-Free-Ghost-Theme</td>
-                            <td><a href="https://github.com/GavickPro/Perfetta-Free-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/GavickPro/Perfetta-Free-Ghost-Theme</a></td>
-                            <td>70</td>
-                            <td>Theme</td>
-                            <td>Simple restaurant blog theme for Ghost</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>FauxGhost</td>
-                            <td><a href="https://github.com/jimbobbennett/FauxGhost" target="_blank" rel="noopener noreferrer">https://github.com/jimbobbennett/FauxGhost</a></td>
-                            <td>54</td>
-                            <td>Theme</td>
-                            <td>FauxGhost Ghost blog theme</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Paway</td>
-                            <td><a href="https://github.com/godofredoninja/Paway" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/Paway</a></td>
-                            <td>53</td>
-                            <td>Theme</td>
-                            <td>Personal photographer blog theme for Ghost. Beautiful, minimal and sensitive.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>buster</td>
-                            <td><a href="https://github.com/daanbeverdam/buster" target="_blank" rel="noopener noreferrer">https://github.com/daanbeverdam/buster</a></td>
-                            <td>49</td>
-                            <td>Theme</td>
-                            <td>A responsive, clean card theme for the Ghost blogging platform.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>biron-ghost-theme</td>
-                            <td><a href="https://github.com/brightthemes/biron-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/brightthemes/biron-ghost-theme</a></td>
-                            <td>47</td>
-                            <td>Theme</td>
-                            <td>Biron Free Ghost Theme </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Orre-Theme-for-Ghost</td>
-                            <td><a href="https://github.com/lacke/Orre-Theme-for-Ghost" target="_blank" rel="noopener noreferrer">https://github.com/lacke/Orre-Theme-for-Ghost</a></td>
-                            <td>45</td>
-                            <td>Theme</td>
-                            <td>null</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Solarized Dark</td>
-                            <td><a href="https://github.com/JollyGrin/solarized-dark-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/JollyGrin/solarized-dark-ghost-theme</a></td>
-                            <td>45</td>
-                            <td>Theme</td>
-                            <td>A dark theme for Ghost based on the Solarized color scheme.; Good for developer blogs, needs more maintenance</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>aesto</td>
-                            <td><a href="https://github.com/Inoryum-Ltd/aesto" target="_blank" rel="noopener noreferrer">https://github.com/Inoryum-Ltd/aesto</a></td>
-                            <td>43</td>
-                            <td>Theme</td>
-                            <td>Free Ghost theme with membership support. Minimal content focused design with multi author supported. </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>MinimalisticBlogTheme</td>
-                            <td><a href="https://github.com/rriegger/MinimalisticBlogTheme" target="_blank" rel="noopener noreferrer">https://github.com/rriegger/MinimalisticBlogTheme</a></td>
-                            <td>39</td>
-                            <td>Theme</td>
-                            <td>Responsive Ghost CMS Blog Theme</td>
                         </tr>
                         
                         <tr>
@@ -1123,30 +877,6 @@
                         </tr>
                         
                         <tr>
-                            <td>GhostSolo</td>
-                            <td><a href="https://github.com/lukencode/GhostSolo" target="_blank" rel="noopener noreferrer">https://github.com/lukencode/GhostSolo</a></td>
-                            <td>27</td>
-                            <td>Theme</td>
-                            <td>A Ghost theme for solo bloggers.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>DayAndNight</td>
-                            <td><a href="https://github.com/semeano/DayAndNight" target="_blank" rel="noopener noreferrer">https://github.com/semeano/DayAndNight</a></td>
-                            <td>25</td>
-                            <td>Theme</td>
-                            <td>Simple responsive theme for Ghost</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Asgar</td>
-                            <td><a href="https://github.com/stefanbc/Asgar" target="_blank" rel="noopener noreferrer">https://github.com/stefanbc/Asgar</a></td>
-                            <td>24</td>
-                            <td>Theme</td>
-                            <td>A two-column, clean and minimalist theme for @TryGhost</td>
-                        </tr>
-                        
-                        <tr>
                             <td>Scriptor-Ghost-Theme</td>
                             <td><a href="https://github.com/JustGoodThemes/Scriptor-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/JustGoodThemes/Scriptor-Ghost-Theme</a></td>
                             <td>23</td>
@@ -1155,43 +885,11 @@
                         </tr>
                         
                         <tr>
-                            <td>donnie-dark</td>
-                            <td><a href="https://github.com/kulttuuri/donnie-dark" target="_blank" rel="noopener noreferrer">https://github.com/kulttuuri/donnie-dark</a></td>
-                            <td>20</td>
+                            <td>Attegi</td>
+                            <td><a href="https://github.com/bunizao/Attegi" target="_blank" rel="noopener noreferrer">https://github.com/bunizao/Attegi</a></td>
+                            <td>21</td>
                             <td>Theme</td>
-                            <td>Donnie Dark is dark, responsive, customizable theme for Ghost 0.5+ blogs. Name of the theme is hats-off for a great movie.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>mno</td>
-                            <td><a href="https://github.com/mythsman/mno" target="_blank" rel="noopener noreferrer">https://github.com/mythsman/mno</a></td>
-                            <td>18</td>
-                            <td>Theme</td>
-                            <td>Mno, just another ghost theme</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>spooky-slate</td>
-                            <td><a href="https://github.com/meowomancer/spooky-slate" target="_blank" rel="noopener noreferrer">https://github.com/meowomancer/spooky-slate</a></td>
-                            <td>18</td>
-                            <td>Theme</td>
-                            <td>A basic theme for the Ghost blogging platform</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>so-clean</td>
-                            <td><a href="https://github.com/Hashable/so-clean" target="_blank" rel="noopener noreferrer">https://github.com/Hashable/so-clean</a></td>
-                            <td>18</td>
-                            <td>Theme</td>
-                            <td>A clean and simple theme for Ghost blogging platform</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>sheet</td>
-                            <td><a href="https://github.com/brianokeefe/sheet" target="_blank" rel="noopener noreferrer">https://github.com/brianokeefe/sheet</a></td>
-                            <td>17</td>
-                            <td>Theme</td>
-                            <td>Sheet is a clean, responsive theme for Ghost v1.x.x blogs.</td>
+                            <td>Attegi is an elegant and dynamic Ghost theme, with a modern design, deep support for Ghost, and specially optimized for mobile devices.</td>
                         </tr>
                         
                         <tr>
@@ -1203,38 +901,6 @@
                         </tr>
                         
                         <tr>
-                            <td>wonderland_ghost_theme</td>
-                            <td><a href="https://github.com/dyzdyz010/wonderland_ghost_theme" target="_blank" rel="noopener noreferrer">https://github.com/dyzdyz010/wonderland_ghost_theme</a></td>
-                            <td>14</td>
-                            <td>Theme</td>
-                            <td>Wonderland - A simple, clean theme for Ghost. https://duyizhuo.com</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>TrueStyle</td>
-                            <td><a href="https://github.com/Zazama/TrueStyle" target="_blank" rel="noopener noreferrer">https://github.com/Zazama/TrueStyle</a></td>
-                            <td>13</td>
-                            <td>Theme</td>
-                            <td>A bootstrap theme for Ghost</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>bees</td>
-                            <td><a href="https://github.com/jyotirmaybarman/bees" target="_blank" rel="noopener noreferrer">https://github.com/jyotirmaybarman/bees</a></td>
-                            <td>12</td>
-                            <td>Theme</td>
-                            <td>A website using this theme -</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Callisto-Ghost-Theme</td>
-                            <td><a href="https://github.com/jckyeh/Callisto-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/jckyeh/Callisto-Ghost-Theme</a></td>
-                            <td>12</td>
-                            <td>Theme</td>
-                            <td>Ghost theme for a minimal personal blog and portfolio</td>
-                        </tr>
-                        
-                        <tr>
                             <td>santhosh-veer-blog</td>
                             <td><a href="https://github.com/mskian/santhosh-veer-blog" target="_blank" rel="noopener noreferrer">https://github.com/mskian/santhosh-veer-blog</a></td>
                             <td>11</td>
@@ -1243,91 +909,11 @@
                         </tr>
                         
                         <tr>
-                            <td>Ruby-sales</td>
-                            <td><a href="https://github.com/cathysarisky/Ruby-sales" target="_blank" rel="noopener noreferrer">https://github.com/cathysarisky/Ruby-sales</a></td>
-                            <td>11</td>
-                            <td>Theme</td>
-                            <td>A Ghost theme with Stripe sales add-on</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>spook</td>
-                            <td><a href="https://github.com/calebanthony/spook" target="_blank" rel="noopener noreferrer">https://github.com/calebanthony/spook</a></td>
-                            <td>9</td>
-                            <td>Theme</td>
-                            <td>Base Ghost theme built on Bootstrap 4 with Font Awesome</td>
-                        </tr>
-                        
-                        <tr>
                             <td>sredevopsorg-ghost-theme</td>
                             <td><a href="https://github.com/sredevopsorg/sredevopsorg-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/sredevopsorg/sredevopsorg-ghost-theme</a></td>
                             <td>8</td>
                             <td>Theme</td>
                             <td>A Ghost v5 Theme made for SREDevOps.org based on Tailwind CSS with sidebar navigation and dark theme by default.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>triangle</td>
-                            <td><a href="https://github.com/HaeckDesign/triangle" target="_blank" rel="noopener noreferrer">https://github.com/HaeckDesign/triangle</a></td>
-                            <td>7</td>
-                            <td>Theme</td>
-                            <td>Triangle Ghost Theme is fully responsive blog styled Ghost theme built w/ UIKit and a few clever features.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>ghost-theme-1ite</td>
-                            <td><a href="https://github.com/uvexz/ghost-theme-1ite" target="_blank" rel="noopener noreferrer">https://github.com/uvexz/ghost-theme-1ite</a></td>
-                            <td>6</td>
-                            <td>Theme</td>
-                            <td>A lite theme for Ghost</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>WasabiBlog</td>
-                            <td><a href="https://github.com/zkSNACKs/WasabiBlog" target="_blank" rel="noopener noreferrer">https://github.com/zkSNACKs/WasabiBlog</a></td>
-                            <td>5</td>
-                            <td>Theme</td>
-                            <td>null</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>ghost-iffy</td>
-                            <td><a href="https://github.com/InternetFreedomFoundation/ghost-iffy" target="_blank" rel="noopener noreferrer">https://github.com/InternetFreedomFoundation/ghost-iffy</a></td>
-                            <td>5</td>
-                            <td>Theme</td>
-                            <td>Ghost theme for the Internet Freedom Foundation site</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>storyteller</td>
-                            <td><a href="https://github.com/solaymanhaider/storyteller" target="_blank" rel="noopener noreferrer">https://github.com/solaymanhaider/storyteller</a></td>
-                            <td>5</td>
-                            <td>Theme</td>
-                            <td>A free ghost theme for story writers. Responsive, Modern, Simple, and Auto Dark Mode.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>verdin</td>
-                            <td><a href="https://github.com/IrisThemes/verdin" target="_blank" rel="noopener noreferrer">https://github.com/IrisThemes/verdin</a></td>
-                            <td>5</td>
-                            <td>Theme</td>
-                            <td>Verdin - A Personal Ghost Blog Theme @ https://iristhemes.com/themes/verdin</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Ingia</td>
-                            <td><a href="https://github.com/stefanbc/Ingia" target="_blank" rel="noopener noreferrer">https://github.com/stefanbc/Ingia</a></td>
-                            <td>5</td>
-                            <td>Theme</td>
-                            <td>A free, open source theme for Ghost</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>papillon-ghost</td>
-                            <td><a href="https://github.com/PapillonApp/papillon-ghost" target="_blank" rel="noopener noreferrer">https://github.com/PapillonApp/papillon-ghost</a></td>
-                            <td>5</td>
-                            <td>Theme</td>
-                            <td>Ghost blogging theme for the articles of the open-source Papillon project.</td>
                         </tr>
                         
                         <tr>
@@ -1344,46 +930,6 @@
                             <td>4</td>
                             <td>Theme</td>
                             <td>Dawn theme for Ghost, adapted for Advisory SG.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>east</td>
-                            <td><a href="https://github.com/aspirethemes/east" target="_blank" rel="noopener noreferrer">https://github.com/aspirethemes/east</a></td>
-                            <td>4</td>
-                            <td>Theme</td>
-                            <td>null</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>ghost-theme-ghoststead</td>
-                            <td><a href="https://github.com/ghoststead/ghost-theme-ghoststead" target="_blank" rel="noopener noreferrer">https://github.com/ghoststead/ghost-theme-ghoststead</a></td>
-                            <td>3</td>
-                            <td>Theme</td>
-                            <td>Default Ghost theme for GhostStead sites.  Built using Bootstrap 5.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>ghali</td>
-                            <td><a href="https://github.com/terrighost/ghali" target="_blank" rel="noopener noreferrer">https://github.com/terrighost/ghali</a></td>
-                            <td>3</td>
-                            <td>Theme</td>
-                            <td>Free Ghost v3 theme for fashion, travel and style blogs</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>maxima</td>
-                            <td><a href="https://github.com/aspirethemes/maxima" target="_blank" rel="noopener noreferrer">https://github.com/aspirethemes/maxima</a></td>
-                            <td>3</td>
-                            <td>Theme</td>
-                            <td>null</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>aspire</td>
-                            <td><a href="https://github.com/aspirethemes/aspire" target="_blank" rel="noopener noreferrer">https://github.com/aspirethemes/aspire</a></td>
-                            <td>3</td>
-                            <td>Theme</td>
-                            <td>null</td>
                         </tr>
                         
                         <tr>
@@ -1410,7 +956,7 @@
                         <tr>
                             <td>GitHubDaily</td>
                             <td><a href="https://github.com/GitHubDaily/GitHubDaily" target="_blank" rel="noopener noreferrer">https://github.com/GitHubDaily/GitHubDaily</a></td>
-                            <td>44381</td>
+                            <td>44575</td>
                             <td>Tool</td>
                             <td>坚持分享 GitHub 上高质量、有趣实用的开源技术教程、开发者工具、编程网站、技术资讯。A list cool, interesting projects of GitHub.</td>
                         </tr>
@@ -1418,7 +964,7 @@
                         <tr>
                             <td>awesome-pentest</td>
                             <td><a href="https://github.com/enaqx/awesome-pentest" target="_blank" rel="noopener noreferrer">https://github.com/enaqx/awesome-pentest</a></td>
-                            <td>24937</td>
+                            <td>24989</td>
                             <td>Tool</td>
                             <td>A collection of awesome penetration testing resources, tools and other shiny things</td>
                         </tr>
@@ -1426,31 +972,15 @@
                         <tr>
                             <td>awesome-hacking</td>
                             <td><a href="https://github.com/jekil/awesome-hacking" target="_blank" rel="noopener noreferrer">https://github.com/jekil/awesome-hacking</a></td>
-                            <td>3522</td>
+                            <td>3528</td>
                             <td>Tool</td>
                             <td>Awesome hacking is an awesome collection of hacking tools.</td>
                         </tr>
                         
                         <tr>
-                            <td>Penetration-Testing</td>
-                            <td><a href="https://github.com/wtsxDev/Penetration-Testing" target="_blank" rel="noopener noreferrer">https://github.com/wtsxDev/Penetration-Testing</a></td>
-                            <td>2693</td>
-                            <td>Tool</td>
-                            <td>List of awesome penetration testing resources, tools and other shiny things</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>awesome-research</td>
-                            <td><a href="https://github.com/emptymalei/awesome-research" target="_blank" rel="noopener noreferrer">https://github.com/emptymalei/awesome-research</a></td>
-                            <td>2489</td>
-                            <td>Tool</td>
-                            <td>:seedling: a curated list of tools to help you with your research/life; I built a front end around this repo, please use the link below [This repo is deprecated. Instead, I maintain all the contents using the following website]</td>
-                        </tr>
-                        
-                        <tr>
                             <td>Windows-11-Guide</td>
                             <td><a href="https://github.com/mikeroyal/Windows-11-Guide" target="_blank" rel="noopener noreferrer">https://github.com/mikeroyal/Windows-11-Guide</a></td>
-                            <td>1703</td>
+                            <td>1708</td>
                             <td>Tool</td>
                             <td>Windows 10/11 Guide. Including Windows Security tools, Encryption, Nextcloud, Graphics, Gaming, Virtualization, Windows Subsystem for Linux (WSL 2), Software Apps, and Resources. </td>
                         </tr>
@@ -1458,7 +988,7 @@
                         <tr>
                             <td>awesome-hacking-lists</td>
                             <td><a href="https://github.com/taielab/awesome-hacking-lists" target="_blank" rel="noopener noreferrer">https://github.com/taielab/awesome-hacking-lists</a></td>
-                            <td>1264</td>
+                            <td>1267</td>
                             <td>Tool</td>
                             <td>A curated collection of top-tier penetration testing tools and productivity utilities across multiple domains. Join us to explore, contribute, and enhance your hacking toolkit!</td>
                         </tr>
@@ -1466,7 +996,7 @@
                         <tr>
                             <td>made-in-nigeria</td>
                             <td><a href="https://github.com/acekyd/made-in-nigeria" target="_blank" rel="noopener noreferrer">https://github.com/acekyd/made-in-nigeria</a></td>
-                            <td>1086</td>
+                            <td>1087</td>
                             <td>Tool</td>
                             <td>Here is a curation of awesome tools built by Nigerians that can be used by anybody and from anywhere in the world.</td>
                         </tr>
@@ -1474,7 +1004,7 @@
                         <tr>
                             <td>DedSec</td>
                             <td><a href="https://github.com/dedsec1121fk/DedSec" target="_blank" rel="noopener noreferrer">https://github.com/dedsec1121fk/DedSec</a></td>
-                            <td>719</td>
+                            <td>716</td>
                             <td>Tool</td>
                             <td>Unofficial DedSec Project GitHub Repository</td>
                         </tr>
@@ -1482,7 +1012,7 @@
                         <tr>
                             <td>awesome-nextjs</td>
                             <td><a href="https://github.com/officialrajdeepsingh/awesome-nextjs" target="_blank" rel="noopener noreferrer">https://github.com/officialrajdeepsingh/awesome-nextjs</a></td>
-                            <td>672</td>
+                            <td>674</td>
                             <td>Tool</td>
                             <td>A curated list of awesome Nextjs-based libraries that help build small and large-scale applications with next.js.</td>
                         </tr>
@@ -1490,7 +1020,7 @@
                         <tr>
                             <td>best-chrome-extensions</td>
                             <td><a href="https://github.com/themeselection/best-chrome-extensions" target="_blank" rel="noopener noreferrer">https://github.com/themeselection/best-chrome-extensions</a></td>
-                            <td>471</td>
+                            <td>478</td>
                             <td>Tool</td>
                             <td>A curated list of Best Awesome Chrome Extensions to boost your productivity in your Browsers</td>
                         </tr>
@@ -1501,22 +1031,6 @@
                             <td>451</td>
                             <td>Tool</td>
                             <td>ADoyle 的开发工具箱</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>HackingTools-2</td>
-                            <td><a href="https://github.com/ByteHackr/HackingTools-2" target="_blank" rel="noopener noreferrer">https://github.com/ByteHackr/HackingTools-2</a></td>
-                            <td>346</td>
-                            <td>Tool</td>
-                            <td>A collection of awesome lists for hackers, pentesters & security researchers.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>awesome-jamstack</td>
-                            <td><a href="https://github.com/BolajiAyodeji/awesome-jamstack" target="_blank" rel="noopener noreferrer">https://github.com/BolajiAyodeji/awesome-jamstack</a></td>
-                            <td>150</td>
-                            <td>Tool</td>
-                            <td>:notebook_with_decorative_cover: Curated list of resources: books, videos, articles, speaker decks, tools about using the Jamstack.</td>
                         </tr>
                         
                         <tr>
@@ -1533,35 +1047,11 @@
                         </tr>
                         
                         <tr>
-                            <td>next-cms-ghost</td>
-                            <td><a href="https://github.com/styxlab/next-cms-ghost" target="_blank" rel="noopener noreferrer">https://github.com/styxlab/next-cms-ghost</a></td>
-                            <td>690</td>
-                            <td>Starter</td>
-                            <td>Publish flaring fast blogs with Next.js and Ghost CMS</td>
-                        </tr>
-                        
-                        <tr>
                             <td>undefined-ghost-theme</td>
                             <td><a href="https://github.com/curiositry/undefined-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/curiositry/undefined-ghost-theme</a></td>
                             <td>81</td>
                             <td>Starter</td>
                             <td>A minimal, Ghost 6-ready, membership-enabled starter theme for the Ghost blogging platform.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>starter-snowpack-tailwind</td>
-                            <td><a href="https://github.com/clupprich/starter-snowpack-tailwind" target="_blank" rel="noopener noreferrer">https://github.com/clupprich/starter-snowpack-tailwind</a></td>
-                            <td>15</td>
-                            <td>Starter</td>
-                            <td>A boilerplate for a ghost theme, powered by Snowpack & Tailwind CSS.</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Pliny</td>
-                            <td><a href="https://github.com/ascott1/Pliny" target="_blank" rel="noopener noreferrer">https://github.com/ascott1/Pliny</a></td>
-                            <td>7</td>
-                            <td>Starter</td>
-                            <td>A starter theme for Ghost using Sass and Grunt</td>
                         </tr>
                         
                         
@@ -1631,7 +1121,7 @@
                 
                 <li><strong>Dawn</strong> — A minimal newsletter theme for Ghost (302⭐)</li>
                 
-                <li><strong>Source</strong> — The default theme for Ghost (105⭐)</li>
+                <li><strong>Source</strong> — The default theme for Ghost (106⭐)</li>
                 
                 <li><strong>Themes</strong> — A monorepo for Ghost themes (89⭐)</li>
                 
@@ -1646,32 +1136,32 @@
                 
                 <li><strong>simply</strong> — Theme for Ghost inspired on Medium (705⭐)</li>
                 
-                <li><strong>Mapache</strong> — Excellent community theme with great documentation and support (638⭐)</li>
-                
                 <li><strong>Dawn</strong> — A minimal newsletter theme for Ghost (302⭐)</li>
                 
                 <li><strong>London</strong> — A free, open source theme for Ghost (264⭐)</li>
                 
                 <li><strong>Alto</strong> — A clean, minimalist theme featuring a light and da... (122⭐)</li>
                 
-                <li><strong>Source</strong> — The default theme for Ghost (105⭐)</li>
+                <li><strong>Source</strong> — The default theme for Ghost (106⭐)</li>
                 
                 <li><strong>Edge</strong> — A visually aesthetic portfolio theme for Ghost (95⭐)</li>
+                
+                <li><strong>Ease</strong> — A minimal documentation theme for Ghost (88⭐)</li>
                 
             </ul>
             
             <h3>Minimalist / Clean Themes</h3>
             <ul>
                 
-                <li><strong>Casper (Official)</strong> — Official Ghost theme - always featured (2100⭐)</li>
-                
-                <li><strong>crisp</strong> — A minimalist, responsive, and open-source two-colu... (626⭐)</li>
-                
                 <li><strong>Dawn</strong> — A minimal newsletter theme for Ghost (302⭐)</li>
                 
                 <li><strong>mnml-ghost-theme</strong> — A minimal, responsive, fast Ghost 6 blog theme wit... (301⭐)</li>
                 
                 <li><strong>Alto</strong> — A clean, minimalist theme featuring a light and da... (122⭐)</li>
+                
+                <li><strong>Ease</strong> — A minimal documentation theme for Ghost (88⭐)</li>
+                
+                <li><strong>undefined-ghost-theme</strong> — A minimal, Ghost 6-ready, membership-enabled start... (81⭐)</li>
                 
             </ul>
             
@@ -1680,11 +1170,7 @@
                 
                 <li><strong>awesome-hexo</strong> — A curated list of awesome things related to Hexo (662⭐)</li>
                 
-                <li><strong>Portfolio-Free-Ghost-Theme</strong> — Simple portfolio theme for Ghost  (127⭐)</li>
-                
                 <li><strong>Edge</strong> — A visually aesthetic portfolio theme for Ghost (95⭐)</li>
-                
-                <li><strong>Callisto-Ghost-Theme</strong> — Ghost theme for a minimal personal blog and portfo... (12⭐)</li>
                 
             </ul>
             
@@ -1732,7 +1218,7 @@
     <footer>
         <div class="footer-content">
             <p>Maintained by <a href="https://github.com/runawaydevil" target="_blank" rel="noopener noreferrer">RunawayDevil</a></p>
-            <p>Last updated: January 12, 2026 at 06:26 UTC</p>
+            <p>Last updated: January 19, 2026 at 06:43 UTC</p>
             <p>Next update: <span id="next-update">Calculating...</span></p>
             <p>For broken links or requests to add your resources, please send an email to <a href="mailto:runawaydevil@pm.me">runawaydevil@pm.me</a></p>
             <p>This project is free and open source. Licensed under <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a> - feel free to use, copy, and modify.</p>
