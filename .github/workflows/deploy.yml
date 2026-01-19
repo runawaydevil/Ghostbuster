@@ -79,6 +79,12 @@ jobs:
             echo "⚠️  stale.html not found, skipping"
           fi
           
+          # Copy CNAME for custom domain
+          if [ -f "CNAME" ]; then
+            cp CNAME _site/
+            echo "✅ Copied CNAME for custom domain"
+          fi
+          
           # Copy any static assets
           if [ -d "img" ]; then
             cp -r img _site/
@@ -89,7 +95,7 @@ jobs:
           User-agent: *
           Allow: /
           
-          Sitemap: https://runawaydevil.github.io/Ghostbuster/sitemap.xml
+          Sitemap: https://ghostbuster.pro/sitemap.xml
           EOF
           
           # Create sitemap.xml with both pages
@@ -97,13 +103,13 @@ jobs:
           <?xml version="1.0" encoding="UTF-8"?>
           <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             <url>
-              <loc>https://runawaydevil.github.io/Ghostbuster/</loc>
+              <loc>https://ghostbuster.pro/</loc>
               <lastmod>$(date -u +%Y-%m-%d)</lastmod>
               <changefreq>weekly</changefreq>
               <priority>1.0</priority>
             </url>
             <url>
-              <loc>https://runawaydevil.github.io/Ghostbuster/stale.html</loc>
+              <loc>https://ghostbuster.pro/stale.html</loc>
               <lastmod>$(date -u +%Y-%m-%d)</lastmod>
               <changefreq>weekly</changefreq>
               <priority>0.8</priority>

@@ -6,7 +6,7 @@ An automated curation system for maintaining a comprehensive directory of Ghost 
 
 Ghostbuster is a GitHub-native automation pipeline that transforms the manual process of maintaining a Ghost CMS themes directory into a robust, scalable system. The platform automatically discovers, classifies, and curates Ghost themes while preserving human editorial control through configurable override mechanisms.
 
-**Live Directory**: https://runawaydevil.github.io/Ghostbuster/
+**Live Directory**: https://ghostbuster.pro/
 
 ## System Architecture
 
