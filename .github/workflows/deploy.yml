@@ -6,6 +6,7 @@ on:
     branches: [ main ]
     paths:
       - 'index.html'
+      - 'stale.html'
       - 'data/items.yml'
       - 'templates/**'
   
@@ -67,8 +68,16 @@ jobs:
           # Create deployment directory
           mkdir -p _site
           
-          # Copy main HTML file
+          # Copy main HTML files
           cp index.html _site/
+          
+          # Copy stale items page if it exists
+          if [ -f "stale.html" ]; then
+            cp stale.html _site/
+            echo "✅ Copied stale.html"
+          else
+            echo "⚠️  stale.html not found, skipping"
+          fi
           
           # Copy any static assets
           if [ -d "img" ]; then
@@ -83,7 +92,7 @@ jobs:
           Sitemap: https://runawaydevil.github.io/Ghostbuster/sitemap.xml
           EOF
           
-          # Create sitemap.xml
+          # Create sitemap.xml with both pages
           cat > _site/sitemap.xml << 'EOF'
           <?xml version="1.0" encoding="UTF-8"?>
           <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -92,6 +101,12 @@ jobs:
               <lastmod>$(date -u +%Y-%m-%d)</lastmod>
               <changefreq>weekly</changefreq>
               <priority>1.0</priority>
+            </url>
+            <url>
+              <loc>https://runawaydevil.github.io/Ghostbuster/stale.html</loc>
+              <lastmod>$(date -u +%Y-%m-%d)</lastmod>
+              <changefreq>weekly</changefreq>
+              <priority>0.8</priority>
             </url>
           </urlset>
           EOF

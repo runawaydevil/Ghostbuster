@@ -84,19 +84,29 @@
             }
         }
 
-        .github-button {
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .github-button, .stale-button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            margin-top: 0.5rem;
             padding: 0.6rem 1.2rem;
-            background-color: #24292e;
-            color: #ffffff;
             text-decoration: none;
             border-radius: 6px;
             font-weight: 500;
             font-size: 0.95rem;
             transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .github-button {
+            background-color: #24292e;
+            color: #ffffff;
         }
 
         .github-button:hover {
@@ -105,7 +115,18 @@
             transform: translateY(-1px);
         }
 
-        .github-button:active {
+        .stale-button {
+            background-color: #ff9800;
+            color: #ffffff;
+        }
+
+        .stale-button:hover {
+            background-color: #f57c00;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        .github-button:active, .stale-button:active {
             transform: translateY(0);
         }
 
@@ -122,6 +143,14 @@
 
             .github-button:hover {
                 background-color: #3a4148;
+            }
+
+            .stale-button {
+                background-color: #cc7700;
+            }
+
+            .stale-button:hover {
+                background-color: #e68900;
             }
         }
 
@@ -323,9 +352,18 @@
                 font-size: 1rem;
             }
 
-            .github-button {
+            .github-button, .stale-button {
                 font-size: 0.85rem;
                 padding: 0.6rem 1.2rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .github-button, .stale-button {
+                justify-content: center;
             }
 
             .updates-section {
@@ -340,12 +378,17 @@
             <img src="https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png" alt="Le Ghost Logo" class="logo">
             <h1>Le Ghost - Ghost CMS Themes & Tools Directory</h1>
             <p class="subtitle">Ghost CMS Themes & Tools Directory (2022–2026)</p>
-            <a href="https://github.com/runawaydevil/le-ghost" target="_blank" rel="noopener noreferrer" class="github-button">
-                <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-                </svg>
-                Star on GitHub
-            </a>
+            <div class="button-group">
+                <a href="stale.html" class="stale-button">
+                    ⏰ View Stale Items
+                </a>
+                <a href="https://github.com/runawaydevil/le-ghost" target="_blank" rel="noopener noreferrer" class="github-button">
+                    <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Star on GitHub
+                </a>
+            </div>
         </div>
     </header>
 
@@ -496,7 +539,7 @@
     <footer>
         <div class="footer-content">
             <p>Maintained by <a href="https://github.com/runawaydevil" target="_blank" rel="noopener noreferrer">RunawayDevil</a></p>
-            <p>Last updated: January 19, 2026 at 04:18 UTC</p>
+            <p>Last updated: January 19, 2026 at 05:48 UTC</p>
             <p>Next update: <span id="next-update">Calculating...</span></p>
             <p>For broken links or requests to add your resources, please send an email to <a href="mailto:runawaydevil@pm.me">runawaydevil@pm.me</a></p>
             <p>This project is free and open source. Licensed under <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a> - feel free to use, copy, and modify.</p>

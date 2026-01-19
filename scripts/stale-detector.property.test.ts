@@ -11,6 +11,7 @@ import * as fs from 'fs';
 
 /**
  * Arbitrary generator for GhostItem with configurable pushedAt date
+ * Excludes Official category items since they are never stale
  */
 const ghostItemArbitrary = (pushedAtArbitrary: fc.Arbitrary<Date>) =>
   fc.record({
@@ -19,7 +20,7 @@ const ghostItemArbitrary = (pushedAtArbitrary: fc.Arbitrary<Date>) =>
     repo: fc.string({ minLength: 5, maxLength: 50 }).map(s => `test/${s}`),
     url: fc.webUrl(),
     description: fc.oneof(fc.constant(null), fc.string({ maxLength: 200 })),
-    category: fc.constantFrom('Theme', 'Tool', 'Starter', 'Official'),
+    category: fc.constantFrom('Theme', 'Tool', 'Starter'), // Exclude 'Official' for staleness tests
     tags: fc.array(fc.string({ minLength: 2, maxLength: 20 }), { minLength: 1, maxLength: 5 }),
     stars: fc.nat({ max: 10000 }),
     pushedAt: pushedAtArbitrary.map(d => d.toISOString()),
@@ -286,6 +287,52 @@ describe('StalenessDetector - Property-Based Tests', () => {
             const expectedStale = monthsStale > thresholdMonths;
             
             return isStale === expectedStale;
+          }
+        ),
+        { numRuns: 100 }
+      );
+    });
+
+    it('should never mark Official items as stale regardless of age', () => {
+      /**
+       * Property: Official items are never stale
+       * 
+       * This property ensures that items with category 'Official' are never
+       * considered stale, regardless of their pushedAt date.
+       */
+      const detector = new StalenessDetector(config);
+
+      // Generate items with Official category and very old dates
+      const officialItemArbitrary = fc.record({
+        id: fc.string({ minLength: 5, maxLength: 50 }).map(s => `TryGhost/${s}`),
+        name: fc.string({ minLength: 3, maxLength: 50 }),
+        repo: fc.string({ minLength: 5, maxLength: 50 }).map(s => `TryGhost/${s}`),
+        url: fc.webUrl(),
+        description: fc.oneof(fc.constant(null), fc.string({ maxLength: 200 })),
+        category: fc.constant('Official'),
+        tags: fc.array(fc.string({ minLength: 2, maxLength: 20 }), { minLength: 1, maxLength: 5 }),
+        stars: fc.nat({ max: 10000 }),
+        pushedAt: fc.date({
+          min: new Date('2020-01-01'),
+          max: new Date('2022-01-01')
+        }).map(d => d.toISOString()),
+        archived: fc.boolean(),
+        fork: fc.boolean(),
+        license: fc.oneof(fc.constant(null), fc.constantFrom('MIT', 'Apache-2.0')),
+        topics: fc.array(fc.string({ minLength: 2, maxLength: 20 }), { maxLength: 10 }),
+        score: fc.integer({ min: 0, max: 100 }),
+        confidence: fc.constantFrom('high', 'medium', 'low') as fc.Arbitrary<'high' | 'medium' | 'low'>,
+        notes: fc.oneof(fc.constant(null), fc.string({ maxLength: 100 })),
+        hidden: fc.boolean(),
+      });
+
+      fc.assert(
+        fc.property(
+          officialItemArbitrary,
+          (item: GhostItem) => {
+            const isStale = detector.isStale(item);
+            // Official items should never be stale
+            return isStale === false;
           }
         ),
         { numRuns: 100 }
