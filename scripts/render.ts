@@ -497,8 +497,8 @@ export class GhostDirectoryRenderer {
       useCases,
       selectionNotes,
       dataSource: 'GitHub API & automated discovery',
-      maintainerName: options.maintainerName || 'Le Ghost System',
-      maintainerUrl: options.maintainerUrl || 'https://github.com/runawaydevil/le-ghost',
+      maintainerName: options.maintainerName || 'RunawayDevil',
+      maintainerUrl: options.maintainerUrl || 'https://github.com/runawaydevil',
       contactEmail: options.contactEmail || 'runawaydevil@pm.me',
       licenseName: 'MIT License',
       licenseUrl: 'LICENSE'
