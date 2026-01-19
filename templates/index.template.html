@@ -465,6 +465,7 @@
         <div class="footer-content">
             <p>Maintained by <a href="{{maintainerUrl}}" target="_blank" rel="noopener noreferrer">{{maintainerName}}</a></p>
             <p>Last updated: {{lastUpdate}}</p>
+            <p>Next update: <span id="next-update">Calculating...</span></p>
             <p>For broken links or requests to add your resources, please send an email to <a href="mailto:{{contactEmail}}">{{contactEmail}}</a></p>
             <p>This project is free and open source. Licensed under <a href="{{licenseUrl}}" target="_blank" rel="noopener noreferrer">{{licenseName}}</a> - feel free to use, copy, and modify.</p>
             <p>&copy; <span id="current-year">2025</span> Ghostbuster Directory. No rights reserved.</p>
@@ -472,11 +473,41 @@
     </footer>
 
     <script>
-        // Update current year only (for copyright)
+        // Update current year and calculate next update
         (function() {
             const currentYearElement = document.getElementById('current-year');
             if (currentYearElement) {
                 currentYearElement.textContent = new Date().getFullYear();
+            }
+
+            // Calculate next Monday at 6 AM UTC (scheduled update time)
+            const nextUpdateElement = document.getElementById('next-update');
+            if (nextUpdateElement) {
+                const now = new Date();
+                const nextMonday = new Date(now);
+                
+                // Get days until next Monday (1 = Monday, 0 = Sunday)
+                const currentDay = now.getUTCDay();
+                const daysUntilMonday = currentDay === 0 ? 1 : currentDay === 1 ? 7 : (8 - currentDay);
+                
+                nextMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
+                nextMonday.setUTCHours(6, 0, 0, 0);
+                
+                // If it's Monday and before 6 AM UTC, next update is today
+                if (currentDay === 1 && now.getUTCHours() < 6) {
+                    nextMonday.setUTCDate(now.getUTCDate());
+                }
+                
+                // Format date
+                const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+                const month = months[nextMonday.getUTCMonth()];
+                const day = nextMonday.getUTCDate();
+                const year = nextMonday.getUTCFullYear();
+                const hours = String(nextMonday.getUTCHours()).padStart(2, '0');
+                const minutes = String(nextMonday.getUTCMinutes()).padStart(2, '0');
+                
+                nextUpdateElement.textContent = `${month} ${day}, ${year} at ${hours}:${minutes} UTC`;
             }
         })();
     </script>
