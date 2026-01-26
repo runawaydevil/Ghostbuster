@@ -14,8 +14,8 @@
     - self-hosted
     - selfhosted
     - ghost-theme
-  stars: 268895
-  pushedAt: '2026-01-18T19:53:55Z'
+  stars: 270046
+  pushedAt: '2026-01-25T11:30:43Z'
   archived: false
   fork: false
   license: other
@@ -45,7 +45,7 @@
     - beginners-friendly
     - list
     - ghost-theme
-  stars: 81799
+  stars: 82004
   pushedAt: '2025-12-05T20:51:10Z'
   archived: false
   fork: false
@@ -68,8 +68,8 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 76575
-  pushedAt: '2026-01-17T18:13:58Z'
+  stars: 77175
+  pushedAt: '2026-01-24T17:47:19Z'
   archived: false
   fork: false
   license: mit
@@ -92,7 +92,7 @@
     - node
     - nodejs
     - ghost-theme
-  stars: 64623
+  stars: 64723
   pushedAt: '2026-01-14T09:40:35Z'
   archived: false
   fork: false
@@ -132,7 +132,7 @@
     - tutorials
     - web
     - ghost-theme
-  stars: 44575
+  stars: 44815
   pushedAt: '2025-12-31T18:59:20Z'
   archived: false
   fork: false
@@ -166,7 +166,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 34874
+  stars: 34878
   pushedAt: '2026-01-05T09:42:09Z'
   archived: false
   fork: false
@@ -186,8 +186,8 @@
     - awesome
     - awesome-list
     - ghost-theme
-  stars: 24989
-  pushedAt: '2025-12-17T18:00:55Z'
+  stars: 25029
+  pushedAt: '2026-01-25T05:57:08Z'
   archived: false
   fork: false
   license: null
@@ -226,8 +226,8 @@
     - coding-assistants
     - llm
     - ghost-theme
-  stars: 20925
-  pushedAt: '2026-01-19T06:13:11Z'
+  stars: 21870
+  pushedAt: '2026-01-26T06:12:35Z'
   archived: false
   fork: false
   license: other
@@ -285,7 +285,7 @@
     - ssh
     - wireguard
     - ghost-theme
-  stars: 18349
+  stars: 18429
   pushedAt: '2025-06-27T01:51:16Z'
   archived: false
   fork: false
@@ -328,8 +328,8 @@
     - security
     - vulnerability
     - ghost-theme
-  stars: 7484
-  pushedAt: '2026-01-19T00:45:29Z'
+  stars: 7493
+  pushedAt: '2026-01-26T00:46:04Z'
   archived: false
   fork: false
   license: null
@@ -361,7 +361,7 @@
     - machine-learning
     - resources
     - ghost-theme
-  stars: 6097
+  stars: 6100
   pushedAt: '2025-07-12T00:49:03Z'
   archived: false
   fork: false
@@ -391,8 +391,8 @@
     - awesome-list
     - website
     - ghost-theme
-  stars: 3600
-  pushedAt: '2026-01-10T15:20:36Z'
+  stars: 3609
+  pushedAt: '2026-01-21T23:12:48Z'
   archived: false
   fork: false
   license: cc0-1.0
@@ -419,8 +419,8 @@
     - security
     - security-tools
     - ghost-theme
-  stars: 3528
-  pushedAt: '2025-08-24T10:21:47Z'
+  stars: 3536
+  pushedAt: '2026-01-24T22:24:04Z'
   archived: false
   fork: false
   license: null
@@ -445,7 +445,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 3238
+  stars: 3240
   pushedAt: '2025-06-05T18:28:31Z'
   archived: false
   fork: false
@@ -467,7 +467,7 @@
     - labs
     - toml
     - ghost-theme
-  stars: 3095
+  stars: 3099
   pushedAt: '2025-07-30T18:04:02Z'
   archived: false
   fork: false
@@ -501,8 +501,8 @@
     - nlp
     - openai
     - ghost-theme
-  stars: 2800
-  pushedAt: '2026-01-18T18:39:45Z'
+  stars: 2819
+  pushedAt: '2026-01-25T18:21:59Z'
   archived: false
   fork: false
   license: cc0-1.0
@@ -538,8 +538,8 @@
     - n8n-workflow
     - n8n-workflows
     - ghost-theme
-  stars: 1833
-  pushedAt: '2026-01-19T04:00:09Z'
+  stars: 1893
+  pushedAt: '2026-01-24T04:00:09Z'
   archived: false
   fork: false
   license: null
@@ -563,7 +563,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 1736
+  stars: 1739
   pushedAt: '2026-01-15T00:07:23Z'
   archived: false
   fork: false
@@ -603,7 +603,7 @@
     - winui3
     - wsl
     - ghost-theme
-  stars: 1708
+  stars: 1711
   pushedAt: '2025-06-27T02:07:45Z'
   archived: false
   fork: false
@@ -644,7 +644,7 @@
     - projects
     - top-charts
     - ghost-theme
-  stars: 1674
+  stars: 1694
   pushedAt: '2025-10-16T20:29:23Z'
   archived: false
   fork: false
@@ -673,8 +673,8 @@
     - selfhosted
     - selfhosting
     - ghost-theme
-  stars: 1497
-  pushedAt: '2026-01-18T22:29:22Z'
+  stars: 1583
+  pushedAt: '2026-01-25T22:29:41Z'
   archived: false
   fork: false
   license: null
@@ -705,7 +705,7 @@
     - static-site
     - static-site-generator
     - ghost-theme
-  stars: 1358
+  stars: 1361
   pushedAt: '2025-06-24T16:08:58Z'
   archived: false
   fork: false
@@ -751,7 +751,7 @@
     - pentesting-tools
     - web
     - ghost-theme
-  stars: 1267
+  stars: 1271
   pushedAt: '2025-12-04T06:55:03Z'
   archived: false
   fork: false
@@ -813,7 +813,7 @@
     - made-in-nigeria
     - nigeria
     - ghost-theme
-  stars: 1087
+  stars: 1089
   pushedAt: '2026-01-04T20:37:52Z'
   archived: false
   fork: false
@@ -835,7 +835,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 1017
+  stars: 1018
   pushedAt: '2026-01-18T00:06:44Z'
   archived: false
   fork: false
@@ -897,8 +897,8 @@
     - static-site
     - static-site-generator
     - ghost-theme
-  stars: 835
-  pushedAt: '2025-07-09T16:22:37Z'
+  stars: 837
+  pushedAt: '2026-01-21T07:19:31Z'
   archived: false
   fork: false
   license: mit
@@ -909,7 +909,7 @@
     - server-side-rendering
     - static-site
     - static-site-generator
-  score: 29
+  score: 28
   confidence: low
   notes: null
   hidden: false
@@ -922,7 +922,6 @@
   tags:
     - android-security
     - cybersecurity
-    - educational-purpose
     - ethical-hacking
     - hacking-tools
     - information-security
@@ -937,18 +936,18 @@
     - security-tools
     - social-engineering
     - termux
+    - termux-hacking
     - termux-tools
     - vulnerability-assessment
     - ghost-theme
-  stars: 716
-  pushedAt: '2026-01-18T13:15:23Z'
+  stars: 821
+  pushedAt: '2026-01-24T11:11:11Z'
   archived: false
   fork: false
   license: other
   topics:
     - android-security
     - cybersecurity
-    - educational-purpose
     - ethical-hacking
     - hacking-tools
     - information-security
@@ -963,6 +962,7 @@
     - security-tools
     - social-engineering
     - termux
+    - termux-hacking
     - termux-tools
     - vulnerability-assessment
   score: 30
@@ -1029,7 +1029,7 @@
     - tailwindcss
     - tool-for-nextjs
     - ghost-theme
-  stars: 674
+  stars: 676
   pushedAt: '2025-12-10T10:39:54Z'
   archived: false
   fork: false
@@ -1073,7 +1073,7 @@
     - hexo-tutorial
     - showcase
     - ghost-theme
-  stars: 662
+  stars: 663
   pushedAt: '2025-09-02T08:13:31Z'
   archived: false
   fork: false
@@ -1097,7 +1097,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 633
+  stars: 636
   pushedAt: '2026-01-13T00:06:21Z'
   archived: false
   fork: false
@@ -1173,8 +1173,8 @@
     - mcp-servers
     - model-context-protocol
     - ghost-theme
-  stars: 524
-  pushedAt: '2026-01-16T21:30:46Z'
+  stars: 527
+  pushedAt: '2026-01-25T04:37:13Z'
   archived: false
   fork: false
   license: mit
@@ -1188,46 +1188,6 @@
     - mcp-servers
     - model-context-protocol
   score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: nullfuzz-pentest/shodan-dorks
-  name: shodan-dorks
-  repo: nullfuzz-pentest/shodan-dorks
-  url: https://github.com/nullfuzz-pentest/shodan-dorks
-  description: Shodan Dorks
-  category: Theme
-  tags:
-    - awesome
-    - awesome-list
-    - cloud
-    - dorks
-    - hacking
-    - iot
-    - list
-    - penetration-testing
-    - security
-    - shodan
-    - shodan-dorks
-    - ghost-theme
-  stars: 478
-  pushedAt: '2025-02-13T15:06:08Z'
-  archived: false
-  fork: false
-  license: gpl-3.0
-  topics:
-    - awesome
-    - awesome-list
-    - cloud
-    - dorks
-    - hacking
-    - iot
-    - list
-    - penetration-testing
-    - security
-    - shodan
-    - shodan-dorks
-  score: 29
   confidence: low
   notes: null
   hidden: false
@@ -1255,7 +1215,7 @@
     - webdeveloper
     - webdevelopment
     - ghost-theme
-  stars: 478
+  stars: 483
   pushedAt: '2025-02-03T12:08:00Z'
   archived: false
   fork: false
@@ -1281,6 +1241,46 @@
   confidence: low
   notes: null
   hidden: false
+- id: nullfuzz-pentest/shodan-dorks
+  name: shodan-dorks
+  repo: nullfuzz-pentest/shodan-dorks
+  url: https://github.com/nullfuzz-pentest/shodan-dorks
+  description: Shodan Dorks
+  category: Theme
+  tags:
+    - awesome
+    - awesome-list
+    - cloud
+    - dorks
+    - hacking
+    - iot
+    - list
+    - penetration-testing
+    - security
+    - shodan
+    - shodan-dorks
+    - ghost-theme
+  stars: 481
+  pushedAt: '2025-02-13T15:06:08Z'
+  archived: false
+  fork: false
+  license: gpl-3.0
+  topics:
+    - awesome
+    - awesome-list
+    - cloud
+    - dorks
+    - hacking
+    - iot
+    - list
+    - penetration-testing
+    - security
+    - shodan
+    - shodan-dorks
+  score: 29
+  confidence: low
+  notes: null
+  hidden: false
 - id: adoyle-h/my-development-tools
   name: my-development-tools
   repo: adoyle-h/my-development-tools
@@ -1299,7 +1299,7 @@
     - toolkits
     - tools
     - ghost-theme
-  stars: 451
+  stars: 453
   pushedAt: '2026-01-18T14:32:14Z'
   archived: false
   fork: false
@@ -1327,8 +1327,8 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 415
-  pushedAt: '2026-01-18T00:54:42Z'
+  stars: 435
+  pushedAt: '2026-01-23T11:25:50Z'
   archived: false
   fork: false
   license: cc0-1.0
@@ -1358,7 +1358,7 @@
     - non-convex-optimization
     - phase-transitions
     - ghost-theme
-  stars: 386
+  stars: 388
   pushedAt: '2026-01-07T19:25:03Z'
   archived: false
   fork: false
@@ -1433,7 +1433,7 @@
     - publishing
     - ghost-theme
   stars: 302
-  pushedAt: '2026-01-07T22:45:13Z'
+  pushedAt: '2026-01-20T12:21:10Z'
   archived: false
   fork: false
   license: mit
@@ -1497,7 +1497,7 @@
     - publishing
     - ghost-theme
   stars: 264
-  pushedAt: '2026-01-07T22:45:17Z'
+  pushedAt: '2026-01-20T12:21:04Z'
   archived: false
   fork: false
   license: mit
@@ -1519,7 +1519,7 @@
   category: Theme
   tags:
     - ghost-theme
-  stars: 225
+  stars: 226
   pushedAt: '2025-03-30T03:22:21Z'
   archived: false
   fork: false
@@ -1542,7 +1542,7 @@
     - sdui
     - server-driven-ui
     - ghost-theme
-  stars: 218
+  stars: 225
   pushedAt: '2025-12-18T06:40:35Z'
   archived: false
   fork: false
@@ -1567,7 +1567,7 @@
     - github
     - stars
     - ghost-theme
-  stars: 201
+  stars: 200
   pushedAt: '2026-01-18T00:58:28Z'
   archived: false
   fork: false
@@ -1610,7 +1610,7 @@
     - awesome-list
     - list
     - ghost-theme
-  stars: 156
+  stars: 157
   pushedAt: '2026-01-16T02:59:10Z'
   archived: false
   fork: false
@@ -1684,8 +1684,8 @@
     - servers
     - webapp
     - ghost-theme
-  stars: 128
-  pushedAt: '2026-01-18T06:25:33Z'
+  stars: 130
+  pushedAt: '2026-01-26T05:53:13Z'
   archived: false
   fork: false
   license: other
@@ -1727,7 +1727,7 @@
     - publishing
     - ghost-theme
   stars: 122
-  pushedAt: '2026-01-07T22:45:18Z'
+  pushedAt: '2026-01-20T12:21:10Z'
   archived: false
   fork: false
   license: mit
@@ -1756,8 +1756,8 @@
     - newsletter
     - publishing
     - ghost-theme
-  stars: 106
-  pushedAt: '2026-01-19T03:58:40Z'
+  stars: 108
+  pushedAt: '2026-01-23T02:54:17Z'
   archived: false
   fork: false
   license: mit
@@ -1787,7 +1787,7 @@
     - publishing
     - ghost-theme
   stars: 95
-  pushedAt: '2026-01-07T22:45:26Z'
+  pushedAt: '2026-01-20T12:21:13Z'
   archived: false
   fork: false
   license: mit
@@ -1814,7 +1814,7 @@
     - publishing
     - ghost-theme
   stars: 89
-  pushedAt: '2026-01-19T03:37:44Z'
+  pushedAt: '2026-01-20T14:58:08Z'
   archived: false
   fork: false
   license: mit
@@ -1840,8 +1840,8 @@
     - magazine
     - publishing
     - ghost-theme
-  stars: 88
-  pushedAt: '2026-01-07T22:45:13Z'
+  stars: 89
+  pushedAt: '2026-01-20T12:21:09Z'
   archived: false
   fork: false
   license: mit
@@ -1869,7 +1869,7 @@
     - publishing
     - ghost-theme
   stars: 81
-  pushedAt: '2026-01-07T22:45:17Z'
+  pushedAt: '2026-01-20T12:21:07Z'
   archived: false
   fork: false
   license: mit
@@ -1933,7 +1933,7 @@
     - publishing
     - ghost-theme
   stars: 65
-  pushedAt: '2026-01-07T22:45:12Z'
+  pushedAt: '2026-01-20T12:21:12Z'
   archived: false
   fork: false
   license: mit
@@ -1960,7 +1960,7 @@
     - publishing
     - ghost-theme
   stars: 60
-  pushedAt: '2026-01-07T22:45:15Z'
+  pushedAt: '2026-01-20T12:21:10Z'
   archived: false
   fork: false
   license: mit
@@ -1987,7 +1987,7 @@
     - publishing
     - ghost-theme
   stars: 54
-  pushedAt: '2026-01-13T09:17:38Z'
+  pushedAt: '2026-01-20T12:21:11Z'
   archived: false
   fork: false
   license: mit
@@ -2015,7 +2015,7 @@
     - personal
     - ghost-theme
   stars: 44
-  pushedAt: '2026-01-07T22:45:12Z'
+  pushedAt: '2026-01-20T12:21:16Z'
   archived: false
   fork: false
   license: mit
@@ -2098,7 +2098,7 @@
     - theme
     - ghost-theme
   stars: 21
-  pushedAt: '2026-01-15T15:17:59Z'
+  pushedAt: '2026-01-25T12:43:35Z'
   archived: false
   fork: false
   license: mit
@@ -2125,8 +2125,8 @@
     - newsletter
     - publishing
     - ghost-theme
-  stars: 15
-  pushedAt: '2026-01-07T22:45:14Z'
+  stars: 16
+  pushedAt: '2026-01-20T12:21:12Z'
   archived: false
   fork: false
   license: mit
@@ -2188,7 +2188,7 @@
     - theme
     - ghost-theme
   stars: 11
-  pushedAt: '2026-01-18T18:30:29Z'
+  pushedAt: '2026-01-22T21:25:43Z'
   archived: false
   fork: false
   license: mit
@@ -2224,7 +2224,7 @@
     - publishing
     - ghost-theme
   stars: 10
-  pushedAt: '2026-01-07T22:45:08Z'
+  pushedAt: '2026-01-20T12:21:09Z'
   archived: false
   fork: false
   license: mit
@@ -2250,7 +2250,7 @@
     - ghost-theme
     - ghost-theme
   stars: 8
-  pushedAt: '2026-01-08T02:48:56Z'
+  pushedAt: '2026-01-23T12:53:54Z'
   archived: false
   fork: false
   license: mit
@@ -2306,7 +2306,7 @@
     - javascript
     - ghost-theme
   stars: 4
-  pushedAt: '2025-11-19T01:00:06Z'
+  pushedAt: '2026-01-20T13:56:18Z'
   archived: false
   fork: false
   license: mit
@@ -2332,7 +2332,7 @@
     - publishing
     - ghost-theme
   stars: 4
-  pushedAt: '2026-01-07T22:45:09Z'
+  pushedAt: '2026-01-20T12:21:07Z'
   archived: false
   fork: false
   license: mit
@@ -2394,7 +2394,7 @@
     - typescipt
     - ghost-theme
   stars: 3
-  pushedAt: '2026-01-18T15:00:33Z'
+  pushedAt: '2026-01-25T11:48:38Z'
   archived: false
   fork: false
   license: mit
