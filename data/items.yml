@@ -1,1383 +1,125 @@
-- id: awesome-selfhosted/awesome-selfhosted
-  name: awesome-selfhosted
-  repo: awesome-selfhosted/awesome-selfhosted
-  url: https://github.com/awesome-selfhosted/awesome-selfhosted
-  description: A list of Free Software network services and web applications which can be hosted on your own servers
-  category: Theme
-  tags:
-    - awesome
-    - awesome-list
-    - cloud
-    - free-software
-    - hosting
-    - privacy
-    - self-hosted
-    - selfhosted
-    - ghost-theme
-  stars: 270046
-  pushedAt: '2026-01-25T11:30:43Z'
-  archived: false
-  fork: false
-  license: other
-  topics:
-    - awesome
-    - awesome-list
-    - cloud
-    - free-software
-    - hosting
-    - privacy
-    - self-hosted
-    - selfhosted
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: MunGell/awesome-for-beginners
-  name: awesome-for-beginners
-  repo: MunGell/awesome-for-beginners
-  url: https://github.com/MunGell/awesome-for-beginners
-  description: A list of awesome beginners-friendly projects.
-  category: Theme
-  tags:
-    - awesome
-    - awesome-list
-    - beginner-project
-    - beginners-friendly
-    - list
-    - ghost-theme
-  stars: 82004
-  pushedAt: '2025-12-05T20:51:10Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - awesome
-    - awesome-list
-    - beginner-project
-    - beginners-friendly
-    - list
-  score: 29
-  confidence: low
-  notes: null
-  hidden: false
-- id: modelcontextprotocol/servers
-  name: servers
-  repo: modelcontextprotocol/servers
-  url: https://github.com/modelcontextprotocol/servers
-  description: Model Context Protocol Servers
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 77175
-  pushedAt: '2026-01-24T17:47:19Z'
-  archived: false
-  fork: false
-  license: mit
-  topics: []
-  score: 27
-  confidence: low
-  notes: null
-  hidden: false
-- id: sindresorhus/awesome-nodejs
-  name: awesome-nodejs
-  repo: sindresorhus/awesome-nodejs
-  url: https://github.com/sindresorhus/awesome-nodejs
-  description: ':zap: Delightful Node.js packages and resources'
-  category: Theme
-  tags:
-    - awesome
-    - awesome-list
-    - javascript
-    - list
-    - node
-    - nodejs
-    - ghost-theme
-  stars: 64723
-  pushedAt: '2026-01-14T09:40:35Z'
-  archived: false
-  fork: false
-  license: cc0-1.0
-  topics:
-    - awesome
-    - awesome-list
-    - javascript
-    - list
-    - node
-    - nodejs
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: GitHubDaily/GitHubDaily
-  name: GitHubDaily
-  repo: GitHubDaily/GitHubDaily
-  url: https://github.com/GitHubDaily/GitHubDaily
-  description: 坚持分享 GitHub 上高质量、有趣实用的开源技术教程、开发者工具、编程网站、技术资讯。A list cool, interesting projects of GitHub.
-  category: Tool
-  tags:
-    - ai
-    - algorithms-and-data-structures
-    - backend
-    - developer-tools
-    - development
-    - frontend
-    - github
-    - java
-    - javascript
-    - kubernetes
-    - linux
-    - markdown
-    - open-source
-    - python
-    - tutorials
-    - web
-    - ghost-theme
-  stars: 44815
-  pushedAt: '2025-12-31T18:59:20Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - ai
-    - algorithms-and-data-structures
-    - backend
-    - developer-tools
-    - development
-    - frontend
-    - github
-    - java
-    - javascript
-    - kubernetes
-    - linux
-    - markdown
-    - open-source
-    - python
-    - tutorials
-    - web
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: sorrycc/awesome-javascript
-  name: awesome-javascript
-  repo: sorrycc/awesome-javascript
-  url: https://github.com/sorrycc/awesome-javascript
-  description: 🐢 A collection of awesome browser-side  JavaScript libraries, resources and shiny things.
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 34878
-  pushedAt: '2026-01-05T09:42:09Z'
-  archived: false
-  fork: false
-  license: null
-  topics: []
-  score: 22
-  confidence: low
-  notes: null
-  hidden: false
-- id: enaqx/awesome-pentest
-  name: awesome-pentest
-  repo: enaqx/awesome-pentest
-  url: https://github.com/enaqx/awesome-pentest
-  description: A collection of awesome penetration testing resources, tools and other shiny things
-  category: Tool
-  tags:
-    - awesome
-    - awesome-list
-    - ghost-theme
-  stars: 25029
-  pushedAt: '2026-01-25T05:57:08Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - awesome
-    - awesome-list
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: hesreallyhim/awesome-claude-code
-  name: awesome-claude-code
-  repo: hesreallyhim/awesome-claude-code
-  url: https://github.com/hesreallyhim/awesome-claude-code
-  description: >-
-    A curated list of awesome skills, hooks, slash-commands, agent orchestrators, applications, and plugins for Claude
-    Code by Anthropic
-  category: Theme
-  tags:
-    - agent-skills
-    - agentic-code
-    - agentic-coding
-    - ai-workflow-optimization
-    - ai-workflows
-    - anthropic
-    - anthropic-claude
-    - awesome
-    - awesome-list
-    - awesome-lists
-    - awesome-resources
-    - claude
-    - claude-code
-    - coding-agent
-    - coding-agents
-    - coding-assistant
-    - coding-assistants
-    - llm
-    - ghost-theme
-  stars: 21870
-  pushedAt: '2026-01-26T06:12:35Z'
-  archived: false
-  fork: false
-  license: other
-  topics:
-    - agent-skills
-    - agentic-code
-    - agentic-coding
-    - ai-workflow-optimization
-    - ai-workflows
-    - anthropic
-    - anthropic-claude
-    - awesome
-    - awesome-list
-    - awesome-lists
-    - awesome-resources
-    - claude
-    - claude-code
-    - coding-agent
-    - coding-agents
-    - coding-assistant
-    - coding-assistants
-    - llm
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: mikeroyal/Self-Hosting-Guide
-  name: Self-Hosting-Guide
-  repo: mikeroyal/Self-Hosting-Guide
-  url: https://github.com/mikeroyal/Self-Hosting-Guide
-  description: >-
-    Self-Hosting Guide. Learn all about  locally hosting (on premises & private web servers) and managing software
-    applications by yourself or your organization. Including Cloud, LLMs, WireGuard, Automation, Home Assistant, and
-    Networking.
-  category: Theme
-  tags:
-    - authentication
-    - awesome
-    - awesome-list
-    - decentralized
-    - docker-compose
-    - home-assistant
-    - home-automation
-    - linux
-    - oauth
-    - observability
-    - open-source
-    - privacy
-    - raspberry-pi
-    - reverse-proxy
-    - search
-    - self-hosted
-    - self-hosting
-    - selfhosted
-    - ssh
-    - wireguard
-    - ghost-theme
-  stars: 18429
-  pushedAt: '2025-06-27T01:51:16Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - authentication
-    - awesome
-    - awesome-list
-    - decentralized
-    - docker-compose
-    - home-assistant
-    - home-automation
-    - linux
-    - oauth
-    - observability
-    - open-source
-    - privacy
-    - raspberry-pi
-    - reverse-proxy
-    - search
-    - self-hosted
-    - self-hosting
-    - selfhosted
-    - ssh
-    - wireguard
-  score: 27
-  confidence: low
-  notes: null
-  hidden: false
-- id: nomi-sec/PoC-in-GitHub
-  name: PoC-in-GitHub
-  repo: nomi-sec/PoC-in-GitHub
-  url: https://github.com/nomi-sec/PoC-in-GitHub
-  description: 📡 PoC auto collect from GitHub. ⚠️ Be careful Malware.
-  category: Theme
-  tags:
-    - cve
-    - exploit
-    - poc
-    - security
-    - vulnerability
-    - ghost-theme
-  stars: 7493
-  pushedAt: '2026-01-26T00:46:04Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - cve
-    - exploit
-    - poc
-    - security
-    - vulnerability
-  score: 0
-  confidence: low
-  notes: null
-  hidden: false
-- id: Vedenin/useful-java-links
-  name: useful-java-links
-  repo: Vedenin/useful-java-links
-  url: https://github.com/Vedenin/useful-java-links
-  description: A list of useful Java frameworks, libraries, software and hello worlds examples
-  category: Theme
-  tags:
-    - awesome
-    - awesome-list
-    - java-api
-    - java-applications
-    - java-frameworks
-    - java-libraries
-    - java-links
-    - lists
-    - machine-learning
-    - resources
-    - ghost-theme
-  stars: 6100
-  pushedAt: '2025-07-12T00:49:03Z'
-  archived: false
-  fork: false
-  license: other
-  topics:
-    - awesome
-    - awesome-list
-    - java-api
-    - java-applications
-    - java-frameworks
-    - java-libraries
-    - java-links
-    - lists
-    - machine-learning
-    - resources
-  score: 27
-  confidence: low
-  notes: null
-  hidden: false
-- id: myles/awesome-static-generators
-  name: awesome-static-generators
-  repo: myles/awesome-static-generators
-  url: https://github.com/myles/awesome-static-generators
-  description: A curated list of static web site generators.
-  category: Theme
-  tags:
-    - awesome-list
-    - website
-    - ghost-theme
-  stars: 3609
-  pushedAt: '2026-01-21T23:12:48Z'
-  archived: false
-  fork: false
-  license: cc0-1.0
-  topics:
-    - awesome-list
-    - website
-  score: 35
-  confidence: low
-  notes: null
-  hidden: false
-- id: jekil/awesome-hacking
-  name: awesome-hacking
-  repo: jekil/awesome-hacking
-  url: https://github.com/jekil/awesome-hacking
-  description: Awesome hacking is an awesome collection of hacking tools.
-  category: Tool
-  tags:
-    - curated-list
-    - forensics
-    - hacking
-    - hacking-tools
-    - malware
-    - penetration-testing
-    - security
-    - security-tools
-    - ghost-theme
-  stars: 3536
-  pushedAt: '2026-01-24T22:24:04Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - curated-list
-    - forensics
-    - hacking
-    - hacking-tools
-    - malware
-    - penetration-testing
-    - security
-    - security-tools
-  score: 27
-  confidence: low
-  notes: null
-  hidden: false
-- id: AchoArnold/discount-for-student-dev
-  name: discount-for-student-dev
-  repo: AchoArnold/discount-for-student-dev
-  url: https://github.com/AchoArnold/discount-for-student-dev
-  description: This is list of discounts on software (SaaS, PaaS, IaaS, etc.) and other offerings for developers who are students
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 3240
-  pushedAt: '2025-06-05T18:28:31Z'
-  archived: false
-  fork: false
-  license: null
-  topics: []
-  score: 29
-  confidence: low
-  notes: null
-  hidden: false
-- id: postlight/awesome-cms
-  name: awesome-cms
-  repo: postlight/awesome-cms
-  url: https://github.com/postlight/awesome-cms
-  description: 📚 A collection of open and closed source Content Management Systems (CMS) for your perusal.
-  category: Theme
-  tags:
-    - awesome-list
+- id: TryGhost/Ghost
+  name: Ghost
+  repo: TryGhost/Ghost
+  url: https://github.com/TryGhost/Ghost
+  description: Independent technology for modern publishing, memberships, subscriptions and newsletters.
+  category: Official
+  tags: &ref_0
+    - blogging
     - cms
-    - labs
-    - toml
-    - ghost-theme
-  stars: 3099
-  pushedAt: '2025-07-30T18:04:02Z'
-  archived: false
-  fork: false
-  license: cc0-1.0
-  topics:
-    - awesome-list
-    - cms
-    - labs
-    - toml
-  score: 34
-  confidence: low
-  notes: null
-  hidden: false
-- id: taishi-i/awesome-ChatGPT-repositories
-  name: awesome-ChatGPT-repositories
-  repo: taishi-i/awesome-ChatGPT-repositories
-  url: https://github.com/taishi-i/awesome-ChatGPT-repositories
-  description: A curated list of resources dedicated to open source GitHub repositories related to ChatGPT and OpenAI API
-  category: Theme
-  tags:
-    - agent
-    - ai
-    - awesome
-    - awesome-list
-    - chatgpt
-    - chatgpt-api
-    - gpt-4
-    - gpt-5
-    - gpt-oss
-    - llm
-    - nlp
-    - openai
-    - ghost-theme
-  stars: 2819
-  pushedAt: '2026-01-25T18:21:59Z'
-  archived: false
-  fork: false
-  license: cc0-1.0
-  topics:
-    - agent
-    - ai
-    - awesome
-    - awesome-list
-    - chatgpt
-    - chatgpt-api
-    - gpt-4
-    - gpt-5
-    - gpt-oss
-    - llm
-    - nlp
-    - openai
-  score: 27
-  confidence: low
-  notes: null
-  hidden: false
-- id: nusquama/n8nworkflows.xyz
-  name: n8nworkflows.xyz
-  repo: nusquama/n8nworkflows.xyz
-  url: https://github.com/nusquama/n8nworkflows.xyz
-  description: N8N Workflows Catalog
-  category: Theme
-  tags:
-    - n8n
-    - n8n-automation
-    - n8n-node
-    - n8n-nodes
-    - n8n-template
-    - n8n-workflow
-    - n8n-workflows
-    - ghost-theme
-  stars: 1893
-  pushedAt: '2026-01-24T04:00:09Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - n8n
-    - n8n-automation
-    - n8n-node
-    - n8n-nodes
-    - n8n-template
-    - n8n-workflow
-    - n8n-workflows
-  score: 6
-  confidence: low
-  notes: null
-  hidden: false
-- id: uhub/awesome-go
-  name: awesome-go
-  repo: uhub/awesome-go
-  url: https://github.com/uhub/awesome-go
-  description: A curated list of awesome Go frameworks, libraries and software.
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 1739
-  pushedAt: '2026-01-15T00:07:23Z'
-  archived: false
-  fork: false
-  license: null
-  topics: []
-  score: 24
-  confidence: low
-  notes: null
-  hidden: false
-- id: mikeroyal/Windows-11-Guide
-  name: Windows-11-Guide
-  repo: mikeroyal/Windows-11-Guide
-  url: https://github.com/mikeroyal/Windows-11-Guide
-  description: >-
-    Windows 10/11 Guide. Including Windows Security tools, Encryption, Nextcloud, Graphics, Gaming, Virtualization,
-    Windows Subsystem for Linux (WSL 2), Software Apps, and Resources. 
-  category: Tool
-  tags:
-    - active-directory
-    - debloat
-    - gaming
-    - hardening
-    - nextcloud
-    - optimization
-    - privacy-protection
-    - tweaks
-    - uwp
-    - visual-studio-code
-    - windows-11
-    - windows-defender
-    - windows-desktop
-    - windows-subsystem-linux
-    - windows-terminal
-    - windows10
-    - windows11
-    - winui
-    - winui3
-    - wsl
-    - ghost-theme
-  stars: 1711
-  pushedAt: '2025-06-27T02:07:45Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - active-directory
-    - debloat
-    - gaming
-    - hardening
-    - nextcloud
-    - optimization
-    - privacy-protection
-    - tweaks
-    - uwp
-    - visual-studio-code
-    - windows-11
-    - windows-defender
-    - windows-desktop
-    - windows-subsystem-linux
-    - windows-terminal
-    - windows10
-    - windows11
-    - winui
-    - winui3
-    - wsl
-  score: 27
-  confidence: low
-  notes: null
-  hidden: false
-- id: ChHsiching/GitHub-Chinese-Top-Charts
-  name: GitHub-Chinese-Top-Charts
-  repo: ChHsiching/GitHub-Chinese-Top-Charts
-  url: https://github.com/ChHsiching/GitHub-Chinese-Top-Charts
-  description: 🇨🇳 GitHub中文排行榜，帮助你发现高分优秀中文项目。
-  category: Theme
-  tags:
-    - chinese
-    - projects
-    - top-charts
-    - ghost-theme
-  stars: 1694
-  pushedAt: '2025-10-16T20:29:23Z'
-  archived: false
-  fork: false
-  license: gpl-3.0
-  topics:
-    - chinese
-    - projects
-    - top-charts
-  score: 24
-  confidence: low
-  notes: null
-  hidden: false
-- id: miantiao-me/awesome-homelab
-  name: awesome-homelab
-  repo: miantiao-me/awesome-homelab
-  url: https://github.com/miantiao-me/awesome-homelab
-  description: Curating Top Open Source Apps for Homelab Enthusiasts
-  category: Theme
-  tags:
-    - awesome
-    - awesome-list
-    - awesome-lists
-    - homelab
-    - homeserver
-    - self-hosted
-    - selfhosted
-    - selfhosting
-    - ghost-theme
-  stars: 1583
-  pushedAt: '2026-01-25T22:29:41Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - awesome
-    - awesome-list
-    - awesome-lists
-    - homelab
-    - homeserver
-    - self-hosted
-    - selfhosted
-    - selfhosting
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: automata/awesome-jamstack
-  name: awesome-jamstack
-  repo: automata/awesome-jamstack
-  url: https://github.com/automata/awesome-jamstack
-  description: Carefully curated list of awesome Jamstack resources
-  category: Theme
-  tags:
-    - awesome
-    - awesome-list
-    - jamstack
+    - ghost
     - javascript
-    - static-site
-    - static-site-generator
-    - ghost-theme
-  stars: 1361
-  pushedAt: '2025-06-24T16:08:58Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - awesome
-    - awesome-list
-    - jamstack
-    - javascript
-    - static-site
-    - static-site-generator
-  score: 29
-  confidence: low
-  notes: null
-  hidden: false
-- id: taielab/awesome-hacking-lists
-  name: awesome-hacking-lists
-  repo: taielab/awesome-hacking-lists
-  url: https://github.com/taielab/awesome-hacking-lists
-  description: >-
-    A curated collection of top-tier penetration testing tools and productivity utilities across multiple domains. Join
-    us to explore, contribute, and enhance your hacking toolkit!
-  category: Tool
-  tags:
-    - agents
-    - ai
-    - aiagent
-    - awesome-list
-    - bounty-hunters
-    - bug-bounty
-    - bugbounty
-    - bugbounty-tool
-    - hacker
-    - hacking
-    - hacking-tool
-    - hacking-tools
-    - kali-scripts
-    - llm
-    - llm-inference
-    - mcp
-    - mcp-server
-    - pentest-scripts
-    - pentesting-tools
-    - web
-    - ghost-theme
-  stars: 1271
-  pushedAt: '2025-12-04T06:55:03Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - agents
-    - ai
-    - aiagent
-    - awesome-list
-    - bounty-hunters
-    - bug-bounty
-    - bugbounty
-    - bugbounty-tool
-    - hacker
-    - hacking
-    - hacking-tool
-    - hacking-tools
-    - kali-scripts
-    - llm
-    - llm-inference
-    - mcp
-    - mcp-server
-    - pentest-scripts
-    - pentesting-tools
-    - web
-  score: 0
-  confidence: low
-  notes: null
-  hidden: false
-- id: bramses/bramses-highly-opinionated-vault-2023
-  name: bramses-highly-opinionated-vault-2023
-  repo: bramses/bramses-highly-opinionated-vault-2023
-  url: https://github.com/bramses/bramses-highly-opinionated-vault-2023
-  description: A highly opinionated, fully featured Obsidian vault that can get you from Zero to Zettelkasten lickety split!
-  category: Theme
-  tags:
-    - obsidian-md
-    - ghost-theme
-  stars: 1174
-  pushedAt: '2025-09-14T19:25:12Z'
+    - journalism
+    - nodejs
+    - publishing
+    - web-application
+  stars: 51731
+  pushedAt: '2026-02-02T01:03:37Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - obsidian-md
-  score: 26
-  confidence: low
+  topics: *ref_0
+  score: 66
+  confidence: medium
   notes: null
   hidden: false
-- id: acekyd/made-in-nigeria
-  name: made-in-nigeria
-  repo: acekyd/made-in-nigeria
-  url: https://github.com/acekyd/made-in-nigeria
-  description: Here is a curation of awesome tools built by Nigerians that can be used by anybody and from anywhere in the world.
-  category: Tool
-  tags:
-    - africa
-    - made-in-naija
-    - made-in-nigeria
-    - nigeria
-    - ghost-theme
-  stars: 1089
-  pushedAt: '2026-01-04T20:37:52Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - africa
-    - made-in-naija
-    - made-in-nigeria
-    - nigeria
-  score: 25
-  confidence: low
-  notes: null
-  hidden: false
-- id: uhub/awesome-javascript
-  name: awesome-javascript
-  repo: uhub/awesome-javascript
-  url: https://github.com/uhub/awesome-javascript
-  description: A curated list of awesome JavaScript frameworks, libraries and software.
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 1018
-  pushedAt: '2026-01-18T00:06:44Z'
-  archived: false
-  fork: false
-  license: null
-  topics: []
-  score: 22
-  confidence: low
-  notes: null
-  hidden: false
-- id: Mobirise/Mobirise
-  name: Mobirise
-  repo: Mobirise/Mobirise
-  url: https://github.com/Mobirise/Mobirise
-  description: AI Website Builder, Open Source, Bootstrap 5
-  category: Theme
-  tags:
-    - bootstrap
-    - bootstrap-website-builder
-    - bootstrap4
-    - css
-    - html
-    - javascript
-    - jquery
-    - mobirise
-    - website-builder
-    - ghost-theme
-  stars: 942
-  pushedAt: '2025-09-16T12:18:27Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - bootstrap
-    - bootstrap-website-builder
-    - bootstrap4
-    - css
-    - html
-    - javascript
-    - jquery
-    - mobirise
-    - website-builder
-  score: 41
-  confidence: low
-  notes: null
-  hidden: false
-- id: one-aalam/awesome-astro
-  name: awesome-astro
-  repo: one-aalam/awesome-astro
-  url: https://github.com/one-aalam/awesome-astro
-  description: >-
-    Curated resources on building sites with Astro, a brand new way to build static and server rendered sites, with
-    cross-framework components, styling and reactive store support.
-  category: Theme
-  tags:
-    - astrodotbuild
-    - awesome
-    - awesome-list
-    - server-side-rendering
-    - static-site
-    - static-site-generator
-    - ghost-theme
-  stars: 837
-  pushedAt: '2026-01-21T07:19:31Z'
-  archived: false
-  fork: false
-  license: mit
-  topics:
-    - astrodotbuild
-    - awesome
-    - awesome-list
-    - server-side-rendering
-    - static-site
-    - static-site-generator
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: dedsec1121fk/DedSec
-  name: DedSec
-  repo: dedsec1121fk/DedSec
-  url: https://github.com/dedsec1121fk/DedSec
-  description: Unofficial DedSec Project GitHub Repository
-  category: Tool
-  tags:
-    - android-security
-    - cybersecurity
-    - ethical-hacking
-    - hacking-tools
-    - information-security
-    - mobile-hacking
-    - network-security
-    - osint
-    - penetration-testing
-    - phishing-awareness
-    - privacy-tools
-    - python-scripting
-    - security-education
-    - security-tools
-    - social-engineering
-    - termux
-    - termux-hacking
-    - termux-tools
-    - vulnerability-assessment
-    - ghost-theme
-  stars: 821
-  pushedAt: '2026-01-24T11:11:11Z'
-  archived: false
-  fork: false
-  license: other
-  topics:
-    - android-security
-    - cybersecurity
-    - ethical-hacking
-    - hacking-tools
-    - information-security
-    - mobile-hacking
-    - network-security
-    - osint
-    - penetration-testing
-    - phishing-awareness
-    - privacy-tools
-    - python-scripting
-    - security-education
-    - security-tools
-    - social-engineering
-    - termux
-    - termux-hacking
-    - termux-tools
-    - vulnerability-assessment
-  score: 30
-  confidence: low
-  notes: null
-  hidden: false
-- id: godofredoninja/simply
-  name: simply
-  repo: godofredoninja/simply
-  url: https://github.com/godofredoninja/simply
-  description: Theme for Ghost inspired on Medium
-  category: Theme
+- id: TryGhost/Casper
+  name: Casper (Official)
+  repo: TryGhost/Casper
+  url: https://github.com/TryGhost/Casper
+  description: The default theme for Ghost
+  category: Official
   tags:
     - blogging
     - ghost
-    - ghost-blog
     - ghost-theme
     - magazine
-    - magazine-theme
-    - theme
-    - ghost-theme
-  stars: 705
-  pushedAt: '2025-01-29T15:03:29Z'
+    - publishing
+    - featured
+    - recommended
+  stars: 2570
+  pushedAt: '2026-02-02T02:36:35Z'
   archived: false
   fork: false
-  license: gpl-3.0
+  license: mit
   topics:
     - blogging
     - ghost
-    - ghost-blog
     - ghost-theme
     - magazine
-    - magazine-theme
-    - theme
-  score: 88
+    - publishing
+  score: 90
+  confidence: high
+  notes: Official Ghost theme - always featured
+  hidden: false
+- id: TryGhost/Ghost-CLI
+  name: Ghost-CLI
+  repo: TryGhost/Ghost-CLI
+  url: https://github.com/TryGhost/Ghost-CLI
+  description: CLI Tool for installing & updating Ghost
+  category: Official
+  tags: &ref_1
+    - blogging
+    - cli
+    - cms
+    - ghost
+    - ghost-cli
+    - hacktoberfest
+    - headless-cms
+    - jamstack
+    - javascript
+    - journalism
+    - nodejs
+    - publishing
+  stars: 489
+  pushedAt: '2026-02-02T02:25:11Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_1
+  score: 63
+  confidence: medium
+  notes: null
+  hidden: false
+- id: TryGhost/Starter
+  name: Starter
+  repo: TryGhost/Starter
+  url: https://github.com/TryGhost/Starter
+  description: A development starter theme for Ghost
+  category: Official
+  tags: &ref_2
+    - blogging
+    - ghost
+    - ghost-theme
+    - publishing
+  stars: 476
+  pushedAt: '2026-01-31T18:09:32Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_2
+  score: 89
   confidence: high
   notes: null
   hidden: false
-- id: officialrajdeepsingh/awesome-nextjs
-  name: awesome-nextjs
-  repo: officialrajdeepsingh/awesome-nextjs
-  url: https://github.com/officialrajdeepsingh/awesome-nextjs
-  description: A curated list of awesome Nextjs-based libraries that help build small and large-scale applications with next.js.
-  category: Tool
-  tags:
-    - awesome
-    - awesome-list
-    - awesome-lists
-    - awesome-nextjs
-    - awesome-nextjs-list
-    - list-of-nextjs-package
-    - nextjs
-    - nextjs-awesome
-    - nextjs-library
-    - nextjs-library-for-npm
-    - nextjs-package-list
-    - nextjs-tool
-    - nextjs13
-    - nextjs14
-    - nextjs15
-    - npm-library-for-nextjs
-    - react
-    - reactjs
-    - tailwindcss
-    - tool-for-nextjs
+- id: TryGhost/action-deploy-theme
+  name: action-deploy-theme
+  repo: TryGhost/action-deploy-theme
+  url: https://github.com/TryGhost/action-deploy-theme
+  description: ':octocat: Deploy your Ghost theme with Github Actions'
+  category: Official
+  tags: &ref_3
+    - ghost
     - ghost-theme
-  stars: 676
-  pushedAt: '2025-12-10T10:39:54Z'
+    - github-action
+    - github-actions
+  stars: 384
+  pushedAt: '2026-02-02T06:22:38Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - awesome
-    - awesome-list
-    - awesome-lists
-    - awesome-nextjs
-    - awesome-nextjs-list
-    - list-of-nextjs-package
-    - nextjs
-    - nextjs-awesome
-    - nextjs-library
-    - nextjs-library-for-npm
-    - nextjs-package-list
-    - nextjs-tool
-    - nextjs13
-    - nextjs14
-    - nextjs15
-    - npm-library-for-nextjs
-    - react
-    - reactjs
-    - tailwindcss
-    - tool-for-nextjs
-  score: 29
-  confidence: low
-  notes: null
-  hidden: false
-- id: hexojs/awesome-hexo
-  name: awesome-hexo
-  repo: hexojs/awesome-hexo
-  url: https://github.com/hexojs/awesome-hexo
-  description: A curated list of awesome things related to Hexo
-  category: Theme
-  tags:
-    - awesome-list
-    - hexo
-    - hexo-plugin
-    - hexo-theme
-    - hexo-tutorial
-    - showcase
-    - ghost-theme
-  stars: 663
-  pushedAt: '2025-09-02T08:13:31Z'
-  archived: false
-  fork: false
-  license: mit
-  topics:
-    - awesome-list
-    - hexo
-    - hexo-plugin
-    - hexo-theme
-    - hexo-tutorial
-    - showcase
-  score: 32
-  confidence: low
-  notes: null
-  hidden: false
-- id: uhub/awesome-css
-  name: awesome-css
-  repo: uhub/awesome-css
-  url: https://github.com/uhub/awesome-css
-  description: A curated list of awesome CSS frameworks, libraries and software.
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 636
-  pushedAt: '2026-01-13T00:06:21Z'
-  archived: false
-  fork: false
-  license: null
-  topics: []
-  score: 23
-  confidence: low
-  notes: null
-  hidden: false
-- id: uhub/awesome-shell
-  name: awesome-shell
-  repo: uhub/awesome-shell
-  url: https://github.com/uhub/awesome-shell
-  description: A curated list of awesome Shell frameworks, libraries and software.
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 616
-  pushedAt: '2026-01-02T00:03:59Z'
-  archived: false
-  fork: false
-  license: null
-  topics: []
-  score: 23
-  confidence: low
-  notes: null
-  hidden: false
-- id: olliethedev/ui-builder
-  name: ui-builder
-  repo: olliethedev/ui-builder
-  url: https://github.com/olliethedev/ui-builder
-  description: >-
-    A React component that provides a no-code, visual way to create UIs, compatible with shadcn/ui and custom
-    components.
-  category: Theme
-  tags:
-    - no-code
-    - reactjs
-    - shadcn-ui
-    - tailwindcss
-    - ui-builder
-    - visual-editor
-    - ghost-theme
-  stars: 566
-  pushedAt: '2026-01-09T20:25:51Z'
-  archived: false
-  fork: false
-  license: mit
-  topics:
-    - no-code
-    - reactjs
-    - shadcn-ui
-    - tailwindcss
-    - ui-builder
-    - visual-editor
-  score: 29
-  confidence: low
-  notes: null
-  hidden: false
-- id: TensorBlock/awesome-mcp-servers
-  name: awesome-mcp-servers
-  repo: TensorBlock/awesome-mcp-servers
-  url: https://github.com/TensorBlock/awesome-mcp-servers
-  description: A comprehensive collection of Model Context Protocol (MCP) servers
-  category: Theme
-  tags:
-    - anthropic
-    - awesome
-    - genai
-    - mcp
-    - mcp-server
-    - mcp-server-discovery
-    - mcp-servers
-    - model-context-protocol
-    - ghost-theme
-  stars: 527
-  pushedAt: '2026-01-25T04:37:13Z'
-  archived: false
-  fork: false
-  license: mit
-  topics:
-    - anthropic
-    - awesome
-    - genai
-    - mcp
-    - mcp-server
-    - mcp-server-discovery
-    - mcp-servers
-    - model-context-protocol
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: themeselection/best-chrome-extensions
-  name: best-chrome-extensions
-  repo: themeselection/best-chrome-extensions
-  url: https://github.com/themeselection/best-chrome-extensions
-  description: A curated list of Best Awesome Chrome Extensions to boost your productivity in your Browsers
-  category: Tool
-  tags:
-    - awesome
-    - brave-extension
-    - browser-extension
-    - chrome
-    - chrome-browser
-    - chrome-devtools
-    - chrome-extension
-    - chrome-extensions
-    - designer
-    - devloper
-    - firefox
-    - tools
-    - vivaldi-extension
-    - web-design
-    - webdeveloper
-    - webdevelopment
-    - ghost-theme
-  stars: 483
-  pushedAt: '2025-02-03T12:08:00Z'
-  archived: false
-  fork: false
-  license: mit
-  topics:
-    - awesome
-    - brave-extension
-    - browser-extension
-    - chrome
-    - chrome-browser
-    - chrome-devtools
-    - chrome-extension
-    - chrome-extensions
-    - designer
-    - devloper
-    - firefox
-    - tools
-    - vivaldi-extension
-    - web-design
-    - webdeveloper
-    - webdevelopment
-  score: 29
-  confidence: low
-  notes: null
-  hidden: false
-- id: nullfuzz-pentest/shodan-dorks
-  name: shodan-dorks
-  repo: nullfuzz-pentest/shodan-dorks
-  url: https://github.com/nullfuzz-pentest/shodan-dorks
-  description: Shodan Dorks
-  category: Theme
-  tags:
-    - awesome
-    - awesome-list
-    - cloud
-    - dorks
-    - hacking
-    - iot
-    - list
-    - penetration-testing
-    - security
-    - shodan
-    - shodan-dorks
-    - ghost-theme
-  stars: 481
-  pushedAt: '2025-02-13T15:06:08Z'
-  archived: false
-  fork: false
-  license: gpl-3.0
-  topics:
-    - awesome
-    - awesome-list
-    - cloud
-    - dorks
-    - hacking
-    - iot
-    - list
-    - penetration-testing
-    - security
-    - shodan
-    - shodan-dorks
-  score: 29
-  confidence: low
-  notes: null
-  hidden: false
-- id: adoyle-h/my-development-tools
-  name: my-development-tools
-  repo: adoyle-h/my-development-tools
-  url: https://github.com/adoyle-h/my-development-tools
-  description: ADoyle 的开发工具箱
-  category: Tool
-  tags:
-    - applications
-    - awesome
-    - awesome-list
-    - checklist
-    - development-tools
-    - productivity
-    - software
-    - toolbox
-    - toolkits
-    - tools
-    - ghost-theme
-  stars: 453
-  pushedAt: '2026-01-18T14:32:14Z'
-  archived: false
-  fork: false
-  license: bsd-3-clause
-  topics:
-    - applications
-    - awesome
-    - awesome-list
-    - checklist
-    - development-tools
-    - productivity
-    - software
-    - toolbox
-    - toolkits
-    - tools
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: viktorbezdek/awesome-github-projects
-  name: awesome-github-projects
-  repo: viktorbezdek/awesome-github-projects
-  url: https://github.com/viktorbezdek/awesome-github-projects
-  description: Curated list of GitHub projects I starred over the years
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 435
-  pushedAt: '2026-01-23T11:25:50Z'
-  archived: false
-  fork: false
-  license: cc0-1.0
-  topics: []
-  score: 23
-  confidence: low
-  notes: null
-  hidden: false
-- id: MinghuiChen43/awesome-deep-phenomena
-  name: awesome-deep-phenomena
-  repo: MinghuiChen43/awesome-deep-phenomena
-  url: https://github.com/MinghuiChen43/awesome-deep-phenomena
-  description: A curated list of papers of interesting empirical study and insight on deep learning. Continually updating...
-  category: Theme
-  tags:
-    - awesome-list
-    - deep-learning-theory
-    - double-descent
-    - emergence
-    - empirical-research
-    - grokking
-    - information-bottleneck-theory
-    - lottery-ticket-hypothesis
-    - neural-collapse
-    - neural-tangent-kernel
-    - neuroscience-inspired-ai
-    - non-convex-optimization
-    - phase-transitions
-    - ghost-theme
-  stars: 388
-  pushedAt: '2026-01-07T19:25:03Z'
-  archived: false
-  fork: false
-  license: mit
-  topics:
-    - awesome-list
-    - deep-learning-theory
-    - double-descent
-    - emergence
-    - empirical-research
-    - grokking
-    - information-bottleneck-theory
-    - lottery-ticket-hypothesis
-    - neural-collapse
-    - neural-tangent-kernel
-    - neuroscience-inspired-ai
-    - non-convex-optimization
-    - phase-transitions
-  score: 28
+  topics: *ref_3
+  score: 59
   confidence: low
   notes: null
   hidden: false
@@ -1425,24 +167,18 @@
   url: https://github.com/TryGhost/Dawn
   description: A minimal newsletter theme for Ghost
   category: Official
-  tags:
+  tags: &ref_4
     - blogging
     - ghost
     - ghost-theme
     - magazine
     - publishing
-    - ghost-theme
   stars: 302
   pushedAt: '2026-01-20T12:21:10Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blogging
-    - ghost
-    - ghost-theme
-    - magazine
-    - publishing
+  topics: *ref_4
   score: 85
   confidence: high
   notes: null
@@ -1455,7 +191,7 @@
     A minimal, responsive, fast Ghost 6 blog theme with great typography. Comes with paid membership support, Disqus
     comments, syntax highlighting, and KaTeX for mathematics, and more.
   category: Theme
-  tags:
+  tags: &ref_5
     - css
     - ghost
     - ghost-6
@@ -1464,21 +200,12 @@
     - javascript
     - theme
     - typography
-    - ghost-theme
   stars: 301
   pushedAt: '2025-12-16T06:58:09Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - css
-    - ghost
-    - ghost-6
-    - ghost-blog
-    - ghost-theme
-    - javascript
-    - theme
-    - typography
+  topics: *ref_5
   score: 84
   confidence: high
   notes: null
@@ -1489,228 +216,158 @@
   url: https://github.com/TryGhost/London
   description: A free, open source theme for Ghost
   category: Official
-  tags:
+  tags: &ref_6
     - blogging
     - ghost
     - ghost-theme
     - magazine
     - publishing
-    - ghost-theme
-  stars: 264
+  stars: 265
   pushedAt: '2026-01-20T12:21:04Z'
   archived: false
   fork: false
   license: mit
-  topics:
+  topics: *ref_6
+  score: 85
+  confidence: high
+  notes: null
+  hidden: false
+- id: TryGhost/Massively
+  name: Massively
+  repo: TryGhost/Massively
+  url: https://github.com/TryGhost/Massively
+  description: A free, open source theme for Ghost
+  category: Official
+  tags: &ref_7
     - blogging
     - ghost
     - ghost-theme
     - magazine
     - publishing
-  score: 85
+  stars: 241
+  pushedAt: '2026-02-02T02:34:01Z'
+  archived: false
+  fork: false
+  license: other
+  topics: *ref_7
+  score: 90
   confidence: high
   notes: null
   hidden: false
-- id: PipedreamHQ/awesome-mcp-servers
-  name: awesome-mcp-servers
-  repo: PipedreamHQ/awesome-mcp-servers
-  url: https://github.com/PipedreamHQ/awesome-mcp-servers
-  description: A collection of MCP servers
-  category: Theme
-  tags:
-    - ghost-theme
-  stars: 226
-  pushedAt: '2025-03-30T03:22:21Z'
-  archived: false
-  fork: false
-  license: null
-  topics: []
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: composify-js/composify
-  name: composify
-  repo: composify-js/composify
-  url: https://github.com/composify-js/composify
-  description: Server Driven UI made easy
-  category: Theme
-  tags:
-    - cms
-    - design-system
-    - react
-    - sdui
-    - server-driven-ui
-    - ghost-theme
-  stars: 225
-  pushedAt: '2025-12-18T06:40:35Z'
-  archived: false
-  fork: false
-  license: other
-  topics:
-    - cms
-    - design-system
-    - react
-    - sdui
-    - server-driven-ui
-  score: 36
-  confidence: low
-  notes: null
-  hidden: false
-- id: angristan/awesome-stars
-  name: awesome-stars
-  repo: angristan/awesome-stars
-  url: https://github.com/angristan/awesome-stars
-  description: A curated list of my GitHub stars!
-  category: Theme
-  tags:
-    - github
-    - stars
-    - ghost-theme
-  stars: 200
-  pushedAt: '2026-01-18T00:58:28Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - github
-    - stars
-  score: 23
-  confidence: low
-  notes: null
-  hidden: false
-- id: IonicaBizau/made-in-brazil
-  name: made-in-brazil
-  repo: IonicaBizau/made-in-brazil
-  url: https://github.com/IonicaBizau/made-in-brazil
-  description: 🇧🇷 A list of neat projects made in Brazil.
-  category: Theme
-  tags:
-    - hacktoberfest
-    - ghost-theme
-  stars: 172
-  pushedAt: '2025-02-13T20:36:07Z'
+- id: TryGhost/ActivityPub
+  name: ActivityPub
+  repo: TryGhost/ActivityPub
+  url: https://github.com/TryGhost/ActivityPub
+  description: A full-featured ActivityPub server for networked publishing with Ghost
+  category: Official
+  tags: &ref_8
+    - activitypub
+    - fediverse
+    - fediverse-server
+    - ghost
+    - ghost-cms
+  stars: 221
+  pushedAt: '2026-02-02T02:53:20Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - hacktoberfest
-  score: 23
-  confidence: low
+  topics: *ref_8
+  score: 60
+  confidence: medium
   notes: null
   hidden: false
-- id: eagleusb/awesome-repositories
-  name: awesome-repositories
-  repo: eagleusb/awesome-repositories
-  url: https://github.com/eagleusb/awesome-repositories
-  description: Personal representation of my 4k github repositories stars.
-  category: Theme
-  tags:
-    - awesome
-    - awesome-list
-    - list
+- id: TryGhost/Editorial
+  name: Editorial
+  repo: TryGhost/Editorial
+  url: https://github.com/TryGhost/Editorial
+  description: A free, open source theme for Ghost
+  category: Official
+  tags: &ref_9
+    - blogging
+    - ghost
     - ghost-theme
-  stars: 157
-  pushedAt: '2026-01-16T02:59:10Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - awesome
-    - awesome-list
-    - list
-  score: 23
-  confidence: low
-  notes: null
-  hidden: false
-- id: technicaldada/BEST-HACKING-TOOLS
-  name: BEST-HACKING-TOOLS
-  repo: technicaldada/BEST-HACKING-TOOLS
-  url: https://github.com/technicaldada/BEST-HACKING-TOOLS
-  description: BEST HACKING TOOLS..For more tools visit our blog for Hackers
-  category: Tool
-  tags:
-    - hack
-    - hacking
-    - hacktoberfest
-    - hacktoberfest-accepted
-    - hacktoberfest2021
-    - hacktoberfest2025
-    - tools
-    - ghost-theme
-  stars: 142
-  pushedAt: '2025-10-04T12:30:42Z'
-  archived: false
-  fork: false
-  license: null
-  topics:
-    - hack
-    - hacking
-    - hacktoberfest
-    - hacktoberfest-accepted
-    - hacktoberfest2021
-    - hacktoberfest2025
-    - tools
-  score: 28
-  confidence: low
-  notes: null
-  hidden: false
-- id: Correia-jpv/fucking-awesome-selfhosted
-  name: fucking-awesome-selfhosted
-  repo: Correia-jpv/fucking-awesome-selfhosted
-  url: https://github.com/Correia-jpv/fucking-awesome-selfhosted
-  description: >-
-    A list of Free Software network services and web applications which can be hosted on your own servers. With
-    repository stars⭐ and forks🍴
-  category: Theme
-  tags:
-    - awesome
-    - awesome-list
-    - cloud
-    - deploy
-    - deployment
-    - free
-    - free-software
-    - host
-    - hosting
-    - hosting-deployment
-    - hosts
-    - privacy
-    - self-hosted
-    - selfhosted
-    - selfhosted-runner
-    - server
-    - serverless
-    - servers
-    - webapp
-    - ghost-theme
-  stars: 130
-  pushedAt: '2026-01-26T05:53:13Z'
+    - magazine
+    - publishing
+  stars: 210
+  pushedAt: '2026-02-02T06:27:06Z'
   archived: false
   fork: false
   license: other
-  topics:
-    - awesome
-    - awesome-list
-    - cloud
-    - deploy
-    - deployment
-    - free
-    - free-software
-    - host
-    - hosting
-    - hosting-deployment
-    - hosts
-    - privacy
-    - self-hosted
-    - selfhosted
-    - selfhosted-runner
-    - server
-    - serverless
-    - servers
-    - webapp
-  score: 27
-  confidence: low
+  topics: *ref_9
+  score: 90
+  confidence: high
+  notes: null
+  hidden: false
+- id: TryGhost/Lyra
+  name: Lyra
+  repo: TryGhost/Lyra
+  url: https://github.com/TryGhost/Lyra
+  description: A paid-members theme for Ghost
+  category: Official
+  tags: &ref_10
+    - ghost
+    - ghost-members
+    - ghost-theme
+    - journalism
+    - paid-memberships
+    - paid-subscriptions
+    - publishing
+  stars: 179
+  pushedAt: '2026-01-21T13:19:07Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_10
+  score: 77
+  confidence: medium
+  notes: null
+  hidden: false
+- id: TryGhost/Roon
+  name: Roon
+  repo: TryGhost/Roon
+  url: https://github.com/TryGhost/Roon
+  description: The official Roon theme for Ghost
+  category: Official
+  tags: &ref_11
+    - blogging
+    - ghost
+    - ghost-theme
+    - publishing
+  stars: 143
+  pushedAt: '2026-01-21T13:19:19Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_11
+  score: 87
+  confidence: high
+  notes: null
+  hidden: false
+- id: MFYDev/ghost-mcp
+  name: ghost-mcp
+  repo: MFYDev/ghost-mcp
+  url: https://github.com/MFYDev/ghost-mcp
+  description: >-
+    A Model Context Protocol (MCP) server for interacting with Ghost CMS through LLM interfaces like Claude. Allow you
+    to control your Ghost blog by simply asking Claude etc.
+  category: Theme
+  tags: &ref_12
+    - claude
+    - claude-ai
+    - ghost
+    - ghost-blog
+    - ghost-cms
+    - mcp
+    - mcp-server
+    - modelcontextprotocol
+  stars: 136
+  pushedAt: '2025-04-20T20:15:52Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_12
+  score: 68
+  confidence: medium
   notes: null
   hidden: false
 - id: TryGhost/Alto
@@ -1719,24 +376,18 @@
   url: https://github.com/TryGhost/Alto
   description: A clean, minimalist theme featuring a light and dark mode for Ghost
   category: Official
-  tags:
+  tags: &ref_13
     - blogging
     - ghost
     - ghost-theme
     - magazine
     - publishing
-    - ghost-theme
   stars: 122
   pushedAt: '2026-01-20T12:21:10Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blogging
-    - ghost
-    - ghost-theme
-    - magazine
-    - publishing
+  topics: *ref_13
   score: 85
   confidence: high
   notes: null
@@ -1747,7 +398,7 @@
   url: https://github.com/TryGhost/Source
   description: The default theme for Ghost
   category: Official
-  tags:
+  tags: &ref_14
     - blog
     - ghost
     - ghost-theme
@@ -1755,20 +406,12 @@
     - news
     - newsletter
     - publishing
-    - ghost-theme
   stars: 108
-  pushedAt: '2026-01-23T02:54:17Z'
+  pushedAt: '2026-02-02T02:26:42Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blog
-    - ghost
-    - ghost-theme
-    - magazine
-    - news
-    - newsletter
-    - publishing
+  topics: *ref_14
   score: 89
   confidence: high
   notes: null
@@ -1779,24 +422,40 @@
   url: https://github.com/TryGhost/Edge
   description: A visually aesthetic portfolio theme for Ghost
   category: Official
-  tags:
+  tags: &ref_15
     - blogging
     - ghost
     - ghost-theme
     - magazine
     - publishing
-    - ghost-theme
   stars: 95
   pushedAt: '2026-01-20T12:21:13Z'
   archived: false
   fork: false
   license: mit
-  topics:
+  topics: *ref_15
+  score: 85
+  confidence: high
+  notes: null
+  hidden: false
+- id: TryGhost/Ease
+  name: Ease
+  repo: TryGhost/Ease
+  url: https://github.com/TryGhost/Ease
+  description: A minimal documentation theme for Ghost
+  category: Official
+  tags: &ref_16
     - blogging
     - ghost
     - ghost-theme
     - magazine
     - publishing
+  stars: 89
+  pushedAt: '2026-01-20T12:21:09Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_16
   score: 85
   confidence: high
   notes: null
@@ -1807,52 +466,158 @@
   url: https://github.com/TryGhost/Themes
   description: A monorepo for Ghost themes
   category: Official
-  tags:
+  tags: &ref_17
     - ghost
     - ghost-theme
     - newsletter
     - publishing
-    - ghost-theme
   stars: 89
-  pushedAt: '2026-01-20T14:58:08Z'
+  pushedAt: '2026-02-02T02:43:27Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - ghost
-    - ghost-theme
-    - newsletter
-    - publishing
+  topics: *ref_17
   score: 56
   confidence: low
   notes: null
   hidden: false
-- id: TryGhost/Ease
-  name: Ease
-  repo: TryGhost/Ease
-  url: https://github.com/TryGhost/Ease
-  description: A minimal documentation theme for Ghost
+- id: TryGhost/Edition
+  name: Edition
+  repo: TryGhost/Edition
+  url: https://github.com/TryGhost/Edition
+  description: The newsletter theme for Ghost
   category: Official
-  tags:
-    - blogging
+  tags: &ref_18
     - ghost
     - ghost-theme
-    - magazine
+    - newsletter
     - publishing
-    - ghost-theme
-  stars: 89
-  pushedAt: '2026-01-20T12:21:09Z'
+  stars: 87
+  pushedAt: '2026-01-20T12:21:12Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blogging
+  topics: *ref_18
+  score: 79
+  confidence: medium
+  notes: null
+  hidden: false
+- id: eexit/ghost-storage-cloudinary
+  name: ghost-storage-cloudinary
+  repo: eexit/ghost-storage-cloudinary
+  url: https://github.com/eexit/ghost-storage-cloudinary
+  description: ':rocket: A fully-featured and deeply tested Cloudinary Ghost storage adapter'
+  category: Theme
+  tags: &ref_19
+    - cloudinary
+    - es6
+    - ghost
+    - ghost-blog
+    - ghost-storage-adapter
+    - nodejs
+    - nodejs-modules
+    - plugins
+    - retina-support
+    - retinajs
+  stars: 86
+  pushedAt: '2026-01-21T23:55:16Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_19
+  score: 57
+  confidence: low
+  notes: null
+  hidden: false
+- id: royalfig/smart
+  name: smart
+  repo: royalfig/smart
+  url: https://github.com/royalfig/smart
+  description: A theme for the open source publishing platform Ghost
+  category: Theme
+  tags: &ref_20
+    - blog
     - ghost
     - ghost-theme
-    - magazine
-    - publishing
-  score: 85
-  confidence: high
+  stars: 85
+  pushedAt: '2026-01-30T10:08:07Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_20
+  score: 62
+  confidence: medium
+  notes: null
+  hidden: false
+- id: sredevopsorg/ghost-on-kubernetes
+  name: ghost-on-kubernetes
+  repo: sredevopsorg/ghost-on-kubernetes
+  url: https://github.com/sredevopsorg/ghost-on-kubernetes
+  description: >-
+    Ghost on Kubernetes by SREDevOps.org - Deploy Ghost v6 on Kubernetes (k8s, k3s, etc) with our hardened distroless
+    rootless custom image.
+  category: Theme
+  tags: &ref_21
+    - cms
+    - container-image
+    - containers
+    - deploy
+    - distroless
+    - dockerfile
+    - ghost
+    - ghost-blog
+    - ghost-cms
+    - gke
+    - hardened-images
+    - k3s
+    - k8s
+    - kubernetes
+    - kubernetes-deployment
+    - self-hosted
+  stars: 83
+  pushedAt: '2026-01-31T01:23:03Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_21
+  score: 69
+  confidence: medium
+  notes: null
+  hidden: false
+- id: oakbrad/dungeonchurch
+  name: dungeonchurch
+  repo: oakbrad/dungeonchurch
+  url: https://github.com/oakbrad/dungeonchurch
+  description: D&D group infrastructure.
+  category: Tool
+  tags: &ref_22
+    - 5etools
+    - discord
+    - diy
+    - dnd
+    - dnd-tools
+    - dnd5e
+    - docker-compose
+    - dungeons-and-dragons
+    - foundryvtt
+    - ghost-blog
+    - node-red
+    - node-red-flow
+    - outline-wiki
+    - quake3arena
+    - rpg
+    - self-hosted
+    - selfhosted
+    - ttrpg
+    - ttrpgs
+  stars: 83
+  pushedAt: '2025-12-22T17:43:04Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_22
+  score: 57
+  confidence: low
   notes: null
   hidden: false
 - id: TryGhost/Wave
@@ -1861,24 +626,18 @@
   url: https://github.com/TryGhost/Wave
   description: A podcast theme for Ghost
   category: Official
-  tags:
+  tags: &ref_23
     - blogging
     - ghost
     - ghost-theme
     - magazine
     - publishing
-    - ghost-theme
-  stars: 81
+  stars: 82
   pushedAt: '2026-01-20T12:21:07Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blogging
-    - ghost
-    - ghost-theme
-    - magazine
-    - publishing
+  topics: *ref_23
   score: 85
   confidence: high
   notes: null
@@ -1889,7 +648,7 @@
   url: https://github.com/curiositry/undefined-ghost-theme
   description: A minimal, Ghost 6-ready, membership-enabled starter theme for the Ghost blogging platform.
   category: Starter
-  tags:
+  tags: &ref_24
     - blog
     - blog-theme
     - blogging
@@ -1899,24 +658,38 @@
     - ghost-theme
     - starter-theme
     - theme
-    - ghost-theme
   stars: 81
   pushedAt: '2025-12-16T07:02:18Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blog
-    - blog-theme
-    - blogging
-    - ghost
-    - ghost-6
-    - ghost-blog
-    - ghost-theme
-    - starter-theme
-    - theme
+  topics: *ref_24
   score: 88
   confidence: high
+  notes: null
+  hidden: false
+- id: TryGhost/Pico
+  name: Pico
+  repo: TryGhost/Pico
+  url: https://github.com/TryGhost/Pico
+  description: A paid members publishing theme for Ghost
+  category: Official
+  tags: &ref_25
+    - ghost
+    - ghost-members
+    - ghost-theme
+    - journalism
+    - paid-memberships
+    - paid-subscriptions
+    - publishing
+  stars: 76
+  pushedAt: '2026-01-21T13:19:09Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_25
+  score: 77
+  confidence: medium
   notes: null
   hidden: false
 - id: TryGhost/Ruby
@@ -1925,24 +698,18 @@
   url: https://github.com/TryGhost/Ruby
   description: A multi-column theme with a unique card layout for Ghost
   category: Official
-  tags:
+  tags: &ref_26
     - blogging
     - ghost
     - ghost-theme
     - magazine
     - publishing
-    - ghost-theme
   stars: 65
   pushedAt: '2026-01-20T12:21:12Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blogging
-    - ghost
-    - ghost-theme
-    - magazine
-    - publishing
+  topics: *ref_26
   score: 85
   confidence: high
   notes: null
@@ -1953,23 +720,66 @@
   url: https://github.com/TryGhost/Journal
   description: A newsletter theme for Ghost
   category: Official
-  tags:
+  tags: &ref_27
     - ghost
     - ghost-theme
     - newsletter
     - publishing
-    - ghost-theme
-  stars: 60
+  stars: 61
   pushedAt: '2026-01-20T12:21:10Z'
   archived: false
   fork: false
   license: mit
-  topics:
+  topics: *ref_27
+  score: 79
+  confidence: medium
+  notes: null
+  hidden: false
+- id: TryGhost/Dope
+  name: Dope
+  repo: TryGhost/Dope
+  url: https://github.com/TryGhost/Dope
+  description: A unique tag-based theme for Ghost
+  category: Official
+  tags: &ref_28
+    - blogging
     - ghost
     - ghost-theme
-    - newsletter
+    - magazine
     - publishing
-  score: 79
+  stars: 58
+  pushedAt: '2026-01-20T12:21:10Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_28
+  score: 85
+  confidence: high
+  notes: null
+  hidden: false
+- id: PhilDL/ts-ghost
+  name: ts-ghost
+  repo: PhilDL/ts-ghost
+  url: https://github.com/PhilDL/ts-ghost
+  description: >-
+    A collection of TypeScript packages and tools to interact with a ghost blog. Type-safe 🦾 Ghost Content API client
+    and CLI 🤖 tool to export posts in Markdown.
+  category: Tool
+  tags: &ref_29
+    - ghost
+    - ghost-blog
+    - ghost-content-api
+    - hacktoberfest
+    - markdown
+    - typescript
+    - zod
+  stars: 57
+  pushedAt: '2026-02-02T01:40:32Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_29
+  score: 60
   confidence: medium
   notes: null
   hidden: false
@@ -1979,24 +789,18 @@
   url: https://github.com/TryGhost/Headline
   description: A local news theme for Ghost
   category: Official
-  tags:
+  tags: &ref_30
     - ghost
     - ghost-theme
     - local-news
     - news
     - publishing
-    - ghost-theme
   stars: 54
   pushedAt: '2026-01-20T12:21:11Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - ghost
-    - ghost-theme
-    - local-news
-    - news
-    - publishing
+  topics: *ref_30
   score: 79
   confidence: medium
   notes: null
@@ -2007,78 +811,70 @@
   url: https://github.com/TryGhost/Solo
   description: A personal theme for Ghost
   category: Official
-  tags:
+  tags: &ref_31
     - blog
     - ghost
     - ghost-theme
     - newsletter
     - personal
-    - ghost-theme
   stars: 44
   pushedAt: '2026-01-20T12:21:16Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blog
-    - ghost
-    - ghost-theme
-    - newsletter
-    - personal
+  topics: *ref_31
   score: 85
   confidence: high
   notes: null
   hidden: false
-- id: flipperdevices/Casper-flipper-blog-theme
-  name: Casper-flipper-blog-theme
-  repo: flipperdevices/Casper-flipper-blog-theme
-  url: https://github.com/flipperdevices/Casper-flipper-blog-theme
-  description: null
+- id: Vortexmind/image-resizing
+  name: image-resizing
+  repo: Vortexmind/image-resizing
+  url: https://github.com/Vortexmind/image-resizing
+  description: Image resizing Cloudflare worker for Ghost blog image content
   category: Theme
-  tags:
-    - ghost-theme
-  stars: 28
-  pushedAt: '2025-12-09T16:57:46Z'
+  tags: &ref_32
+    - cloudflare
+    - cloudflare-worker
+    - ghost
+    - ghost-blog
+    - serverless
+  stars: 35
+  pushedAt: '2026-01-08T17:16:41Z'
   archived: false
   fork: false
   license: mit
-  topics: []
-  score: 49
+  topics: *ref_32
+  score: 57
   confidence: low
   notes: null
   hidden: false
-- id: JustGoodThemes/Scriptor-Ghost-Theme
-  name: Scriptor-Ghost-Theme
-  repo: JustGoodThemes/Scriptor-Ghost-Theme
-  url: https://github.com/JustGoodThemes/Scriptor-Ghost-Theme
-  description: Scriptor is a minimal, clean, modern & responsive Ghost theme for writers.
-  category: Theme
-  tags:
-    - blog
-    - blog-theme
-    - blogging
-    - free
-    - free-theme
-    - ghost
+- id: chaddyc/auto-newsletter-listmonk
+  name: auto-newsletter-listmonk
+  repo: chaddyc/auto-newsletter-listmonk
+  url: https://github.com/chaddyc/auto-newsletter-listmonk
+  description: >-
+    Autonomous newsletter builder tool for Listmonk and Ghost Blog CMS. This GoLang App compiles a newsletter from an
+    RSS feed and posts it to Listmonk via API  to create the new campaign.
+  category: Tool
+  tags: &ref_33
+    - ghost-blog
     - ghost-cms
-    - ghost-theme
-    - ghost-theme
-  stars: 23
-  pushedAt: '2025-08-21T19:03:08Z'
+    - go
+    - golang
+    - golang-tools
+    - listmonk
+    - listmonk-api
+    - newsletter
+    - newsletter-management
+  stars: 26
+  pushedAt: '2025-04-23T14:30:47Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blog
-    - blog-theme
-    - blogging
-    - free
-    - free-theme
-    - ghost
-    - ghost-cms
-    - ghost-theme
-  score: 89
-  confidence: high
+  topics: *ref_33
+  score: 68
+  confidence: medium
   notes: null
   hidden: false
 - id: bunizao/Attegi
@@ -2089,27 +885,224 @@
     Attegi is an elegant and dynamic Ghost theme, with a modern design, deep support for Ghost, and specially optimized
     for mobile devices.
   category: Theme
-  tags:
+  tags: &ref_34
     - blog
     - blog-theme
     - blogging
     - ghost
     - ghost-theme
     - theme
+  stars: 23
+  pushedAt: '2026-02-02T00:49:40Z'
+  archived: false
+  fork: false
+  license: agpl-3.0
+  topics: *ref_34
+  score: 90
+  confidence: high
+  notes: null
+  hidden: false
+- id: JustGoodThemes/Scriptor-Ghost-Theme
+  name: Scriptor-Ghost-Theme
+  repo: JustGoodThemes/Scriptor-Ghost-Theme
+  url: https://github.com/JustGoodThemes/Scriptor-Ghost-Theme
+  description: Scriptor is a minimal, clean, modern & responsive Ghost theme for writers.
+  category: Theme
+  tags: &ref_35
+    - blog
+    - blog-theme
+    - blogging
+    - free
+    - free-theme
+    - ghost
+    - ghost-cms
     - ghost-theme
-  stars: 21
-  pushedAt: '2026-01-25T12:43:35Z'
+  stars: 23
+  pushedAt: '2025-08-21T19:03:08Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blog
-    - blog-theme
+  topics: *ref_35
+  score: 89
+  confidence: high
+  notes: null
+  hidden: false
+- id: TryGhost/Argon
+  name: Argon
+  repo: TryGhost/Argon
+  url: https://github.com/TryGhost/Argon
+  description: A simple publishing theme for Ghost
+  category: Official
+  tags: &ref_36
     - blogging
     - ghost
     - ghost-theme
-    - theme
-  score: 90
+    - publishing
+  stars: 23
+  pushedAt: '2026-01-21T13:18:33Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_36
+  score: 89
+  confidence: high
+  notes: null
+  hidden: false
+- id: hackersandslackers/hackersandslackers-theme
+  name: hackersandslackers-theme
+  repo: hackersandslackers/hackersandslackers-theme
+  url: https://github.com/hackersandslackers/hackersandslackers-theme
+  description: 👻 📝 ✨ Clean Ghost theme with advanced features & customization.
+  category: Theme
+  tags: &ref_37
+    - blog
+    - blog-template
+    - ghost
+    - ghost-theme
+    - handlebars
+    - javascript
+    - sass
+    - webpack
+  stars: 21
+  pushedAt: '2026-02-02T01:42:03Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_37
+  score: 89
+  confidence: high
+  notes: null
+  hidden: false
+- id: MFYDev/ghost-meilisearch
+  name: ghost-meilisearch
+  repo: MFYDev/ghost-meilisearch
+  url: https://github.com/MFYDev/ghost-meilisearch
+  description: >-
+    Add powerful, lightning-fast search to your Ghost blog with Meilisearch. This integration provides everything you
+    need to create a seamless search experience for your readers.
+  category: Theme
+  tags: &ref_38
+    - cloudflare-workers
+    - ghost
+    - ghost-blog
+    - ghost-cms
+    - meilisearch
+    - meilisearch-integration
+    - netlify
+    - seach-engine
+    - search-enhancement
+    - vercel
+  stars: 21
+  pushedAt: '2026-01-29T17:54:51Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_38
+  score: 69
+  confidence: medium
+  notes: null
+  hidden: false
+- id: YunoHost-Apps/ghost_ynh
+  name: ghost_ynh
+  repo: YunoHost-Apps/ghost_ynh
+  url: https://github.com/YunoHost-Apps/ghost_ynh
+  description: Ghost package for YunoHost
+  category: Theme
+  tags: &ref_39
+    - ghost
+    - ghost-blog
+    - yunohost
+    - yunohost-apps
+  stars: 21
+  pushedAt: '2026-02-01T16:46:46Z'
+  archived: false
+  fork: false
+  license: gpl-3.0
+  topics: *ref_39
+  score: 57
+  confidence: low
+  notes: null
+  hidden: false
+- id: christancho/Blogging-with-N8N
+  name: Blogging-with-N8N
+  repo: christancho/Blogging-with-N8N
+  url: https://github.com/christancho/Blogging-with-N8N
+  description: >-
+    AI-Powered Blog Automation Suite - Complete N8N workflow for automated content creation, research, SEO optimization,
+    and publishing to Ghost CMS.
+  category: Theme
+  tags: &ref_40
+    - ghost
+    - ghost-cms
+    - n8n
+    - n8n-workflow
+  stars: 20
+  pushedAt: '2025-11-06T14:58:20Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_40
+  score: 61
+  confidence: medium
+  notes: null
+  hidden: false
+- id: CorySanin/seance
+  name: seance
+  repo: CorySanin/seance
+  url: https://github.com/CorySanin/seance
+  description: A self-hostable contact form for Ghost
+  category: Theme
+  tags: &ref_41
+    - contact-form
+    - ghost
+    - ghost-blog
+  stars: 18
+  pushedAt: '2026-01-08T23:23:39Z'
+  archived: false
+  fork: false
+  license: gpl-3.0
+  topics: *ref_41
+  score: 63
+  confidence: medium
+  notes: null
+  hidden: false
+- id: nickabs/transmission
+  name: transmission
+  repo: nickabs/transmission
+  url: https://github.com/nickabs/transmission
+  description: transmission Ghost theme
+  category: Theme
+  tags: &ref_42
+    - ghost
+    - ghost-theme
+  stars: 17
+  pushedAt: '2026-01-22T22:44:31Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_42
+  score: 83
+  confidence: high
+  notes: null
+  hidden: false
+- id: TryGhost/Tribeca
+  name: Tribeca
+  repo: TryGhost/Tribeca
+  url: https://github.com/TryGhost/Tribeca
+  description: A free theme for Ghost
+  category: Official
+  tags: &ref_43
+    - blogging
+    - ghost
+    - ghost-theme
+    - publishing
+  stars: 17
+  pushedAt: '2026-01-21T13:19:25Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_43
+  score: 89
   confidence: high
   notes: null
   hidden: false
@@ -2119,50 +1112,63 @@
   url: https://github.com/TryGhost/Bulletin
   description: A newsletter theme for Ghost
   category: Official
-  tags:
+  tags: &ref_44
     - ghost
     - ghost-theme
     - newsletter
     - publishing
-    - ghost-theme
   stars: 16
   pushedAt: '2026-01-20T12:21:12Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - ghost
-    - ghost-theme
-    - newsletter
-    - publishing
+  topics: *ref_44
   score: 79
   confidence: medium
   notes: null
   hidden: false
-- id: metaory/jsonresume-theme-legacy
-  name: jsonresume-theme-legacy
-  repo: metaory/jsonresume-theme-legacy
-  url: https://github.com/metaory/jsonresume-theme-legacy
-  description: Legacy JSONResume Iconify, colors, PDF
+- id: exlab-code/ghost-cms-amazon-ses-adapter
+  name: ghost-cms-amazon-ses-adapter
+  repo: exlab-code/ghost-cms-amazon-ses-adapter
+  url: https://github.com/exlab-code/ghost-cms-amazon-ses-adapter
+  description: >-
+    This project provides a simple but effective solution for using AWS SES instead of Mailgun for sending Ghost
+    newsletters, without modifying Ghost's source code.
   category: Theme
-  tags:
-    - json-resume
-    - jsonresume
-    - jsonresume-theme
-    - pin
-    - ghost-theme
-  stars: 14
-  pushedAt: '2025-12-26T16:07:38Z'
+  tags: &ref_45
+    - adapter
+    - amazon-ses
+    - ghost-cms
+    - mailgun
+  stars: 12
+  pushedAt: '2025-08-17T08:54:47Z'
   archived: false
   fork: false
-  license: mit
-  topics:
-    - json-resume
-    - jsonresume
-    - jsonresume-theme
-    - pin
-  score: 35
-  confidence: low
+  license: null
+  topics: *ref_45
+  score: 64
+  confidence: medium
+  notes: null
+  hidden: false
+- id: betschki/ghost-myrtle
+  name: ghost-myrtle
+  repo: betschki/ghost-myrtle
+  url: https://github.com/betschki/ghost-myrtle
+  description: >-
+    Ghost Myrtle is a NodeJS command-line interface (CLI) tool that aims to make it easier for Ghost theme developers to
+    create content for their theme demo sites.
+  category: Tool
+  tags: &ref_46
+    - ghost
+    - ghost-cms
+  stars: 12
+  pushedAt: '2025-10-12T20:18:31Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_46
+  score: 64
+  confidence: medium
   notes: null
   hidden: false
 - id: mskian/santhosh-veer-blog
@@ -2171,7 +1177,7 @@
   url: https://github.com/mskian/santhosh-veer-blog
   description: A Ghost theme with Membership Feature
   category: Theme
-  tags:
+  tags: &ref_47
     - blogging
     - bulma
     - bulma-css
@@ -2186,27 +1192,12 @@
     - jquery
     - publishing
     - theme
-    - ghost-theme
   stars: 11
-  pushedAt: '2026-01-22T21:25:43Z'
+  pushedAt: '2026-02-02T00:57:12Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - blogging
-    - bulma
-    - bulma-css
-    - css
-    - ghost
-    - ghost-api
-    - ghost-blog
-    - ghost-members
-    - ghost-theme
-    - html
-    - javascript
-    - jquery
-    - publishing
-    - theme
+  topics: *ref_47
   score: 86
   confidence: high
   notes: null
@@ -2217,23 +1208,132 @@
   url: https://github.com/TryGhost/Digest
   description: A newsletter theme for Ghost
   category: Official
-  tags:
+  tags: &ref_48
     - ghost
     - ghost-theme
     - newsletter
     - publishing
-    - ghost-theme
   stars: 10
   pushedAt: '2026-01-20T12:21:09Z'
   archived: false
   fork: false
   license: mit
-  topics:
+  topics: *ref_48
+  score: 79
+  confidence: medium
+  notes: null
+  hidden: false
+- id: ehsanghaffar/eindev-ghost-theme
+  name: eindev-ghost-theme
+  repo: ehsanghaffar/eindev-ghost-theme
+  url: https://github.com/ehsanghaffar/eindev-ghost-theme
+  description: A new personal blog theme for Ghost CMS
+  category: Theme
+  tags: &ref_49
     - ghost
     - ghost-theme
-    - newsletter
-    - publishing
-  score: 79
+    - tailwind-ghost
+    - tailwindcss
+  stars: 10
+  pushedAt: '2025-12-24T16:32:33Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_49
+  score: 83
+  confidence: high
+  notes: null
+  hidden: false
+- id: MatthiesenXYZ/ghostcms-loader
+  name: ghostcms-loader
+  repo: MatthiesenXYZ/ghostcms-loader
+  url: https://github.com/MatthiesenXYZ/ghostcms-loader
+  description: >-
+    This package provides a GhostCMS loader for astro. Allowing ease of use of all your GhostCMS content within astro's
+    built in Content Layer!
+  category: Theme
+  tags: &ref_50
+    - astro
+    - astro-ghostcms
+    - astro-loader
+    - ghostcms
+    - withastro
+  stars: 10
+  pushedAt: '2025-04-13T10:51:51Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_50
+  score: 65
+  confidence: medium
+  notes: null
+  hidden: false
+- id: Wayne-Jones/ghost-cms-nextjs
+  name: ghost-cms-nextjs
+  repo: Wayne-Jones/ghost-cms-nextjs
+  url: https://github.com/Wayne-Jones/ghost-cms-nextjs
+  description: Template For Using GhostCMS as a headless CMS with NextJS
+  category: Theme
+  tags: &ref_51
+    - ghost
+    - ghost-api
+    - ghostcms
+    - headless
+    - headless-cms
+    - nextjs
+    - nextjs-template
+    - react
+    - reactjs
+    - static-site-generator
+    - typescript
+  stars: 10
+  pushedAt: '2026-01-29T07:13:08Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_51
+  score: 62
+  confidence: medium
+  notes: null
+  hidden: false
+- id: wilburx9/wilburx9.com
+  name: wilburx9.com
+  repo: wilburx9/wilburx9.com
+  url: https://github.com/wilburx9/wilburx9.com
+  description: Source code for my website, wilburx9.com
+  category: Theme
+  tags: &ref_52
+    - ghost-blog
+    - ghost-theme
+    - go
+    - portfolio-website
+  stars: 9
+  pushedAt: '2026-01-07T09:37:17Z'
+  archived: false
+  fork: false
+  license: mpl-2.0
+  topics: *ref_52
+  score: 68
+  confidence: medium
+  notes: null
+  hidden: false
+- id: educationwarehouse/edwh-ghost
+  name: edwh-ghost
+  repo: educationwarehouse/edwh-ghost
+  url: https://github.com/educationwarehouse/edwh-ghost
+  description: Python Client for Ghost CMS v3 - v6
+  category: Theme
+  tags: &ref_53
+    - ghost
+    - ghost-cms
+    - python
+  stars: 9
+  pushedAt: '2026-01-12T13:43:24Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_53
+  score: 60
   confidence: medium
   notes: null
   hidden: false
@@ -2243,24 +1343,111 @@
   url: https://github.com/sredevopsorg/sredevopsorg-ghost-theme
   description: A Ghost v5 Theme made for SREDevOps.org based on Tailwind CSS with sidebar navigation and dark theme by default.
   category: Theme
-  tags:
+  tags: &ref_54
     - ghost
     - ghost-blog
     - ghost-cms
-    - ghost-theme
     - ghost-theme
   stars: 8
   pushedAt: '2026-01-23T12:53:54Z'
   archived: false
   fork: false
   license: mit
-  topics:
+  topics: *ref_54
+  score: 86
+  confidence: high
+  notes: null
+  hidden: false
+- id: contraptionco/trivet
+  name: trivet
+  repo: contraptionco/trivet
+  url: https://github.com/contraptionco/trivet
+  description: Google sign-in for Ghost blogs
+  category: Theme
+  tags: &ref_55
+    - ghost
+    - ghost-blog
+    - ghost-theme
+  stars: 7
+  pushedAt: '2026-01-12T22:36:30Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_55
+  score: 62
+  confidence: medium
+  notes: null
+  hidden: false
+- id: ditschedev/nuxtjs-ghost
+  name: nuxtjs-ghost
+  repo: ditschedev/nuxtjs-ghost
+  url: https://github.com/ditschedev/nuxtjs-ghost
+  description: NuxtJS module to interact with the Ghost API
+  category: Theme
+  tags: &ref_56
+    - ghost
+    - ghost-cms
+    - nuxt-module
+    - nuxt-modules
+  stars: 7
+  pushedAt: '2026-01-23T18:08:03Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_56
+  score: 54
+  confidence: low
+  notes: null
+  hidden: false
+- id: Decryptu/ghost-autoblogger-bot
+  name: ghost-autoblogger-bot
+  repo: Decryptu/ghost-autoblogger-bot
+  url: https://github.com/Decryptu/ghost-autoblogger-bot
+  description: >-
+    An automated Ghost CMS content generator that transforms the latest English AI news articles into engaging French
+    content. This bot fetches current AI news, translates and adapts it into French using OpenAI's language models, and
+    pairs it with relevant imagery from Unsplash to create draft posts for your Ghost blog.
+  category: Theme
+  tags: &ref_57
+    - autoblog
+    - autoblogger
+    - blog
+    - bot
+    - ghost
+    - ghost-cms
+  stars: 6
+  pushedAt: '2025-05-06T13:06:08Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_57
+  score: 60
+  confidence: medium
+  notes: null
+  hidden: false
+- id: hatamiarash7/MyWebSite
+  name: MyWebSite
+  repo: hatamiarash7/MyWebSite
+  url: https://github.com/hatamiarash7/MyWebSite
+  description: My Personal Website
+  category: Theme
+  tags: &ref_58
+    - blog
+    - blogging
     - ghost
     - ghost-blog
     - ghost-cms
-    - ghost-theme
-  score: 86
-  confidence: high
+    - react
+    - reactjs
+    - website
+  stars: 6
+  pushedAt: '2026-01-27T13:34:39Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_58
+  score: 61
+  confidence: medium
   notes: null
   hidden: false
 - id: code-gal/Ghost-Theme-Blumid
@@ -2269,27 +1456,127 @@
   url: https://github.com/code-gal/Ghost-Theme-Blumid
   description: Ghost theme based on crystal-moire gradient design
   category: Theme
-  tags:
+  tags: &ref_59
     - blog
     - blogging
     - ghost
     - ghost-theme
     - publishing
     - theme
-    - ghost-theme
   stars: 5
   pushedAt: '2025-06-09T00:49:58Z'
   archived: false
   fork: false
   license: agpl-3.0
-  topics:
-    - blog
-    - blogging
+  topics: *ref_59
+  score: 88
+  confidence: high
+  notes: null
+  hidden: false
+- id: TryGhost/Taste
+  name: Taste
+  repo: TryGhost/Taste
+  url: https://github.com/TryGhost/Taste
+  description: null
+  category: Official
+  tags: &ref_60
     - ghost
     - ghost-theme
+    - newsletter
     - publishing
-    - theme
-  score: 88
+  stars: 4
+  pushedAt: '2026-01-20T12:21:07Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_60
+  score: 52
+  confidence: low
+  notes: null
+  hidden: false
+- id: elmahio/elmah-io-ghost-theme
+  name: elmah-io-ghost-theme
+  repo: elmahio/elmah-io-ghost-theme
+  url: https://github.com/elmahio/elmah-io-ghost-theme
+  description: Ghost theme for the elmah.io blog
+  category: Theme
+  tags: &ref_61
+    - blog
+    - elmah
+    - elmah-io
+    - ghost-blog
+    - ghost-theme
+  stars: 4
+  pushedAt: '2026-01-21T18:15:53Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_61
+  score: 79
+  confidence: medium
+  notes: null
+  hidden: false
+- id: zhawtof/hawtofthepress
+  name: hawtofthepress
+  repo: zhawtof/hawtofthepress
+  url: https://github.com/zhawtof/hawtofthepress
+  description: A minimalist Ghost theme for your personal blog
+  category: Theme
+  tags: &ref_62
+    - blog
+    - blog-theme
+    - ghost
+    - ghost-blog
+    - ghost-cms
+    - ghost-theme
+    - ghost-themes
+  stars: 4
+  pushedAt: '2025-08-10T14:24:28Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_62
+  score: 89
+  confidence: high
+  notes: null
+  hidden: false
+- id: eduardochiaro/Impact
+  name: Impact
+  repo: eduardochiaro/Impact
+  url: https://github.com/eduardochiaro/Impact
+  description: Ghost blogging theme
+  category: Theme
+  tags: &ref_63
+    - bootstrap
+    - ghost-theme
+  stars: 4
+  pushedAt: '2025-10-28T17:54:32Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_63
+  score: 74
+  confidence: medium
+  notes: null
+  hidden: false
+- id: mindsersit/mindsers-blog
+  name: mindsers-blog
+  repo: mindsersit/mindsers-blog
+  url: https://github.com/mindsersit/mindsers-blog
+  description: Ghost theme for Mindsers Blog
+  category: Theme
+  tags: &ref_64
+    - blog
+    - ghost-theme
+    - hacktoberfest
+    - mindsersit
+  stars: 4
+  pushedAt: '2025-06-17T20:17:58Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_64
+  score: 87
   confidence: high
   notes: null
   hidden: false
@@ -2299,50 +1586,233 @@
   url: https://github.com/AdvisorySG/dawn-advisory-theme
   description: Dawn theme for Ghost, adapted for Advisory SG.
   category: Theme
-  tags:
+  tags: &ref_65
     - css
     - ghost
     - html
     - javascript
-    - ghost-theme
   stars: 4
   pushedAt: '2026-01-20T13:56:18Z'
   archived: false
   fork: false
   license: mit
-  topics:
-    - css
-    - ghost
-    - html
-    - javascript
+  topics: *ref_65
   score: 71
   confidence: medium
   notes: null
   hidden: false
-- id: TryGhost/Taste
-  name: Taste
-  repo: TryGhost/Taste
-  url: https://github.com/TryGhost/Taste
-  description: null
-  category: Official
-  tags:
+- id: cathysarisky/netlify-translate-template
+  name: netlify-translate-template
+  repo: cathysarisky/netlify-translate-template
+  url: https://github.com/cathysarisky/netlify-translate-template
+  description: Ghost -> Netlify webhook -> DeepL -> translated posts in Ghost
+  category: Theme
+  tags: &ref_66
+    - deepl
     - ghost
-    - ghost-theme
-    - newsletter
-    - publishing
-    - ghost-theme
+    - ghost-cms
+    - netlify
   stars: 4
-  pushedAt: '2026-01-20T12:21:07Z'
+  pushedAt: '2025-06-14T17:16:38Z'
   archived: false
   fork: false
   license: mit
-  topics:
+  topics: *ref_66
+  score: 51
+  confidence: low
+  notes: null
+  hidden: false
+- id: mainawycliffe/deploy-ghost-on-gcp
+  name: deploy-ghost-on-gcp
+  repo: mainawycliffe/deploy-ghost-on-gcp
+  url: https://github.com/mainawycliffe/deploy-ghost-on-gcp
+  description: >-
+    Deploy a self-hosted Ghost CMS on GCP with serverless architecture. Scales to zero, costs ~$20-30/month for low
+    traffic blogs.
+  category: Theme
+  tags: &ref_67
+    - cloudrun
+    - ghost-blog
+    - ghost-cms
+    - google-cloud
+    - google-cloud-platform
+    - terraform
+  stars: 4
+  pushedAt: '2026-01-18T03:35:28Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_67
+  score: 69
+  confidence: medium
+  notes: null
+  hidden: false
+- id: yuanliang/ghost-theme-pharos
+  name: ghost-theme-pharos
+  repo: yuanliang/ghost-theme-pharos
+  url: https://github.com/yuanliang/ghost-theme-pharos
+  description: yuanliang.io's theme for ghost
+  category: Theme
+  tags: &ref_68
     - ghost
     - ghost-theme
-    - newsletter
-    - publishing
-  score: 52
+    - theme
+    - themes
+  stars: 3
+  pushedAt: '2025-07-11T12:37:00Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_68
+  score: 84
+  confidence: high
+  notes: null
+  hidden: false
+- id: christopher-b/vapour
+  name: vapour
+  repo: christopher-b/vapour
+  url: https://github.com/christopher-b/vapour
+  description: Ghost CMS theme boilerplate with Vite + TailwindCSS
+  category: Theme
+  tags: &ref_69
+    - ghost-cms
+    - ghost-theme
+    - vitejs
+  stars: 3
+  pushedAt: '2026-01-22T15:07:28Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_69
+  score: 88
+  confidence: high
+  notes: null
+  hidden: false
+- id: xdev-asia-labs/x-learn-ghost-theme
+  name: x-learn-ghost-theme
+  repo: xdev-asia-labs/x-learn-ghost-theme
+  url: https://github.com/xdev-asia-labs/x-learn-ghost-theme
+  description: >-
+    A modern Ghost theme for online courses and learning platforms with glass-morphism design, dark mode, and
+    multi-language support
+  category: Theme
+  tags: &ref_70
+    - course-management
+    - dark-mode
+    - education-platform
+    - ghost-cms
+    - ghost-theme
+    - glass-morphism
+    - handlebars
+    - i18n
+    - learning-management-system
+    - lesson-tracking
+    - multi-language
+    - online-courses
+    - responsive-design
+    - tailwind-css
+  stars: 3
+  pushedAt: '2026-01-12T10:48:21Z'
+  archived: false
+  fork: false
+  license: other
+  topics: *ref_70
+  score: 87
+  confidence: high
+  notes: null
+  hidden: false
+- id: ifrederico/defalt
+  name: defalt
+  repo: ifrederico/defalt
+  url: https://github.com/ifrederico/defalt
+  description: Open source Ghost theme editor with live preview. Customize the Source theme and export ready-to-upload .zip files.
+  category: Theme
+  tags: &ref_71
+    - ghost
+    - ghost-theme
+    - open-source
+    - react
+    - theme-editor
+    - typescript
+  stars: 3
+  pushedAt: '2026-01-17T04:54:30Z'
+  archived: false
+  fork: false
+  license: other
+  topics: *ref_71
+  score: 64
+  confidence: medium
+  notes: null
+  hidden: false
+- id: codetiger/blog
+  name: blog
+  repo: codetiger/blog
+  url: https://github.com/codetiger/blog
+  description: My Blog site hosted on Github Pages
+  category: Theme
+  tags: &ref_72
+    - blogging
+    - ghost
+    - static-site-generator
+  stars: 3
+  pushedAt: '2025-10-07T14:15:17Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_72
+  score: 50
   confidence: low
+  notes: null
+  hidden: false
+- id: rpuls/ghost-boilerplate
+  name: ghost-boilerplate
+  repo: rpuls/ghost-boilerplate
+  url: https://github.com/rpuls/ghost-boilerplate
+  description: Ghost publishing platform, tweaked for Railway
+  category: Theme
+  tags: &ref_73
+    - ghost
+    - ghost-blog
+    - ghost-cms
+    - railway
+    - railway-app
+  stars: 3
+  pushedAt: '2025-11-18T17:48:24Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_73
+  score: 68
+  confidence: medium
+  notes: null
+  hidden: false
+- id: SolitudeRA/Solitude-Interface
+  name: Solitude-Interface
+  repo: SolitudeRA/Solitude-Interface
+  url: https://github.com/SolitudeRA/Solitude-Interface
+  description: >-
+    A modern, high-performance personal blog interface built with Astro + React + TailwindCSS, powered by Ghost CMS as
+    headless backend. Features multi-language support (zh/ja/en), dark/light themes, and multiple post types.
+  category: Theme
+  tags: &ref_74
+    - astro
+    - astro-theme
+    - blog
+    - ghost-cms
+    - headless-cms
+    - i18n
+    - react
+    - static-site
+    - tailwindcss
+    - typescipt
+  stars: 3
+  pushedAt: '2026-01-29T07:19:38Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_74
+  score: 69
+  confidence: medium
   notes: null
   hidden: false
 - id: asphyxiamywife/ghostty-monochrome
@@ -2371,45 +1841,5 @@
     - monochrome-theme
   score: 41
   confidence: low
-  notes: null
-  hidden: false
-- id: SolitudeRA/Solitude-Interface
-  name: Solitude-Interface
-  repo: SolitudeRA/Solitude-Interface
-  url: https://github.com/SolitudeRA/Solitude-Interface
-  description: >-
-    A modern, high-performance personal blog interface built with Astro + React + TailwindCSS, powered by Ghost CMS as
-    headless backend. Features multi-language support (zh/ja/en), dark/light themes, and multiple post types.
-  category: Theme
-  tags:
-    - astro
-    - astro-theme
-    - blog
-    - ghost-cms
-    - headless-cms
-    - i18n
-    - react
-    - static-site
-    - tailwindcss
-    - typescipt
-    - ghost-theme
-  stars: 3
-  pushedAt: '2026-01-25T11:48:38Z'
-  archived: false
-  fork: false
-  license: mit
-  topics:
-    - astro
-    - astro-theme
-    - blog
-    - ghost-cms
-    - headless-cms
-    - i18n
-    - react
-    - static-site
-    - tailwindcss
-    - typescipt
-  score: 69
-  confidence: medium
   notes: null
   hidden: false
