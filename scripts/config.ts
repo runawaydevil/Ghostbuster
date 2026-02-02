@@ -48,6 +48,8 @@ export interface SystemConfig {
       /** Weight for penalty factors (default: 0.1) */
       penalties: number;
     };
+    /** Minimum score required to include an item in the directory (default: 50) */
+    minScoreToInclude?: number;
   };
   
   /** HTML rendering configuration */
@@ -123,7 +125,8 @@ export const DEFAULT_CONFIG = {
       readme: 0.3,
       structure: 0.2,
       penalties: 0.1
-    }
+    },
+    minScoreToInclude: 50  // Items with score below this are filtered out
   },
   rendering: {
     template: 'templates/index.template.html',

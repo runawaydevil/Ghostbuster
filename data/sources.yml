@@ -1,43 +1,51 @@
 # Le Ghost - Search Sources Configuration
 # This file defines GitHub search queries for discovering Ghost themes
 # Format: Array of SearchQuery objects
+#
+# IMPORTANT: All queries MUST use topic:ghost-theme or similar to ensure
+# we only discover actual Ghost themes, not just repos that mention "ghost"
 
-- query: "ghost theme in:name,description,readme language:handlebars"
+# Primary query: repos with ghost-theme topic
+- query: "topic:ghost-theme"
+  maxResults: 200
+  minStars: 3
+
+# Repos with ghost topic AND language handlebars (Ghost themes use Handlebars)
+- query: "topic:ghost language:handlebars"
   maxResults: 100
-  minStars: 5
+  minStars: 3
 
-- query: "ghost-theme topic:ghost language:handlebars"
+# Repos with ghost-cms topic
+- query: "topic:ghost-cms"
+  maxResults: 100
+  minStars: 3
+
+# Repos with ghostcms topic (alternative spelling)
+- query: "topic:ghostcms"
   maxResults: 50
   minStars: 3
 
-- query: "ghost cms theme in:description,readme"
-  maxResults: 75
-  minStars: 10
-
-- query: "handlebars ghost template theme"
-  maxResults: 30
-  minStars: 5
-
-- query: "ghost blog theme responsive"
-  maxResults: 40
-  minStars: 8
-
-- query: "ghost theme minimal clean"
-  maxResults: 25
-  minStars: 5
-
-- query: "ghost theme dark light"
-  maxResults: 20
+# Repos with ghost-blog topic
+- query: "topic:ghost-blog"
+  maxResults: 50
   minStars: 3
 
-- query: "ghost theme magazine news"
-  maxResults: 30
+# TryGhost organization repos (official themes and tools)
+- query: "org:TryGhost"
+  maxResults: 100
   minStars: 5
 
-- query: "ghost theme portfolio personal"
-  maxResults: 25
+# Ghost theme in name with handlebars language (strong indicator)
+- query: "ghost-theme in:name language:handlebars"
+  maxResults: 50
+  minStars: 5
+
+# Ghost starter templates
+- query: "topic:ghost-starter"
+  maxResults: 30
   minStars: 3
 
-- query: "ghost theme business corporate"
-  maxResults: 20
+# Ghost tools (for Tool category)
+- query: "topic:ghost topic:tool"
+  maxResults: 30
   minStars: 5

@@ -10,6 +10,51 @@ import { validateItemsYaml, validateOverridesYaml, validateIgnoreYaml } from './
 import { shouldIgnoreRepository } from './ignore.js';
 
 /**
+ * Ghost-related topics that indicate a repository is a valid Ghost theme/tool
+ * Must match the same list in update.ts
+ */
+const GHOST_TOPICS = [
+  'ghost-theme',
+  'ghost-cms',
+  'ghostcms',
+  'ghost-blog',
+  'ghost-template',
+  'ghost'
+];
+
+/**
+ * Check if an item has at least one Ghost-related topic
+ * Used to filter out items that were incorrectly added in previous runs
+ */
+function itemHasGhostTopic(item: GhostItem): boolean {
+  if (!item.topics || item.topics.length === 0) return false;
+  const lowerTopics = item.topics.map(t => t.toLowerCase());
+  return GHOST_TOPICS.some(ghostTopic => 
+    lowerTopics.some(topic => topic === ghostTopic || topic.includes(ghostTopic))
+  );
+}
+
+/**
+ * Check if an item should be preserved based on Ghost validation rules
+ * Item is valid if:
+ * 1. It has Ghost-related topics, OR
+ * 2. It's from TryGhost organization (official), OR  
+ * 3. It has high score (>= 70) indicating it was properly classified
+ */
+function isValidGhostItem(item: GhostItem, minScore: number = 50): boolean {
+  // Check for Ghost topics
+  if (itemHasGhostTopic(item)) return true;
+  
+  // Check for TryGhost organization (official repos)
+  if (item.repo.toLowerCase().startsWith('tryghost/')) return true;
+  
+  // Check for high score (item was properly classified as a Ghost theme)
+  if (item.score >= minScore) return true;
+  
+  return false;
+}
+
+/**
  * Load existing items from items.yml
  */
 export async function loadExistingItems(dataDir: string = 'data'): Promise<GhostItem[]> {
@@ -235,10 +280,34 @@ export async function mergeData(
   }
 
   // Add existing items that weren't processed (not found in new repositories)
-  // IMPORTANT: Always preserve existing items, never delete them
-  // Even if they don't appear in new searches, match ignore rules, or have hidden: true
+  // IMPORTANT: Only preserve existing items that are valid Ghost themes/tools
+  let filteredOutExisting = 0;
   for (const existingItem of existingItems) {
     if (!processedRepos.has(existingItem.repo)) {
+      // Check if repository should be ignored by ignore rules
+      if (shouldIgnoreRepository(existingItem.repo, ignoreRules)) {
+        stats.removed++;
+        filteredOutExisting++;
+        changes.push({
+          type: "removed",
+          repo: existingItem.repo,
+          details: "Existing item removed: matches ignore rules"
+        });
+        continue;
+      }
+      
+      // STRICT FILTER: Only preserve items that are valid Ghost themes
+      if (!isValidGhostItem(existingItem)) {
+        stats.removed++;
+        filteredOutExisting++;
+        changes.push({
+          type: "removed",
+          repo: existingItem.repo,
+          details: `Existing item removed: no Ghost topic and score ${existingItem.score} < 50`
+        });
+        continue;
+      }
+      
       // Apply current overrides to existing items if they exist
       let updatedItem = existingItem;
       const override = overridesMap.get(existingItem.repo);
@@ -246,10 +315,12 @@ export async function mergeData(
         updatedItem = applyOverride(existingItem, override);
       }
 
-      // Always preserve existing items, even if hidden: true
-      // The hidden field only affects HTML rendering, not storage
       finalItems.push(updatedItem);
     }
+  }
+  
+  if (filteredOutExisting > 0) {
+    console.log(`⚠️ Filtered out ${filteredOutExisting} invalid existing items`);
   }
 
   // Sort items by stars (descending) for consistent output
@@ -391,10 +462,37 @@ export class DataMerger {
     }
 
     // Add existing items that weren't processed (not found in new items)
-    // IMPORTANT: Always preserve existing items, never delete them
-    // Even if they don't appear in new searches, match ignore rules, or have hidden: true
+    // IMPORTANT: Only preserve existing items that are valid Ghost themes/tools
+    // Items without Ghost topics AND low score are filtered out to clean up
+    // false positives from previous runs
+    let filteredOutExisting = 0;
     for (const existingItem of existingItems) {
       if (!processedRepos.has(existingItem.repo)) {
+        // Check if repository should be ignored by ignore rules
+        if (shouldIgnoreRepository(existingItem.repo, ignoreRules)) {
+          stats.removed++;
+          filteredOutExisting++;
+          changes.push({
+            type: "removed",
+            repo: existingItem.repo,
+            details: "Existing item removed: matches ignore rules"
+          });
+          continue;
+        }
+        
+        // STRICT FILTER: Only preserve items that are valid Ghost themes
+        // Must have Ghost topic OR be from TryGhost OR have score >= 50
+        if (!isValidGhostItem(existingItem)) {
+          stats.removed++;
+          filteredOutExisting++;
+          changes.push({
+            type: "removed",
+            repo: existingItem.repo,
+            details: `Existing item removed: no Ghost topic (topics: ${JSON.stringify(existingItem.topics || [])}) and score ${existingItem.score} < 50`
+          });
+          continue;
+        }
+        
         // Apply current overrides to existing items if they exist
         let updatedItem = existingItem;
         const override = overridesMap.get(existingItem.repo);
@@ -402,10 +500,13 @@ export class DataMerger {
           updatedItem = applyOverride(existingItem, override);
         }
 
-        // Always preserve existing items, even if hidden: true
-        // The hidden field only affects HTML rendering, not storage
+        // Item passed validation, preserve it
         finalItems.push(updatedItem);
       }
+    }
+    
+    if (filteredOutExisting > 0) {
+      console.log(`⚠️ Filtered out ${filteredOutExisting} invalid existing items (no Ghost topics)`);
     }
 
     // Sort items by stars (descending) for consistent output

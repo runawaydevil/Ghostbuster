@@ -3,11 +3,42 @@
 # Format: Single IgnoreRule object
 
 # Exact repository matches to ignore
+# These are NOT Ghost themes/tools - they just happened to match broad search queries
 repos:
   - "spammer/fake-ghost-theme"
   - "test-user/test-repo"
   - "archived-user/old-broken-theme"
   - "malicious-user/suspicious-repo"
+  # Known false positives - popular repos that are NOT Ghost themes
+  - "awesome-selfhosted/awesome-selfhosted"
+  - "MunGell/awesome-for-beginners"
+  - "modelcontextprotocol/servers"
+  - "sindresorhus/awesome-nodejs"
+  - "GitHubDaily/GitHubDaily"
+  - "awesome-lists/awesome"
+  - "jondot/awesome-react-native"
+  - "vuejs/awesome-vue"
+  - "avelino/awesome-go"
+  - "vinta/awesome-python"
+  - "enaqx/awesome-react"
+  - "papers-we-love/papers-we-love"
+  - "EbookFoundation/free-programming-books"
+  - "public-apis/public-apis"
+  - "kamranahmedse/developer-roadmap"
+  - "jwasham/coding-interview-university"
+  - "donnemartin/system-design-primer"
+  - "getify/You-Dont-Know-JS"
+  - "freeCodeCamp/freeCodeCamp"
+  - "airbnb/javascript"
+  - "trekhleb/javascript-algorithms"
+  - "30-seconds/30-seconds-of-code"
+  - "yangshun/tech-interview-handbook"
+  - "ossu/computer-science"
+  - "florinpop17/app-ideas"
+  - "practical-tutorials/project-based-learning"
+  - "bradtraversy/design-resources-for-developers"
+  - "ripienaar/free-for-dev"
+  - "codecrafters-io/build-your-own-x"
 
 # Regex patterns for repositories to ignore
 patterns:
@@ -21,3 +52,12 @@ patterns:
   - ".*-deprecated$"        # Deprecated repositories
   - "^archive-.*"           # Archived repositories
   - ".*-mirror$"            # Mirror repositories
+  # Common false positive patterns
+  - "^awesome-.*"           # Awesome lists (not Ghost themes)
+  - ".*-awesome$"           # More awesome lists
+  - ".*interview.*"         # Interview prep repos
+  - ".*roadmap.*"           # Learning roadmaps
+  - "^free-.*"              # Free resource lists
+  - ".*cheatsheet.*"        # Cheat sheets
+  - ".*tutorial.*"          # Tutorial repos (unless Ghost-specific)
+  - ".*course.*"            # Course materials

@@ -16,6 +16,38 @@ import { GhostItem, RepositoryData, ClassificationResult } from './types.js';
 import { writeFileSync } from 'fs';
 import * as yaml from 'js-yaml';
 
+/**
+ * Ghost-related topics that indicate a repository is a valid Ghost theme/tool
+ * A repository MUST have at least one of these topics to be included
+ */
+export const GHOST_TOPICS = [
+  'ghost-theme',
+  'ghost-cms',
+  'ghostcms',
+  'ghost-blog',
+  'ghost-template',
+  'ghost'
+];
+
+/**
+ * Check if a repository has at least one Ghost-related topic
+ * This is a strict filter - repos without these topics are NOT Ghost themes
+ */
+export function hasGhostTopic(topics: string[]): boolean {
+  if (!topics || topics.length === 0) return false;
+  const lowerTopics = topics.map(t => t.toLowerCase());
+  return GHOST_TOPICS.some(ghostTopic => 
+    lowerTopics.some(topic => topic === ghostTopic || topic.includes(ghostTopic))
+  );
+}
+
+/**
+ * Check if a GhostItem has valid Ghost topics
+ */
+export function itemHasGhostTopic(item: GhostItem): boolean {
+  return hasGhostTopic(item.topics || []);
+}
+
 export interface UpdateOptions {
   dryRun?: boolean;
   skipCrawl?: boolean;
@@ -139,7 +171,7 @@ export class UpdateOrchestrator {
       url: repo.html_url,
       description: repo.description,
       category,
-      tags: [...(repo.topics || []), 'ghost-theme'],
+      tags: repo.topics || [], // Use only actual GitHub topics, don't inject ghost-theme
       stars: repo.stargazers_count,
       pushedAt: repo.pushed_at,
       archived: repo.archived,
@@ -251,9 +283,28 @@ export class UpdateOrchestrator {
       const classifier = createClassifier(crawler.client, classificationConfig);
       
       const classifiedItems: GhostItem[] = [];
+      let filteredOutNoTopic = 0;
+      let filteredOutLowScore = 0;
+      const minScoreToInclude = config.classification.minScoreToInclude ?? 50;
+      
       for (const repo of discoveredRepos) {
         try {
+          // STRICT FILTER 1: Must have Ghost-related topic
+          if (!hasGhostTopic(repo.topics || [])) {
+            filteredOutNoTopic++;
+            this.log(`⏭️ Skipping ${repo.full_name}: no Ghost topic in ${JSON.stringify(repo.topics || [])}`, 'info');
+            continue;
+          }
+          
           const classification = await classifier.classify(repo);
+          
+          // STRICT FILTER 2: Must have minimum score
+          if (classification.score < minScoreToInclude) {
+            filteredOutLowScore++;
+            this.log(`⏭️ Skipping ${repo.full_name}: score ${classification.score} < ${minScoreToInclude}`, 'info');
+            continue;
+          }
+          
           const item = this.convertToGhostItem(repo, classification);
           classifiedItems.push(item);
           result.stats.classified++;
@@ -266,6 +317,12 @@ export class UpdateOrchestrator {
       }
 
       this.log(`✓ Classified ${classifiedItems.length} repositories`);
+      if (filteredOutNoTopic > 0) {
+        this.log(`⚠️ Filtered out ${filteredOutNoTopic} repos without Ghost topics`, 'warn');
+      }
+      if (filteredOutLowScore > 0) {
+        this.log(`⚠️ Filtered out ${filteredOutLowScore} repos with score < ${minScoreToInclude}`, 'warn');
+      }
 
       // Step 5: Data integrity check
       this.log('🔍 Checking data integrity');

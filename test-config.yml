@@ -1,9 +1,0 @@
-{
-  "classification": {
-    "thresholds": {
-      "high": 90,
-      "medium": 70,
-      "low": 50
-    }
-  }
-}
