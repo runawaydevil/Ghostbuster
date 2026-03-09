@@ -13,8 +13,8 @@
     - nodejs
     - publishing
     - web-application
-  stars: 51943
-  pushedAt: '2026-03-02T06:39:35Z'
+  stars: 51995
+  pushedAt: '2026-03-09T05:05:29Z'
   archived: false
   fork: false
   license: mit
@@ -37,8 +37,8 @@
     - publishing
     - featured
     - recommended
-  stars: 2573
-  pushedAt: '2026-03-02T02:45:01Z'
+  stars: 2574
+  pushedAt: '2026-03-06T18:01:04Z'
   archived: false
   fork: false
   license: mit
@@ -72,7 +72,7 @@
     - nodejs
     - publishing
   stars: 489
-  pushedAt: '2026-03-02T02:45:36Z'
+  pushedAt: '2026-03-09T03:13:01Z'
   archived: false
   fork: false
   license: mit
@@ -92,8 +92,8 @@
     - ghost
     - ghost-theme
     - publishing
-  stars: 480
-  pushedAt: '2026-02-21T18:21:51Z'
+  stars: 483
+  pushedAt: '2026-03-09T02:42:21Z'
   archived: false
   fork: false
   license: mit
@@ -113,8 +113,8 @@
     - ghost-theme
     - github-action
     - github-actions
-  stars: 386
-  pushedAt: '2026-02-26T19:33:50Z'
+  stars: 388
+  pushedAt: '2026-03-09T06:42:27Z'
   archived: false
   fork: false
   license: mit
@@ -201,7 +201,7 @@
     - magazine
     - publishing
   stars: 300
-  pushedAt: '2026-02-25T23:55:32Z'
+  pushedAt: '2026-03-06T22:33:29Z'
   archived: false
   fork: false
   license: mit
@@ -223,7 +223,7 @@
     - magazine
     - publishing
   stars: 264
-  pushedAt: '2026-02-25T23:55:39Z'
+  pushedAt: '2026-03-06T22:33:26Z'
   archived: false
   fork: false
   license: mit
@@ -244,8 +244,8 @@
     - ghost-theme
     - magazine
     - publishing
-  stars: 242
-  pushedAt: '2026-03-02T02:57:52Z'
+  stars: 243
+  pushedAt: '2026-03-09T02:53:46Z'
   archived: false
   fork: false
   license: other
@@ -266,8 +266,8 @@
     - fediverse-server
     - ghost
     - ghost-cms
-  stars: 224
-  pushedAt: '2026-03-01T22:38:13Z'
+  stars: 226
+  pushedAt: '2026-03-06T11:35:56Z'
   archived: false
   fork: false
   license: mit
@@ -289,7 +289,7 @@
     - magazine
     - publishing
   stars: 210
-  pushedAt: '2026-03-02T02:43:04Z'
+  pushedAt: '2026-03-09T02:39:40Z'
   archived: false
   fork: false
   license: other
@@ -313,7 +313,7 @@
     - paid-subscriptions
     - publishing
   stars: 179
-  pushedAt: '2026-03-02T02:45:20Z'
+  pushedAt: '2026-03-09T02:50:31Z'
   archived: false
   fork: false
   license: mit
@@ -339,7 +339,7 @@
     - mcp
     - mcp-server
     - modelcontextprotocol
-  stars: 149
+  stars: 155
   pushedAt: '2025-04-20T20:15:52Z'
   archived: false
   fork: false
@@ -405,7 +405,7 @@
     - magazine
     - publishing
   stars: 122
-  pushedAt: '2026-02-25T23:55:28Z'
+  pushedAt: '2026-03-06T22:33:33Z'
   archived: false
   fork: false
   license: mit
@@ -428,8 +428,8 @@
     - news
     - newsletter
     - publishing
-  stars: 110
-  pushedAt: '2026-03-02T02:43:07Z'
+  stars: 112
+  pushedAt: '2026-03-06T21:07:28Z'
   archived: false
   fork: false
   license: mit
@@ -451,7 +451,7 @@
     - magazine
     - publishing
   stars: 94
-  pushedAt: '2026-02-25T23:55:37Z'
+  pushedAt: '2026-03-06T22:33:50Z'
   archived: false
   fork: false
   license: mit
@@ -472,7 +472,7 @@
     - newsletter
     - publishing
   stars: 90
-  pushedAt: '2026-02-25T23:54:22Z'
+  pushedAt: '2026-03-09T02:38:00Z'
   archived: false
   fork: false
   license: mit
@@ -494,7 +494,7 @@
     - magazine
     - publishing
   stars: 88
-  pushedAt: '2026-02-25T23:55:37Z'
+  pushedAt: '2026-03-06T22:33:44Z'
   archived: false
   fork: false
   license: mit
@@ -515,7 +515,7 @@
     - newsletter
     - publishing
   stars: 87
-  pushedAt: '2026-02-25T23:55:37Z'
+  pushedAt: '2026-03-06T22:33:28Z'
   archived: false
   fork: false
   license: mit
@@ -586,7 +586,7 @@
     - kubernetes-deployment
     - self-hosted
   stars: 86
-  pushedAt: '2026-02-28T23:28:54Z'
+  pushedAt: '2026-03-09T02:16:29Z'
   archived: false
   fork: false
   license: mit
@@ -606,7 +606,7 @@
     - ghost
     - ghost-theme
   stars: 85
-  pushedAt: '2026-02-24T01:05:19Z'
+  pushedAt: '2026-03-07T02:00:37Z'
   archived: false
   fork: false
   license: null
@@ -655,7 +655,7 @@
     - magazine
     - publishing
   stars: 84
-  pushedAt: '2026-02-25T23:55:31Z'
+  pushedAt: '2026-03-06T22:33:33Z'
   archived: false
   fork: false
   license: mit
@@ -705,7 +705,7 @@
     - paid-subscriptions
     - publishing
   stars: 76
-  pushedAt: '2026-03-02T03:01:35Z'
+  pushedAt: '2026-03-08T06:12:43Z'
   archived: false
   fork: false
   license: mit
@@ -727,7 +727,7 @@
     - magazine
     - publishing
   stars: 64
-  pushedAt: '2026-02-25T23:55:36Z'
+  pushedAt: '2026-03-06T22:33:33Z'
   archived: false
   fork: false
   license: mit
@@ -748,7 +748,7 @@
     - newsletter
     - publishing
   stars: 62
-  pushedAt: '2026-02-25T23:55:36Z'
+  pushedAt: '2026-03-06T22:33:32Z'
   archived: false
   fork: false
   license: mit
@@ -770,7 +770,7 @@
     - magazine
     - publishing
   stars: 57
-  pushedAt: '2026-02-25T23:55:35Z'
+  pushedAt: '2026-03-06T22:33:29Z'
   archived: false
   fork: false
   license: mit
@@ -796,7 +796,7 @@
     - typescript
     - zod
   stars: 57
-  pushedAt: '2026-03-01T22:06:30Z'
+  pushedAt: '2026-03-09T05:48:30Z'
   archived: false
   fork: false
   license: mit
@@ -818,7 +818,7 @@
     - news
     - publishing
   stars: 55
-  pushedAt: '2026-02-25T23:55:37Z'
+  pushedAt: '2026-03-06T22:33:33Z'
   archived: false
   fork: false
   license: mit
@@ -840,7 +840,7 @@
     - newsletter
     - personal
   stars: 46
-  pushedAt: '2026-02-25T23:55:42Z'
+  pushedAt: '2026-03-06T22:33:32Z'
   archived: false
   fork: false
   license: mit
@@ -909,7 +909,7 @@
     - ghost-theme
     - theme
   stars: 28
-  pushedAt: '2026-02-27T00:44:50Z'
+  pushedAt: '2026-03-06T22:24:49Z'
   archived: false
   fork: false
   license: agpl-3.0
@@ -936,7 +936,7 @@
     - listmonk-api
     - newsletter
     - newsletter-management
-  stars: 25
+  stars: 26
   pushedAt: '2025-04-23T14:30:47Z'
   archived: false
   fork: false
@@ -946,13 +946,34 @@
   confidence: medium
   notes: null
   hidden: false
+- id: TryGhost/Argon
+  name: Argon
+  repo: TryGhost/Argon
+  url: https://github.com/TryGhost/Argon
+  description: A simple publishing theme for Ghost
+  category: Official
+  tags: &ref_37
+    - blogging
+    - ghost
+    - ghost-theme
+    - publishing
+  stars: 23
+  pushedAt: '2026-03-09T03:17:05Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_37
+  score: 89
+  confidence: high
+  notes: null
+  hidden: false
 - id: JustGoodThemes/Scriptor-Ghost-Theme
   name: Scriptor-Ghost-Theme
   repo: JustGoodThemes/Scriptor-Ghost-Theme
   url: https://github.com/JustGoodThemes/Scriptor-Ghost-Theme
   description: Scriptor is a minimal, clean, modern & responsive Ghost theme for writers.
   category: Theme
-  tags: &ref_37
+  tags: &ref_38
     - blog
     - blog-theme
     - blogging
@@ -963,27 +984,6 @@
     - ghost-theme
   stars: 23
   pushedAt: '2025-08-21T19:03:08Z'
-  archived: false
-  fork: false
-  license: mit
-  topics: *ref_37
-  score: 89
-  confidence: high
-  notes: null
-  hidden: false
-- id: TryGhost/Argon
-  name: Argon
-  repo: TryGhost/Argon
-  url: https://github.com/TryGhost/Argon
-  description: A simple publishing theme for Ghost
-  category: Official
-  tags: &ref_38
-    - blogging
-    - ghost
-    - ghost-theme
-    - publishing
-  stars: 23
-  pushedAt: '2026-03-02T02:43:04Z'
   archived: false
   fork: false
   license: mit
@@ -1005,7 +1005,7 @@
     - ghost-cms
     - n8n
     - n8n-workflow
-  stars: 22
+  stars: 23
   pushedAt: '2025-11-06T14:58:20Z'
   archived: false
   fork: false
@@ -1031,7 +1031,7 @@
     - sass
     - webpack
   stars: 21
-  pushedAt: '2026-03-02T01:24:09Z'
+  pushedAt: '2026-03-09T05:55:39Z'
   archived: false
   fork: false
   license: null
@@ -1060,7 +1060,7 @@
     - search-enhancement
     - vercel
   stars: 21
-  pushedAt: '2026-02-28T09:45:37Z'
+  pushedAt: '2026-03-06T17:54:57Z'
   archived: false
   fork: false
   license: mit
@@ -1081,7 +1081,7 @@
     - yunohost
     - yunohost-apps
   stars: 21
-  pushedAt: '2026-02-27T16:04:44Z'
+  pushedAt: '2026-03-05T23:46:04Z'
   archived: false
   fork: false
   license: gpl-3.0
@@ -1101,7 +1101,7 @@
     - ghost
     - ghost-blog
   stars: 18
-  pushedAt: '2026-02-27T06:09:02Z'
+  pushedAt: '2026-03-06T18:39:47Z'
   archived: false
   fork: false
   license: gpl-3.0
@@ -1120,7 +1120,7 @@
     - ghost
     - ghost-theme
   stars: 17
-  pushedAt: '2026-03-02T03:56:44Z'
+  pushedAt: '2026-03-06T22:18:41Z'
   archived: false
   fork: false
   license: mit
@@ -1141,7 +1141,7 @@
     - ghost-theme
     - publishing
   stars: 17
-  pushedAt: '2026-03-01T02:16:07Z'
+  pushedAt: '2026-03-09T02:43:19Z'
   archived: false
   fork: false
   license: mit
@@ -1162,7 +1162,7 @@
     - newsletter
     - publishing
   stars: 16
-  pushedAt: '2026-02-25T23:55:28Z'
+  pushedAt: '2026-03-06T22:33:29Z'
   archived: false
   fork: false
   license: mit
@@ -1237,7 +1237,7 @@
     - publishing
     - theme
   stars: 11
-  pushedAt: '2026-03-02T02:12:49Z'
+  pushedAt: '2026-03-09T00:51:40Z'
   archived: false
   fork: false
   license: mit
@@ -1246,23 +1246,43 @@
   confidence: high
   notes: null
   hidden: false
+- id: Vortexmind/ghost-cloudflare-cache-purge
+  name: ghost-cloudflare-cache-purge
+  repo: Vortexmind/ghost-cloudflare-cache-purge
+  url: https://github.com/Vortexmind/ghost-cloudflare-cache-purge
+  description: A Cloudflare worker script which triggers Cloudflare cache purges initiated by a Ghost blog webhook
+  category: Theme
+  tags: &ref_50
+    - cloudflare
+    - cloudflare-worker
+    - ghost-blog
+  stars: 11
+  pushedAt: '2026-01-08T17:15:58Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_50
+  score: 56
+  confidence: low
+  notes: null
+  hidden: false
 - id: TryGhost/Digest
   name: Digest
   repo: TryGhost/Digest
   url: https://github.com/TryGhost/Digest
   description: A newsletter theme for Ghost
   category: Official
-  tags: &ref_50
+  tags: &ref_51
     - ghost
     - ghost-theme
     - newsletter
     - publishing
   stars: 10
-  pushedAt: '2026-02-25T23:55:35Z'
+  pushedAt: '2026-03-06T22:33:33Z'
   archived: false
   fork: false
   license: mit
-  topics: *ref_50
+  topics: *ref_51
   score: 79
   confidence: medium
   notes: null
@@ -1273,7 +1293,7 @@
   url: https://github.com/ehsanghaffar/eindev-ghost-theme
   description: A new personal blog theme for Ghost CMS
   category: Theme
-  tags: &ref_51
+  tags: &ref_52
     - ghost
     - ghost-theme
     - tailwind-ghost
@@ -1283,7 +1303,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_51
+  topics: *ref_52
   score: 83
   confidence: high
   notes: null
@@ -1294,7 +1314,7 @@
   url: https://github.com/Wayne-Jones/ghost-cms-nextjs
   description: Template For Using GhostCMS as a headless CMS with NextJS
   category: Theme
-  tags: &ref_52
+  tags: &ref_53
     - ghost
     - ghost-api
     - ghostcms
@@ -1311,7 +1331,7 @@
   archived: false
   fork: false
   license: null
-  topics: *ref_52
+  topics: *ref_53
   score: 62
   confidence: medium
   notes: null
@@ -1324,7 +1344,7 @@
     This package provides a GhostCMS loader for astro. Allowing ease of use of all your GhostCMS content within astro's
     built in Content Layer!
   category: Theme
-  tags: &ref_53
+  tags: &ref_54
     - astro
     - astro-ghostcms
     - astro-loader
@@ -1335,7 +1355,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_53
+  topics: *ref_54
   score: 65
   confidence: medium
   notes: null
@@ -1346,7 +1366,7 @@
   url: https://github.com/contraptionco/trivet
   description: Google sign-in for Ghost blogs
   category: Theme
-  tags: &ref_54
+  tags: &ref_55
     - ghost
     - ghost-blog
     - ghost-theme
@@ -1355,7 +1375,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_54
+  topics: *ref_55
   score: 62
   confidence: medium
   notes: null
@@ -1366,7 +1386,7 @@
   url: https://github.com/wilburx9/wilburx9.com
   description: Source code for my website, wilburx9.com
   category: Theme
-  tags: &ref_55
+  tags: &ref_56
     - ghost-blog
     - ghost-theme
     - go
@@ -1376,7 +1396,7 @@
   archived: false
   fork: false
   license: mpl-2.0
-  topics: *ref_55
+  topics: *ref_56
   score: 68
   confidence: medium
   notes: null
@@ -1387,7 +1407,7 @@
   url: https://github.com/educationwarehouse/edwh-ghost
   description: Python Client for Ghost CMS v3 - v6
   category: Theme
-  tags: &ref_56
+  tags: &ref_57
     - ghost
     - ghost-cms
     - python
@@ -1396,7 +1416,7 @@
   archived: false
   fork: false
   license: null
-  topics: *ref_56
+  topics: *ref_57
   score: 60
   confidence: medium
   notes: null
@@ -1407,17 +1427,17 @@
   url: https://github.com/sredevopsorg/sredevopsorg-ghost-theme
   description: A Ghost v5 Theme made for SREDevOps.org based on Tailwind CSS with sidebar navigation and dark theme by default.
   category: Theme
-  tags: &ref_57
+  tags: &ref_58
     - ghost
     - ghost-blog
     - ghost-cms
     - ghost-theme
   stars: 8
-  pushedAt: '2026-02-26T12:54:20Z'
+  pushedAt: '2026-03-08T12:57:16Z'
   archived: false
   fork: false
   license: mit
-  topics: *ref_57
+  topics: *ref_58
   score: 86
   confidence: high
   notes: null
@@ -1428,17 +1448,17 @@
   url: https://github.com/ditschedev/nuxtjs-ghost
   description: NuxtJS module to interact with the Ghost API
   category: Theme
-  tags: &ref_58
+  tags: &ref_59
     - ghost
     - ghost-cms
     - nuxt-module
     - nuxt-modules
   stars: 7
-  pushedAt: '2026-02-26T12:59:22Z'
+  pushedAt: '2026-03-05T17:26:08Z'
   archived: false
   fork: false
   license: mit
-  topics: *ref_58
+  topics: *ref_59
   score: 54
   confidence: low
   notes: null
@@ -1449,7 +1469,7 @@
   url: https://github.com/frontendweb3/fastest
   description: The fastest is a lightweight Ghost theme that lets you create a blog with Ghost CMS in under 5 minutes.
   category: Theme
-  tags: &ref_59
+  tags: &ref_60
     - css
     - ghost
     - ghost-api
@@ -1460,12 +1480,12 @@
     - ghost-themes
     - theme
   stars: 6
-  pushedAt: '2026-02-28T10:06:08Z'
+  pushedAt: '2026-03-07T17:59:06Z'
   archived: false
   fork: false
   license: mit
-  topics: *ref_59
-  score: 85
+  topics: *ref_60
+  score: 88
   confidence: high
   notes: null
   hidden: false
@@ -1475,7 +1495,7 @@
   url: https://github.com/hatamiarash7/MyWebSite
   description: My Personal Website
   category: Theme
-  tags: &ref_60
+  tags: &ref_61
     - blog
     - blogging
     - ghost
@@ -1489,7 +1509,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_60
+  topics: *ref_61
   score: 61
   confidence: medium
   notes: null
@@ -1503,7 +1523,7 @@
     content. This bot fetches current AI news, translates and adapts it into French using OpenAI's language models, and
     pairs it with relevant imagery from Unsplash to create draft posts for your Ghost blog.
   category: Theme
-  tags: &ref_61
+  tags: &ref_62
     - autoblog
     - autoblogger
     - blog
@@ -1515,7 +1535,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_61
+  topics: *ref_62
   score: 60
   confidence: medium
   notes: null
@@ -1526,7 +1546,7 @@
   url: https://github.com/code-gal/Ghost-Theme-Blumid
   description: Ghost theme based on crystal-moire gradient design
   category: Theme
-  tags: &ref_62
+  tags: &ref_63
     - blog
     - blogging
     - ghost
@@ -1538,7 +1558,7 @@
   archived: false
   fork: false
   license: agpl-3.0
-  topics: *ref_62
+  topics: *ref_63
   score: 88
   confidence: high
   notes: null
@@ -1549,7 +1569,7 @@
   url: https://github.com/rpuls/ghost-boilerplate
   description: Ghost publishing platform, tweaked for Railway
   category: Theme
-  tags: &ref_63
+  tags: &ref_64
     - ghost
     - ghost-blog
     - ghost-cms
@@ -1560,7 +1580,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_63
+  topics: *ref_64
   score: 68
   confidence: medium
   notes: null
@@ -1571,18 +1591,18 @@
   url: https://github.com/elmahio/elmah-io-ghost-theme
   description: Ghost theme for the elmah.io blog
   category: Theme
-  tags: &ref_64
+  tags: &ref_65
     - blog
     - elmah
     - elmah-io
     - ghost-blog
     - ghost-theme
   stars: 4
-  pushedAt: '2026-02-17T21:32:20Z'
+  pushedAt: '2026-03-06T11:48:32Z'
   archived: false
   fork: false
   license: null
-  topics: *ref_64
+  topics: *ref_65
   score: 79
   confidence: medium
   notes: null
@@ -1593,17 +1613,17 @@
   url: https://github.com/TryGhost/Taste
   description: null
   category: Official
-  tags: &ref_65
+  tags: &ref_66
     - ghost
     - ghost-theme
     - newsletter
     - publishing
   stars: 4
-  pushedAt: '2026-02-25T23:55:32Z'
+  pushedAt: '2026-03-06T22:33:29Z'
   archived: false
   fork: false
   license: mit
-  topics: *ref_65
+  topics: *ref_66
   score: 52
   confidence: low
   notes: null
@@ -1614,7 +1634,7 @@
   url: https://github.com/zhawtof/hawtofthepress
   description: A minimalist Ghost theme for your personal blog
   category: Theme
-  tags: &ref_66
+  tags: &ref_67
     - blog
     - blog-theme
     - ghost
@@ -1627,7 +1647,7 @@
   archived: false
   fork: false
   license: null
-  topics: *ref_66
+  topics: *ref_67
   score: 89
   confidence: high
   notes: null
@@ -1638,7 +1658,7 @@
   url: https://github.com/christopher-b/vapour
   description: Ghost CMS theme boilerplate with Vite + TailwindCSS
   category: Theme
-  tags: &ref_67
+  tags: &ref_68
     - ghost-cms
     - ghost-theme
     - vitejs
@@ -1647,7 +1667,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_67
+  topics: *ref_68
   score: 88
   confidence: high
   notes: null
@@ -1658,7 +1678,7 @@
   url: https://github.com/eduardochiaro/Impact
   description: Ghost blogging theme
   category: Theme
-  tags: &ref_68
+  tags: &ref_69
     - bootstrap
     - ghost-theme
   stars: 4
@@ -1666,7 +1686,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_68
+  topics: *ref_69
   score: 74
   confidence: medium
   notes: null
@@ -1677,7 +1697,7 @@
   url: https://github.com/mindsersit/mindsers-blog
   description: Ghost theme for Mindsers Blog
   category: Theme
-  tags: &ref_69
+  tags: &ref_70
     - blog
     - ghost-theme
     - hacktoberfest
@@ -1687,7 +1707,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_69
+  topics: *ref_70
   score: 87
   confidence: high
   notes: null
@@ -1698,7 +1718,7 @@
   url: https://github.com/AdvisorySG/dawn-advisory-theme
   description: Dawn theme for Ghost, adapted for Advisory SG.
   category: Theme
-  tags: &ref_70
+  tags: &ref_71
     - css
     - ghost
     - html
@@ -1708,7 +1728,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_70
+  topics: *ref_71
   score: 71
   confidence: medium
   notes: null
@@ -1719,7 +1739,7 @@
   url: https://github.com/cathysarisky/netlify-translate-template
   description: Ghost -> Netlify webhook -> DeepL -> translated posts in Ghost
   category: Theme
-  tags: &ref_71
+  tags: &ref_72
     - deepl
     - ghost
     - ghost-cms
@@ -1729,7 +1749,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_71
+  topics: *ref_72
   score: 51
   confidence: low
   notes: null
@@ -1742,7 +1762,7 @@
     Deploy a self-hosted Ghost CMS on GCP with serverless architecture. Scales to zero, costs ~$20-30/month for low
     traffic blogs.
   category: Theme
-  tags: &ref_72
+  tags: &ref_73
     - cloudrun
     - ghost-blog
     - ghost-cms
@@ -1754,7 +1774,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_72
+  topics: *ref_73
   score: 69
   confidence: medium
   notes: null
@@ -1765,7 +1785,7 @@
   url: https://github.com/yuanliang/ghost-theme-pharos
   description: yuanliang.io's theme for ghost
   category: Theme
-  tags: &ref_73
+  tags: &ref_74
     - ghost
     - ghost-theme
     - theme
@@ -1775,7 +1795,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_73
+  topics: *ref_74
   score: 84
   confidence: high
   notes: null
@@ -1788,7 +1808,7 @@
     A modern Ghost theme for online courses and learning platforms with glass-morphism design, dark mode, and
     multi-language support
   category: Theme
-  tags: &ref_74
+  tags: &ref_75
     - course-management
     - dark-mode
     - education-platform
@@ -1808,7 +1828,7 @@
   archived: false
   fork: false
   license: other
-  topics: *ref_74
+  topics: *ref_75
   score: 87
   confidence: high
   notes: null
@@ -1819,7 +1839,7 @@
   url: https://github.com/FelixOnline/felix-ghost-theme
   description: Ghost theme for Felix, the Imperial College student newspaper
   category: Theme
-  tags: &ref_75
+  tags: &ref_76
     - ghost-theme
     - newspaper
   stars: 3
@@ -1827,7 +1847,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_75
+  topics: *ref_76
   score: 82
   confidence: high
   notes: null
@@ -1838,7 +1858,7 @@
   url: https://github.com/ifrederico/defalt
   description: Open source Ghost theme editor with live preview. Customize the Source theme and export ready-to-upload .zip files.
   category: Theme
-  tags: &ref_76
+  tags: &ref_77
     - ghost
     - ghost-theme
     - open-source
@@ -1850,9 +1870,31 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_76
+  topics: *ref_77
   score: 64
   confidence: medium
+  notes: null
+  hidden: false
+- id: amritsarstartups/ghost-theme-docker
+  name: ghost-theme-docker
+  repo: amritsarstartups/ghost-theme-docker
+  url: https://github.com/amritsarstartups/ghost-theme-docker
+  description: Ghost theme development with Docker
+  category: Theme
+  tags: &ref_78
+    - docker
+    - docker-compose
+    - ghost
+    - ghost-blog
+    - ghost-theme
+  stars: 3
+  pushedAt: '2026-03-02T22:32:54Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_78
+  score: 59
+  confidence: low
   notes: null
   hidden: false
 - id: codetiger/blog
@@ -1861,7 +1903,7 @@
   url: https://github.com/codetiger/blog
   description: My Blog site hosted on Github Pages
   category: Theme
-  tags: &ref_77
+  tags: &ref_79
     - blogging
     - ghost
     - static-site-generator
@@ -1870,7 +1912,7 @@
   archived: false
   fork: false
   license: null
-  topics: *ref_77
+  topics: *ref_79
   score: 50
   confidence: low
   notes: null
@@ -1883,7 +1925,7 @@
     Lightweight Table of Contents generator for Ghost blog platform. Zero dependencies, collapsible functionality, works
     via code injection. Just add <toc> tag to your posts!
   category: Theme
-  tags: &ref_78
+  tags: &ref_80
     - ghost
     - ghost-blog
     - ghost-cms
@@ -1896,7 +1938,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_78
+  topics: *ref_80
   score: 69
   confidence: medium
   notes: null
@@ -1909,7 +1951,7 @@
     A modern, high-performance personal blog interface built with Astro + React + TailwindCSS, powered by Ghost CMS as
     headless backend. Features multi-language support (zh/ja/en), dark/light themes, and multiple post types.
   category: Theme
-  tags: &ref_79
+  tags: &ref_81
     - astro
     - astro-theme
     - blog
@@ -1925,7 +1967,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_79
+  topics: *ref_81
   score: 69
   confidence: medium
   notes: null
