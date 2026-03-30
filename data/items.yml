@@ -13,8 +13,8 @@
     - nodejs
     - publishing
     - web-application
-  stars: 52119
-  pushedAt: '2026-03-23T06:19:16Z'
+  stars: 52222
+  pushedAt: '2026-03-30T07:11:09Z'
   archived: false
   fork: false
   license: mit
@@ -37,8 +37,8 @@
     - publishing
     - featured
     - recommended
-  stars: 2574
-  pushedAt: '2026-03-18T18:42:32Z'
+  stars: 2573
+  pushedAt: '2026-03-27T11:01:26Z'
   archived: false
   fork: false
   license: mit
@@ -71,8 +71,8 @@
     - journalism
     - nodejs
     - publishing
-  stars: 490
-  pushedAt: '2026-03-23T06:36:51Z'
+  stars: 491
+  pushedAt: '2026-03-30T06:12:50Z'
   archived: false
   fork: false
   license: mit
@@ -92,8 +92,8 @@
     - ghost
     - ghost-theme
     - publishing
-  stars: 482
-  pushedAt: '2026-03-21T02:35:33Z'
+  stars: 483
+  pushedAt: '2026-03-27T02:45:34Z'
   archived: false
   fork: false
   license: mit
@@ -113,8 +113,8 @@
     - ghost-theme
     - github-action
     - github-actions
-  stars: 387
-  pushedAt: '2026-03-23T06:35:10Z'
+  stars: 388
+  pushedAt: '2026-03-30T06:25:12Z'
   archived: false
   fork: false
   license: mit
@@ -245,7 +245,7 @@
     - magazine
     - publishing
   stars: 244
-  pushedAt: '2026-03-23T02:59:19Z'
+  pushedAt: '2026-03-30T02:14:56Z'
   archived: false
   fork: false
   license: other
@@ -266,8 +266,8 @@
     - fediverse-server
     - ghost
     - ghost-cms
-  stars: 228
-  pushedAt: '2026-03-23T02:55:18Z'
+  stars: 229
+  pushedAt: '2026-03-30T07:06:11Z'
   archived: false
   fork: false
   license: mit
@@ -289,7 +289,7 @@
     - magazine
     - publishing
   stars: 212
-  pushedAt: '2026-03-23T06:12:16Z'
+  pushedAt: '2026-03-30T06:10:37Z'
   archived: false
   fork: false
   license: other
@@ -312,8 +312,8 @@
     - paid-memberships
     - paid-subscriptions
     - publishing
-  stars: 179
-  pushedAt: '2026-03-23T06:27:45Z'
+  stars: 180
+  pushedAt: '2026-03-30T06:14:51Z'
   archived: false
   fork: false
   license: mit
@@ -339,7 +339,7 @@
     - mcp
     - mcp-server
     - modelcontextprotocol
-  stars: 160
+  stars: 163
   pushedAt: '2025-04-20T20:15:52Z'
   archived: false
   fork: false
@@ -428,7 +428,7 @@
     - news
     - newsletter
     - publishing
-  stars: 115
+  stars: 116
   pushedAt: '2026-03-19T10:19:45Z'
   archived: false
   fork: false
@@ -471,8 +471,8 @@
     - ghost-theme
     - newsletter
     - publishing
-  stars: 92
-  pushedAt: '2026-03-23T03:04:32Z'
+  stars: 93
+  pushedAt: '2026-03-30T02:26:05Z'
   archived: false
   fork: false
   license: mit
@@ -493,7 +493,7 @@
     - ghost-theme
     - magazine
     - publishing
-  stars: 87
+  stars: 88
   pushedAt: '2026-03-18T02:03:53Z'
   archived: false
   fork: false
@@ -529,8 +529,8 @@
     - selfhosted
     - ttrpg
     - ttrpgs
-  stars: 87
-  pushedAt: '2026-03-16T00:08:10Z'
+  stars: 88
+  pushedAt: '2026-03-26T00:27:50Z'
   archived: false
   fork: false
   license: null
@@ -595,33 +595,13 @@
   confidence: medium
   notes: null
   hidden: false
-- id: royalfig/smart
-  name: smart
-  repo: royalfig/smart
-  url: https://github.com/royalfig/smart
-  description: A theme for the open source publishing platform Ghost
-  category: Theme
-  tags: &ref_22
-    - blog
-    - ghost
-    - ghost-theme
-  stars: 85
-  pushedAt: '2026-03-13T11:06:03Z'
-  archived: false
-  fork: false
-  license: null
-  topics: *ref_22
-  score: 62
-  confidence: medium
-  notes: null
-  hidden: false
 - id: eexit/ghost-storage-cloudinary
   name: ghost-storage-cloudinary
   repo: eexit/ghost-storage-cloudinary
   url: https://github.com/eexit/ghost-storage-cloudinary
   description: ':rocket: A fully-featured and deeply tested Cloudinary Ghost storage adapter'
   category: Theme
-  tags: &ref_23
+  tags: &ref_22
     - cloudinary
     - es6
     - ghost
@@ -637,9 +617,29 @@
   archived: false
   fork: false
   license: null
-  topics: *ref_23
+  topics: *ref_22
   score: 57
   confidence: low
+  notes: null
+  hidden: false
+- id: royalfig/smart
+  name: smart
+  repo: royalfig/smart
+  url: https://github.com/royalfig/smart
+  description: A theme for the open source publishing platform Ghost
+  category: Theme
+  tags: &ref_23
+    - blog
+    - ghost
+    - ghost-theme
+  stars: 84
+  pushedAt: '2026-03-13T11:06:03Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_23
+  score: 62
+  confidence: medium
   notes: null
   hidden: false
 - id: TryGhost/Wave
@@ -654,7 +654,7 @@
     - ghost-theme
     - magazine
     - publishing
-  stars: 83
+  stars: 84
   pushedAt: '2026-03-18T02:03:41Z'
   archived: false
   fork: false
@@ -705,7 +705,7 @@
     - paid-subscriptions
     - publishing
   stars: 76
-  pushedAt: '2026-03-21T02:40:29Z'
+  pushedAt: '2026-03-30T06:31:42Z'
   archived: false
   fork: false
   license: mit
@@ -747,7 +747,7 @@
     - ghost-theme
     - newsletter
     - publishing
-  stars: 62
+  stars: 63
   pushedAt: '2026-03-18T02:03:45Z'
   archived: false
   fork: false
@@ -769,8 +769,8 @@
     - ghost-theme
     - magazine
     - publishing
-  stars: 57
-  pushedAt: '2026-03-18T02:03:42Z'
+  stars: 58
+  pushedAt: '2026-03-24T07:19:37Z'
   archived: false
   fork: false
   license: mit
@@ -796,7 +796,7 @@
     - typescript
     - zod
   stars: 57
-  pushedAt: '2026-03-22T17:24:31Z'
+  pushedAt: '2026-03-29T16:57:49Z'
   archived: false
   fork: false
   license: mit
@@ -817,7 +817,7 @@
     - local-news
     - news
     - publishing
-  stars: 55
+  stars: 56
   pushedAt: '2026-03-18T02:03:39Z'
   archived: false
   fork: false
@@ -839,7 +839,7 @@
     - ghost-theme
     - newsletter
     - personal
-  stars: 46
+  stars: 47
   pushedAt: '2026-03-18T02:03:37Z'
   archived: false
   fork: false
@@ -908,8 +908,8 @@
     - ghost
     - ghost-theme
     - theme
-  stars: 28
-  pushedAt: '2026-03-13T00:45:10Z'
+  stars: 27
+  pushedAt: '2026-03-27T00:44:30Z'
   archived: false
   fork: false
   license: agpl-3.0
@@ -957,8 +957,8 @@
     - ghost
     - ghost-theme
     - publishing
-  stars: 23
-  pushedAt: '2026-03-23T06:37:17Z'
+  stars: 24
+  pushedAt: '2026-03-30T06:16:00Z'
   archived: false
   fork: false
   license: mit
@@ -967,13 +967,36 @@
   confidence: high
   notes: null
   hidden: false
+- id: christancho/Blogging-with-N8N
+  name: Blogging-with-N8N
+  repo: christancho/Blogging-with-N8N
+  url: https://github.com/christancho/Blogging-with-N8N
+  description: >-
+    AI-Powered Blog Automation Suite - Complete N8N workflow for automated content creation, research, SEO optimization,
+    and publishing to Ghost CMS.
+  category: Theme
+  tags: &ref_38
+    - ghost
+    - ghost-cms
+    - n8n
+    - n8n-workflow
+  stars: 24
+  pushedAt: '2025-11-06T14:58:20Z'
+  archived: false
+  fork: false
+  license: null
+  topics: *ref_38
+  score: 61
+  confidence: medium
+  notes: null
+  hidden: false
 - id: JustGoodThemes/Scriptor-Ghost-Theme
   name: Scriptor-Ghost-Theme
   repo: JustGoodThemes/Scriptor-Ghost-Theme
   url: https://github.com/JustGoodThemes/Scriptor-Ghost-Theme
   description: Scriptor is a minimal, clean, modern & responsive Ghost theme for writers.
   category: Theme
-  tags: &ref_38
+  tags: &ref_39
     - blog
     - blog-theme
     - blogging
@@ -987,32 +1010,9 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_38
+  topics: *ref_39
   score: 89
   confidence: high
-  notes: null
-  hidden: false
-- id: christancho/Blogging-with-N8N
-  name: Blogging-with-N8N
-  repo: christancho/Blogging-with-N8N
-  url: https://github.com/christancho/Blogging-with-N8N
-  description: >-
-    AI-Powered Blog Automation Suite - Complete N8N workflow for automated content creation, research, SEO optimization,
-    and publishing to Ghost CMS.
-  category: Theme
-  tags: &ref_39
-    - ghost
-    - ghost-cms
-    - n8n
-    - n8n-workflow
-  stars: 23
-  pushedAt: '2025-11-06T14:58:20Z'
-  archived: false
-  fork: false
-  license: null
-  topics: *ref_39
-  score: 61
-  confidence: medium
   notes: null
   hidden: false
 - id: MFYDev/ghost-meilisearch
@@ -1035,7 +1035,7 @@
     - search-enhancement
     - vercel
   stars: 22
-  pushedAt: '2026-03-22T23:33:40Z'
+  pushedAt: '2026-03-29T17:42:03Z'
   archived: false
   fork: false
   license: mit
@@ -1055,8 +1055,8 @@
     - ghost-blog
     - yunohost
     - yunohost-apps
-  stars: 21
-  pushedAt: '2026-03-22T03:45:17Z'
+  stars: 22
+  pushedAt: '2026-03-27T23:10:43Z'
   archived: false
   fork: false
   license: gpl-3.0
@@ -1081,11 +1081,32 @@
     - sass
     - webpack
   stars: 20
-  pushedAt: '2026-03-23T01:14:25Z'
+  pushedAt: '2026-03-30T00:36:50Z'
   archived: false
   fork: false
   license: null
   topics: *ref_42
+  score: 89
+  confidence: high
+  notes: null
+  hidden: false
+- id: TryGhost/Tribeca
+  name: Tribeca
+  repo: TryGhost/Tribeca
+  url: https://github.com/TryGhost/Tribeca
+  description: A free theme for Ghost
+  category: Official
+  tags: &ref_43
+    - blogging
+    - ghost
+    - ghost-theme
+    - publishing
+  stars: 18
+  pushedAt: '2026-03-30T06:16:46Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_43
   score: 89
   confidence: high
   notes: null
@@ -1096,16 +1117,16 @@
   url: https://github.com/CorySanin/seance
   description: A self-hostable contact form for Ghost
   category: Theme
-  tags: &ref_43
+  tags: &ref_44
     - contact-form
     - ghost
     - ghost-blog
   stars: 18
-  pushedAt: '2026-03-19T07:10:39Z'
+  pushedAt: '2026-03-29T15:51:24Z'
   archived: false
   fork: false
   license: gpl-3.0
-  topics: *ref_43
+  topics: *ref_44
   score: 63
   confidence: medium
   notes: null
@@ -1116,7 +1137,7 @@
   url: https://github.com/nickabs/transmission
   description: transmission Ghost theme
   category: Theme
-  tags: &ref_44
+  tags: &ref_45
     - ghost
     - ghost-theme
   stars: 17
@@ -1124,29 +1145,8 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_44
-  score: 83
-  confidence: high
-  notes: null
-  hidden: false
-- id: TryGhost/Tribeca
-  name: Tribeca
-  repo: TryGhost/Tribeca
-  url: https://github.com/TryGhost/Tribeca
-  description: A free theme for Ghost
-  category: Official
-  tags: &ref_45
-    - blogging
-    - ghost
-    - ghost-theme
-    - publishing
-  stars: 17
-  pushedAt: '2026-03-23T06:35:07Z'
-  archived: false
-  fork: false
-  license: mit
   topics: *ref_45
-  score: 89
+  score: 83
   confidence: high
   notes: null
   hidden: false
@@ -1161,7 +1161,7 @@
     - ghost-theme
     - newsletter
     - publishing
-  stars: 16
+  stars: 17
   pushedAt: '2026-03-18T02:03:42Z'
   archived: false
   fork: false
@@ -1184,7 +1184,7 @@
     - amazon-ses
     - ghost-cms
     - mailgun
-  stars: 14
+  stars: 15
   pushedAt: '2026-03-13T19:41:14Z'
   archived: false
   fork: false
@@ -1215,13 +1215,34 @@
   confidence: medium
   notes: null
   hidden: false
+- id: TryGhost/Digest
+  name: Digest
+  repo: TryGhost/Digest
+  url: https://github.com/TryGhost/Digest
+  description: A newsletter theme for Ghost
+  category: Official
+  tags: &ref_49
+    - ghost
+    - ghost-theme
+    - newsletter
+    - publishing
+  stars: 11
+  pushedAt: '2026-03-18T02:03:42Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_49
+  score: 79
+  confidence: medium
+  notes: null
+  hidden: false
 - id: mskian/santhosh-veer-blog
   name: santhosh-veer-blog
   repo: mskian/santhosh-veer-blog
   url: https://github.com/mskian/santhosh-veer-blog
   description: A Ghost theme with Membership Feature
   category: Theme
-  tags: &ref_49
+  tags: &ref_50
     - blogging
     - bulma
     - bulma-css
@@ -1237,11 +1258,11 @@
     - publishing
     - theme
   stars: 11
-  pushedAt: '2026-03-18T17:46:50Z'
+  pushedAt: '2026-03-26T17:22:20Z'
   archived: false
   fork: false
   license: mit
-  topics: *ref_49
+  topics: *ref_50
   score: 86
   confidence: high
   notes: null
@@ -1252,7 +1273,7 @@
   url: https://github.com/ehsanghaffar/eindev-ghost-theme
   description: A new personal blog theme for Ghost CMS
   category: Theme
-  tags: &ref_50
+  tags: &ref_51
     - ghost
     - ghost-theme
     - tailwind-ghost
@@ -1262,7 +1283,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_50
+  topics: *ref_51
   score: 83
   confidence: high
   notes: null
@@ -1273,39 +1294,18 @@
   url: https://github.com/Vortexmind/ghost-cloudflare-cache-purge
   description: A Cloudflare worker script which triggers Cloudflare cache purges initiated by a Ghost blog webhook
   category: Theme
-  tags: &ref_51
+  tags: &ref_52
     - cloudflare
     - cloudflare-worker
     - ghost-blog
   stars: 11
-  pushedAt: '2026-03-16T08:27:29Z'
-  archived: false
-  fork: false
-  license: mit
-  topics: *ref_51
-  score: 56
-  confidence: low
-  notes: null
-  hidden: false
-- id: TryGhost/Digest
-  name: Digest
-  repo: TryGhost/Digest
-  url: https://github.com/TryGhost/Digest
-  description: A newsletter theme for Ghost
-  category: Official
-  tags: &ref_52
-    - ghost
-    - ghost-theme
-    - newsletter
-    - publishing
-  stars: 10
-  pushedAt: '2026-03-18T02:03:42Z'
+  pushedAt: '2026-03-29T08:29:44Z'
   archived: false
   fork: false
   license: mit
   topics: *ref_52
-  score: 79
-  confidence: medium
+  score: 56
+  confidence: low
   notes: null
   hidden: false
 - id: Wayne-Jones/ghost-cms-nextjs
@@ -1360,33 +1360,13 @@
   confidence: medium
   notes: null
   hidden: false
-- id: contraptionco/trivet
-  name: trivet
-  repo: contraptionco/trivet
-  url: https://github.com/contraptionco/trivet
-  description: Google sign-in for Ghost blogs
-  category: Theme
-  tags: &ref_55
-    - ghost
-    - ghost-blog
-    - ghost-theme
-  stars: 9
-  pushedAt: '2026-01-12T22:36:30Z'
-  archived: false
-  fork: false
-  license: mit
-  topics: *ref_55
-  score: 62
-  confidence: medium
-  notes: null
-  hidden: false
 - id: wilburx9/wilburx9.com
   name: wilburx9.com
   repo: wilburx9/wilburx9.com
   url: https://github.com/wilburx9/wilburx9.com
   description: Source code for my website, wilburx9.com
   category: Theme
-  tags: &ref_56
+  tags: &ref_55
     - ghost-blog
     - ghost-theme
     - go
@@ -1396,7 +1376,7 @@
   archived: false
   fork: false
   license: mpl-2.0
-  topics: *ref_56
+  topics: *ref_55
   score: 68
   confidence: medium
   notes: null
@@ -1407,7 +1387,7 @@
   url: https://github.com/educationwarehouse/edwh-ghost
   description: Python Client for Ghost CMS v3 - v6
   category: Theme
-  tags: &ref_57
+  tags: &ref_56
     - ghost
     - ghost-cms
     - python
@@ -1416,8 +1396,28 @@
   archived: false
   fork: false
   license: null
-  topics: *ref_57
+  topics: *ref_56
   score: 60
+  confidence: medium
+  notes: null
+  hidden: false
+- id: contraptionco/trivet
+  name: trivet
+  repo: contraptionco/trivet
+  url: https://github.com/contraptionco/trivet
+  description: Google sign-in for Ghost blogs
+  category: Theme
+  tags: &ref_57
+    - ghost
+    - ghost-blog
+    - ghost-theme
+  stars: 8
+  pushedAt: '2026-01-12T22:36:30Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_57
+  score: 62
   confidence: medium
   notes: null
   hidden: false
@@ -1477,7 +1477,7 @@
     - nuxt-module
     - nuxt-modules
   stars: 7
-  pushedAt: '2026-03-18T05:48:46Z'
+  pushedAt: '2026-03-26T18:09:46Z'
   archived: false
   fork: false
   license: mit
@@ -1530,7 +1530,7 @@
     - ghost-themes
     - theme
   stars: 6
-  pushedAt: '2026-03-16T16:50:03Z'
+  pushedAt: '2026-03-29T17:58:29Z'
   archived: false
   fork: false
   license: mit
@@ -1603,7 +1603,7 @@
     - ghost
     - ghost-cms
   stars: 6
-  pushedAt: '2026-03-20T10:52:07Z'
+  pushedAt: '2026-03-27T16:48:47Z'
   archived: false
   fork: false
   license: mit
@@ -1612,13 +1612,34 @@
   confidence: medium
   notes: null
   hidden: false
+- id: TryGhost/Taste
+  name: Taste
+  repo: TryGhost/Taste
+  url: https://github.com/TryGhost/Taste
+  description: null
+  category: Official
+  tags: &ref_66
+    - ghost
+    - ghost-theme
+    - newsletter
+    - publishing
+  stars: 5
+  pushedAt: '2026-03-18T02:03:39Z'
+  archived: false
+  fork: false
+  license: mit
+  topics: *ref_66
+  score: 52
+  confidence: low
+  notes: null
+  hidden: false
 - id: christopher-b/vapour
   name: vapour
   repo: christopher-b/vapour
   url: https://github.com/christopher-b/vapour
   description: Ghost CMS theme boilerplate with Vite + TailwindCSS
   category: Theme
-  tags: &ref_66
+  tags: &ref_67
     - ghost-cms
     - ghost-theme
     - vitejs
@@ -1627,30 +1648,9 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_66
+  topics: *ref_67
   score: 88
   confidence: high
-  notes: null
-  hidden: false
-- id: TryGhost/Taste
-  name: Taste
-  repo: TryGhost/Taste
-  url: https://github.com/TryGhost/Taste
-  description: null
-  category: Official
-  tags: &ref_67
-    - ghost
-    - ghost-theme
-    - newsletter
-    - publishing
-  stars: 4
-  pushedAt: '2026-03-18T02:03:39Z'
-  archived: false
-  fork: false
-  license: mit
-  topics: *ref_67
-  score: 52
-  confidence: low
   notes: null
   hidden: false
 - id: elmahio/elmah-io-ghost-theme
@@ -1712,7 +1712,7 @@
     - ghost-cms-theme-starter-kit
     - ghost-theme
   stars: 4
-  pushedAt: '2026-03-15T11:29:10Z'
+  pushedAt: '2026-03-27T09:22:23Z'
   archived: false
   fork: false
   license: mit
@@ -1731,7 +1731,7 @@
     - bootstrap
     - ghost-theme
   stars: 4
-  pushedAt: '2025-10-28T17:54:32Z'
+  pushedAt: '2026-03-29T20:15:05Z'
   archived: false
   fork: false
   license: mit
@@ -1901,37 +1901,13 @@
   confidence: high
   notes: null
   hidden: false
-- id: klppl/tidslinje
-  name: tidslinje
-  repo: klppl/tidslinje
-  url: https://github.com/klppl/tidslinje
-  description: >-
-    A minimalist, dark-mode timeline theme for Ghost. Designed for chronological storytelling and personal logs with a
-    focus on readability and clean aesthetics.
-  category: Theme
-  tags: &ref_79
-    - ghost
-    - ghost-blog
-    - ghost-cms
-    - ghost-theme
-    - ghost-themes
-  stars: 3
-  pushedAt: '2026-02-09T14:01:16Z'
-  archived: false
-  fork: false
-  license: gpl-3.0
-  topics: *ref_79
-  score: 85
-  confidence: high
-  notes: null
-  hidden: false
 - id: ifrederico/defalt
   name: defalt
   repo: ifrederico/defalt
   url: https://github.com/ifrederico/defalt
   description: Open source Ghost theme editor with live preview. Customize the Source theme and export ready-to-upload .zip files.
   category: Theme
-  tags: &ref_80
+  tags: &ref_79
     - ghost
     - ghost-theme
     - open-source
@@ -1943,7 +1919,7 @@
   archived: false
   fork: false
   license: mit
-  topics: *ref_80
+  topics: *ref_79
   score: 64
   confidence: medium
   notes: null
@@ -1954,7 +1930,7 @@
   url: https://github.com/amritsarstartups/ghost-theme-docker
   description: Ghost theme development with Docker
   category: Theme
-  tags: &ref_81
+  tags: &ref_80
     - docker
     - docker-compose
     - ghost
@@ -1965,9 +1941,33 @@
   archived: false
   fork: false
   license: null
-  topics: *ref_81
+  topics: *ref_80
   score: 59
   confidence: low
+  notes: null
+  hidden: false
+- id: klppl/tidslinje
+  name: tidslinje
+  repo: klppl/tidslinje
+  url: https://github.com/klppl/tidslinje
+  description: >-
+    A minimalist, dark-mode timeline theme for Ghost. Designed for chronological storytelling and personal logs with a
+    focus on readability and clean aesthetics.
+  category: Theme
+  tags: &ref_81
+    - ghost
+    - ghost-blog
+    - ghost-cms
+    - ghost-theme
+    - ghost-themes
+  stars: 3
+  pushedAt: '2026-02-09T14:01:16Z'
+  archived: false
+  fork: false
+  license: gpl-3.0
+  topics: *ref_81
+  score: 85
+  confidence: high
   notes: null
   hidden: false
 - id: codetiger/blog
@@ -1981,7 +1981,7 @@
     - ghost
     - static-site-generator
   stars: 3
-  pushedAt: '2025-10-07T14:15:17Z'
+  pushedAt: '2026-03-29T16:35:07Z'
   archived: false
   fork: false
   license: null
@@ -2036,7 +2036,7 @@
     - tailwindcss
     - typescipt
   stars: 3
-  pushedAt: '2026-02-22T13:14:48Z'
+  pushedAt: '2026-03-30T02:42:42Z'
   archived: false
   fork: false
   license: mit
