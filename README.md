@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="img/rdghost.png" alt="Ghostbuster" width="140" />
+</p>
+
 # Ghostbuster
 
 An automated curation system for maintaining a comprehensive directory of Ghost CMS themes and development resources.
