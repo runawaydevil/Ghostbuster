@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Suggest an idea for Le Ghost
+about: Suggest an idea for Ghostbuster
 title: '[FEATURE] '
 labels: ['enhancement']
 assignees: ['runawaydevil']

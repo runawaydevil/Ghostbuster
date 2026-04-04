@@ -1,5 +1,5 @@
 /**
- * Staleness detection module for Le Ghost system
+ * Staleness detection module for Ghostbuster system
  * Determines which items are stale based on their last update date
  */
 

@@ -1,5 +1,5 @@
 /**
- * YAML schema validation functions for Le Ghost system
+ * YAML schema validation functions for Ghostbuster system
  */
 
 import * as yaml from 'js-yaml';

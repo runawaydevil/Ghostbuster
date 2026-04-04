@@ -1,5 +1,5 @@
 /**
- * Core data types for Le Ghost system
+ * Core data types for Ghostbuster system
  */
 
 export interface GhostItem {

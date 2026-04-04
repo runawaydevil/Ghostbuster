@@ -1,5 +1,5 @@
 /**
- * Data merging and override system for Le Ghost
+ * Data merging and override system for Ghostbuster
  * Combines existing items with new discoveries, applies overrides and ignores
  */
 
@@ -343,7 +343,7 @@ export async function saveMergedItems(
   const itemsPath = path.join(dataDir, 'items.yml');
   
   // Convert items to YAML format
-  const yamlContent = `# Le Ghost - Canonical Items List
+  const yamlContent = `# Ghostbuster - Canonical Items List
 # This file contains the master list of all Ghost CMS resources
 # Format: Array of GhostItem objects
 

@@ -1,5 +1,5 @@
 /**
- * Cache management utilities for Le Ghost system
+ * Cache management utilities for Ghostbuster system
  */
 
 import { existsSync, readFileSync, writeFileSync, readdirSync, unlinkSync, statSync } from 'fs';

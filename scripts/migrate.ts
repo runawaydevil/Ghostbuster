@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Data migration script for Le Ghost
+ * Data migration script for Ghostbuster
  * Converts existing HTML data to new YAML format
  */
 
@@ -373,7 +373,7 @@ async function main() {
   
   if (args.includes('--help') || args.includes('-h')) {
     console.log(`
-Le Ghost Data Migration Tool
+Ghostbuster Data Migration Tool
 
 Usage: npm run migrate [options] [input-file] [output-file]
 

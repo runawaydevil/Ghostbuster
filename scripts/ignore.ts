@@ -1,5 +1,5 @@
 /**
- * Ignore list filtering system for Le Ghost
+ * Ignore list filtering system for Ghostbuster
  * Handles blacklist processing with pattern matching
  */
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Main update orchestrator for Le Ghost system
+ * Main update orchestrator for Ghostbuster system
  * Coordinates the entire pipeline: crawl → classify → merge → render
  */
 
@@ -192,7 +192,7 @@ export class UpdateOrchestrator {
     this.startTime = Date.now();
     this.errors = [];
 
-    this.log('🚀 Starting Le Ghost update pipeline');
+    this.log('🚀 Starting Ghostbuster update pipeline');
 
     const result: UpdateResult = {
       success: false,
@@ -447,7 +447,7 @@ export class UpdateOrchestrator {
                   config.staleness.renderOutput,
                   allStaleItems,
                   {
-                    title: 'Le Ghost - Not Updated Recently',
+                    title: 'Ghostbuster - Not Updated Recently',
                     subtitle: 'Ghost CMS Themes & Tools Not Updated Recently',
                     warningMessage: `These items have not been updated in over ${config.staleness.thresholdMonths} months. They may still work but are not actively maintained.`,
                     thresholdMonths: config.staleness.thresholdMonths,
@@ -519,7 +519,7 @@ export class UpdateOrchestrator {
             config.rendering.output,
             mergeResult.items,
             {
-              title: 'Le Ghost - Ghost CMS Themes & Tools Directory',
+              title: 'Ghostbuster - Ghost CMS Themes & Tools Directory',
               subtitle: 'Ghost CMS Themes & Tools Directory (2022–2026)',
               updateMessage,
               lastUpdate: workflowUpdateDate
@@ -595,7 +595,7 @@ export class UpdateOrchestrator {
     
     let summary = `
 ┌─────────────────────────────────────────┐
-│           Le Ghost Update Summary        │
+│        Ghostbuster Update Summary         │
 ├─────────────────────────────────────────┤
 │ Status: ${result.success ? '✅ Success' : '❌ Failed'}                      │
 │ Duration: ${duration.padEnd(29)} │
@@ -723,7 +723,7 @@ async function main() {
   // Handle help
   if (args.includes('--help') || args.includes('-h')) {
     console.log(`
-Le Ghost Update Pipeline
+Ghostbuster Update Pipeline
 
 Usage: npm run update [options]
 

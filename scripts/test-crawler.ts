@@ -6,7 +6,7 @@ import { createCrawler } from './crawl.js';
 import { getConfigAndData } from './config.js';
 
 async function testCrawler() {
-  console.log('Testing Le Ghost GitHub crawler...\n');
+  console.log('Testing Ghostbuster GitHub crawler...\n');
 
   try {
     // Load configuration and data

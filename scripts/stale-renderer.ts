@@ -311,11 +311,11 @@ export class StaleDirectoryRenderer {
 
     // Build template data
     const templateData: StaleTemplateData = {
-      title: options.title || 'Le Ghost - Not Updated Recently',
+      title: options.title || 'Ghostbuster - Not Updated Recently',
       subtitle: options.subtitle || 'Ghost CMS Themes & Tools Not Updated Recently',
       logoUrl: options.logoUrl || 'https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png',
-      logoAlt: 'Le Ghost Logo',
-      githubUrl: options.githubUrl || 'https://github.com/runawaydevil/le-ghost',
+      logoAlt: 'Ghostbuster logo',
+      githubUrl: options.githubUrl || 'https://github.com/runawaydevil/Ghostbuster',
       warningMessage: options.warningMessage || 'These items have not been updated in over 12 months. They may still work but are not actively maintained.',
       thresholdMonths: options.thresholdMonths || 12,
       lastUpdate,

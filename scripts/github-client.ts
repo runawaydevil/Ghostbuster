@@ -44,7 +44,7 @@ export class GitHubClient {
     this.config = config;
     this.octokit = new Octokit({
       auth: config.token,
-      userAgent: 'le-ghost/1.0.0',
+      userAgent: 'ghostbuster/0.0.2',
       request: {
         retries: 0, // We'll handle retries ourselves
       }

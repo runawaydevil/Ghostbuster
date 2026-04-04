@@ -131,6 +131,10 @@ Ghostbuster is actively maintained and continuously improved. The system process
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## Maintainer
+
+- **Pablo Murad** — runawaydevil@pm.me
+
 ## Support
 
 For questions, issues, or contributions:

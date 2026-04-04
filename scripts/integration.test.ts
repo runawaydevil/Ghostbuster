@@ -1,5 +1,5 @@
 /**
- * Integration tests for Le Ghost system
+ * Integration tests for Ghostbuster system
  * Tests the complete pipeline with mock data
  */
 

@@ -106,7 +106,7 @@ async function main() {
       OUTPUT_PATH,
       allStaleItems,
       {
-        title: 'Le Ghost - Not Updated Recently',
+        title: 'Ghostbuster - Not Updated Recently',
         subtitle: 'Ghost CMS Themes & Tools Not Updated Recently',
         warningMessage: `These items have not been updated in over ${THRESHOLD_MONTHS} months. They may still work but are not actively maintained.`,
         thresholdMonths: THRESHOLD_MONTHS,

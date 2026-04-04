@@ -252,7 +252,7 @@ describe('StaleDirectoryRenderer', () => {
       expect(fs.existsSync(testOutputPath)).toBe(true);
 
       const html = fs.readFileSync(testOutputPath, 'utf-8');
-      expect(html).toContain('Le Ghost'); // Should still have basic structure
+      expect(html).toContain('Ghostbuster'); // Should still have basic structure
     });
 
     it('should use default options when not provided', () => {
@@ -273,7 +273,7 @@ describe('StaleDirectoryRenderer', () => {
       expect(fs.existsSync(testOutputPath)).toBe(true);
 
       const html = fs.readFileSync(testOutputPath, 'utf-8');
-      expect(html).toContain('Le Ghost - Not Updated Recently');
+      expect(html).toContain('Ghostbuster - Not Updated Recently');
       expect(html).toContain('12 months'); // Default threshold
     });
 

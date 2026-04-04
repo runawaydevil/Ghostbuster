@@ -1,5 +1,5 @@
 /**
- * Comprehensive error handling system for Le Ghost
+ * Comprehensive error handling system for Ghostbuster
  */
 
 export enum ErrorCode {

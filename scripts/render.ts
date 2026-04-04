@@ -1,5 +1,5 @@
 /**
- * HTML template rendering engine for Le Ghost system
+ * HTML template rendering engine for Ghostbuster system
  */
 
 import { readFileSync, writeFileSync } from 'fs';
@@ -484,11 +484,11 @@ export class GhostDirectoryRenderer {
     }
 
     const templateData: TemplateData = {
-      title: options.title || 'Le Ghost - Ghost CMS Themes & Tools Directory',
+      title: options.title || 'Ghostbuster - Ghost CMS Themes & Tools Directory',
       subtitle: options.subtitle || 'Ghost CMS Themes & Tools Directory (2022–2026)',
       logoUrl: options.logoUrl || 'https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png',
-      logoAlt: 'Le Ghost Logo',
-      githubUrl: options.githubUrl || 'https://github.com/runawaydevil/le-ghost',
+      logoAlt: 'Ghostbuster logo',
+      githubUrl: options.githubUrl || 'https://github.com/runawaydevil/Ghostbuster',
       introText: 'This document is a curated directory of Ghost CMS theme repositories and essential tools/resources for theme development, validation, localization, and deployment. Organized to facilitate browsing by origin and category, identify popular themes, and discover tooling for building and maintaining Ghost themes.',
       updateMessage: options.updateMessage,
       lastUpdate,
