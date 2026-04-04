@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="img/rdghost.png" alt="Ghostbuster" width="140" />
+  <img src="img/rdghost.png" alt="Ghostbuster" width="200" />
 </p>
 
 # Ghostbuster
