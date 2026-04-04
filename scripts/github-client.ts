@@ -1,6 +1,3 @@
-/**
- * GitHub API client with authentication, rate limiting, and retry logic
- */
 
 import { Octokit } from '@octokit/rest';
 import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'fs';
@@ -31,9 +28,6 @@ export interface CacheEntry {
   etag?: string;
 }
 
-/**
- * GitHub API client with built-in rate limiting and caching
- */
 export class GitHubClient {
   private octokit: Octokit;
   private config: GitHubClientConfig;
@@ -56,9 +50,6 @@ export class GitHubClient {
     }
   }
 
-  /**
-   * Get current rate limit status
-   */
   async getRateLimit(): Promise<RateLimitInfo> {
     try {
       const response = await this.octokit.rest.rateLimit.get();
@@ -73,24 +64,15 @@ export class GitHubClient {
     }
   }
 
-  /**
-   * Calculate delay for exponential backoff
-   */
   private calculateBackoffDelay(attempt: number): number {
     const baseDelay = 1000; // 1 second
     return baseDelay * Math.pow(this.config.rateLimit.backoffMultiplier, attempt);
   }
 
-  /**
-   * Sleep for specified milliseconds
-   */
   private sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  /**
-   * Execute API request with retry logic, rate limiting, and ETag support
-   */
   private async executeWithRetry<T>(
     operation: (headers?: any) => Promise<{ data: T; headers?: any }>,
     maxRetries: number = 3,
@@ -159,17 +141,11 @@ export class GitHubClient {
     throw lastError || new Error('Max retries exceeded');
   }
 
-  /**
-   * Get cache key for a request
-   */
   private getCacheKey(endpoint: string, params: any): string {
     const paramString = JSON.stringify(params, Object.keys(params).sort());
     return `${endpoint}_${Buffer.from(paramString).toString('base64')}`;
   }
 
-  /**
-   * Get cached data if valid
-   */
   private getCachedData(cacheKey: string): CacheEntry | null {
     const cacheFile = join(this.config.cache.directory, `${cacheKey}.json`);
     
@@ -194,9 +170,6 @@ export class GitHubClient {
     }
   }
 
-  /**
-   * Save data to cache
-   */
   private setCachedData(cacheKey: string, data: any, etag?: string): void {
     const cacheFile = join(this.config.cache.directory, `${cacheKey}.json`);
     const entry: CacheEntry = {
@@ -212,9 +185,6 @@ export class GitHubClient {
     }
   }
 
-  /**
-   * Search repositories with caching, ETag support, and pagination
-   */
   async searchRepositories(
     query: string,
     options: {
@@ -286,9 +256,6 @@ export class GitHubClient {
     return result.data;
   }
 
-  /**
-   * Get repository details with caching and ETag support
-   */
   async getRepository(owner: string, repo: string) {
     const cacheKey = this.getCacheKey('get_repository', { owner, repo });
     const cached = this.getCachedData(cacheKey);
@@ -346,9 +313,6 @@ export class GitHubClient {
     return result.data;
   }
 
-  /**
-   * Get repository README content with caching and ETag support
-   */
   async getReadme(owner: string, repo: string): Promise<string | null> {
     const cacheKey = this.getCacheKey('get_readme', { owner, repo });
     const cached = this.getCachedData(cacheKey);
@@ -428,9 +392,6 @@ export class GitHubClient {
     }
   }
 
-  /**
-   * Get repository contents (file tree) with caching and ETag support
-   */
   async getContents(owner: string, repo: string, path: string = '') {
     const cacheKey = this.getCacheKey('get_contents', { owner, repo, path });
     const cached = this.getCachedData(cacheKey);
@@ -508,9 +469,6 @@ export class GitHubClient {
     }
   }
 
-  /**
-   * Get statistics for this session
-   */
   getStats() {
     return {
       apiCallsUsed: this.apiCallsUsed,
@@ -518,9 +476,6 @@ export class GitHubClient {
     };
   }
 
-  /**
-   * Reset statistics
-   */
   resetStats() {
     this.apiCallsUsed = 0;
     this.cacheHits = 0;

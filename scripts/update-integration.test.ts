@@ -1,10 +1,4 @@
-/**
- * Integration tests for the complete update pipeline with staleness tracking
- * Tests the full pipeline flow including staleness detection, database operations, and rendering
- */
-
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { UpdateOrchestrator, UpdateOptions } from './update.js';
 import { createStaleDatabaseManager } from './stale-database.js';
 import { GhostItem } from './types.js';
 import * as fs from 'fs';

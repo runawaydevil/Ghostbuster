@@ -1,18 +1,3 @@
-/**
- * End-to-End Tests for Stale Items Tracking Feature
- * 
- * Comprehensive tests covering the complete staleness tracking workflow:
- * - Test data creation for various staleness scenarios
- * - Initial staleness detection
- * - Database persistence
- * - HTML generation
- * - Reactivation flow
- * - Statistics generation
- * - Dry-run mode
- * 
- * **Validates: Requirements 1.1, 1.2, 4.1, 4.2, 5.1, 5.2, and all other requirements**
- */
-
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createStalenessDetector } from './stale-detector.js';
 import { createStaleDatabaseManager } from './stale-database.js';

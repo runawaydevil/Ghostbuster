@@ -1,6 +1,3 @@
-/**
- * Data integrity and duplicate detection utilities
- */
 
 import { GhostItem } from './types.js';
 
@@ -27,14 +24,8 @@ export interface ConsistencyReport {
   };
 }
 
-/**
- * Data integrity checker for Ghost items
- */
 export class DataIntegrityChecker {
   
-  /**
-   * Detect duplicate repositories in the dataset
-   */
   detectDuplicates(items: GhostItem[]): DuplicateReport {
     const duplicateGroups: Map<string, GhostItem[]> = new Map();
     const uniqueItems: GhostItem[] = [];
@@ -107,9 +98,6 @@ export class DataIntegrityChecker {
     };
   }
 
-  /**
-   * Remove duplicates by URL from a list of items
-   */
   private removeDuplicatesByUrl(items: GhostItem[]): GhostItem[] {
     const seenUrls = new Set<string>();
     const uniqueItems: GhostItem[] = [];
@@ -128,9 +116,6 @@ export class DataIntegrityChecker {
     return uniqueItems;
   }
 
-  /**
-   * Validate data consistency and integrity
-   */
   validateConsistency(items: GhostItem[]): ConsistencyReport {
     const errors: string[] = [];
     const warnings: string[] = [];
@@ -241,9 +226,6 @@ export class DataIntegrityChecker {
     };
   }
 
-  /**
-   * Merge duplicate items, keeping the best data from each
-   */
   mergeDuplicates(primary: GhostItem, duplicates: GhostItem[]): GhostItem {
     const merged = { ...primary };
 
@@ -296,9 +278,6 @@ export class DataIntegrityChecker {
     return merged;
   }
 
-  /**
-   * Clean and deduplicate a dataset
-   */
   cleanDataset(items: GhostItem[]): {
     cleanedItems: GhostItem[];
     duplicateReport: DuplicateReport;
@@ -336,9 +315,6 @@ export class DataIntegrityChecker {
     };
   }
 
-  /**
-   * Compare two datasets and find differences
-   */
   compareDatasets(oldItems: GhostItem[], newItems: GhostItem[]): {
     added: GhostItem[];
     removed: GhostItem[];
@@ -390,9 +366,6 @@ export class DataIntegrityChecker {
     return { added, removed, updated, unchanged };
   }
 
-  /**
-   * Check if an item has changed (excluding timestamp fields)
-   */
   private hasItemChanged(oldItem: GhostItem, newItem: GhostItem): boolean {
     // Fields to compare (excluding pushedAt which changes frequently)
     const fieldsToCompare = [
@@ -419,9 +392,6 @@ export class DataIntegrityChecker {
     return false;
   }
 
-  /**
-   * Print duplicate report in human readable format
-   */
   printDuplicateReport(report: DuplicateReport): void {
     console.log('\nDuplicate Detection Report:');
     console.log(`  Total duplicates found: ${report.totalDuplicates}`);
@@ -440,9 +410,6 @@ export class DataIntegrityChecker {
     }
   }
 
-  /**
-   * Print consistency report in human readable format
-   */
   printConsistencyReport(report: ConsistencyReport): void {
     console.log('\nData Consistency Report:');
     console.log(`  Status: ${report.valid ? 'VALID' : 'INVALID'}`);
@@ -468,9 +435,6 @@ export class DataIntegrityChecker {
   }
 }
 
-/**
- * Create a data integrity checker instance
- */
 export function createDataIntegrityChecker(): DataIntegrityChecker {
   return new DataIntegrityChecker();
 }

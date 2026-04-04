@@ -1,7 +1,3 @@
-/**
- * Ghost theme classification system with scoring heuristics
- */
-
 import { RepositoryData, ClassificationResult } from './types.js';
 import { GitHubClient } from './github-client.js';
 
@@ -21,19 +17,16 @@ export interface ClassificationConfig {
   penaltyKeywords: string[];
 }
 
-/**
- * Default classification configuration
- */
 export const DEFAULT_CLASSIFICATION_CONFIG: ClassificationConfig = {
   weights: {
-    topics: 0.4,      // 40% weight for GitHub topics
-    readme: 0.3,      // 30% weight for README content
-    structure: 0.25,  // 25% weight for file structure
-    penalties: 0.05   // 5% weight for penalties
+    topics: 0.4,
+    readme: 0.3,
+    structure: 0.25,
+    penalties: 0.05
   },
   thresholds: {
-    high: 75,    // Score >= 75 = high confidence
-    medium: 50   // Score >= 50 = medium confidence
+    high: 75,
+    medium: 50
   },
   ghostKeywords: [
     'ghost',
@@ -69,9 +62,6 @@ export const DEFAULT_CLASSIFICATION_CONFIG: ClassificationConfig = {
   ]
 };
 
-/**
- * Ghost theme classifier with heuristic scoring
- */
 export class GhostThemeClassifier {
   private config: ClassificationConfig;
   private client: GitHubClient;
@@ -81,9 +71,6 @@ export class GhostThemeClassifier {
     this.config = config;
   }
 
-  /**
-   * Analyze GitHub topics for Ghost theme indicators
-   */
   private analyzeTopics(topics: string[]): { score: number; reasoning: string[] } {
     const reasoning: string[] = [];
     let score = 0;
@@ -95,27 +82,24 @@ export class GhostThemeClassifier {
 
     const lowerTopics = topics.map(t => t.toLowerCase());
 
-    // Check for Ghost-specific keywords
     const ghostMatches = lowerTopics.filter(topic => 
       this.config.ghostKeywords.some(keyword => topic.includes(keyword))
     );
 
     if (ghostMatches.length > 0) {
-      score += 60; // Strong indicator
+      score += 60;
       reasoning.push(`Found Ghost-specific topics: ${ghostMatches.join(', ')}`);
     }
 
-    // Check for theme-related keywords
     const themeMatches = lowerTopics.filter(topic => 
       this.config.themeKeywords.some(keyword => topic.includes(keyword))
     );
 
     if (themeMatches.length > 0) {
-      score += Math.min(themeMatches.length * 15, 40); // Up to 40 points
+      score += Math.min(themeMatches.length * 15, 40);
       reasoning.push(`Found theme-related topics: ${themeMatches.join(', ')}`);
     }
 
-    // Bonus for multiple relevant topics
     if (ghostMatches.length > 0 && themeMatches.length > 0) {
       score += 10;
       reasoning.push('Multiple relevant topic categories found');
@@ -124,9 +108,6 @@ export class GhostThemeClassifier {
     return { score: Math.min(score, 100), reasoning };
   }
 
-  /**
-   * Analyze README content for Ghost theme indicators
-   */
   private analyzeReadme(readme: string | null): { score: number; reasoning: string[] } {
     const reasoning: string[] = [];
     let score = 0;
@@ -138,7 +119,6 @@ export class GhostThemeClassifier {
 
     const lowerReadme = readme.toLowerCase();
 
-    // Check for Ghost mentions
     const ghostMentions = this.config.ghostKeywords.filter(keyword => 
       lowerReadme.includes(keyword)
     );
@@ -148,7 +128,6 @@ export class GhostThemeClassifier {
       reasoning.push(`README mentions Ghost: ${ghostMentions.join(', ')}`);
     }
 
-    // Check for theme-related content
     const themeMentions = this.config.themeKeywords.filter(keyword => 
       lowerReadme.includes(keyword)
     );
@@ -158,19 +137,16 @@ export class GhostThemeClassifier {
       reasoning.push(`README contains theme keywords: ${themeMentions.slice(0, 5).join(', ')}`);
     }
 
-    // Check for installation instructions
     if (lowerReadme.includes('install') || lowerReadme.includes('setup') || lowerReadme.includes('download')) {
       score += 15;
       reasoning.push('Contains installation/setup instructions');
     }
 
-    // Check for demo/preview links
     if (lowerReadme.includes('demo') || lowerReadme.includes('preview') || lowerReadme.includes('live')) {
       score += 10;
       reasoning.push('Contains demo/preview links');
     }
 
-    // Check for screenshots or images
     if (lowerReadme.includes('![') || lowerReadme.includes('<img')) {
       score += 5;
       reasoning.push('Contains images/screenshots');
@@ -179,9 +155,6 @@ export class GhostThemeClassifier {
     return { score: Math.min(score, 100), reasoning };
   }
 
-  /**
-   * Analyze repository file structure for Ghost theme patterns
-   */
   private async analyzeStructure(repo: RepositoryData): Promise<{ score: number; reasoning: string[] }> {
     const reasoning: string[] = [];
     let score = 0;
@@ -190,25 +163,22 @@ export class GhostThemeClassifier {
       const [owner, repoName] = repo.full_name.split('/');
       const structureAnalysis = await this.performDeepStructureAnalysis(owner, repoName);
 
-      // Essential Ghost theme files analysis
       const essentialFiles = ['index.hbs', 'post.hbs', 'default.hbs'];
       const foundEssential = essentialFiles.filter(file => 
         structureAnalysis.handlebarsFiles.some(hbs => hbs.toLowerCase() === file)
       );
 
       if (foundEssential.length > 0) {
-        score += foundEssential.length * 25; // Up to 75 points for all essential files
+        score += foundEssential.length * 25;
         reasoning.push(`Found essential Ghost theme files: ${foundEssential.join(', ')}`);
       }
 
-      // Additional Handlebars files
       const additionalHbs = structureAnalysis.handlebarsFiles.length - foundEssential.length;
       if (additionalHbs > 0) {
         score += Math.min(additionalHbs * 5, 20);
         reasoning.push(`Found ${additionalHbs} additional .hbs files`);
       }
 
-      // Ghost theme directory structure
       const themeDirectories = ['partials', 'assets', 'locales'];
       const foundDirectories = themeDirectories.filter(dir => 
         structureAnalysis.directories.includes(dir)
@@ -219,7 +189,6 @@ export class GhostThemeClassifier {
         reasoning.push(`Found theme directories: ${foundDirectories.join(', ')}`);
       }
 
-      // Package.json analysis
       if (structureAnalysis.hasPackageJson) {
         score += 15;
         reasoning.push('Contains package.json');
@@ -244,7 +213,6 @@ export class GhostThemeClassifier {
         }
       }
 
-      // Asset files analysis
       if (structureAnalysis.assetFiles.css > 0) {
         score += Math.min(structureAnalysis.assetFiles.css * 3, 15);
         reasoning.push(`Found ${structureAnalysis.assetFiles.css} CSS/SCSS files`);
@@ -260,19 +228,16 @@ export class GhostThemeClassifier {
         reasoning.push(`Found ${structureAnalysis.assetFiles.images} image files`);
       }
 
-      // Partials directory analysis
       if (structureAnalysis.partialsCount > 0) {
         score += Math.min(structureAnalysis.partialsCount * 3, 15);
         reasoning.push(`Found ${structureAnalysis.partialsCount} partial templates`);
       }
 
-      // Ghost configuration files
       if (structureAnalysis.hasGhostConfig) {
         score += 10;
         reasoning.push('Contains Ghost configuration files');
       }
 
-      // Apply structure-based penalties
       const penalties = this.applyStructurePenalties(structureAnalysis);
       if (penalties.score > 0) {
         score -= penalties.score;
@@ -287,9 +252,6 @@ export class GhostThemeClassifier {
     return { score: Math.max(0, Math.min(score, 100)), reasoning };
   }
 
-  /**
-   * Perform deep analysis of repository structure
-   */
   private async performDeepStructureAnalysis(owner: string, repo: string): Promise<{
     handlebarsFiles: string[];
     directories: string[];
@@ -320,56 +282,45 @@ export class GhostThemeClassifier {
       suspiciousPatterns: [] as string[]
     };
 
-    // Analyze root directory
     const rootContents = await this.client.getContents(owner, repo);
     if (!Array.isArray(rootContents)) {
       return result;
     }
 
-    // Process root files and directories
     for (const item of rootContents) {
       const name = item.name.toLowerCase();
       
       if (item.type === 'dir') {
         result.directories.push(name);
       } else {
-        // Check for Handlebars files
         if (name.endsWith('.hbs')) {
           result.handlebarsFiles.push(item.name);
         }
 
-        // Check for package.json
         if (name === 'package.json') {
           result.hasPackageJson = true;
           result.packageJsonAnalysis = await this.analyzePackageJson(owner, repo);
         }
 
-        // Check for Ghost config files
         if (name.includes('ghost') && (name.endsWith('.json') || name.endsWith('.js'))) {
           result.hasGhostConfig = true;
         }
       }
     }
 
-    // Analyze assets directory
     if (result.directories.includes('assets')) {
       result.assetFiles = await this.analyzeAssetsDirectory(owner, repo);
     }
 
-    // Analyze partials directory
     if (result.directories.includes('partials')) {
       result.partialsCount = await this.analyzePartialsDirectory(owner, repo);
     }
 
-    // Check for suspicious patterns
     result.suspiciousPatterns = this.detectSuspiciousPatterns(rootContents);
 
     return result;
   }
 
-  /**
-   * Analyze package.json for Ghost-specific content
-   */
   private async analyzePackageJson(owner: string, repo: string): Promise<{
     hasGhostEngine: boolean;
     ghostEngine?: string;
@@ -392,20 +343,17 @@ export class GhostThemeClassifier {
         ghostEngine: undefined as string | undefined
       };
 
-      // Check for Ghost engine specification
       if (pkg.engines && pkg.engines.ghost) {
         result.hasGhostEngine = true;
         result.ghostEngine = pkg.engines.ghost;
       }
 
-      // Check keywords
       if (pkg.keywords && Array.isArray(pkg.keywords)) {
         result.ghostKeywords = pkg.keywords.filter((keyword: string) => 
           this.config.ghostKeywords.some(gk => keyword.toLowerCase().includes(gk))
         );
       }
 
-      // Check dependencies for Ghost-related packages
       const allDeps = {
         ...pkg.dependencies,
         ...pkg.devDependencies,
@@ -426,9 +374,6 @@ export class GhostThemeClassifier {
     }
   }
 
-  /**
-   * Analyze assets directory for theme files
-   */
   private async analyzeAssetsDirectory(owner: string, repo: string): Promise<{
     css: number;
     js: number;
@@ -453,7 +398,6 @@ export class GhostThemeClassifier {
           result.images++;
         }
 
-        // Also check subdirectories
         if (item.type === 'dir') {
           try {
             const subContents = await this.client.getContents(owner, repo, `assets/${item.name}`);
@@ -469,8 +413,8 @@ export class GhostThemeClassifier {
                 }
               }
             }
-          } catch (error) {
-            // Ignore subdirectory errors
+          } catch {
+            void 0;
           }
         }
       }
@@ -481,9 +425,6 @@ export class GhostThemeClassifier {
     }
   }
 
-  /**
-   * Analyze partials directory for template files
-   */
   private async analyzePartialsDirectory(owner: string, repo: string): Promise<number> {
     try {
       const partialsContents = await this.client.getContents(owner, repo, 'partials');
@@ -499,35 +440,28 @@ export class GhostThemeClassifier {
     }
   }
 
-  /**
-   * Detect suspicious patterns that indicate non-theme repositories
-   */
   private detectSuspiciousPatterns(contents: any[]): string[] {
     const suspicious: string[] = [];
     const fileNames = contents.map(item => item.name.toLowerCase());
 
-    // Check for development/build tool indicators
     const buildTools = ['webpack.config.js', 'rollup.config.js', 'vite.config.js', 'gulpfile.js'];
     const foundBuildTools = buildTools.filter(tool => fileNames.includes(tool));
     if (foundBuildTools.length > 0) {
       suspicious.push(`Build tools present: ${foundBuildTools.join(', ')}`);
     }
 
-    // Check for application frameworks
     const frameworks = ['next.config.js', 'nuxt.config.js', 'angular.json', 'vue.config.js'];
     const foundFrameworks = frameworks.filter(fw => fileNames.includes(fw));
     if (foundFrameworks.length > 0) {
       suspicious.push(`Framework files present: ${foundFrameworks.join(', ')}`);
     }
 
-    // Check for server-side code
     const serverFiles = ['server.js', 'app.js', 'index.js', 'main.py', 'requirements.txt'];
     const foundServerFiles = serverFiles.filter(sf => fileNames.includes(sf));
     if (foundServerFiles.length > 0) {
       suspicious.push(`Server-side files present: ${foundServerFiles.join(', ')}`);
     }
 
-    // Check for documentation-heavy repositories
     const docFiles = fileNames.filter(name => 
       name.includes('doc') || name.includes('readme') || name.endsWith('.md')
     );
@@ -538,26 +472,20 @@ export class GhostThemeClassifier {
     return suspicious;
   }
 
-  /**
-   * Apply penalties based on structure analysis
-   */
   private applyStructurePenalties(analysis: any): { score: number; reasoning: string[] } {
     const reasoning: string[] = [];
     let penalties = 0;
 
-    // Penalty for no Handlebars files
     if (analysis.handlebarsFiles.length === 0) {
       penalties += 30;
       reasoning.push('No Handlebars (.hbs) files found');
     }
 
-    // Penalty for suspicious patterns
     if (analysis.suspiciousPatterns.length > 0) {
       penalties += analysis.suspiciousPatterns.length * 10;
       reasoning.push(...analysis.suspiciousPatterns);
     }
 
-    // Penalty for missing essential directories
     const essentialDirs = ['assets', 'partials'];
     const missingDirs = essentialDirs.filter(dir => !analysis.directories.includes(dir));
     if (missingDirs.length > 0) {
@@ -565,7 +493,6 @@ export class GhostThemeClassifier {
       reasoning.push(`Missing essential directories: ${missingDirs.join(', ')}`);
     }
 
-    // Penalty for no CSS files (themes should have styling)
     if (analysis.assetFiles.css === 0) {
       penalties += 15;
       reasoning.push('No CSS/SCSS files found');
@@ -574,20 +501,15 @@ export class GhostThemeClassifier {
     return { score: penalties, reasoning };
   }
 
-  /**
-   * Apply penalties for non-theme indicators
-   */
   private applyPenalties(repo: RepositoryData, readme: string | null): { score: number; reasoning: string[] } {
     const reasoning: string[] = [];
     let penalties = 0;
 
-    // Major penalty for archived repositories
     if (repo.archived) {
       penalties += 60;
       reasoning.push('Repository is archived (major penalty)');
     }
 
-    // Penalty for very old repositories (no activity in 2+ years)
     const lastPush = new Date(repo.pushed_at);
     const twoYearsAgo = new Date();
     twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
@@ -597,7 +519,6 @@ export class GhostThemeClassifier {
       reasoning.push(`No activity since ${lastPush.toDateString()}`);
     }
 
-    // Penalty for very low stars (might indicate low quality or incomplete)
     if (repo.stargazers_count < 3) {
       penalties += 20;
       reasoning.push(`Very low star count: ${repo.stargazers_count}`);
@@ -606,7 +527,6 @@ export class GhostThemeClassifier {
       reasoning.push(`Low star count: ${repo.stargazers_count}`);
     }
 
-    // Penalty for obvious non-theme repositories based on name
     const repoName = repo.name.toLowerCase();
     const nonThemeIndicators = [
       'api', 'backend', 'server', 'client', 'app', 'website', 'site',
@@ -624,7 +544,6 @@ export class GhostThemeClassifier {
       reasoning.push(`Repository name suggests non-theme: ${foundNonThemeIndicators.join(', ')}`);
     }
 
-    // Penalty for penalty keywords in name or description
     const nameAndDesc = `${repo.name} ${repo.description || ''}`.toLowerCase();
     const foundPenalties = this.config.penaltyKeywords.filter(keyword => 
       nameAndDesc.includes(keyword)
@@ -635,7 +554,6 @@ export class GhostThemeClassifier {
       reasoning.push(`Contains penalty keywords: ${foundPenalties.join(', ')}`);
     }
 
-    // Penalty for README containing penalty indicators
     if (readme) {
       const lowerReadme = readme.toLowerCase();
       const readmePenalties = this.config.penaltyKeywords.filter(keyword => 
@@ -647,7 +565,6 @@ export class GhostThemeClassifier {
         reasoning.push(`README contains penalty keywords: ${readmePenalties.join(', ')}`);
       }
 
-      // Additional README-based penalties
       if (lowerReadme.includes('work in progress') || lowerReadme.includes('wip')) {
         penalties += 15;
         reasoning.push('README indicates work in progress');
@@ -664,19 +581,16 @@ export class GhostThemeClassifier {
       }
     }
 
-    // Penalty for being a fork without significant changes
     if (repo.fork) {
       penalties += 15;
       reasoning.push('Repository is a fork');
     }
 
-    // Penalty for no description
     if (!repo.description || repo.description.trim().length === 0) {
       penalties += 8;
       reasoning.push('No repository description provided');
     }
 
-    // Penalty for very short description (likely incomplete)
     if (repo.description && repo.description.trim().length < 20) {
       penalties += 5;
       reasoning.push('Very short repository description');
@@ -685,9 +599,6 @@ export class GhostThemeClassifier {
     return { score: penalties, reasoning };
   }
 
-  /**
-   * Determine confidence level based on score
-   */
   private determineConfidence(score: number): "high" | "medium" | "low" {
     if (score >= this.config.thresholds.high) {
       return "high";
@@ -698,13 +609,9 @@ export class GhostThemeClassifier {
     }
   }
 
-  /**
-   * Classify a repository as a Ghost theme with confidence scoring
-   */
   async classify(repo: RepositoryData, readme: string | null = null): Promise<ClassificationResult> {
     console.log(`Classifying repository: ${repo.full_name}`);
 
-    // If README not provided, try to fetch it
     if (readme === null) {
       try {
         const [owner, repoName] = repo.full_name.split('/');
@@ -714,13 +621,11 @@ export class GhostThemeClassifier {
       }
     }
 
-    // Analyze different aspects
     const topicsAnalysis = this.analyzeTopics(repo.topics);
     const readmeAnalysis = this.analyzeReadme(readme);
     const structureAnalysis = await this.analyzeStructure(repo);
     const penaltiesAnalysis = this.applyPenalties(repo, readme);
 
-    // Calculate weighted score
     const signals = {
       topics: topicsAnalysis.score,
       readme: readmeAnalysis.score,
@@ -737,7 +642,6 @@ export class GhostThemeClassifier {
     const finalScore = Math.max(0, Math.min(100, Math.round(weightedScore)));
     const confidence = this.determineConfidence(finalScore);
 
-    // Combine all reasoning
     const allReasoning = [
       ...topicsAnalysis.reasoning.map(r => `Topics: ${r}`),
       ...readmeAnalysis.reasoning.map(r => `README: ${r}`),
@@ -756,9 +660,6 @@ export class GhostThemeClassifier {
     };
   }
 
-  /**
-   * Batch classify multiple repositories
-   */
   async classifyBatch(repositories: RepositoryData[]): Promise<Map<string, ClassificationResult>> {
     console.log(`Starting batch classification of ${repositories.length} repositories`);
     
@@ -773,7 +674,6 @@ export class GhostThemeClassifier {
         const result = await this.classify(repo);
         results.set(repo.full_name, result);
 
-        // Add small delay to be respectful to the API
         if (i < repositories.length - 1) {
           await new Promise(resolve => setTimeout(resolve, 100));
         }
@@ -795,24 +695,15 @@ export class GhostThemeClassifier {
     return results;
   }
 
-  /**
-   * Update classification configuration
-   */
   updateConfig(newConfig: Partial<ClassificationConfig>): void {
     this.config = { ...this.config, ...newConfig };
   }
 
-  /**
-   * Get current configuration
-   */
   getConfig(): ClassificationConfig {
     return { ...this.config };
   }
 }
 
-/**
- * Create a classifier instance
- */
 export function createClassifier(client: GitHubClient, config?: ClassificationConfig): GhostThemeClassifier {
   return new GhostThemeClassifier(client, config);
 }

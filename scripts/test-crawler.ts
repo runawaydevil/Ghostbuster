@@ -1,6 +1,3 @@
-/**
- * Simple integration test for the GitHub crawler
- */
 
 import { createCrawler } from './crawl.js';
 import { getConfigAndData } from './config.js';

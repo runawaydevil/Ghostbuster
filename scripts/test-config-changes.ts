@@ -1,22 +1,9 @@
 #!/usr/bin/env node
 
-/**
- * Configuration Testing for Stale Items Tracking
- * 
- * Tests:
- * - Changing staleness threshold and verifying recalculation
- * - Invalid configuration values
- * - Default values
- * 
- * **Validates: Requirements 6.1, 6.2, 6.3, 6.4, 6.5**
- */
 
 import { createStalenessDetector } from './stale-detector.js';
 import { GhostItem } from './types.js';
 
-/**
- * Create test items with known dates
- */
 function createTestItems(): GhostItem[] {
   const currentDate = new Date();
   const items: GhostItem[] = [];
@@ -52,9 +39,6 @@ function createTestItems(): GhostItem[] {
   return items;
 }
 
-/**
- * Test threshold changes
- */
 async function testThresholdChanges() {
   console.log('🔧 Testing Threshold Changes\n');
   console.log('=' .repeat(60));
@@ -104,9 +88,6 @@ async function testThresholdChanges() {
   console.log('\n✅ Threshold change tests completed');
 }
 
-/**
- * Test invalid configuration values
- */
 async function testInvalidConfigurations() {
   console.log('\n\n🚫 Testing Invalid Configurations\n');
   console.log('=' .repeat(60));
@@ -204,9 +185,6 @@ async function testInvalidConfigurations() {
   console.log('\n✅ Invalid configuration tests completed');
 }
 
-/**
- * Test default values
- */
 async function testDefaultValues() {
   console.log('\n\n⚙️  Testing Default Values\n');
   console.log('=' .repeat(60));
@@ -238,9 +216,6 @@ async function testDefaultValues() {
   console.log('\n✅ Default value tests completed');
 }
 
-/**
- * Test recalculation when threshold changes
- */
 async function testRecalculation() {
   console.log('\n\n🔄 Testing Recalculation on Threshold Change\n');
   console.log('=' .repeat(60));
@@ -293,9 +268,6 @@ async function testRecalculation() {
   console.log('\n✅ Recalculation tests completed');
 }
 
-/**
- * Main test runner
- */
 async function main() {
   console.log('🚀 Starting Configuration Tests\n');
 

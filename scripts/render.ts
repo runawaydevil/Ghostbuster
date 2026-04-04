@@ -1,6 +1,3 @@
-/**
- * HTML template rendering engine for Ghostbuster system
- */
 
 import { readFileSync, writeFileSync } from 'fs';
 import { GhostItem } from './types.js';
@@ -56,14 +53,8 @@ export interface TemplateData {
   licenseUrl: string;
 }
 
-/**
- * Simple Handlebars-like template renderer
- */
 export class TemplateRenderer {
   
-  /**
-   * Find outermost {{#each}} block (first one encountered)
-   */
   private findOutermostEachBlock(text: string): { start: number; end: number; path: string; content: string } | null {
     const eachRegex = /\{\{#each\s+([^}]+)\}\}/;
     const match = eachRegex.exec(text);
@@ -98,9 +89,6 @@ export class TemplateRenderer {
     return null;
   }
 
-  /**
-   * Render template with data
-   */
   render(template: string, data: any): string {
     let result = template;
 
@@ -218,9 +206,6 @@ export class TemplateRenderer {
     return result;
   }
 
-  /**
-   * Get nested value from object using dot notation
-   */
   private getNestedValue(obj: any, path: string): any {
     return path.split('.').reduce((current, key) => {
       return current && current[key] !== undefined ? current[key] : undefined;
@@ -228,9 +213,6 @@ export class TemplateRenderer {
   }
 }
 
-/**
- * HTML renderer for Ghost themes directory
- */
 export class GhostDirectoryRenderer {
   private renderer: TemplateRenderer;
 
@@ -238,9 +220,6 @@ export class GhostDirectoryRenderer {
     this.renderer = new TemplateRenderer();
   }
 
-  /**
-   * Organize items by category
-   */
   private organizeByCategory(items: GhostItem[]): CategoryGroup[] {
     const categoryMap = new Map<string, GhostItem[]>();
 
@@ -293,9 +272,6 @@ export class GhostDirectoryRenderer {
     return categories;
   }
 
-  /**
-   * Generate use cases from items
-   */
   private generateUseCases(items: GhostItem[]): UseCase[] {
     const useCases: UseCase[] = [
       {
@@ -378,9 +354,6 @@ export class GhostDirectoryRenderer {
     return useCases.filter(useCase => useCase.themes.length > 0);
   }
 
-  /**
-   * Extract short description from item
-   */
   private extractShortDescription(item: GhostItem): string {
     if (item.notes) {
       return item.notes;
@@ -397,9 +370,6 @@ export class GhostDirectoryRenderer {
     return `${item.category} theme`;
   }
 
-  /**
-   * Get default tools list
-   */
   private getDefaultTools(): Tool[] {
     return [
       {
@@ -430,9 +400,6 @@ export class GhostDirectoryRenderer {
     ];
   }
 
-  /**
-   * Get default selection notes
-   */
   private getDefaultSelectionNotes(): string[] {
     return [
       '<strong>Official TryGhost themes</strong> are regularly maintained and well-documented.',
@@ -445,9 +412,6 @@ export class GhostDirectoryRenderer {
     ];
   }
 
-  /**
-   * Render HTML from template and data
-   */
   renderHTML(
     templatePath: string,
     items: GhostItem[],
@@ -507,9 +471,6 @@ export class GhostDirectoryRenderer {
     return this.renderer.render(template, templateData);
   }
 
-  /**
-   * Render and save HTML file
-   */
   renderToFile(
     templatePath: string,
     outputPath: string,
@@ -530,9 +491,6 @@ export class GhostDirectoryRenderer {
     writeFileSync(outputPath, html, 'utf-8');
   }
 
-  /**
-   * Generate summary statistics
-   */
   generateSummary(items: GhostItem[]): {
     totalItems: number;
     totalStars: number;
@@ -572,9 +530,6 @@ export class GhostDirectoryRenderer {
   }
 }
 
-/**
- * Create a Ghost directory renderer instance
- */
 export function createRenderer(): GhostDirectoryRenderer {
   return new GhostDirectoryRenderer();
 }

@@ -1,7 +1,3 @@
-/**
- * Unit tests for StaleDatabaseManager
- */
-
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { StaleDatabaseManager, createStaleDatabaseManager } from './stale-database.js';
 import { StaleItem } from './types.js';

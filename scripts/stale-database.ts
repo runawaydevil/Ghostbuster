@@ -1,35 +1,20 @@
-/**
- * Stale Database Manager
- * 
- * Manages SQLite database operations for storing and retrieving stale items.
- * Handles database initialization, CRUD operations, backups, and integrity validation.
- */
 
 import Database from 'better-sqlite3';
 import { StaleItem } from './types.js';
 import * as fs from 'fs';
 import * as path from 'path';
 
-/**
- * Statistics about stale items in the database
- */
 export interface StaleStatistics {
   totalStale: number;
   byCategory: Record<string, number>;
   averageMonthsStale: number;
 }
 
-/**
- * Result of database integrity validation
- */
 export interface IntegrityValidationResult {
   valid: boolean;
   errors: string[];
 }
 
-/**
- * Database record representation (SQLite format with JSON strings and integer booleans)
- */
 interface StaleItemRecord {
   id: string;
   name: string;
@@ -52,61 +37,14 @@ interface StaleItemRecord {
   monthsStale: number;
 }
 
-/**
- * Manages SQLite database for stale items tracking
- * 
- * @example
- * ```typescript
- * // Create and initialize database manager
- * const dbManager = new StaleDatabaseManager('data/stale-items.db');
- * await dbManager.initialize();
- * 
- * try {
- *   // Create backup before modifications
- *   const backupPath = await dbManager.backup();
- *   console.log(`Backup created: ${backupPath}`);
- *   
- *   // Validate database integrity
- *   const validation = await dbManager.validateIntegrity();
- *   if (!validation.valid) {
- *     console.error('Integrity errors:', validation.errors);
- *   }
- *   
- *   // Insert or update a stale item
- *   await dbManager.upsertStaleItem(staleItem);
- *   
- *   // Get all stale items
- *   const allStale = await dbManager.getAllStaleItems();
- *   
- *   // Get statistics
- *   const stats = await dbManager.getStatistics();
- *   console.log(`Total stale: ${stats.totalStale}`);
- *   console.log(`Average months stale: ${stats.averageMonthsStale}`);
- *   
- *   // Remove reactivated item
- *   await dbManager.removeStaleItem('owner/repo');
- * } finally {
- *   // Always close the connection
- *   dbManager.close();
- * }
- * ```
- */
 export class StaleDatabaseManager {
   private db: Database.Database | null = null;
   private databasePath: string;
 
-  /**
-   * Create a new StaleDatabaseManager
-   * @param databasePath Path to the SQLite database file
-   */
   constructor(databasePath: string) {
     this.databasePath = databasePath;
   }
 
-  /**
-   * Initialize database connection and create schema if needed
-   * Creates the database file and tables if they don't exist
-   */
   async initialize(): Promise<void> {
     // Ensure the directory exists
     const dir = path.dirname(this.databasePath);
@@ -121,10 +59,6 @@ export class StaleDatabaseManager {
     this.createSchema();
   }
 
-  /**
-   * Create database schema with proper indexes
-   * @private
-   */
   private createSchema(): void {
     if (!this.db) {
       throw new Error('Database not initialized. Call initialize() first.');
@@ -164,10 +98,6 @@ export class StaleDatabaseManager {
     `);
   }
 
-  /**
-   * Convert StaleItem to database record format
-   * @private
-   */
   private toDbRecord(item: StaleItem): StaleItemRecord {
     return {
       id: item.id,
@@ -192,10 +122,6 @@ export class StaleDatabaseManager {
     };
   }
 
-  /**
-   * Convert database record to StaleItem format
-   * @private
-   */
   private fromDbRecord(record: StaleItemRecord): StaleItem {
     return {
       id: record.id,
@@ -220,10 +146,6 @@ export class StaleDatabaseManager {
     };
   }
 
-  /**
-   * Insert or update a stale item in the database
-   * @param item The stale item to upsert
-   */
   async upsertStaleItem(item: StaleItem): Promise<void> {
     if (!this.db) {
       throw new Error('Database not initialized. Call initialize() first.');
@@ -265,10 +187,6 @@ export class StaleDatabaseManager {
     stmt.run(record);
   }
 
-  /**
-   * Get all stale items from the database
-   * @returns Array of all stale items
-   */
   async getAllStaleItems(): Promise<StaleItem[]> {
     if (!this.db) {
       throw new Error('Database not initialized. Call initialize() first.');
@@ -280,10 +198,6 @@ export class StaleDatabaseManager {
     return records.map(record => this.fromDbRecord(record));
   }
 
-  /**
-   * Remove a stale item from the database (used during reactivation)
-   * @param itemId The ID of the item to remove
-   */
   async removeStaleItem(itemId: string): Promise<void> {
     if (!this.db) {
       throw new Error('Database not initialized. Call initialize() first.');
@@ -293,11 +207,6 @@ export class StaleDatabaseManager {
     stmt.run(itemId);
   }
 
-  /**
-   * Get stale items filtered by category
-   * @param category The category to filter by
-   * @returns Array of stale items in the specified category
-   */
   async getStaleItemsByCategory(category: string): Promise<StaleItem[]> {
     if (!this.db) {
       throw new Error('Database not initialized. Call initialize() first.');
@@ -309,10 +218,6 @@ export class StaleDatabaseManager {
     return records.map(record => this.fromDbRecord(record));
   }
 
-  /**
-   * Get statistics about stale items
-   * @returns Statistics including total count, breakdown by category, and average staleness
-   */
   async getStatistics(): Promise<StaleStatistics> {
     if (!this.db) {
       throw new Error('Database not initialized. Call initialize() first.');
@@ -343,10 +248,6 @@ export class StaleDatabaseManager {
     };
   }
 
-  /**
-   * Create a backup of the database file
-   * @returns Path to the backup file
-   */
   async backup(): Promise<string> {
     if (!this.db) {
       throw new Error('Database not initialized. Call initialize() first.');
@@ -373,11 +274,6 @@ export class StaleDatabaseManager {
     return backupPath;
   }
 
-  /**
-   * Validate database integrity
-   * Checks for schema correctness, data consistency, and corruption
-   * @returns Validation result with any errors found
-   */
   async validateIntegrity(): Promise<IntegrityValidationResult> {
     if (!this.db) {
       throw new Error('Database not initialized. Call initialize() first.');
@@ -457,9 +353,6 @@ export class StaleDatabaseManager {
     };
   }
 
-  /**
-   * Close the database connection
-   */
   close(): void {
     if (this.db) {
       this.db.close();
@@ -468,11 +361,6 @@ export class StaleDatabaseManager {
   }
 }
 
-/**
- * Factory function to create a StaleDatabaseManager instance
- * @param databasePath Path to the SQLite database file
- * @returns A new StaleDatabaseManager instance
- */
 export function createStaleDatabaseManager(databasePath: string): StaleDatabaseManager {
   return new StaleDatabaseManager(databasePath);
 }

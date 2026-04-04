@@ -1,6 +1,3 @@
-/**
- * Cache management utilities for Ghostbuster system
- */
 
 import { existsSync, readFileSync, writeFileSync, readdirSync, unlinkSync, statSync } from 'fs';
 import { join } from 'path';
@@ -19,9 +16,6 @@ export interface CacheStats {
   expiredFiles: number;
 }
 
-/**
- * Cache manager for handling TTL, cleanup, and statistics
- */
 export class CacheManager {
   private cacheDir: string;
   private ttl: number;
@@ -31,9 +25,6 @@ export class CacheManager {
     this.ttl = ttl;
   }
 
-  /**
-   * Get cache entry if valid
-   */
   get(key: string): CacheEntry | null {
     const cacheFile = join(this.cacheDir, `${key}.json`);
     
@@ -58,9 +49,6 @@ export class CacheManager {
     }
   }
 
-  /**
-   * Set cache entry
-   */
   set(key: string, data: any, etag?: string): void {
     const cacheFile = join(this.cacheDir, `${key}.json`);
     const entry: CacheEntry = {
@@ -76,16 +64,10 @@ export class CacheManager {
     }
   }
 
-  /**
-   * Check if cache entry exists and is valid
-   */
   has(key: string): boolean {
     return this.get(key) !== null;
   }
 
-  /**
-   * Delete cache entry
-   */
   delete(key: string): boolean {
     const cacheFile = join(this.cacheDir, `${key}.json`);
     
@@ -102,9 +84,6 @@ export class CacheManager {
     }
   }
 
-  /**
-   * Clean up expired cache entries
-   */
   cleanup(): { deletedFiles: number; freedSpace: number } {
     if (!existsSync(this.cacheDir)) {
       return { deletedFiles: 0, freedSpace: 0 };
@@ -154,9 +133,6 @@ export class CacheManager {
     return { deletedFiles, freedSpace };
   }
 
-  /**
-   * Get cache statistics
-   */
   getStats(): CacheStats {
     const stats: CacheStats = {
       totalFiles: 0,
@@ -213,9 +189,6 @@ export class CacheManager {
     return stats;
   }
 
-  /**
-   * Clear all cache entries
-   */
   clear(): { deletedFiles: number; freedSpace: number } {
     if (!existsSync(this.cacheDir)) {
       return { deletedFiles: 0, freedSpace: 0 };
@@ -250,9 +223,6 @@ export class CacheManager {
     return { deletedFiles, freedSpace };
   }
 
-  /**
-   * Format bytes to human readable string
-   */
   private formatBytes(bytes: number): string {
     if (bytes === 0) return '0 Bytes';
     
@@ -263,9 +233,6 @@ export class CacheManager {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   }
 
-  /**
-   * Print cache statistics in human readable format
-   */
   printStats(): void {
     const stats = this.getStats();
     
@@ -284,9 +251,6 @@ export class CacheManager {
   }
 }
 
-/**
- * Create a cache manager instance
- */
 export function createCacheManager(cacheDir: string, ttl: number): CacheManager {
   return new CacheManager(cacheDir, ttl);
 }

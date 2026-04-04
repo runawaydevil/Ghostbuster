@@ -1,10 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * Main update orchestrator for Ghostbuster system
- * Coordinates the entire pipeline: crawl → classify → merge → render
- */
-
 import { getConfigAndData } from './config.js';
 import { createCrawler } from './crawl.js';
 import { createClassifier } from './classify.js';
@@ -16,10 +11,6 @@ import { GhostItem, RepositoryData, ClassificationResult } from './types.js';
 import { writeFileSync } from 'fs';
 import * as yaml from 'js-yaml';
 
-/**
- * Ghost-related topics that indicate a repository is a valid Ghost theme/tool
- * A repository MUST have at least one of these topics to be included
- */
 export const GHOST_TOPICS = [
   'ghost-theme',
   'ghost-cms',
@@ -29,10 +20,6 @@ export const GHOST_TOPICS = [
   'ghost'
 ];
 
-/**
- * Check if a repository has at least one Ghost-related topic
- * This is a strict filter - repos without these topics are NOT Ghost themes
- */
 export function hasGhostTopic(topics: string[]): boolean {
   if (!topics || topics.length === 0) return false;
   const lowerTopics = topics.map(t => t.toLowerCase());
@@ -41,9 +28,6 @@ export function hasGhostTopic(topics: string[]): boolean {
   );
 }
 
-/**
- * Check if a GhostItem has valid Ghost topics
- */
 export function itemHasGhostTopic(item: GhostItem): boolean {
   return hasGhostTopic(item.topics || []);
 }
@@ -57,66 +41,33 @@ export interface UpdateOptions {
   cacheCleanup?: boolean;
 }
 
-/**
- * Result of an update operation
- * Contains statistics, changes, errors, and duration information
- */
 export interface UpdateResult {
-  /** Whether the update completed successfully */
   success: boolean;
-  
-  /** Statistics about the update operation */
   stats: {
-    /** Number of repositories crawled from GitHub */
     crawled: number;
-    /** Number of repositories classified */
     classified: number;
-    /** Number of items after merging with existing data */
     merged: number;
-    /** Number of items rendered to HTML */
     rendered: number;
-    /** Number of GitHub API calls made */
     apiCalls: number;
-    /** Number of cache hits (API calls avoided) */
     cacheHits: number;
-    /** Number of errors encountered */
     errors: number;
-    
-    /** Staleness tracking statistics (only present if staleness tracking is enabled) */
     stale?: {
-      /** Total number of stale items in database */
       total: number;
-      /** Number of items newly detected as stale in this run */
       newlyStale: number;
-      /** Number of previously stale items that were reactivated */
       reactivated: number;
-      /** Percentage of total items that are stale */
       percentage: number;
-      /** Average number of months items have been stale */
       averageMonthsStale: number;
     };
   };
-  
-  /** Changes made to the dataset */
   changes: {
-    /** Number of new items added */
     added: number;
-    /** Number of existing items updated */
     updated: number;
-    /** Number of items removed */
     removed: number;
   };
-  
-  /** Array of error messages encountered during the update */
   errors: string[];
-  
-  /** Duration of the update operation in milliseconds */
   duration: number;
 }
 
-/**
- * Main update orchestrator class
- */
 export class UpdateOrchestrator {
   private options: UpdateOptions;
   private startTime: number = 0;
@@ -133,9 +84,6 @@ export class UpdateOrchestrator {
     };
   }
 
-  /**
-   * Log message with timestamp
-   */
   private log(message: string, level: 'info' | 'warn' | 'error' = 'info'): void {
     const timestamp = new Date().toISOString();
     const prefix = level === 'error' ? '❌' : level === 'warn' ? '⚠️' : 'ℹ️';
@@ -145,12 +93,8 @@ export class UpdateOrchestrator {
     }
   }
 
-  /**
-   * Convert RepositoryData and ClassificationResult to GhostItem
-   */
   private convertToGhostItem(repo: RepositoryData, classification: ClassificationResult): GhostItem {
-    // Determine category based on repository characteristics
-    let category = 'Theme'; // Default category
+    let category = 'Theme';
     
     if (repo.owner?.login?.toLowerCase() === 'tryghost') {
       category = 'Official';
@@ -171,7 +115,7 @@ export class UpdateOrchestrator {
       url: repo.html_url,
       description: repo.description,
       category,
-      tags: repo.topics || [], // Use only actual GitHub topics, don't inject ghost-theme
+      tags: repo.topics || [],
       stars: repo.stargazers_count,
       pushedAt: repo.pushed_at,
       archived: repo.archived,
@@ -185,9 +129,6 @@ export class UpdateOrchestrator {
     };
   }
 
-  /**
-   * Execute the complete update pipeline
-   */
   async execute(): Promise<UpdateResult> {
     this.startTime = Date.now();
     this.errors = [];
@@ -215,7 +156,6 @@ export class UpdateOrchestrator {
     };
 
     try {
-      // Step 1: Load configuration and validate environment
       this.log('📋 Loading configuration and validating environment');
       const { config, data } = getConfigAndData();
       this.log(`✓ Configuration loaded successfully`);
@@ -223,7 +163,6 @@ export class UpdateOrchestrator {
       this.log(`✓ Found ${data.items.length} existing items`);
       this.log(`✓ Found ${data.overrides.length} overrides`);
 
-      // Step 2: Cache management
       if (this.options.cacheCleanup) {
         this.log('🧹 Cleaning up expired cache entries');
         const cacheManager = createCacheManager(config.crawler.cache.directory, config.crawler.cache.ttl);
@@ -231,7 +170,6 @@ export class UpdateOrchestrator {
         this.log(`✓ Cleaned up ${cleanupResult.deletedFiles} expired cache files (${this.formatBytes(cleanupResult.freedSpace)} freed)`);
       }
 
-      // Step 3: Repository discovery (crawling)
       let discoveredRepos: RepositoryData[] = [];
       let crawler: any;
       if (!this.options.skipCrawl) {
@@ -258,7 +196,6 @@ export class UpdateOrchestrator {
         }
       } else {
         this.log('⏭️ Skipping repository discovery (--skip-crawl)');
-        // Create a dummy crawler for the classifier
         crawler = createCrawler({
           token: config.github.token,
           rateLimit: config.crawler.rateLimit,
@@ -266,7 +203,6 @@ export class UpdateOrchestrator {
         });
       }
 
-      // Step 4: Classification
       this.log('🏷️ Starting repository classification');
       const classificationConfig = {
         ...config.classification,
@@ -289,7 +225,6 @@ export class UpdateOrchestrator {
       
       for (const repo of discoveredRepos) {
         try {
-          // STRICT FILTER 1: Must have Ghost-related topic
           if (!hasGhostTopic(repo.topics || [])) {
             filteredOutNoTopic++;
             this.log(`⏭️ Skipping ${repo.full_name}: no Ghost topic in ${JSON.stringify(repo.topics || [])}`, 'info');
@@ -297,8 +232,7 @@ export class UpdateOrchestrator {
           }
           
           const classification = await classifier.classify(repo);
-          
-          // STRICT FILTER 2: Must have minimum score
+
           if (classification.score < minScoreToInclude) {
             filteredOutLowScore++;
             this.log(`⏭️ Skipping ${repo.full_name}: score ${classification.score} < ${minScoreToInclude}`, 'info');
@@ -324,7 +258,6 @@ export class UpdateOrchestrator {
         this.log(`⚠️ Filtered out ${filteredOutLowScore} repos with score < ${minScoreToInclude}`, 'warn');
       }
 
-      // Step 5: Data integrity check
       this.log('🔍 Checking data integrity');
       const integrityChecker = createDataIntegrityChecker();
       const { cleanedItems, duplicateReport, consistencyReport } = integrityChecker.cleanDataset(classifiedItems);
@@ -338,7 +271,6 @@ export class UpdateOrchestrator {
         this.errors.push(...consistencyReport.errors);
       }
 
-      // Step 6: Data merging
       this.log('🔄 Merging new data with existing items');
       const merger = createMerger();
       const mergeResult = merger.mergeData(data.items, cleanedItems, data.overrides, data.ignoreRules);
@@ -351,54 +283,30 @@ export class UpdateOrchestrator {
       this.log(`✓ Merged data: ${mergeResult.stats.added} added, ${mergeResult.stats.updated} updated, ${mergeResult.stats.removed} removed`);
       this.log(`✓ Final dataset: ${mergeResult.items.length} items`);
 
-      /**
-       * Step 6.5: Staleness Detection and Database Management
-       * 
-       * This step identifies items that haven't been updated within the configured
-       * staleness threshold and manages them in a separate database and HTML page.
-       * 
-       * Process:
-       * 1. Detect stale items by comparing pushedAt dates against threshold
-       * 2. Check for reactivated items (previously stale, now active)
-       * 3. Update merge result to only include active items
-       * 4. Create database backup before modifications
-       * 5. Validate database integrity
-       * 6. Insert/update stale items in database
-       * 7. Remove reactivated items from database
-       * 8. Render stale items HTML page with statistics
-       * 
-       * **Validates: Requirements 1.1-1.5, 2.1-2.6, 3.1-3.7, 4.1-4.5, 5.1-5.5, 8.1-8.5**
-       */
       let stalenessStats: any = null;
       if (config.staleness.enabled) {
         try {
           this.log('🕐 Detecting stale items');
           
-          // Import staleness modules
           const { createStalenessDetector } = await import('./stale-detector.js');
           const { createStaleDatabaseManager } = await import('./stale-database.js');
           const { createStaleRenderer } = await import('./stale-renderer.js');
-          
-          // Create staleness detector
+
           const stalenessDetector = createStalenessDetector({
             thresholdMonths: config.staleness.thresholdMonths,
             databasePath: config.staleness.databasePath
           });
           
-          // Detect staleness
           const stalenessResult = await stalenessDetector.detectStaleness(mergeResult.items);
           
           this.log(`✓ Staleness detection: ${stalenessResult.stats.activeCount} active, ${stalenessResult.stats.newlyStale} newly stale, ${stalenessResult.stats.reactivated} reactivated`);
           
-          // Update merge result to only include active items
           mergeResult.items = stalenessResult.activeItems;
-          
-          // Initialize database manager
+
           const dbManager = createStaleDatabaseManager(config.staleness.databasePath);
           await dbManager.initialize();
           
           try {
-            // Create database backup before modifications
             if (!this.options.dryRun) {
               try {
                 const backupPath = await dbManager.backup();
@@ -408,14 +316,12 @@ export class UpdateOrchestrator {
               }
             }
             
-            // Validate database integrity
             const integrityResult = await dbManager.validateIntegrity();
             if (!integrityResult.valid) {
               this.log(`⚠️ Database integrity issues found: ${integrityResult.errors.join(', ')}`, 'warn');
               this.errors.push(...integrityResult.errors);
             }
             
-            // Insert/update newly stale items
             if (!this.options.dryRun) {
               for (const staleItem of stalenessResult.staleItems) {
                 await dbManager.upsertStaleItem(staleItem);
@@ -423,7 +329,6 @@ export class UpdateOrchestrator {
               this.log(`✓ Updated ${stalenessResult.staleItems.length} stale items in database`);
             }
             
-            // Remove reactivated items from database
             if (!this.options.dryRun) {
               for (const reactivatedItem of stalenessResult.reactivatedItems) {
                 await dbManager.removeStaleItem(reactivatedItem.id);
@@ -433,7 +338,6 @@ export class UpdateOrchestrator {
               }
             }
             
-            // Render stale items page
             this.log('🎨 Rendering stale items HTML');
             const allStaleItems = await dbManager.getAllStaleItems();
             const staleRenderer = createStaleRenderer();
@@ -466,7 +370,6 @@ export class UpdateOrchestrator {
               this.log('⏭️ Skipping stale HTML render (--dry-run)');
             }
             
-            // Store statistics for summary
             stalenessStats = {
               total: allStaleItems.length,
               newlyStale: stalenessResult.stats.newlyStale,
@@ -478,7 +381,6 @@ export class UpdateOrchestrator {
             result.stats.stale = stalenessStats;
             
           } finally {
-            // Clean up database connection
             dbManager.close();
           }
         } catch (error) {
@@ -486,13 +388,11 @@ export class UpdateOrchestrator {
           this.log(errorMsg, 'error');
           this.errors.push(errorMsg);
           result.stats.errors++;
-          // Continue with pipeline - don't let staleness detection failure break the main pipeline
         }
       } else {
         this.log('⏭️ Staleness detection disabled in configuration');
       }
 
-      // Step 7: Save updated data
       if (!this.options.dryRun) {
         this.log('💾 Saving updated items data');
         const itemsYaml = yaml.dump(mergeResult.items, { indent: 2, lineWidth: 120 });
@@ -502,14 +402,12 @@ export class UpdateOrchestrator {
         this.log('⏭️ Skipping data save (--dry-run)');
       }
 
-      // Step 8: HTML rendering
       if (!this.options.skipRender) {
         this.log('🎨 Rendering HTML output');
         const renderer = createRenderer();
         
         const updateMessage = this.generateUpdateMessage(result.changes);
         
-        // Get workflow update date from environment variable or use current date
         const workflowUpdateDate = this.getWorkflowUpdateDate();
         this.log(`📅 Using update date: ${workflowUpdateDate}`);
         
@@ -535,7 +433,6 @@ export class UpdateOrchestrator {
         this.log('⏭️ Skipping HTML rendering (--skip-render)');
       }
 
-      // Step 9: Generate summary
       const summary = this.generateSummary(result);
       this.log('📊 Update Summary:');
       console.log(summary);
@@ -562,9 +459,6 @@ export class UpdateOrchestrator {
     return result;
   }
 
-  /**
-   * Generate update message for HTML
-   */
   private generateUpdateMessage(changes: UpdateResult['changes']): string {
     const parts = [];
     
@@ -587,9 +481,6 @@ export class UpdateOrchestrator {
     return `Automated update: ${parts.join(', ')}.`;
   }
 
-  /**
-   * Generate human-readable summary
-   */
   private generateSummary(result: UpdateResult): string {
     const duration = this.formatDuration(result.duration);
     
@@ -613,7 +504,6 @@ export class UpdateOrchestrator {
 │ Cache hits: ${String(result.stats.cacheHits).padStart(23)} │
 │ Errors: ${String(result.stats.errors).padStart(27)} │`;
 
-    // Add staleness statistics if available
     if (result.stats.stale) {
       summary += `
 ├─────────────────────────────────────────┤
@@ -640,9 +530,6 @@ export class UpdateOrchestrator {
     return summary;
   }
 
-  /**
-   * Format duration in human readable format
-   */
   private formatDuration(ms: number): string {
     if (ms < 1000) {
       return `${ms}ms`;
@@ -655,17 +542,12 @@ export class UpdateOrchestrator {
     }
   }
 
-  /**
-   * Get workflow update date from environment variable or generate current date
-   */
   private getWorkflowUpdateDate(): string {
-    // Try to get date from environment variable (set by GitHub Actions workflow)
     const envDate = process.env.WORKFLOW_UPDATE_DATE;
     
     let dateToFormat: Date;
     
     if (envDate && envDate.trim() !== '') {
-      // If it's an ISO string, format it
       try {
         const parsedDate = new Date(envDate);
         if (!isNaN(parsedDate.getTime())) {
@@ -681,8 +563,7 @@ export class UpdateOrchestrator {
     } else {
       dateToFormat = new Date();
     }
-    
-    // Format date consistently: "Month Day, Year at HH:MM UTC"
+
     const year = dateToFormat.getUTCFullYear();
     const month = dateToFormat.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' });
     const day = dateToFormat.getUTCDate();
@@ -692,9 +573,6 @@ export class UpdateOrchestrator {
     return `${month} ${day}, ${year} at ${hours}:${minutes} UTC`;
   }
 
-  /**
-   * Format bytes in human readable format
-   */
   private formatBytes(bytes: number): string {
     if (bytes === 0) return '0 Bytes';
     
@@ -706,9 +584,6 @@ export class UpdateOrchestrator {
   }
 }
 
-/**
- * CLI interface
- */
 async function main() {
   const args = process.argv.slice(2);
   
@@ -720,7 +595,6 @@ async function main() {
     cacheCleanup: args.includes('--cleanup-cache')
   };
 
-  // Handle help
   if (args.includes('--help') || args.includes('-h')) {
     console.log(`
 Ghostbuster Update Pipeline
@@ -755,7 +629,6 @@ Examples:
   }
 }
 
-// Run CLI if this file is executed directly
 if (import.meta.url === `file://${process.argv[1]}` || 
     import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` ||
     process.argv[1].includes('update.js') ||

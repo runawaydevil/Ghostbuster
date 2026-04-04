@@ -1,15 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * Performance Testing for Stale Items Tracking
- * 
- * Tests performance with large datasets:
- * - Database query performance
- * - HTML rendering time
- * - Staleness detection speed
- * 
- * **Validates: Requirements 2.1, 3.1, 4.1**
- */
 
 import { createStalenessDetector } from './stale-detector.js';
 import { createStaleDatabaseManager } from './stale-database.js';
@@ -20,9 +10,6 @@ import { existsSync, unlinkSync } from 'fs';
 const TEST_DB_PATH = 'data/test-performance.db';
 const TEST_HTML_PATH = 'test-performance.html';
 
-/**
- * Generate test data with specified size
- */
 function generateTestData(count: number): GhostItem[] {
   const items: GhostItem[] = [];
   const currentDate = new Date();
@@ -58,9 +45,6 @@ function generateTestData(count: number): GhostItem[] {
   return items;
 }
 
-/**
- * Measure execution time of a function
- */
 async function measureTime<T>(name: string, fn: () => Promise<T>): Promise<{ result: T; duration: number }> {
   const start = performance.now();
   const result = await fn();
@@ -69,9 +53,6 @@ async function measureTime<T>(name: string, fn: () => Promise<T>): Promise<{ res
   return { result, duration };
 }
 
-/**
- * Test staleness detection performance
- */
 async function testStalenessDetection(itemCount: number): Promise<number> {
   console.log(`\n🔍 Testing Staleness Detection (${itemCount} items)`);
   
@@ -88,9 +69,6 @@ async function testStalenessDetection(itemCount: number): Promise<number> {
   return duration;
 }
 
-/**
- * Test database operations performance
- */
 async function testDatabaseOperations(itemCount: number): Promise<{ insert: number; query: number; stats: number }> {
   console.log(`\n💾 Testing Database Operations (${itemCount} items)`);
   
@@ -139,9 +117,6 @@ async function testDatabaseOperations(itemCount: number): Promise<{ insert: numb
   }
 }
 
-/**
- * Test HTML rendering performance
- */
 async function testHtmlRendering(itemCount: number): Promise<number> {
   console.log(`\n🎨 Testing HTML Rendering (${itemCount} items)`);
   
@@ -174,9 +149,6 @@ async function testHtmlRendering(itemCount: number): Promise<number> {
   }
 }
 
-/**
- * Run performance tests with different dataset sizes
- */
 async function runPerformanceTests() {
   console.log('🚀 Starting Performance Tests\n');
   console.log('=' .repeat(60));

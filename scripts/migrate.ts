@@ -1,9 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * Data migration script for Ghostbuster
- * Converts existing HTML data to new YAML format
- */
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { JSDOM } from 'jsdom';
@@ -18,16 +14,10 @@ interface MigrationResult {
   warnings: string[];
 }
 
-/**
- * HTML to YAML data migrator
- */
 export class DataMigrator {
   private errors: string[] = [];
   private warnings: string[] = [];
 
-  /**
-   * Extract theme data from existing HTML file
-   */
   extractFromHTML(htmlPath: string): GhostItem[] {
     if (!existsSync(htmlPath)) {
       throw new Error(`HTML file not found: ${htmlPath}`);
@@ -75,9 +65,6 @@ export class DataMigrator {
     return items;
   }
 
-  /**
-   * Extract category from header text
-   */
   private extractCategory(text: string): string {
     const upperText = text.toUpperCase();
     
@@ -94,9 +81,6 @@ export class DataMigrator {
     return 'Theme'; // Default category
   }
 
-  /**
-   * Extract item data from table row
-   */
   // eslint-disable-next-line no-undef
   private extractItemFromRow(cells: ArrayLike<Element>, category: string): GhostItem | null {
     const nameCell = cells[0];
@@ -177,9 +161,6 @@ export class DataMigrator {
     };
   }
 
-  /**
-   * Generate tags based on content
-   */
   private generateTags(category: string, description: string, notes: string): string[] {
     const tags = ['ghost-theme'];
     const content = `${description} ${notes}`.toLowerCase();
@@ -218,9 +199,6 @@ export class DataMigrator {
     return [...new Set(tags)]; // Remove duplicates
   }
 
-  /**
-   * Calculate score based on various factors
-   */
   private calculateScore(stars: number, category: string, description: string): number {
     let score = 50; // Base score
 
@@ -242,9 +220,6 @@ export class DataMigrator {
     return Math.min(100, Math.max(0, score));
   }
 
-  /**
-   * Extract clean notes from original notes
-   */
   private extractNotes(originalNotes: string): string | null {
     if (!originalNotes) return null;
 
@@ -265,9 +240,6 @@ export class DataMigrator {
     return notes;
   }
 
-  /**
-   * Migrate data from HTML to YAML
-   */
   async migrate(htmlPath: string, outputPath: string = 'data/items.yml'): Promise<MigrationResult> {
     console.log('🔄 Starting data migration from HTML to YAML...');
     
@@ -365,9 +337,6 @@ export class DataMigrator {
   }
 }
 
-/**
- * CLI interface
- */
 async function main() {
   const args = process.argv.slice(2);
   

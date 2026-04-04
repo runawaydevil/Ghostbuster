@@ -1,17 +1,8 @@
-/**
- * Stale Directory Renderer
- * 
- * Generates HTML page for displaying stale items with appropriate warnings and metadata.
- * Handles template rendering, statistics generation, and category organization for stale items.
- */
 
 import { readFileSync, writeFileSync } from 'fs';
 import { StaleItem } from './types.js';
 import { TemplateRenderer, CategoryGroup } from './render.js';
 
-/**
- * Options for rendering stale items HTML
- */
 export interface StaleRenderOptions {
   title?: string;
   subtitle?: string;
@@ -30,9 +21,6 @@ export interface StaleRenderOptions {
   contactEmail?: string;
 }
 
-/**
- * Statistics about stale items
- */
 export interface StaleStatistics {
   totalStale: number;
   percentageOfTotal: number;
@@ -40,9 +28,6 @@ export interface StaleStatistics {
   averageMonthsStale: number;
 }
 
-/**
- * Tool item for rendering
- */
 interface Tool {
   name: string;
   url: string;
@@ -51,9 +36,6 @@ interface Tool {
   monthsStale?: number;
 }
 
-/**
- * Template data for stale items page
- */
 interface StaleTemplateData {
   title: string;
   subtitle: string;
@@ -78,37 +60,6 @@ interface StaleTemplateData {
   licenseUrl: string;
 }
 
-/**
- * Renderer for stale items HTML page
- * 
- * @example
- * ```typescript
- * // Create renderer
- * const renderer = new StaleDirectoryRenderer();
- * 
- * // Generate statistics
- * const stats = renderer.generateStatistics(staleItems, totalItems);
- * console.log(`${stats.totalStale} stale items (${stats.percentageOfTotal}%)`);
- * console.log(`Average staleness: ${stats.averageMonthsStale} months`);
- * 
- * // Organize items by category
- * const categories = renderer.organizeByCategory(staleItems);
- * 
- * // Render to HTML file
- * renderer.renderToFile(
- *   'templates/stale.template.html',
- *   'stale.html',
- *   staleItems,
- *   {
- *     title: 'Stale Items',
- *     subtitle: 'Items Not Updated Recently',
- *     warningMessage: 'These items have not been updated in over 12 months.',
- *     thresholdMonths: 12,
- *     statistics: stats
- *   }
- * );
- * ```
- */
 export class StaleDirectoryRenderer {
   private renderer: TemplateRenderer;
 
@@ -116,13 +67,6 @@ export class StaleDirectoryRenderer {
     this.renderer = new TemplateRenderer();
   }
 
-  /**
-   * Organize stale items by category
-   * Groups items by their category and sorts them by stars within each category
-   * 
-   * @param items Array of stale items to organize
-   * @returns Array of category groups with items
-   */
   organizeByCategory(items: StaleItem[]): CategoryGroup[] {
     const categoryMap = new Map<string, StaleItem[]>();
 
@@ -175,14 +119,6 @@ export class StaleDirectoryRenderer {
     return categories;
   }
 
-  /**
-   * Generate statistics about stale items
-   * Calculates total count, percentage of total items, breakdown by category, and average staleness
-   * 
-   * @param staleItems Array of stale items
-   * @param totalItems Total number of items (active + stale)
-   * @returns Statistics object
-   */
   generateStatistics(staleItems: StaleItem[], totalItems: number): StaleStatistics {
     const visibleStaleItems = staleItems.filter(item => !item.hidden);
     const totalStale = visibleStaleItems.length;
@@ -213,10 +149,6 @@ export class StaleDirectoryRenderer {
     };
   }
 
-  /**
-   * Separate stale items into themes and tools
-   * @private
-   */
   private separateThemesAndTools(items: StaleItem[]): { themes: StaleItem[]; tools: Tool[] } {
     const themes: StaleItem[] = [];
     const tools: Tool[] = [];
@@ -240,10 +172,6 @@ export class StaleDirectoryRenderer {
     return { themes, tools };
   }
 
-  /**
-   * Format ISO date string to human-readable format
-   * @private
-   */
   private formatDate(isoDate: string): string {
     try {
       const date = new Date(isoDate);
@@ -256,10 +184,6 @@ export class StaleDirectoryRenderer {
     }
   }
 
-  /**
-   * Generate last update timestamp
-   * @private
-   */
   private generateLastUpdate(providedUpdate?: string): string {
     if (providedUpdate) {
       return providedUpdate;
@@ -274,15 +198,6 @@ export class StaleDirectoryRenderer {
     return `${month} ${day}, ${year} at ${hours}:${minutes} UTC`;
   }
 
-  /**
-   * Render stale items to HTML file
-   * Generates HTML page from template with stale items data, statistics, and warnings
-   * 
-   * @param templatePath Path to the HTML template file
-   * @param outputPath Path where the generated HTML should be saved
-   * @param staleItems Array of stale items to render
-   * @param options Rendering options including title, warnings, and statistics
-   */
   renderToFile(
     templatePath: string,
     outputPath: string,
@@ -338,10 +253,6 @@ export class StaleDirectoryRenderer {
   }
 }
 
-/**
- * Factory function to create a StaleDirectoryRenderer instance
- * @returns A new StaleDirectoryRenderer instance
- */
 export function createStaleRenderer(): StaleDirectoryRenderer {
   return new StaleDirectoryRenderer();
 }

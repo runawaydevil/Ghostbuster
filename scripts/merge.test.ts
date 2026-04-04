@@ -1,7 +1,3 @@
-/**
- * Tests for merge functionality
- */
-
 import { describe, it, expect } from 'vitest';
 import { 
   applyOverride, 

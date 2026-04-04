@@ -1,13 +1,7 @@
-/**
- * YAML schema validation functions for Ghostbuster system
- */
 
 import * as yaml from 'js-yaml';
 import { GhostItem, Override, IgnoreRule, SearchQuery } from './types.js';
 
-/**
- * Validation error class
- */
 export class ValidationError extends Error {
   constructor(message: string, public field?: string, public value?: any) {
     super(message);
@@ -15,9 +9,6 @@ export class ValidationError extends Error {
   }
 }
 
-/**
- * Validate a GhostItem object
- */
 export function validateGhostItem(item: any): GhostItem {
   if (!item || typeof item !== 'object') {
     throw new ValidationError('GhostItem must be an object');
@@ -89,9 +80,6 @@ export function validateGhostItem(item: any): GhostItem {
   return item as GhostItem;
 }
 
-/**
- * Validate an Override object
- */
 export function validateOverride(override: any): Override {
   if (!override || typeof override !== 'object') {
     throw new ValidationError('Override must be an object');
@@ -125,9 +113,6 @@ export function validateOverride(override: any): Override {
   return override as Override;
 }
 
-/**
- * Validate an IgnoreRule object
- */
 export function validateIgnoreRule(rule: any): IgnoreRule {
   if (!rule || typeof rule !== 'object') {
     throw new ValidationError('IgnoreRule must be an object');
@@ -163,9 +148,6 @@ export function validateIgnoreRule(rule: any): IgnoreRule {
   return rule as IgnoreRule;
 }
 
-/**
- * Validate a SearchQuery object
- */
 export function validateSearchQuery(query: any): SearchQuery {
   if (!query || typeof query !== 'object') {
     throw new ValidationError('SearchQuery must be an object');
@@ -186,9 +168,6 @@ export function validateSearchQuery(query: any): SearchQuery {
   return query as SearchQuery;
 }
 
-/**
- * Parse and validate YAML content
- */
 export function parseAndValidateYaml<T>(
   content: string,
   validator: (item: any) => T,
@@ -222,30 +201,18 @@ export function parseAndValidateYaml<T>(
   }
 }
 
-/**
- * Validate items.yml content
- */
 export function validateItemsYaml(content: string): GhostItem[] {
   return parseAndValidateYaml(content, validateGhostItem, true) as GhostItem[];
 }
 
-/**
- * Validate overrides.yml content
- */
 export function validateOverridesYaml(content: string): Override[] {
   return parseAndValidateYaml(content, validateOverride, true) as Override[];
 }
 
-/**
- * Validate ignore.yml content
- */
 export function validateIgnoreYaml(content: string): IgnoreRule {
   return parseAndValidateYaml(content, validateIgnoreRule, false) as IgnoreRule;
 }
 
-/**
- * Validate sources.yml content
- */
 export function validateSourcesYaml(content: string): SearchQuery[] {
   return parseAndValidateYaml(content, validateSearchQuery, true) as SearchQuery[];
 }

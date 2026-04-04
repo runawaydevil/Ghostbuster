@@ -1,8 +1,3 @@
-/**
- * Integration tests for Ghostbuster system
- * Tests the complete pipeline with mock data
- */
-
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import yaml from 'js-yaml';
 import { existsSync, writeFileSync, readFileSync, unlinkSync, mkdirSync, rmSync } from 'fs';

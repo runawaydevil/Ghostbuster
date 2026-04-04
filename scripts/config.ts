@@ -1,13 +1,8 @@
-/**
- * Configuration management for Ghostbuster system
- */
-
 import { config } from 'dotenv';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import * as yaml from 'js-yaml';
 
-// Load environment variables from .env file
 config();
 import { 
   validateItemsYaml, 
@@ -18,90 +13,39 @@ import {
 } from './validation.js';
 import { GhostItem, Override, IgnoreRule, SearchQuery, CrawlerConfig } from './types.js';
 
-/**
- * System configuration interface
- * Defines all configuration options for the Ghostbuster system
- */
 export interface SystemConfig {
-  /** Crawler configuration for discovering Ghost themes */
   crawler: CrawlerConfig;
-  
-  /** Classification thresholds and weights for scoring repositories */
   classification: {
-    /** Score thresholds for confidence levels */
     thresholds: {
-      /** Minimum score for high confidence (default: 80) */
       high: number;
-      /** Minimum score for medium confidence (default: 60) */
       medium: number;
-      /** Minimum score for low confidence (default: 40) */
       low: number;
     };
-    /** Weights for different scoring factors (must sum to 1.0) */
     weights: {
-      /** Weight for topic matching (default: 0.4) */
       topics: number;
-      /** Weight for README analysis (default: 0.3) */
       readme: number;
-      /** Weight for file structure analysis (default: 0.2) */
       structure: number;
-      /** Weight for penalty factors (default: 0.1) */
       penalties: number;
     };
-    /** Minimum score required to include an item in the directory (default: 50) */
     minScoreToInclude?: number;
   };
-  
-  /** HTML rendering configuration */
   rendering: {
-    /** Path to the HTML template file */
     template: string;
-    /** Path where the generated HTML will be saved */
     output: string;
-    /** Ordered list of categories for organizing items */
     categories: readonly string[];
   };
-  
-  /** GitHub API configuration */
   github: {
-    /** GitHub personal access token for API authentication */
     token: string;
   };
-  
-  /** Staleness tracking configuration */
   staleness: {
-    /** Enable or disable staleness tracking feature */
     enabled: boolean;
-    /** Number of months without updates before an item is considered stale */
     thresholdMonths: number;
-    /** Path to the SQLite database file for storing stale items */
     databasePath: string;
-    /** Path to the HTML template for rendering stale items page */
     renderTemplate: string;
-    /** Path where the generated stale items HTML will be saved */
     renderOutput: string;
   };
 }
 
-/**
- * Default configuration values
- * These values are used when no user configuration is provided
- * 
- * @example
- * ```typescript
- * // Use default configuration
- * const config = DEFAULT_CONFIG;
- * 
- * // Or merge with custom values
- * const customConfig = {
- *   ...DEFAULT_CONFIG,
- *   staleness: {
- *     ...DEFAULT_CONFIG.staleness,
- *     thresholdMonths: 6  // Override just the threshold
- *   }
- * };
- * ```
- */
 export const DEFAULT_CONFIG = {
   crawler: {
     queries: [] as SearchQuery[],
@@ -110,7 +54,7 @@ export const DEFAULT_CONFIG = {
       backoffMultiplier: 2
     },
     cache: {
-      ttl: 3600000, // 1 hour in milliseconds
+      ttl: 3600000,
       directory: 'cache'
     }
   },
@@ -126,7 +70,7 @@ export const DEFAULT_CONFIG = {
       structure: 0.2,
       penalties: 0.1
     },
-    minScoreToInclude: 50  // Items with score below this are filtered out
+    minScoreToInclude: 50
   },
   rendering: {
     template: 'templates/index.template.html',
@@ -142,14 +86,7 @@ export const DEFAULT_CONFIG = {
   }
 } as const;
 
-/**
- * Configuration validation functions
- */
 export class ConfigValidator {
-  
-  /**
-   * Validate crawler configuration
-   */
   static validateCrawlerConfig(config: any): CrawlerConfig {
     if (!config || typeof config !== 'object') {
       throw new ValidationError('Crawler config must be an object');
@@ -189,9 +126,6 @@ export class ConfigValidator {
     return config as CrawlerConfig;
   }
 
-  /**
-   * Validate classification configuration
-   */
   static validateClassificationConfig(config: any): SystemConfig['classification'] {
     if (!config || typeof config !== 'object') {
       throw new ValidationError('Classification config must be an object');
@@ -241,9 +175,6 @@ export class ConfigValidator {
     return config as SystemConfig['classification'];
   }
 
-  /**
-   * Validate rendering configuration
-   */
   static validateRenderingConfig(config: any): SystemConfig['rendering'] {
     if (!config || typeof config !== 'object') {
       throw new ValidationError('Rendering config must be an object');
@@ -270,27 +201,6 @@ export class ConfigValidator {
     return config as SystemConfig['rendering'];
   }
 
-  /**
-   * Validate staleness configuration
-   * Ensures all staleness settings are valid and properly typed
-   * 
-   * @param config - The staleness configuration object to validate
-   * @returns Validated staleness configuration
-   * @throws {ValidationError} If configuration is invalid
-   * 
-   * @example
-   * ```typescript
-   * const stalenessConfig = {
-   *   enabled: true,
-   *   thresholdMonths: 12,
-   *   databasePath: 'data/stale-items.db',
-   *   renderTemplate: 'templates/stale.template.html',
-   *   renderOutput: 'stale.html'
-   * };
-   * 
-   * const validated = ConfigValidator.validateStalenessConfig(stalenessConfig);
-   * ```
-   */
   static validateStalenessConfig(config: any): SystemConfig['staleness'] {
     if (!config || typeof config !== 'object') {
       throw new ValidationError('Staleness config must be an object');
@@ -319,9 +229,6 @@ export class ConfigValidator {
     return config as SystemConfig['staleness'];
   }
 
-  /**
-   * Validate complete system configuration
-   */
   static validateSystemConfig(config: any): SystemConfig {
     if (!config || typeof config !== 'object') {
       throw new ValidationError('System config must be an object');
@@ -339,9 +246,6 @@ export class ConfigValidator {
   }
 }
 
-/**
- * Configuration file manager
- */
 export class ConfigManager {
   private configPath: string;
 
@@ -349,9 +253,6 @@ export class ConfigManager {
     this.configPath = configPath;
   }
 
-  /**
-   * Load configuration from file with defaults
-   */
   loadConfig(): SystemConfig {
     let userConfig: any = {};
 
@@ -372,9 +273,6 @@ export class ConfigManager {
     return ConfigValidator.validateSystemConfig(mergedConfig);
   }
 
-  /**
-   * Save configuration to file
-   */
   saveConfig(config: SystemConfig): void {
     try {
       const yamlContent = yaml.dump(config, {
@@ -388,9 +286,6 @@ export class ConfigManager {
     }
   }
 
-  /**
-   * Create default configuration file
-   */
   createDefaultConfig(): SystemConfig {
     const defaultConfig: SystemConfig = {
       crawler: DEFAULT_CONFIG.crawler,
@@ -406,9 +301,6 @@ export class ConfigManager {
     return defaultConfig;
   }
 
-  /**
-   * Merge user configuration with defaults
-   */
   private mergeWithDefaults(userConfig: any): any {
     const merged = JSON.parse(JSON.stringify(DEFAULT_CONFIG)); // Deep clone
 
@@ -452,9 +344,6 @@ export class ConfigManager {
     return merged;
   }
 
-  /**
-   * Validate configuration file without loading
-   */
   validateConfigFile(): { valid: boolean; errors: string[] } {
     const errors: string[] = [];
 
@@ -475,9 +364,6 @@ export class ConfigManager {
   }
 }
 
-/**
- * Load and validate data files
- */
 export class DataLoader {
   private dataDir: string;
 
@@ -485,9 +371,6 @@ export class DataLoader {
     this.dataDir = dataDir;
   }
 
-  /**
-   * Load items.yml with validation
-   */
   loadItems(): GhostItem[] {
     try {
       const content = readFileSync(join(this.dataDir, 'items.yml'), 'utf-8');
@@ -500,9 +383,6 @@ export class DataLoader {
     }
   }
 
-  /**
-   * Load overrides.yml with validation
-   */
   loadOverrides(): Override[] {
     try {
       const content = readFileSync(join(this.dataDir, 'overrides.yml'), 'utf-8');
@@ -515,9 +395,6 @@ export class DataLoader {
     }
   }
 
-  /**
-   * Load ignore.yml with validation
-   */
   loadIgnoreRules(): IgnoreRule {
     try {
       const content = readFileSync(join(this.dataDir, 'ignore.yml'), 'utf-8');
@@ -530,9 +407,6 @@ export class DataLoader {
     }
   }
 
-  /**
-   * Load sources.yml with validation
-   */
   loadSources(): SearchQuery[] {
     try {
       const content = readFileSync(join(this.dataDir, 'sources.yml'), 'utf-8');
@@ -545,9 +419,6 @@ export class DataLoader {
     }
   }
 
-  /**
-   * Load all data files
-   */
   loadAll() {
     return {
       items: this.loadItems(),
@@ -557,9 +428,6 @@ export class DataLoader {
     };
   }
 
-  /**
-   * Validate all data files without loading
-   */
   validateAll(): { valid: boolean; errors: string[] } {
     const errors: string[] = [];
 
@@ -593,9 +461,6 @@ export class DataLoader {
     };
   }
 
-  /**
-   * Create default data files if they don't exist
-   */
   createDefaultDataFiles(): void {
     const defaultFiles = {
       'items.yml': '# Ghost CMS items discovered by the system\n# This file is automatically managed\n[]',
@@ -622,9 +487,6 @@ export class DataLoader {
   }
 }
 
-/**
- * Create crawler configuration from loaded data
- */
 export function createCrawlerConfig(sources: SearchQuery[]): CrawlerConfig {
   return {
     queries: sources,
@@ -633,9 +495,6 @@ export function createCrawlerConfig(sources: SearchQuery[]): CrawlerConfig {
   };
 }
 
-/**
- * Validate environment variables
- */
 export function validateEnvironment(): { valid: boolean; errors: string[] } {
   const errors: string[] = [];
 
@@ -649,9 +508,6 @@ export function validateEnvironment(): { valid: boolean; errors: string[] } {
   };
 }
 
-/**
- * Get configuration with environment validation
- */
 export function getConfig(): SystemConfig {
   const envValidation = validateEnvironment();
   if (!envValidation.valid) {
@@ -662,9 +518,6 @@ export function getConfig(): SystemConfig {
   return configManager.loadConfig();
 }
 
-/**
- * Get configuration and data with full validation
- */
 export function getConfigAndData() {
   const config = getConfig();
   

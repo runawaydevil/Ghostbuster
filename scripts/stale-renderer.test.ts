@@ -1,10 +1,3 @@
-/**
- * Unit tests for StaleDirectoryRenderer
- * 
- * Tests HTML generation, statistics calculation, category organization,
- * and template rendering with various data sets.
- */
-
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { StaleDirectoryRenderer, createStaleRenderer } from './stale-renderer.js';
 import { StaleItem } from './types.js';

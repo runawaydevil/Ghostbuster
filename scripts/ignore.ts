@@ -1,13 +1,6 @@
-/**
- * Ignore list filtering system for Ghostbuster
- * Handles blacklist processing with pattern matching
- */
 
 import { IgnoreRule, RepositoryData, GhostItem } from './types.js';
 
-/**
- * Check if a repository should be ignored based on ignore rules
- */
 export function shouldIgnoreRepository(repo: string, ignoreRules: IgnoreRule): boolean {
   // Check exact matches first (faster)
   if (ignoreRules.repos.includes(repo)) {
@@ -31,9 +24,6 @@ export function shouldIgnoreRepository(repo: string, ignoreRules: IgnoreRule): b
   return false;
 }
 
-/**
- * Filter repositories based on ignore rules
- */
 export function filterIgnoredRepositories(
   repositories: RepositoryData[],
   ignoreRules: IgnoreRule
@@ -86,9 +76,6 @@ export function filterIgnoredRepositories(
   return { allowed, ignored, ignoredReasons };
 }
 
-/**
- * Filter GhostItems based on ignore rules
- */
 export function filterIgnoredItems(
   items: GhostItem[],
   ignoreRules: IgnoreRule
@@ -141,9 +128,6 @@ export function filterIgnoredItems(
   return { allowed, ignored, ignoredReasons };
 }
 
-/**
- * Validate ignore patterns for regex correctness
- */
 export function validateIgnorePatterns(patterns: string[]): {
   valid: string[],
   invalid: { pattern: string, error: string }[]
@@ -166,9 +150,6 @@ export function validateIgnorePatterns(patterns: string[]): {
   return { valid, invalid };
 }
 
-/**
- * Add repository to ignore list
- */
 export function addToIgnoreList(
   ignoreRules: IgnoreRule,
   repo: string,
@@ -194,9 +175,6 @@ export function addToIgnoreList(
   return updatedRules;
 }
 
-/**
- * Remove repository from ignore list
- */
 export function removeFromIgnoreList(
   ignoreRules: IgnoreRule,
   repo: string
@@ -207,9 +185,6 @@ export function removeFromIgnoreList(
   };
 }
 
-/**
- * Check if a repository matches common ignore patterns
- */
 export function matchesCommonIgnorePatterns(repo: string): {
   matches: boolean,
   reasons: string[]

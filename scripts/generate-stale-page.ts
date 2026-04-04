@@ -1,16 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * Manual script to generate stale items page
- * 
- * This script:
- * 1. Reads items from data/items.yml
- * 2. Detects stale items based on threshold
- * 3. Updates the stale items database
- * 4. Generates stale.html
- * 
- * Usage: node dist/generate-stale-page.js
- */
 
 import { readFileSync, writeFileSync } from 'fs';
 import * as yaml from 'js-yaml';

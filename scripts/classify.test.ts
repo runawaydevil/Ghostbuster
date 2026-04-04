@@ -1,7 +1,3 @@
-/**
- * Tests for Ghost theme classification system
- */
-
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { GhostThemeClassifier, DEFAULT_CLASSIFICATION_CONFIG } from './classify.js';
 import { GitHubClient } from './github-client.js';

@@ -1,7 +1,3 @@
-/**
- * Tests for ignore functionality
- */
-
 import { describe, it, expect } from 'vitest';
 import { 
   shouldIgnoreRepository,

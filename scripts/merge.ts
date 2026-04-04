@@ -1,7 +1,3 @@
-/**
- * Data merging and override system for Ghostbuster
- * Combines existing items with new discoveries, applies overrides and ignores
- */
 
 import * as fs from 'fs/promises';
 import * as path from 'path';
@@ -9,10 +5,6 @@ import { GhostItem, Override, IgnoreRule, MergeResult, ChangeRecord, RepositoryD
 import { validateItemsYaml, validateOverridesYaml, validateIgnoreYaml } from './validation.js';
 import { shouldIgnoreRepository } from './ignore.js';
 
-/**
- * Ghost-related topics that indicate a repository is a valid Ghost theme/tool
- * Must match the same list in update.ts
- */
 const GHOST_TOPICS = [
   'ghost-theme',
   'ghost-cms',
@@ -22,10 +14,6 @@ const GHOST_TOPICS = [
   'ghost'
 ];
 
-/**
- * Check if an item has at least one Ghost-related topic
- * Used to filter out items that were incorrectly added in previous runs
- */
 function itemHasGhostTopic(item: GhostItem): boolean {
   if (!item.topics || item.topics.length === 0) return false;
   const lowerTopics = item.topics.map(t => t.toLowerCase());
@@ -34,13 +22,6 @@ function itemHasGhostTopic(item: GhostItem): boolean {
   );
 }
 
-/**
- * Check if an item should be preserved based on Ghost validation rules
- * Item is valid if:
- * 1. It has Ghost-related topics, OR
- * 2. It's from TryGhost organization (official), OR  
- * 3. It has high score (>= 70) indicating it was properly classified
- */
 function isValidGhostItem(item: GhostItem, minScore: number = 50): boolean {
   // Check for Ghost topics
   if (itemHasGhostTopic(item)) return true;
@@ -54,9 +35,6 @@ function isValidGhostItem(item: GhostItem, minScore: number = 50): boolean {
   return false;
 }
 
-/**
- * Load existing items from items.yml
- */
 export async function loadExistingItems(dataDir: string = 'data'): Promise<GhostItem[]> {
   try {
     const itemsPath = path.join(dataDir, 'items.yml');
@@ -71,9 +49,6 @@ export async function loadExistingItems(dataDir: string = 'data'): Promise<Ghost
   }
 }
 
-/**
- * Load override rules from overrides.yml
- */
 export async function loadOverrides(dataDir: string = 'data'): Promise<Override[]> {
   try {
     const overridesPath = path.join(dataDir, 'overrides.yml');
@@ -88,9 +63,6 @@ export async function loadOverrides(dataDir: string = 'data'): Promise<Override[
   }
 }
 
-/**
- * Load ignore rules from ignore.yml
- */
 export async function loadIgnoreRules(dataDir: string = 'data'): Promise<IgnoreRule> {
   try {
     const ignorePath = path.join(dataDir, 'ignore.yml');
@@ -105,9 +77,6 @@ export async function loadIgnoreRules(dataDir: string = 'data'): Promise<IgnoreR
   }
 }
 
-/**
- * Apply override rules to a GhostItem
- */
 export function applyOverride(item: GhostItem, override: Override): GhostItem {
   const updatedItem = { ...item };
 
@@ -149,9 +118,6 @@ export function applyOverride(item: GhostItem, override: Override): GhostItem {
   return updatedItem;
 }
 
-/**
- * Convert RepositoryData to GhostItem with classification result
- */
 export function repositoryToGhostItem(
   repo: RepositoryData,
   classification: ClassificationResult
@@ -177,9 +143,6 @@ export function repositoryToGhostItem(
   };
 }
 
-/**
- * Merge new discoveries with existing items
- */
 export async function mergeData(
   newRepositories: RepositoryData[],
   classifications: Map<string, ClassificationResult>,
@@ -333,9 +296,6 @@ export async function mergeData(
   };
 }
 
-/**
- * Save merged items back to items.yml
- */
 export async function saveMergedItems(
   items: GhostItem[],
   dataDir: string = 'data'
@@ -368,13 +328,7 @@ ${items.map(item => `- id: "${item.id}"
 
   await fs.writeFile(itemsPath, yamlContent, 'utf-8');
 }
-/**
- * Data merger class for easier usage
- */
 export class DataMerger {
-  /**
-   * Merge data with existing items, overrides, and ignore rules
-   */
   mergeData(
     existingItems: GhostItem[],
     newItems: GhostItem[],
@@ -520,9 +474,6 @@ export class DataMerger {
   }
 }
 
-/**
- * Create a data merger instance
- */
 export function createMerger(): DataMerger {
   return new DataMerger();
 }

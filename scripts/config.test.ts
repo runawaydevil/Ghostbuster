@@ -1,8 +1,4 @@
-/**
- * Unit tests for configuration management
- */
-
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, afterEach } from 'vitest';
 import { ConfigValidator, ConfigManager, DEFAULT_CONFIG } from './config.js';
 import { ValidationError } from './validation.js';
 import { existsSync, unlinkSync, writeFileSync } from 'fs';
@@ -886,8 +882,7 @@ describe('ConfigManager - Staleness Configuration', () => {
     it('should allow disabling staleness tracking', () => {
       const configManager = new ConfigManager(testConfigPath);
       
-      // Start with enabled
-      let config = {
+      const config = {
         crawler: {
           queries: [],
           rateLimit: {

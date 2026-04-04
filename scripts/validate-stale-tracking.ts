@@ -1,19 +1,7 @@
 #!/usr/bin/env node
 
-/**
- * Validation script for stale items tracking feature
- * 
- * This script validates:
- * - Database integrity and structure
- * - HTML output generation
- * - Statistics accuracy
- * - Links between pages
- * 
- * **Validates: Requirements 2.1-2.5, 3.1-3.7, 7.1, 7.3, 7.5**
- */
 
 import { createStaleDatabaseManager } from './stale-database.js';
-import { createStaleRenderer } from './stale-renderer.js';
 import { readFileSync, existsSync } from 'fs';
 import * as yaml from 'js-yaml';
 import { GhostItem } from './types.js';

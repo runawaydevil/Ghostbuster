@@ -1,7 +1,3 @@
-/**
- * Repository discovery crawler for Ghost CMS themes
- */
-
 import { GitHubClient, GitHubClientConfig } from './github-client.js';
 import { SearchQuery, CrawlResult, RepositoryData } from './types.js';
 
@@ -12,9 +8,6 @@ export interface CrawlerOptions {
   includeForks?: boolean;
 }
 
-/**
- * Repository crawler that discovers Ghost themes using GitHub search
- */
 export class RepositoryCrawler {
   private client: GitHubClient;
   private options: CrawlerOptions;
@@ -30,29 +23,19 @@ export class RepositoryCrawler {
     };
   }
 
-  /**
-   * Sleep for specified milliseconds
-   */
   private sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  /**
-   * Extract owner and repo from full_name
-   */
   private parseRepoName(fullName: string): { owner: string; repo: string } {
     const [owner, repo] = fullName.split('/');
     return { owner, repo };
   }
 
-  /**
-   * Enrich repository data with additional metadata
-   */
   private async enrichRepositoryData(repo: any): Promise<RepositoryData> {
     const { owner, repo: repoName } = this.parseRepoName(repo.full_name);
 
     try {
-      // Get detailed repository information
       const detailedRepo = await this.client.getRepository(owner, repoName);
 
       return {
@@ -73,8 +56,7 @@ export class RepositoryCrawler {
       };
     } catch (error) {
       console.warn(`Failed to enrich data for ${repo.full_name}: ${error instanceof Error ? error.message : String(error)}`);
-      
-      // Return basic data if enrichment fails
+
       return {
         id: repo.id.toString(),
         name: repo.name,
@@ -94,16 +76,11 @@ export class RepositoryCrawler {
     }
   }
 
-  /**
-   * Filter repositories based on crawler options
-   */
   private shouldIncludeRepository(repo: any): boolean {
-    // Filter archived repositories
     if (!this.options.includeArchived && repo.archived) {
       return false;
     }
 
-    // Filter forks
     if (!this.options.includeForks && repo.fork) {
       return false;
     }
@@ -111,9 +88,6 @@ export class RepositoryCrawler {
     return true;
   }
 
-  /**
-   * Execute a single search query with pagination
-   */
   private async executeSearchQuery(
     query: SearchQuery,
     errors: string[]
@@ -132,7 +106,7 @@ export class RepositoryCrawler {
         const searchResult = await this.client.searchRepositories(query.query, {
           sort: 'stars',
           order: 'desc',
-          per_page: 100, // Maximum allowed by GitHub
+          per_page: 100,
           page
         });
 
@@ -145,18 +119,15 @@ export class RepositoryCrawler {
         console.log(`  Found ${searchResult.items.length} repositories on page ${page} (${totalFound} total)`);
 
         for (const repo of searchResult.items) {
-          // Skip duplicates
           if (seenRepos.has(repo.full_name)) {
             continue;
           }
           seenRepos.add(repo.full_name);
 
-          // Apply filters
           if (!this.shouldIncludeRepository(repo)) {
             continue;
           }
 
-          // Apply minimum stars filter
           if (repo.stargazers_count < query.minStars) {
             continue;
           }
@@ -165,7 +136,6 @@ export class RepositoryCrawler {
             const enrichedRepo = await this.enrichRepositoryData(repo);
             repositories.push(enrichedRepo);
 
-            // Stop if we've reached the maximum results for this query
             if (repositories.length >= query.maxResults) {
               console.log(`  Reached maximum results (${query.maxResults}) for this query`);
               return repositories;
@@ -175,7 +145,6 @@ export class RepositoryCrawler {
           }
         }
 
-        // If we got fewer results than requested, we've reached the end
         if (searchResult.items.length < 100) {
           console.log(`  Reached end of results on page ${page}`);
           break;
@@ -183,7 +152,6 @@ export class RepositoryCrawler {
 
         page++;
 
-        // Add delay between pages to be respectful to the API
         if (page <= (this.options.maxPages || 10)) {
           await this.sleep(500);
         }
@@ -200,9 +168,6 @@ export class RepositoryCrawler {
     }
   }
 
-  /**
-   * Crawl repositories using multiple search queries
-   */
   async crawl(queries: SearchQuery[]): Promise<CrawlResult> {
     console.log(`Starting crawl with ${queries.length} search queries`);
     
@@ -218,7 +183,6 @@ export class RepositoryCrawler {
       try {
         const repositories = await this.executeSearchQuery(query, errors);
 
-        // Deduplicate across queries
         for (const repo of repositories) {
           if (!seenRepos.has(repo.full_name)) {
             seenRepos.add(repo.full_name);
@@ -226,7 +190,6 @@ export class RepositoryCrawler {
           }
         }
 
-        // Add delay between queries
         if (i < queries.length - 1 && this.options.delayBetweenQueries) {
           console.log(`Waiting ${this.options.delayBetweenQueries}ms before next query...`);
           await this.sleep(this.options.delayBetweenQueries);
@@ -255,9 +218,6 @@ export class RepositoryCrawler {
     };
   }
 
-  /**
-   * Get additional metadata for a repository (README, file structure)
-   */
   async getRepositoryMetadata(repo: RepositoryData): Promise<{
     readme: string | null;
     hasHandlebarsFiles: boolean;
@@ -267,10 +227,8 @@ export class RepositoryCrawler {
     const { owner, repo: repoName } = this.parseRepoName(repo.full_name);
 
     try {
-      // Get README content
       const readme = await this.client.getReadme(owner, repoName);
 
-      // Check for Ghost theme indicators in file structure
       const rootContents = await this.client.getContents(owner, repoName);
       
       let hasHandlebarsFiles = false;
@@ -285,10 +243,8 @@ export class RepositoryCrawler {
                            fileNames.includes('post.hbs') || 
                            fileNames.includes('default.hbs');
 
-        // Check for .hbs files in root or partials directory
         hasHandlebarsFiles = fileNames.some(name => name.endsWith('.hbs'));
-        
-        // Also check partials directory if it exists
+
         if (fileNames.includes('partials')) {
           try {
             const partialsContents = await this.client.getContents(owner, repoName, 'partials');
@@ -296,8 +252,8 @@ export class RepositoryCrawler {
               const partialsFiles = partialsContents.map(item => item.name.toLowerCase());
               hasHandlebarsFiles = hasHandlebarsFiles || partialsFiles.some(name => name.endsWith('.hbs'));
             }
-          } catch (error) {
-            // Ignore errors when checking partials directory
+          } catch {
+            void 0;
           }
         }
       }
@@ -320,24 +276,15 @@ export class RepositoryCrawler {
     }
   }
 
-  /**
-   * Get current rate limit status
-   */
   async getRateLimit() {
     return this.client.getRateLimit();
   }
 
-  /**
-   * Get crawler statistics
-   */
   getStats() {
     return this.client.getStats();
   }
 }
 
-/**
- * Create a crawler instance with configuration
- */
 export function createCrawler(config: GitHubClientConfig, options?: CrawlerOptions): RepositoryCrawler {
   return new RepositoryCrawler(config, options);
 }

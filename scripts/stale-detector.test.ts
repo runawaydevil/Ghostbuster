@@ -1,7 +1,3 @@
-/**
- * Unit tests for StalenessDetector
- */
-
 import { describe, it, expect, beforeEach } from 'vitest';
 import { StalenessDetector, StalenessConfig, createStalenessDetector } from './stale-detector.js';
 import { GhostItem } from './types.js';
