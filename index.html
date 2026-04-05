@@ -5,379 +5,622 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghostbuster - Ghost CMS Themes & Tools Directory</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>/* Ghostbuster — Spectral catalogue (shared index + stale) */
 
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --link-color: #0066cc;
-            --link-hover: #004499;
-            --border-color: #e0e0e0;
-            --header-bg: #f8f9fa;
-            --footer-bg: #f8f9fa;
-            --table-header-bg: #f5f5f5;
-            --table-row-hover: #f9f9f9;
-        }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #1a1a1a;
-                --text-color: #e0e0e0;
-                --link-color: #4da6ff;
-                --link-hover: #66b3ff;
-                --border-color: #404040;
-                --header-bg: #2a2a2a;
-                --footer-bg: #2a2a2a;
-                --table-header-bg: #333333;
-                --table-row-hover: #2a2a2a;
-            }
-        }
+:root {
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            padding: 0;
-            margin: 0;
-        }
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
 
-        header {
-            background-color: var(--header-bg);
-            padding: 1rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-card: 0 1px 3px rgba(15, 17, 20, 0.06), 0 8px 24px rgba(15, 17, 20, 0.04);
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+  --surface-base: #f4f1eb;
+  --surface-raised: #faf8f4;
+  --surface-header: #f0ece4;
+  --surface-footer: #ebe6dd;
+  --surface-card: #faf8f4;
+  --surface-table-head: #e8e4db;
+  --surface-table-alt: rgba(14, 107, 89, 0.06);
+  --surface-category: linear-gradient(90deg, rgba(14, 107, 89, 0.12) 0%, rgba(14, 107, 89, 0.04) 100%);
 
-        .logo {
-            max-width: 168px;
-            height: auto;
-            margin-bottom: 0.01rem;
-        }
+  --ink: #14161a;
+  --ink-muted: #4a4f58;
+  --ink-faint: #6b7280;
 
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 0.25rem;
-            color: var(--text-color);
-        }
+  --accent: #0e6b59;
+  --accent-hover: #0a5546;
+  --accent-muted: rgba(14, 107, 89, 0.15);
+  --focus-ring: #0e6b59;
 
-        .subtitle {
-            font-size: 0.95rem;
-            color: #666;
-            font-weight: normal;
-            margin-bottom: 0.5rem;
-        }
+  --border-subtle: #d4cfc4;
+  --border-strong: #b8b2a6;
 
-        @media (prefers-color-scheme: dark) {
-            .subtitle {
-                color: #999;
-            }
-        }
+  --btn-github-bg: #1c2128;
+  --btn-github-hover: #2d333b;
+  --btn-stale-bg: #c2410c;
+  --btn-stale-hover: #9a3412;
 
-        .button-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
+  --accent-warning: #b45309;
+  --surface-warning: #fff7ed;
+  --surface-warning-border: #fdba74;
+  --ink-warning: #7c2d12;
+  --surface-stats: #fffbeb;
+  --border-stats: #fbbf24;
+  --stale-highlight: #c2410c;
+}
 
-        .github-button, .stale-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: background-color 0.2s, transform 0.1s;
-        }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-base: #0f1114;
+    --surface-raised: #171a1f;
+    --surface-header: #12151a;
+    --surface-footer: #0c0e11;
+    --surface-card: #171a1f;
+    --surface-table-head: #1e2329;
+    --surface-table-alt: rgba(45, 212, 191, 0.06);
+    --surface-category: linear-gradient(90deg, rgba(45, 212, 191, 0.14) 0%, rgba(45, 212, 191, 0.04) 100%);
 
-        .github-button {
-            background-color: #24292e;
-            color: #ffffff;
-        }
+    --ink: #e8eaed;
+    --ink-muted: #b0b6c0;
+    --ink-faint: #8b929e;
 
-        .github-button:hover {
-            background-color: #2f363d;
-            text-decoration: none;
-            transform: translateY(-1px);
-        }
+    --accent: #5eead4;
+    --accent-hover: #99f6e4;
+    --accent-muted: rgba(94, 234, 212, 0.12);
+    --focus-ring: #5eead4;
 
-        .stale-button {
-            background-color: #ff9800;
-            color: #ffffff;
-        }
+    --border-subtle: #2a3038;
+    --border-strong: #3d4550;
 
-        .stale-button:hover {
-            background-color: #f57c00;
-            text-decoration: none;
-            transform: translateY(-1px);
-        }
+    --btn-github-bg: #2d333b;
+    --btn-github-hover: #3d4450;
+    --btn-stale-bg: #ea580c;
+    --btn-stale-hover: #f97316;
 
-        .github-button:active, .stale-button:active {
-            transform: translateY(0);
-        }
+    --surface-warning: #1c1410;
+    --surface-warning-border: #9a3412;
+    --ink-warning: #fdba74;
+    --surface-stats: #1a1510;
+    --border-stats: #b45309;
+    --stale-highlight: #fb923c;
+  }
+}
 
-        .github-button svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
+body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background-color: var(--surface-base);
+}
 
-        @media (prefers-color-scheme: dark) {
-            .github-button {
-                background-color: #2f363d;
-            }
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-3);
+  z-index: 1000;
+  padding: var(--space-2) var(--space-3);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
 
-            .github-button:hover {
-                background-color: #3a4148;
-            }
+.skip-link:focus {
+  top: var(--space-3);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
 
-            .stale-button {
-                background-color: #cc7700;
-            }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
 
-            .stale-button:hover {
-                background-color: #e68900;
-            }
-        }
+header {
+  position: relative;
+  text-align: center;
+  padding: var(--space-4) var(--space-3);
+  background: var(--surface-header);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: inset 4px 0 0 var(--accent), var(--shadow-card);
+}
 
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
+.page-stale header {
+  box-shadow: inset 4px 0 0 var(--accent-warning), var(--shadow-card);
+  border-bottom-color: var(--surface-warning-border);
+}
 
-        h2 {
-            font-size: 2rem;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-        }
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
+.logo {
+  max-width: 168px;
+  height: auto;
+  margin-bottom: var(--space-2);
+}
 
-        p {
-            margin-bottom: 1rem;
-        }
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
 
-        strong {
-            font-weight: 600;
-        }
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--border-subtle);
+  color: var(--ink);
+}
 
-        hr {
-            border: none;
-            border-top: 1px solid var(--border-color);
-            margin: 2rem 0;
-        }
+h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 600;
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-3);
+  color: var(--ink);
+}
 
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+.subtitle {
+  font-size: 0.98rem;
+  color: var(--ink-muted);
+  font-weight: 400;
+  margin-bottom: var(--space-3);
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-        a:hover {
-            color: var(--link-hover);
-            text-decoration: underline;
-        }
+.button-group {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
 
-        .table-wrapper {
-            overflow-x: auto;
-            margin: 2rem 0;
-            -webkit-overflow-scrolling: touch;
-        }
+.github-button,
+.stale-button,
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.65rem 1.25rem;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: background-color 0.18s ease, transform 0.12s ease, color 0.18s ease;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            font-size: 0.95rem;
-            min-width: 600px;
-        }
+.github-button {
+  background-color: var(--btn-github-bg);
+  color: #fff;
+}
 
-        th {
-            background-color: var(--table-header-bg);
-            padding: 0.75rem;
-            text-align: left;
-            font-weight: 600;
-            border: 1px solid var(--border-color);
-        }
+.github-button:hover {
+  background-color: var(--btn-github-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
 
-        td {
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-        }
+.stale-button {
+  background-color: var(--btn-stale-bg);
+  color: #fff;
+}
 
-        tr:nth-child(even) {
-            background-color: var(--table-row-hover);
-        }
+.stale-button:hover {
+  background-color: var(--btn-stale-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
 
-        tr:hover {
-            background-color: var(--table-row-hover);
-        }
+.back-button {
+  background-color: var(--btn-stale-bg);
+  color: #fff;
+}
 
-        ul {
-            margin: 1rem 0;
-            padding-left: 2rem;
-        }
+.back-button:hover {
+  background-color: var(--btn-stale-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
 
-        li {
-            margin-bottom: 0.5rem;
-        }
+.github-button:active,
+.stale-button:active,
+.back-button:active {
+  transform: translateY(0);
+}
 
-        ol {
-            margin: 1rem 0;
-            padding-left: 2rem;
-        }
+.github-button svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
 
-        .intro {
-            background-color: var(--header-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            border-left: 4px solid var(--link-color);
-        }
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-3);
+}
 
-        .updates-section {
-            background-color: var(--header-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            border-left: 4px solid var(--link-color);
-        }
+main > section > h2:first-child {
+  margin-top: 0;
+}
 
-        .updates-section h2 {
-            color: var(--text-color);
-            border-bottom: 2px solid var(--border-color);
-            margin-top: 0;
-        }
+p {
+  margin-bottom: var(--space-3);
+}
 
-        .updates-section .update-item {
-            margin-top: 1rem;
-        }
+strong {
+  font-weight: 600;
+}
 
-        .updates-section .update-date {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 0.75rem;
-            font-weight: 500;
-        }
+hr {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: var(--space-5) 0;
+}
 
-        @media (prefers-color-scheme: dark) {
-            .updates-section .update-date {
-                color: #999;
-            }
-        }
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
 
-        .updates-section .update-message {
-            line-height: 1.6;
-            color: var(--text-color);
-        }
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
 
-        footer {
-            background-color: var(--footer-bg);
-            padding: 2rem 1rem;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            margin-top: 4rem;
-        }
+.intro {
+  background: var(--surface-card);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin: var(--space-5) 0;
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow-card);
+}
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.intro h2 {
+  margin-top: 0;
+}
 
-        .footer-content p {
-            margin: 0.5rem 0;
-        }
+.intro > p {
+  max-width: 65ch;
+}
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
+.updates-section {
+  background: var(--surface-card);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin: var(--space-5) 0;
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow-card);
+}
 
-            h2 {
-                font-size: 1.5rem;
-            }
+.updates-section h2 {
+  margin-top: 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
 
-            h3 {
-                font-size: 1.25rem;
-            }
+.updates-section .update-item {
+  margin-top: var(--space-3);
+}
 
-            main {
-                padding: 1rem 0.5rem;
-            }
+.updates-section .update-date {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+}
 
-            header {
-                padding: 0.75rem 1rem;
-            }
+.updates-section .update-message {
+  line-height: 1.65;
+  color: var(--ink);
+}
 
-            .logo {
-                max-width: 140px;
-            }
+.warning-section {
+  background: var(--surface-warning);
+  border: 1px solid var(--surface-warning-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin: var(--space-5) 0;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-card);
+}
 
-            table {
-                font-size: 0.85rem;
-            }
+.warning-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
 
-            th, td {
-                padding: 0.5rem;
-            }
-        }
+.warning-content h2 {
+  color: var(--ink-warning);
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  border-bottom: none;
+  font-size: 1.35rem;
+}
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.75rem;
-            }
+.warning-content p {
+  color: var(--ink-warning);
+  margin-bottom: var(--space-2);
+  line-height: 1.65;
+}
 
-            .subtitle {
-                font-size: 1rem;
-            }
+.warning-content p:last-child {
+  margin-bottom: 0;
+}
 
-            .github-button, .stale-button {
-                font-size: 0.85rem;
-                padding: 0.6rem 1.2rem;
-            }
+.statistics-section {
+  background: var(--surface-stats);
+  border: 1px solid var(--border-stats);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin: var(--space-5) 0;
+  box-shadow: var(--shadow-card);
+}
 
-            .button-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
+.statistics-section h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  border-bottom: 2px solid var(--border-stats);
+  padding-bottom: var(--space-2);
+}
 
-            .github-button, .stale-button {
-                justify-content: center;
-            }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
 
-            .updates-section {
-                padding: 1rem;
-            }
-        }
-    </style>
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--stale-highlight);
+  display: block;
+  margin-bottom: var(--space-1);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin: var(--space-5) 0;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.9375rem;
+  min-width: 600px;
+}
+
+caption {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: left;
+  padding: var(--space-3);
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  caption-side: top;
+}
+
+th {
+  font-family: var(--font-display);
+  background: var(--surface-table-head);
+  padding: 0.8rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-strong);
+  color: var(--ink);
+}
+
+td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+
+tbody tr.item-row:nth-child(even of tr.item-row) {
+  background-color: var(--surface-table-alt);
+}
+
+tbody tr.item-row:hover {
+  background-color: var(--accent-muted);
+}
+
+tr.category-row td {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--surface-category);
+  border-left: 4px solid var(--accent);
+  border-bottom: 1px solid var(--border-strong);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+
+.page-stale tr.category-row td {
+  border-left-color: var(--accent-warning);
+}
+
+ul,
+ol {
+  margin: var(--space-3) 0;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: var(--space-2);
+}
+
+.last-update-cell {
+  color: var(--stale-highlight);
+  font-weight: 600;
+}
+
+.months-stale {
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+footer {
+  background: var(--surface-footer);
+  padding: var(--space-5) var(--space-3);
+  text-align: center;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--space-6);
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin: var(--space-2) 0;
+}
+
+.footer-content a {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: var(--space-4) var(--space-2);
+  }
+
+  header {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .logo {
+    max-width: 140px;
+  }
+
+  table {
+    font-size: 0.875rem;
+  }
+
+  th,
+  td {
+    padding: var(--space-2);
+  }
+
+  .warning-section {
+    flex-direction: column;
+    padding: var(--space-3);
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .github-button,
+  .stale-button,
+  .back-button {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .github-button,
+  .stale-button,
+  .back-button {
+    font-size: 0.875rem;
+    padding: 0.55rem 1rem;
+  }
+
+  .updates-section,
+  .warning-section,
+  .statistics-section {
+    padding: var(--space-3);
+  }
+}
+</style>
 </head>
-<body>
+<body class="page-index">
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
         <div class="header-content">
             <img src="https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png" alt="Ghostbuster logo" class="logo">
             <h1>Ghostbuster - Ghost CMS Themes & Tools Directory</h1>
-            <p class="subtitle">Ghost CMS Themes & Tools Directory (2022–2026)</p>
+            <p class="subtitle">Ghost CMS Themes & Tools Directory (2025–2026)</p>
             <div class="button-group">
                 <a href="stale.html" class="stale-button">
                     ⏰ View Stale Items
@@ -392,22 +635,12 @@
         </div>
     </header>
 
-    <main>
+    <main id="main">
         <section class="intro">
             <h2>Introduction</h2>
             <p>This document lists Ghost CMS theme repositories and essential tools for theme development, validation, localization, and deployment. It is built automatically from public GitHub data and organized by origin and category so you can browse popular themes and find tooling for building and maintaining Ghost themes. Optional overrides apply where configured.</p>
         </section>
 
-        
-        <section class="updates-section">
-            <h2>Updates</h2>
-            <div class="update-item">
-                <div class="update-date">March 30, 2026 at 07:21 UTC</div>
-                <div class="update-message">
-                    <p>Automated update: 140 new themes discovered, 82 themes updated.</p>
-                </div>
-            </div>
-        </section>
         
 
         <hr>
@@ -416,6 +649,7 @@
             <h2>ALL THEMES (CONSOLIDATED TABLE)</h2>
             <div class="table-wrapper">
                 <table>
+                    <caption>All themes by category, sorted by stars within each section</caption>
                     <thead>
                         <tr>
                             <th>Theme Name</th>
@@ -427,11 +661,11 @@
                     </thead>
                     <tbody>
                         
-                        <tr>
+                        <tr class="category-row">
                             <td colspan="5"><strong>OFFICIAL / TRYGHOST THEMES</strong></td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Ghost</td>
                             <td><a href="https://github.com/TryGhost/Ghost" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Ghost</a></td>
                             <td>52222</td>
@@ -439,7 +673,7 @@
                             <td>Independent technology for modern publishing, memberships, subscriptions and newsletters.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Casper (Official)</td>
                             <td><a href="https://github.com/TryGhost/Casper" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Casper</a></td>
                             <td>2573</td>
@@ -447,7 +681,7 @@
                             <td>A classic theme for Ghost; Official Ghost theme - always featured</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Ghost-CLI</td>
                             <td><a href="https://github.com/TryGhost/Ghost-CLI" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Ghost-CLI</a></td>
                             <td>491</td>
@@ -455,7 +689,7 @@
                             <td>CLI Tool for installing & updating Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Starter</td>
                             <td><a href="https://github.com/TryGhost/Starter" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Starter</a></td>
                             <td>483</td>
@@ -463,7 +697,7 @@
                             <td>A development starter theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>action-deploy-theme</td>
                             <td><a href="https://github.com/TryGhost/action-deploy-theme" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/action-deploy-theme</a></td>
                             <td>388</td>
@@ -471,7 +705,7 @@
                             <td>:octocat: Deploy your Ghost theme with Github Actions</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>eleventy-starter-ghost</td>
                             <td><a href="https://github.com/TryGhost/eleventy-starter-ghost" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/eleventy-starter-ghost</a></td>
                             <td>367</td>
@@ -479,7 +713,7 @@
                             <td>A starter template to build websites with Ghost & Eleventy</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Dawn</td>
                             <td><a href="https://github.com/TryGhost/Dawn" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Dawn</a></td>
                             <td>299</td>
@@ -487,7 +721,7 @@
                             <td>A minimal newsletter theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>London</td>
                             <td><a href="https://github.com/TryGhost/London" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/London</a></td>
                             <td>265</td>
@@ -495,7 +729,7 @@
                             <td>A free, open source theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Massively</td>
                             <td><a href="https://github.com/TryGhost/Massively" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Massively</a></td>
                             <td>244</td>
@@ -503,7 +737,7 @@
                             <td>A free, open source theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ActivityPub</td>
                             <td><a href="https://github.com/TryGhost/ActivityPub" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/ActivityPub</a></td>
                             <td>229</td>
@@ -511,7 +745,7 @@
                             <td>A full-featured ActivityPub server for networked publishing with Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Editorial</td>
                             <td><a href="https://github.com/TryGhost/Editorial" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Editorial</a></td>
                             <td>212</td>
@@ -519,7 +753,7 @@
                             <td>A free, open source theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Lyra</td>
                             <td><a href="https://github.com/TryGhost/Lyra" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Lyra</a></td>
                             <td>180</td>
@@ -527,7 +761,7 @@
                             <td>A paid-members theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Roon</td>
                             <td><a href="https://github.com/TryGhost/Roon" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Roon</a></td>
                             <td>143</td>
@@ -535,7 +769,7 @@
                             <td>The official Roon theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Alto</td>
                             <td><a href="https://github.com/TryGhost/Alto" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Alto</a></td>
                             <td>123</td>
@@ -543,7 +777,7 @@
                             <td>A clean, minimalist theme featuring a light and dark mode for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Source</td>
                             <td><a href="https://github.com/TryGhost/Source" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Source</a></td>
                             <td>116</td>
@@ -551,7 +785,7 @@
                             <td>The default theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Edge</td>
                             <td><a href="https://github.com/TryGhost/Edge" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Edge</a></td>
                             <td>95</td>
@@ -559,7 +793,7 @@
                             <td>A visually aesthetic portfolio theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Themes</td>
                             <td><a href="https://github.com/TryGhost/Themes" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Themes</a></td>
                             <td>93</td>
@@ -567,7 +801,7 @@
                             <td>A monorepo for Ghost themes</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Ease</td>
                             <td><a href="https://github.com/TryGhost/Ease" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Ease</a></td>
                             <td>88</td>
@@ -575,7 +809,7 @@
                             <td>A minimal documentation theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Edition</td>
                             <td><a href="https://github.com/TryGhost/Edition" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Edition</a></td>
                             <td>86</td>
@@ -583,7 +817,7 @@
                             <td>The newsletter theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Wave</td>
                             <td><a href="https://github.com/TryGhost/Wave" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Wave</a></td>
                             <td>84</td>
@@ -591,7 +825,7 @@
                             <td>A podcast theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Pico</td>
                             <td><a href="https://github.com/TryGhost/Pico" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Pico</a></td>
                             <td>76</td>
@@ -599,7 +833,7 @@
                             <td>A paid members publishing theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Ruby</td>
                             <td><a href="https://github.com/TryGhost/Ruby" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Ruby</a></td>
                             <td>64</td>
@@ -607,7 +841,7 @@
                             <td>A multi-column theme with a unique card layout for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Journal</td>
                             <td><a href="https://github.com/TryGhost/Journal" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Journal</a></td>
                             <td>63</td>
@@ -615,7 +849,7 @@
                             <td>A newsletter theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Dope</td>
                             <td><a href="https://github.com/TryGhost/Dope" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Dope</a></td>
                             <td>58</td>
@@ -623,7 +857,7 @@
                             <td>A unique tag-based theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Headline</td>
                             <td><a href="https://github.com/TryGhost/Headline" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Headline</a></td>
                             <td>56</td>
@@ -631,7 +865,7 @@
                             <td>A local news theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Solo</td>
                             <td><a href="https://github.com/TryGhost/Solo" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Solo</a></td>
                             <td>47</td>
@@ -639,7 +873,7 @@
                             <td>A personal theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Argon</td>
                             <td><a href="https://github.com/TryGhost/Argon" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Argon</a></td>
                             <td>24</td>
@@ -647,7 +881,7 @@
                             <td>A simple publishing theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Tribeca</td>
                             <td><a href="https://github.com/TryGhost/Tribeca" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Tribeca</a></td>
                             <td>18</td>
@@ -655,7 +889,7 @@
                             <td>A free theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Bulletin</td>
                             <td><a href="https://github.com/TryGhost/Bulletin" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Bulletin</a></td>
                             <td>17</td>
@@ -663,7 +897,7 @@
                             <td>A newsletter theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Digest</td>
                             <td><a href="https://github.com/TryGhost/Digest" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Digest</a></td>
                             <td>11</td>
@@ -671,7 +905,7 @@
                             <td>A newsletter theme for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Taste</td>
                             <td><a href="https://github.com/TryGhost/Taste" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Taste</a></td>
                             <td>5</td>
@@ -680,11 +914,11 @@
                         </tr>
                         
                         
-                        <tr>
+                        <tr class="category-row">
                             <td colspan="5"><strong>HIGHLY POPULAR COMMUNITY THEMES</strong></td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>mnml-ghost-theme</td>
                             <td><a href="https://github.com/curiositry/mnml-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/curiositry/mnml-ghost-theme</a></td>
                             <td>300</td>
@@ -692,7 +926,7 @@
                             <td>A minimal, responsive, fast Ghost 6 blog theme with great typography. Comes with paid membership support, Disqus comments, syntax highlighting, and KaTeX for mathematics, and more.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-mcp</td>
                             <td><a href="https://github.com/MFYDev/ghost-mcp" target="_blank" rel="noopener noreferrer">https://github.com/MFYDev/ghost-mcp</a></td>
                             <td>163</td>
@@ -700,7 +934,7 @@
                             <td>A Model Context Protocol (MCP) server for interacting with Ghost CMS through LLM interfaces like Claude. Allow you to control your Ghost blog by simply asking Claude etc.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Ghost-Azure</td>
                             <td><a href="https://github.com/RadoslavGatev/Ghost-Azure" target="_blank" rel="noopener noreferrer">https://github.com/RadoslavGatev/Ghost-Azure</a></td>
                             <td>134</td>
@@ -708,7 +942,7 @@
                             <td>Production ready Ghost on Azure App Service :ghost:</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-on-kubernetes</td>
                             <td><a href="https://github.com/sredevopsorg/ghost-on-kubernetes" target="_blank" rel="noopener noreferrer">https://github.com/sredevopsorg/ghost-on-kubernetes</a></td>
                             <td>86</td>
@@ -716,7 +950,7 @@
                             <td>Ghost on Kubernetes by SREDevOps.org - Deploy Ghost v6 on Kubernetes (k8s, k3s, etc) with our hardened distroless rootless custom image.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-storage-cloudinary</td>
                             <td><a href="https://github.com/eexit/ghost-storage-cloudinary" target="_blank" rel="noopener noreferrer">https://github.com/eexit/ghost-storage-cloudinary</a></td>
                             <td>85</td>
@@ -724,7 +958,7 @@
                             <td>:rocket: A fully-featured and deeply tested Cloudinary Ghost storage adapter</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>smart</td>
                             <td><a href="https://github.com/royalfig/smart" target="_blank" rel="noopener noreferrer">https://github.com/royalfig/smart</a></td>
                             <td>84</td>
@@ -732,7 +966,7 @@
                             <td>A theme for the open source publishing platform Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost</td>
                             <td><a href="https://github.com/render-examples/ghost" target="_blank" rel="noopener noreferrer">https://github.com/render-examples/ghost</a></td>
                             <td>36</td>
@@ -740,7 +974,7 @@
                             <td>Ghost on Render</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>image-resizing</td>
                             <td><a href="https://github.com/Vortexmind/image-resizing" target="_blank" rel="noopener noreferrer">https://github.com/Vortexmind/image-resizing</a></td>
                             <td>36</td>
@@ -748,7 +982,7 @@
                             <td>Image resizing Cloudflare worker for Ghost blog image content</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Attegi</td>
                             <td><a href="https://github.com/bunizao/Attegi" target="_blank" rel="noopener noreferrer">https://github.com/bunizao/Attegi</a></td>
                             <td>27</td>
@@ -756,7 +990,7 @@
                             <td>Attegi is an elegant and dynamic Ghost theme, with a modern design, deep support for Ghost, and specially optimized for mobile devices.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Blogging-with-N8N</td>
                             <td><a href="https://github.com/christancho/Blogging-with-N8N" target="_blank" rel="noopener noreferrer">https://github.com/christancho/Blogging-with-N8N</a></td>
                             <td>24</td>
@@ -764,7 +998,7 @@
                             <td>AI-Powered Blog Automation Suite - Complete N8N workflow for automated content creation, research, SEO optimization, and publishing to Ghost CMS.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Scriptor-Ghost-Theme</td>
                             <td><a href="https://github.com/JustGoodThemes/Scriptor-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/JustGoodThemes/Scriptor-Ghost-Theme</a></td>
                             <td>23</td>
@@ -772,7 +1006,7 @@
                             <td>Scriptor is a minimal, clean, modern & responsive Ghost theme for writers.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-meilisearch</td>
                             <td><a href="https://github.com/MFYDev/ghost-meilisearch" target="_blank" rel="noopener noreferrer">https://github.com/MFYDev/ghost-meilisearch</a></td>
                             <td>22</td>
@@ -780,7 +1014,7 @@
                             <td>Add powerful, lightning-fast search to your Ghost blog with Meilisearch. This integration provides everything you need to create a seamless search experience for your readers.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost_ynh</td>
                             <td><a href="https://github.com/YunoHost-Apps/ghost_ynh" target="_blank" rel="noopener noreferrer">https://github.com/YunoHost-Apps/ghost_ynh</a></td>
                             <td>22</td>
@@ -788,7 +1022,7 @@
                             <td>Ghost package for YunoHost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>hackersandslackers-theme</td>
                             <td><a href="https://github.com/hackersandslackers/hackersandslackers-theme" target="_blank" rel="noopener noreferrer">https://github.com/hackersandslackers/hackersandslackers-theme</a></td>
                             <td>20</td>
@@ -796,7 +1030,7 @@
                             <td>👻 📝 ✨ Clean Ghost theme with advanced features & customization.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>seance</td>
                             <td><a href="https://github.com/CorySanin/seance" target="_blank" rel="noopener noreferrer">https://github.com/CorySanin/seance</a></td>
                             <td>18</td>
@@ -804,7 +1038,7 @@
                             <td>A self-hostable contact form for Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>transmission</td>
                             <td><a href="https://github.com/nickabs/transmission" target="_blank" rel="noopener noreferrer">https://github.com/nickabs/transmission</a></td>
                             <td>17</td>
@@ -812,7 +1046,7 @@
                             <td>transmission Ghost theme</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-cms-amazon-ses-adapter</td>
                             <td><a href="https://github.com/exlab-code/ghost-cms-amazon-ses-adapter" target="_blank" rel="noopener noreferrer">https://github.com/exlab-code/ghost-cms-amazon-ses-adapter</a></td>
                             <td>15</td>
@@ -820,7 +1054,7 @@
                             <td>This project provides a simple but effective solution for using AWS SES instead of Mailgun for sending Ghost newsletters, without modifying Ghost's source code.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>santhosh-veer-blog</td>
                             <td><a href="https://github.com/mskian/santhosh-veer-blog" target="_blank" rel="noopener noreferrer">https://github.com/mskian/santhosh-veer-blog</a></td>
                             <td>11</td>
@@ -828,7 +1062,7 @@
                             <td>A Ghost theme with Membership Feature</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>eindev-ghost-theme</td>
                             <td><a href="https://github.com/ehsanghaffar/eindev-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/ehsanghaffar/eindev-ghost-theme</a></td>
                             <td>11</td>
@@ -836,7 +1070,7 @@
                             <td>A new personal blog theme for Ghost CMS</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-cloudflare-cache-purge</td>
                             <td><a href="https://github.com/Vortexmind/ghost-cloudflare-cache-purge" target="_blank" rel="noopener noreferrer">https://github.com/Vortexmind/ghost-cloudflare-cache-purge</a></td>
                             <td>11</td>
@@ -844,7 +1078,7 @@
                             <td>A Cloudflare worker script which triggers Cloudflare cache purges initiated by a Ghost blog webhook</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-cms-nextjs</td>
                             <td><a href="https://github.com/Wayne-Jones/ghost-cms-nextjs" target="_blank" rel="noopener noreferrer">https://github.com/Wayne-Jones/ghost-cms-nextjs</a></td>
                             <td>10</td>
@@ -852,7 +1086,7 @@
                             <td>Template For Using GhostCMS as a headless CMS with NextJS</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghostcms-loader</td>
                             <td><a href="https://github.com/MatthiesenXYZ/ghostcms-loader" target="_blank" rel="noopener noreferrer">https://github.com/MatthiesenXYZ/ghostcms-loader</a></td>
                             <td>10</td>
@@ -860,7 +1094,7 @@
                             <td>This package provides a GhostCMS loader for astro. Allowing ease of use of all your GhostCMS content within astro's built in Content Layer!</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>wilburx9.com</td>
                             <td><a href="https://github.com/wilburx9/wilburx9.com" target="_blank" rel="noopener noreferrer">https://github.com/wilburx9/wilburx9.com</a></td>
                             <td>9</td>
@@ -868,7 +1102,7 @@
                             <td>Source code for my website, wilburx9.com</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>edwh-ghost</td>
                             <td><a href="https://github.com/educationwarehouse/edwh-ghost" target="_blank" rel="noopener noreferrer">https://github.com/educationwarehouse/edwh-ghost</a></td>
                             <td>9</td>
@@ -876,7 +1110,7 @@
                             <td>Python Client for Ghost CMS v3 - v6</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>trivet</td>
                             <td><a href="https://github.com/contraptionco/trivet" target="_blank" rel="noopener noreferrer">https://github.com/contraptionco/trivet</a></td>
                             <td>8</td>
@@ -884,7 +1118,7 @@
                             <td>Google sign-in for Ghost blogs</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>sredevopsorg-ghost-theme</td>
                             <td><a href="https://github.com/sredevopsorg/sredevopsorg-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/sredevopsorg/sredevopsorg-ghost-theme</a></td>
                             <td>8</td>
@@ -892,7 +1126,7 @@
                             <td>A Ghost v5 Theme made for SREDevOps.org based on Tailwind CSS with sidebar navigation and dark theme by default.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Ghost-Theme-Blumid</td>
                             <td><a href="https://github.com/code-gal/Ghost-Theme-Blumid" target="_blank" rel="noopener noreferrer">https://github.com/code-gal/Ghost-Theme-Blumid</a></td>
                             <td>7</td>
@@ -900,7 +1134,7 @@
                             <td>Ghost theme based on crystal-moire gradient design</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>nuxtjs-ghost</td>
                             <td><a href="https://github.com/ditschedev/nuxtjs-ghost" target="_blank" rel="noopener noreferrer">https://github.com/ditschedev/nuxtjs-ghost</a></td>
                             <td>7</td>
@@ -908,7 +1142,7 @@
                             <td>NuxtJS module to interact with the Ghost API</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>fastest</td>
                             <td><a href="https://github.com/frontendweb3/fastest" target="_blank" rel="noopener noreferrer">https://github.com/frontendweb3/fastest</a></td>
                             <td>6</td>
@@ -916,7 +1150,7 @@
                             <td>The fastest is a lightweight Ghost theme that lets you create a blog with Ghost CMS in under 5 minutes.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>MyWebSite</td>
                             <td><a href="https://github.com/hatamiarash7/MyWebSite" target="_blank" rel="noopener noreferrer">https://github.com/hatamiarash7/MyWebSite</a></td>
                             <td>6</td>
@@ -924,7 +1158,7 @@
                             <td>My Personal Website</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-boilerplate</td>
                             <td><a href="https://github.com/rpuls/ghost-boilerplate" target="_blank" rel="noopener noreferrer">https://github.com/rpuls/ghost-boilerplate</a></td>
                             <td>6</td>
@@ -932,7 +1166,7 @@
                             <td>Ghost publishing platform, tweaked for Railway</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-autoblogger-bot</td>
                             <td><a href="https://github.com/Decryptu/ghost-autoblogger-bot" target="_blank" rel="noopener noreferrer">https://github.com/Decryptu/ghost-autoblogger-bot</a></td>
                             <td>6</td>
@@ -940,7 +1174,7 @@
                             <td>An automated Ghost CMS content generator that transforms the latest English AI news articles into engaging French content. This bot fetches current AI news, translates and adapts it into French using OpenAI's language models, and pairs it with relevant imagery from Unsplash to create draft posts for your Ghost blog.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>vapour</td>
                             <td><a href="https://github.com/christopher-b/vapour" target="_blank" rel="noopener noreferrer">https://github.com/christopher-b/vapour</a></td>
                             <td>5</td>
@@ -948,7 +1182,7 @@
                             <td>Ghost CMS theme boilerplate with Vite + TailwindCSS</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>elmah-io-ghost-theme</td>
                             <td><a href="https://github.com/elmahio/elmah-io-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/elmahio/elmah-io-ghost-theme</a></td>
                             <td>4</td>
@@ -956,7 +1190,7 @@
                             <td>Ghost theme for the elmah.io blog</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>hawtofthepress</td>
                             <td><a href="https://github.com/zhawtof/hawtofthepress" target="_blank" rel="noopener noreferrer">https://github.com/zhawtof/hawtofthepress</a></td>
                             <td>4</td>
@@ -964,7 +1198,7 @@
                             <td>A minimalist Ghost theme for your personal blog</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Impact</td>
                             <td><a href="https://github.com/eduardochiaro/Impact" target="_blank" rel="noopener noreferrer">https://github.com/eduardochiaro/Impact</a></td>
                             <td>4</td>
@@ -972,7 +1206,7 @@
                             <td>Ghost blogging theme</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>mindsers-blog</td>
                             <td><a href="https://github.com/mindsersit/mindsers-blog" target="_blank" rel="noopener noreferrer">https://github.com/mindsersit/mindsers-blog</a></td>
                             <td>4</td>
@@ -980,7 +1214,7 @@
                             <td>Ghost theme for Mindsers Blog</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>dawn-advisory-theme</td>
                             <td><a href="https://github.com/AdvisorySG/dawn-advisory-theme" target="_blank" rel="noopener noreferrer">https://github.com/AdvisorySG/dawn-advisory-theme</a></td>
                             <td>4</td>
@@ -988,7 +1222,7 @@
                             <td>Dawn theme for Ghost, adapted for Advisory SG.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>netlify-translate-template</td>
                             <td><a href="https://github.com/cathysarisky/netlify-translate-template" target="_blank" rel="noopener noreferrer">https://github.com/cathysarisky/netlify-translate-template</a></td>
                             <td>4</td>
@@ -996,7 +1230,7 @@
                             <td>Ghost -> Netlify webhook -> DeepL -> translated posts in Ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>deploy-ghost-on-gcp</td>
                             <td><a href="https://github.com/mainawycliffe/deploy-ghost-on-gcp" target="_blank" rel="noopener noreferrer">https://github.com/mainawycliffe/deploy-ghost-on-gcp</a></td>
                             <td>4</td>
@@ -1004,7 +1238,7 @@
                             <td>Deploy a self-hosted Ghost CMS on GCP with serverless architecture. Scales to zero, costs ~$20-30/month for low traffic blogs.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-theme-pharos</td>
                             <td><a href="https://github.com/yuanliang/ghost-theme-pharos" target="_blank" rel="noopener noreferrer">https://github.com/yuanliang/ghost-theme-pharos</a></td>
                             <td>3</td>
@@ -1012,7 +1246,7 @@
                             <td>yuanliang.io's theme for ghost</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>felix-ghost-theme</td>
                             <td><a href="https://github.com/FelixOnline/felix-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/FelixOnline/felix-ghost-theme</a></td>
                             <td>3</td>
@@ -1020,7 +1254,7 @@
                             <td>Ghost theme for Felix, the Imperial College student newspaper</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>x-learn-ghost-theme</td>
                             <td><a href="https://github.com/xdev-asia-labs/x-learn-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/xdev-asia-labs/x-learn-ghost-theme</a></td>
                             <td>3</td>
@@ -1028,7 +1262,7 @@
                             <td>A modern Ghost theme for online courses and learning platforms with glass-morphism design, dark mode, and multi-language support</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>defalt</td>
                             <td><a href="https://github.com/ifrederico/defalt" target="_blank" rel="noopener noreferrer">https://github.com/ifrederico/defalt</a></td>
                             <td>3</td>
@@ -1036,7 +1270,7 @@
                             <td>Open source Ghost theme editor with live preview. Customize the Source theme and export ready-to-upload .zip files.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-theme-docker</td>
                             <td><a href="https://github.com/amritsarstartups/ghost-theme-docker" target="_blank" rel="noopener noreferrer">https://github.com/amritsarstartups/ghost-theme-docker</a></td>
                             <td>3</td>
@@ -1044,7 +1278,7 @@
                             <td>Ghost theme development with Docker</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>tidslinje</td>
                             <td><a href="https://github.com/klppl/tidslinje" target="_blank" rel="noopener noreferrer">https://github.com/klppl/tidslinje</a></td>
                             <td>3</td>
@@ -1052,7 +1286,7 @@
                             <td>A minimalist, dark-mode timeline theme for Ghost. Designed for chronological storytelling and personal logs with a focus on readability and clean aesthetics.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>blog</td>
                             <td><a href="https://github.com/codetiger/blog" target="_blank" rel="noopener noreferrer">https://github.com/codetiger/blog</a></td>
                             <td>3</td>
@@ -1060,7 +1294,7 @@
                             <td>My Blog site hosted on Github Pages</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-toc</td>
                             <td><a href="https://github.com/vlavrynovych/ghost-toc" target="_blank" rel="noopener noreferrer">https://github.com/vlavrynovych/ghost-toc</a></td>
                             <td>3</td>
@@ -1068,7 +1302,7 @@
                             <td>Lightweight Table of Contents generator for Ghost blog platform. Zero dependencies, collapsible functionality, works via code injection. Just add <toc> tag to your posts!</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>Solitude-Interface</td>
                             <td><a href="https://github.com/SolitudeRA/Solitude-Interface" target="_blank" rel="noopener noreferrer">https://github.com/SolitudeRA/Solitude-Interface</a></td>
                             <td>3</td>
@@ -1076,7 +1310,7 @@
                             <td>A modern, high-performance personal blog interface built with Astro + React + TailwindCSS, powered by Ghost CMS as headless backend. Features multi-language support (zh/ja/en), dark/light themes, and multiple post types.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghostty-monochrome</td>
                             <td><a href="https://github.com/asphyxiamywife/ghostty-monochrome" target="_blank" rel="noopener noreferrer">https://github.com/asphyxiamywife/ghostty-monochrome</a></td>
                             <td>3</td>
@@ -1085,11 +1319,11 @@
                         </tr>
                         
                         
-                        <tr>
+                        <tr class="category-row">
                             <td colspan="5"><strong>TOOLS & RESOURCES</strong></td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>dungeonchurch</td>
                             <td><a href="https://github.com/oakbrad/dungeonchurch" target="_blank" rel="noopener noreferrer">https://github.com/oakbrad/dungeonchurch</a></td>
                             <td>88</td>
@@ -1097,7 +1331,7 @@
                             <td>D&D group infrastructure.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ts-ghost</td>
                             <td><a href="https://github.com/PhilDL/ts-ghost" target="_blank" rel="noopener noreferrer">https://github.com/PhilDL/ts-ghost</a></td>
                             <td>57</td>
@@ -1105,7 +1339,7 @@
                             <td>A collection of TypeScript packages and tools to interact with a ghost blog. Type-safe 🦾 Ghost Content API client and CLI 🤖 tool to export posts in Markdown.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>auto-newsletter-listmonk</td>
                             <td><a href="https://github.com/chaddyc/auto-newsletter-listmonk" target="_blank" rel="noopener noreferrer">https://github.com/chaddyc/auto-newsletter-listmonk</a></td>
                             <td>26</td>
@@ -1113,7 +1347,7 @@
                             <td>Autonomous newsletter builder tool for Listmonk and Ghost Blog CMS. This GoLang App compiles a newsletter from an RSS feed and posts it to Listmonk via API  to create the new campaign.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-myrtle</td>
                             <td><a href="https://github.com/betschki/ghost-myrtle" target="_blank" rel="noopener noreferrer">https://github.com/betschki/ghost-myrtle</a></td>
                             <td>12</td>
@@ -1121,7 +1355,7 @@
                             <td>Ghost Myrtle is a NodeJS command-line interface (CLI) tool that aims to make it easier for Ghost theme developers to create content for their theme demo sites.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>suparank</td>
                             <td><a href="https://github.com/egebese/suparank" target="_blank" rel="noopener noreferrer">https://github.com/egebese/suparank</a></td>
                             <td>7</td>
@@ -1129,7 +1363,7 @@
                             <td>AI-powered SEO content creation toolkit for Claude Code. Research keywords, write optimized articles, publish to WordPress/Ghost.</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>ghost-theme-starter-kit</td>
                             <td><a href="https://github.com/frontendweb3/ghost-theme-starter-kit" target="_blank" rel="noopener noreferrer">https://github.com/frontendweb3/ghost-theme-starter-kit</a></td>
                             <td>4</td>
@@ -1138,11 +1372,11 @@
                         </tr>
                         
                         
-                        <tr>
+                        <tr class="category-row">
                             <td colspan="5"><strong>STARTER & DEVELOPMENT THEMES</strong></td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td>undefined-ghost-theme</td>
                             <td><a href="https://github.com/curiositry/undefined-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/curiositry/undefined-ghost-theme</a></td>
                             <td>81</td>
@@ -1162,6 +1396,7 @@
             <h2>TOOLS & RESOURCES</h2>
             <div class="table-wrapper">
                 <table>
+                    <caption>Documentation, validation, and build tools for Ghost theme development</caption>
                     <thead>
                         <tr>
                             <th>Tool / Resource</th>
@@ -1171,31 +1406,31 @@
                     </thead>
                     <tbody>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td><strong>Ghost Theme Docs</strong></td>
                             <td><a href="https://docs.ghost.org/themes" target="_blank" rel="noopener noreferrer">https://docs.ghost.org/themes</a></td>
                             <td>Official documentation for Handlebars themes, theme structure, custom settings, and validation workflow</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td><strong>GScan (Theme Validation)</strong></td>
                             <td><a href="https://github.com/TryGhost/gscan" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/gscan</a></td>
                             <td>Validates themes for errors/deprecations; used by Ghost during theme upload</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td><strong>Deploy Ghost Themes (GitHub Actions)</strong></td>
                             <td><a href="https://github.com/TryGhost/action-deploy-theme" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/action-deploy-theme</a></td>
                             <td>GitHub Action to automate theme deployment</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td><strong>Ghost Theme Locales</strong></td>
                             <td><a href="https://github.com/priority-vision/ghost-theme-locales" target="_blank" rel="noopener noreferrer">https://github.com/priority-vision/ghost-theme-locales</a></td>
                             <td>CLI helper for creating localization (locale) files</td>
                         </tr>
                         
-                        <tr>
+                        <tr class="item-row">
                             <td><strong>Awesome Ghost</strong></td>
                             <td><a href="https://github.com/awesomelistsio/awesome-ghost" target="_blank" rel="noopener noreferrer">https://github.com/awesomelistsio/awesome-ghost</a></td>
                             <td>Curated list of Ghost resources and community projects</td>
@@ -1312,7 +1547,7 @@
     <footer>
         <div class="footer-content">
             <p>Maintained by <a href="https://github.com/runawaydevil" target="_blank" rel="noopener noreferrer">RunawayDevil</a></p>
-            <p>Last updated: March 30, 2026 at 07:21 UTC</p>
+            <p>Last updated: April 5, 2026 at 09:17 UTC</p>
             <p>Next update: <span id="next-update">Calculating...</span></p>
             <p>For broken links or requests to add your resources, please send an email to <a href="mailto:runawaydevil@pm.me">runawaydevil@pm.me</a></p>
             <p>This project is free and open source. Licensed under <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a> - feel free to use, copy, and modify.</p>

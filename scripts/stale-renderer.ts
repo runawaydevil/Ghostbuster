@@ -2,6 +2,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { StaleItem } from './types.js';
 import { TemplateRenderer, CategoryGroup } from './render.js';
+import { loadEmbeddedSiteCss } from './site-styles.js';
 
 export interface StaleRenderOptions {
   title?: string;
@@ -58,6 +59,7 @@ interface StaleTemplateData {
   contactEmail: string;
   licenseName: string;
   licenseUrl: string;
+  embeddedStyles: string;
 }
 
 export class StaleDirectoryRenderer {
@@ -242,7 +244,8 @@ export class StaleDirectoryRenderer {
       maintainerUrl: options.maintainerUrl || 'https://github.com/runawaydevil',
       contactEmail: options.contactEmail || 'runawaydevil@pm.me',
       licenseName: 'MIT License',
-      licenseUrl: 'LICENSE'
+      licenseUrl: 'LICENSE',
+      embeddedStyles: loadEmbeddedSiteCss(),
     };
 
     // Render template

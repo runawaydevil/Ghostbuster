@@ -1,6 +1,7 @@
 
 import { readFileSync, writeFileSync } from 'fs';
 import { GhostItem } from './types.js';
+import { loadEmbeddedSiteCss } from './site-styles.js';
 
 export interface RenderContext {
   items: GhostItem[];
@@ -51,6 +52,7 @@ export interface TemplateData {
   contactEmail: string;
   licenseName: string;
   licenseUrl: string;
+  embeddedStyles: string;
 }
 
 export class TemplateRenderer {
@@ -449,7 +451,7 @@ export class GhostDirectoryRenderer {
 
     const templateData: TemplateData = {
       title: options.title || 'Ghostbuster - Ghost CMS Themes & Tools Directory',
-      subtitle: options.subtitle || 'Ghost CMS Themes & Tools Directory (2022–2026)',
+      subtitle: options.subtitle || 'Ghost CMS Themes & Tools Directory (2025–2026)',
       logoUrl: options.logoUrl || 'https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png',
       logoAlt: 'Ghostbuster logo',
       githubUrl: options.githubUrl || 'https://github.com/runawaydevil/Ghostbuster',
@@ -465,7 +467,8 @@ export class GhostDirectoryRenderer {
       maintainerUrl: options.maintainerUrl || 'https://github.com/runawaydevil',
       contactEmail: options.contactEmail || 'runawaydevil@pm.me',
       licenseName: 'MIT License',
-      licenseUrl: 'LICENSE'
+      licenseUrl: 'LICENSE',
+      embeddedStyles: loadEmbeddedSiteCss(),
     };
 
     return this.renderer.render(template, templateData);
