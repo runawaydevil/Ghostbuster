@@ -466,7 +466,7 @@ export class GhostDirectoryRenderer {
       maintainerName: options.maintainerName || 'RunawayDevil',
       maintainerUrl: options.maintainerUrl || 'https://github.com/runawaydevil',
       contactEmail: options.contactEmail || 'runawaydevil@pm.me',
-      licenseName: 'MIT License',
+      licenseName: 'I Literally Don\'t Care License (ILDCL)',
       licenseUrl: 'LICENSE',
       embeddedStyles: loadEmbeddedSiteCss(),
     };

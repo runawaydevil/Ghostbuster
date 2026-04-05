@@ -136,11 +136,11 @@ header {
   padding: var(--space-4) var(--space-3);
   background: var(--surface-header);
   border-bottom: 1px solid var(--border-subtle);
-  box-shadow: inset 4px 0 0 var(--accent), var(--shadow-card);
+  box-shadow: var(--shadow-card);
 }
 
 .page-stale header {
-  box-shadow: inset 4px 0 0 var(--accent-warning), var(--shadow-card);
+  box-shadow: var(--shadow-card);
   border-bottom-color: var(--surface-warning-border);
 }
 
