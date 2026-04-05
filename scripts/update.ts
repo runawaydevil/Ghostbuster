@@ -418,7 +418,7 @@ export class UpdateOrchestrator {
             mergeResult.items,
             {
               title: 'Ghostbuster - Ghost CMS Themes & Tools Directory',
-              subtitle: 'Ghost CMS Themes & Tools Directory (2025–2026)',
+              subtitle: '2025–2026',
               updateMessage,
               lastUpdate: workflowUpdateDate
             }

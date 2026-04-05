@@ -451,7 +451,7 @@ export class GhostDirectoryRenderer {
 
     const templateData: TemplateData = {
       title: options.title || 'Ghostbuster - Ghost CMS Themes & Tools Directory',
-      subtitle: options.subtitle || 'Ghost CMS Themes & Tools Directory (2025–2026)',
+      subtitle: options.subtitle || '2025–2026',
       logoUrl: options.logoUrl || 'https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png',
       logoAlt: 'Ghostbuster logo',
       githubUrl: options.githubUrl || 'https://github.com/runawaydevil/Ghostbuster',
