@@ -453,7 +453,7 @@ export class GhostDirectoryRenderer {
       logoUrl: options.logoUrl || 'https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png',
       logoAlt: 'Ghostbuster logo',
       githubUrl: options.githubUrl || 'https://github.com/runawaydevil/Ghostbuster',
-      introText: 'This document is a curated directory of Ghost CMS theme repositories and essential tools/resources for theme development, validation, localization, and deployment. Organized to facilitate browsing by origin and category, identify popular themes, and discover tooling for building and maintaining Ghost themes.',
+      introText: 'This document lists Ghost CMS theme repositories and essential tools for theme development, validation, localization, and deployment. It is built automatically from public GitHub data and organized by origin and category so you can browse popular themes and find tooling for building and maintaining Ghost themes. Optional overrides apply where configured.',
       updateMessage: options.updateMessage,
       lastUpdate,
       categories,
