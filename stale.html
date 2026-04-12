@@ -1,0 +1,3350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghostbuster - Not Updated Recently</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏰</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>/* Ghostbuster — Spectral catalogue (shared index + stale) */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-card: 0 1px 3px rgba(15, 17, 20, 0.06), 0 8px 24px rgba(15, 17, 20, 0.04);
+
+  --surface-base: #f4f1eb;
+  --surface-raised: #faf8f4;
+  --surface-header: #f0ece4;
+  --surface-footer: #ebe6dd;
+  --surface-card: #faf8f4;
+  --surface-table-head: #e8e4db;
+  --surface-table-alt: rgba(14, 107, 89, 0.06);
+  --surface-category: linear-gradient(90deg, rgba(14, 107, 89, 0.12) 0%, rgba(14, 107, 89, 0.04) 100%);
+
+  --ink: #14161a;
+  --ink-muted: #4a4f58;
+  --ink-faint: #6b7280;
+
+  --accent: #0e6b59;
+  --accent-hover: #0a5546;
+  --accent-muted: rgba(14, 107, 89, 0.15);
+  --focus-ring: #0e6b59;
+
+  --border-subtle: #d4cfc4;
+  --border-strong: #b8b2a6;
+
+  --btn-github-bg: #1c2128;
+  --btn-github-hover: #2d333b;
+  --btn-stale-bg: #c2410c;
+  --btn-stale-hover: #9a3412;
+
+  --accent-warning: #b45309;
+  --surface-warning: #fff7ed;
+  --surface-warning-border: #fdba74;
+  --ink-warning: #7c2d12;
+  --surface-stats: #fffbeb;
+  --border-stats: #fbbf24;
+  --stale-highlight: #c2410c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-base: #0f1114;
+    --surface-raised: #171a1f;
+    --surface-header: #12151a;
+    --surface-footer: #0c0e11;
+    --surface-card: #171a1f;
+    --surface-table-head: #1e2329;
+    --surface-table-alt: rgba(45, 212, 191, 0.06);
+    --surface-category: linear-gradient(90deg, rgba(45, 212, 191, 0.14) 0%, rgba(45, 212, 191, 0.04) 100%);
+
+    --ink: #e8eaed;
+    --ink-muted: #b0b6c0;
+    --ink-faint: #8b929e;
+
+    --accent: #5eead4;
+    --accent-hover: #99f6e4;
+    --accent-muted: rgba(94, 234, 212, 0.12);
+    --focus-ring: #5eead4;
+
+    --border-subtle: #2a3038;
+    --border-strong: #3d4550;
+
+    --btn-github-bg: #2d333b;
+    --btn-github-hover: #3d4450;
+    --btn-stale-bg: #ea580c;
+    --btn-stale-hover: #f97316;
+
+    --surface-warning: #1c1410;
+    --surface-warning-border: #9a3412;
+    --ink-warning: #fdba74;
+    --surface-stats: #1a1510;
+    --border-stats: #b45309;
+    --stale-highlight: #fb923c;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background-color: var(--surface-base);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-3);
+  z-index: 1000;
+  padding: var(--space-2) var(--space-3);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+header {
+  position: relative;
+  text-align: center;
+  padding: var(--space-4) var(--space-3);
+  background: var(--surface-header);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
+}
+
+.page-stale header {
+  box-shadow: var(--shadow-card);
+  border-bottom-color: var(--surface-warning-border);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  max-width: 168px;
+  height: auto;
+  margin-bottom: var(--space-2);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--border-subtle);
+  color: var(--ink);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 600;
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-3);
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: 0.98rem;
+  color: var(--ink-muted);
+  font-weight: 400;
+  margin-bottom: var(--space-3);
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-group {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+
+.github-button,
+.stale-button,
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.65rem 1.25rem;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: background-color 0.18s ease, transform 0.12s ease, color 0.18s ease;
+}
+
+.github-button {
+  background-color: var(--btn-github-bg);
+  color: #fff;
+}
+
+.github-button:hover {
+  background-color: var(--btn-github-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.stale-button {
+  background-color: var(--btn-stale-bg);
+  color: #fff;
+}
+
+.stale-button:hover {
+  background-color: var(--btn-stale-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.back-button {
+  background-color: var(--btn-stale-bg);
+  color: #fff;
+}
+
+.back-button:hover {
+  background-color: var(--btn-stale-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.github-button:active,
+.stale-button:active,
+.back-button:active {
+  transform: translateY(0);
+}
+
+.github-button svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-3);
+}
+
+main > section > h2:first-child {
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: var(--space-3);
+}
+
+strong {
+  font-weight: 600;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: var(--space-5) 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.intro {
+  background: var(--surface-card);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin: var(--space-5) 0;
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow-card);
+}
+
+.intro h2 {
+  margin-top: 0;
+}
+
+.intro > p {
+  max-width: 65ch;
+}
+
+.updates-section {
+  background: var(--surface-card);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin: var(--space-5) 0;
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow-card);
+}
+
+.updates-section h2 {
+  margin-top: 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.updates-section .update-item {
+  margin-top: var(--space-3);
+}
+
+.updates-section .update-date {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+}
+
+.updates-section .update-message {
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.warning-section {
+  background: var(--surface-warning);
+  border: 1px solid var(--surface-warning-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin: var(--space-5) 0;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-card);
+}
+
+.warning-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.warning-content h2 {
+  color: var(--ink-warning);
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  border-bottom: none;
+  font-size: 1.35rem;
+}
+
+.warning-content p {
+  color: var(--ink-warning);
+  margin-bottom: var(--space-2);
+  line-height: 1.65;
+}
+
+.warning-content p:last-child {
+  margin-bottom: 0;
+}
+
+.statistics-section {
+  background: var(--surface-stats);
+  border: 1px solid var(--border-stats);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin: var(--space-5) 0;
+  box-shadow: var(--shadow-card);
+}
+
+.statistics-section h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  border-bottom: 2px solid var(--border-stats);
+  padding-bottom: var(--space-2);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--stale-highlight);
+  display: block;
+  margin-bottom: var(--space-1);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin: var(--space-5) 0;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.9375rem;
+  min-width: 600px;
+}
+
+caption {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: left;
+  padding: var(--space-3);
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  caption-side: top;
+}
+
+th {
+  font-family: var(--font-display);
+  background: var(--surface-table-head);
+  padding: 0.8rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-strong);
+  color: var(--ink);
+}
+
+td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+
+tbody tr.item-row:nth-child(even of tr.item-row) {
+  background-color: var(--surface-table-alt);
+}
+
+tbody tr.item-row:hover {
+  background-color: var(--accent-muted);
+}
+
+tr.category-row td {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--surface-category);
+  border-left: 4px solid var(--accent);
+  border-bottom: 1px solid var(--border-strong);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+
+.page-stale tr.category-row td {
+  border-left-color: var(--accent-warning);
+}
+
+ul,
+ol {
+  margin: var(--space-3) 0;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: var(--space-2);
+}
+
+.last-update-cell {
+  color: var(--stale-highlight);
+  font-weight: 600;
+}
+
+.months-stale {
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+footer {
+  background: var(--surface-footer);
+  padding: var(--space-5) var(--space-3);
+  text-align: center;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--space-6);
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin: var(--space-2) 0;
+}
+
+.footer-content a {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: var(--space-4) var(--space-2);
+  }
+
+  header {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .logo {
+    max-width: 140px;
+  }
+
+  table {
+    font-size: 0.875rem;
+  }
+
+  th,
+  td {
+    padding: var(--space-2);
+  }
+
+  .warning-section {
+    flex-direction: column;
+    padding: var(--space-3);
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .github-button,
+  .stale-button,
+  .back-button {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .github-button,
+  .stale-button,
+  .back-button {
+    font-size: 0.875rem;
+    padding: 0.55rem 1rem;
+  }
+
+  .updates-section,
+  .warning-section,
+  .statistics-section {
+    padding: var(--space-3);
+  }
+}
+</style>
+</head>
+<body class="page-stale">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+        <div class="header-content">
+            <img src="https://shot.1208.pro/uploads/a2PdvxHdlh874E85270Imhqsww1Q2KPn6vgk7V3x.png" alt="Ghostbuster logo" class="logo">
+            <h1>Ghostbuster - Not Updated Recently</h1>
+            <p class="subtitle">Ghost CMS Themes & Tools Not Updated Recently</p>
+            <div class="button-group">
+                <a href="index.html" class="back-button">
+                    ← Back to Active Items
+                </a>
+                <a href="https://github.com/runawaydevil/Ghostbuster" target="_blank" rel="noopener noreferrer" class="github-button">
+                    <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Star on GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="warning-section">
+            <div class="warning-icon">⚠️</div>
+            <div class="warning-content">
+                <h2>Not Updated Recently</h2>
+                <p><strong>These items have not been updated in over 12 months. They may still work but are not actively maintained.</strong></p>
+                <p>These themes and resources have not received updates in over 12 months. While they may still function correctly, they are not actively maintained and may not be compatible with the latest version of Ghost CMS.</p>
+                <p>Consider checking the repository for recent activity or looking for actively maintained alternatives in the <a href="index.html">main directory</a>.</p>
+            </div>
+        </section>
+
+        
+        <section class="statistics-section">
+            <h2>Stale Items Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value">186</span>
+                    <span class="stat-label">Total Stale Items</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">67.9%</span>
+                    <span class="stat-label">Of All Items</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">56.2</span>
+                    <span class="stat-label">Avg. Months Stale</span>
+                </div>
+            </div>
+        </section>
+        
+
+        <hr>
+
+        <section>
+            <h2>STALE THEMES (CONSOLIDATED TABLE)</h2>
+            <div class="table-wrapper">
+                <table>
+                    <caption>Stale themes by category (last push beyond threshold)</caption>
+                    <thead>
+                        <tr>
+                            <th>Theme Name</th>
+                            <th>Repository URL</th>
+                            <th>Stars</th>
+                            <th>Category</th>
+                            <th>Last Updated</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr class="category-row">
+                            <td colspan="6"><strong>OFFICIAL / TRYGHOST THEMES</strong></td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Zap</td>
+                            <td><a href="https://github.com/TryGhost/Zap" target="_blank" rel="noopener noreferrer">https://github.com/TryGhost/Zap</a></td>
+                            <td>17</td>
+                            <td>Official</td>
+                            <td class="last-update-cell">
+                                June 7, 2024
+                                
+                                <br><span class="months-stale">(21 months ago)</span>
+                                
+                            </td>
+                            <td>An ultra-minimal Ghost theme</td>
+                        </tr>
+                        
+                        
+                        <tr class="category-row">
+                            <td colspan="6"><strong>HIGHLY POPULAR COMMUNITY THEMES</strong></td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>awesome-actions</td>
+                            <td><a href="https://github.com/sdras/awesome-actions" target="_blank" rel="noopener noreferrer">https://github.com/sdras/awesome-actions</a></td>
+                            <td>27370</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 1, 2024
+                                
+                                <br><span class="months-stale">(16 months ago)</span>
+                                
+                            </td>
+                            <td>A curated list of awesome actions to use on GitHub</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>awesome-css</td>
+                            <td><a href="https://github.com/awesome-css-group/awesome-css" target="_blank" rel="noopener noreferrer">https://github.com/awesome-css-group/awesome-css</a></td>
+                            <td>5490</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 30, 2024
+                                
+                                <br><span class="months-stale">(15 months ago)</span>
+                                
+                            </td>
+                            <td>:art: A curated contents of amazing CSS :)</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>awesome-Face_Recognition</td>
+                            <td><a href="https://github.com/ChanChiChoi/awesome-Face_Recognition" target="_blank" rel="noopener noreferrer">https://github.com/ChanChiChoi/awesome-Face_Recognition</a></td>
+                            <td>4726</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 9, 2023
+                                
+                                <br><span class="months-stale">(35 months ago)</span>
+                                
+                            </td>
+                            <td>papers about Face Detection; Face Alignment; Face Recognition && Face Identification && Face Verification && Face Representation; Face Reconstruction; Face Tracking; Face Super-Resolution && Face Deblurring; Face Generation && Face Synthesis; Face Transfer; Face Anti-Spoofing; Face Retrieval;</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>awesome-resources</td>
+                            <td><a href="https://github.com/lyfeyaj/awesome-resources" target="_blank" rel="noopener noreferrer">https://github.com/lyfeyaj/awesome-resources</a></td>
+                            <td>1730</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 17, 2022
+                                
+                                <br><span class="months-stale">(37 months ago)</span>
+                                
+                            </td>
+                            <td>Awesome resources for coding and learning: open source projects, websites, books e.g.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>liebling</td>
+                            <td><a href="https://github.com/eddiesigner/liebling" target="_blank" rel="noopener noreferrer">https://github.com/eddiesigner/liebling</a></td>
+                            <td>1320</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 27, 2024
+                                
+                                <br><span class="months-stale">(18 months ago)</span>
+                                
+                            </td>
+                            <td>Beautiful and clean Ghost theme that is easy and comfortable to use. To get the latest version please head over the releases page 👉🏼</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>awesome-appwrite</td>
+                            <td><a href="https://github.com/appwrite/awesome-appwrite" target="_blank" rel="noopener noreferrer">https://github.com/appwrite/awesome-appwrite</a></td>
+                            <td>1066</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 15, 2024
+                                
+                                <br><span class="months-stale">(15 months ago)</span>
+                                
+                            </td>
+                            <td>Carefully curated list of awesome Appwrite resources 💪</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>awesome-gatsby</td>
+                            <td><a href="https://github.com/prayash/awesome-gatsby" target="_blank" rel="noopener noreferrer">https://github.com/prayash/awesome-gatsby</a></td>
+                            <td>1008</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 15, 2023
+                                
+                                <br><span class="months-stale">(35 months ago)</span>
+                                
+                            </td>
+                            <td>⚛️ 📄 🚀 Awesome list for the mighty Gatsby.js, a blazing fast React static site generator.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-on-heroku</td>
+                            <td><a href="https://github.com/cobyism/ghost-on-heroku" target="_blank" rel="noopener noreferrer">https://github.com/cobyism/ghost-on-heroku</a></td>
+                            <td>737</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 2, 2022
+                                
+                                <br><span class="months-stale">(39 months ago)</span>
+                                
+                            </td>
+                            <td>One-button Heroku deploy for the Ghost blogging platform.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>simply</td>
+                            <td><a href="https://github.com/godofredoninja/simply" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/simply</a></td>
+                            <td>706</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 29, 2025
+                                
+                                <br><span class="months-stale">(14 months ago)</span>
+                                
+                            </td>
+                            <td>Theme for Ghost inspired on Medium</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Mapache</td>
+                            <td><a href="https://github.com/godofredoninja/Mapache" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/Mapache</a></td>
+                            <td>641</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 27, 2022
+                                
+                                <br><span class="months-stale">(39 months ago)</span>
+                                
+                            </td>
+                            <td>You can use the theme Mapache for ghost in: Blog - Magazine - Landing page - Personal page -  Photographers. and in many other things; Excellent community theme with great documentation and support</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>crisp</td>
+                            <td><a href="https://github.com/kathyqian/crisp" target="_blank" rel="noopener noreferrer">https://github.com/kathyqian/crisp</a></td>
+                            <td>626</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 15, 2022
+                                
+                                <br><span class="months-stale">(50 months ago)</span>
+                                
+                            </td>
+                            <td>A minimalist, responsive, and open-source two-column theme for the Ghost publishing platform</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>categorized-raycast-extensions</td>
+                            <td><a href="https://github.com/marekbrze/categorized-raycast-extensions" target="_blank" rel="noopener noreferrer">https://github.com/marekbrze/categorized-raycast-extensions</a></td>
+                            <td>595</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 27, 2024
+                                
+                                <br><span class="months-stale">(16 months ago)</span>
+                                
+                            </td>
+                            <td>Easily find Raycast Extensions!🚀</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>categorized-obsidian-plugins</td>
+                            <td><a href="https://github.com/marekbrze/categorized-obsidian-plugins" target="_blank" rel="noopener noreferrer">https://github.com/marekbrze/categorized-obsidian-plugins</a></td>
+                            <td>525</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 20, 2024
+                                
+                                <br><span class="months-stale">(20 months ago)</span>
+                                
+                            </td>
+                            <td>Easily find Obsidian plugins!🚀</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>awesome-selfhosted-cn</td>
+                            <td><a href="https://github.com/haiiiiiyun/awesome-selfhosted-cn" target="_blank" rel="noopener noreferrer">https://github.com/haiiiiiyun/awesome-selfhosted-cn</a></td>
+                            <td>524</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 31, 2021
+                                
+                                <br><span class="months-stale">(56 months ago)</span>
+                                
+                            </td>
+                            <td>可以在本地搭建的网络服务和 Web 应用列表。</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>vno</td>
+                            <td><a href="https://github.com/onevcat/vno" target="_blank" rel="noopener noreferrer">https://github.com/onevcat/vno</a></td>
+                            <td>515</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 22, 2018
+                                
+                                <br><span class="months-stale">(93 months ago)</span>
+                                
+                            </td>
+                            <td>Vno, just another ghost theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-on-github-pages</td>
+                            <td><a href="https://github.com/paladini/ghost-on-github-pages" target="_blank" rel="noopener noreferrer">https://github.com/paladini/ghost-on-github-pages</a></td>
+                            <td>493</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 12, 2024
+                                
+                                <br><span class="months-stale">(20 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost on Github Pages. Build and deploy Ghost for free in a few minutes.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>awesome-nodejs-cn</td>
+                            <td><a href="https://github.com/jobbole/awesome-nodejs-cn" target="_blank" rel="noopener noreferrer">https://github.com/jobbole/awesome-nodejs-cn</a></td>
+                            <td>450</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 26, 2020
+                                
+                                <br><span class="months-stale">(61 months ago)</span>
+                                
+                            </td>
+                            <td>Node.js 资源大全中文版，内容包括：命令行工具、日志、调试、HTTP、构建工具、文件系统、模板、Web 框架、流程控制、文本、图片和数据校验等。由「开源前哨」和「前端大全」微信公号团队维护更新。</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-phantom</td>
+                            <td><a href="https://github.com/nitinthewiz/ghost-phantom" target="_blank" rel="noopener noreferrer">https://github.com/nitinthewiz/ghost-phantom</a></td>
+                            <td>433</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 11, 2020
+                                
+                                <br><span class="months-stale">(73 months ago)</span>
+                                
+                            </td>
+                            <td>Phantom theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>awesome-nodejs-cn</td>
+                            <td><a href="https://github.com/gamedilong/awesome-nodejs-cn" target="_blank" rel="noopener noreferrer">https://github.com/gamedilong/awesome-nodejs-cn</a></td>
+                            <td>366</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 20, 2020
+                                
+                                <br><span class="months-stale">(72 months ago)</span>
+                                
+                            </td>
+                            <td>nodejs优秀资源集</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-caffeine-theme</td>
+                            <td><a href="https://github.com/kelyvin/ghost-caffeine-theme" target="_blank" rel="noopener noreferrer">https://github.com/kelyvin/ghost-caffeine-theme</a></td>
+                            <td>333</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 16, 2023
+                                
+                                <br><span class="months-stale">(35 months ago)</span>
+                                
+                            </td>
+                            <td>A minimalist, Material Design inspired Ghost Theme for optimal desktop and mobile experiences</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>F2E-Tutorial-Collect</td>
+                            <td><a href="https://github.com/OXOYO/F2E-Tutorial-Collect" target="_blank" rel="noopener noreferrer">https://github.com/OXOYO/F2E-Tutorial-Collect</a></td>
+                            <td>314</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 17, 2023
+                                
+                                <br><span class="months-stale">(33 months ago)</span>
+                                
+                            </td>
+                            <td>web全栈书签收藏整理。</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-theme-kaldorei</td>
+                            <td><a href="https://github.com/xiaoluoboding/ghost-theme-kaldorei" target="_blank" rel="noopener noreferrer">https://github.com/xiaoluoboding/ghost-theme-kaldorei</a></td>
+                            <td>293</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 26, 2023
+                                
+                                <br><span class="months-stale">(29 months ago)</span>
+                                
+                            </td>
+                            <td>🎨 A Simple And Elegant Ghost Theme Derive From Default Theme Casper</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>made-in-taiwan</td>
+                            <td><a href="https://github.com/hueitan/made-in-taiwan" target="_blank" rel="noopener noreferrer">https://github.com/hueitan/made-in-taiwan</a></td>
+                            <td>292</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 9, 2021
+                                
+                                <br><span class="months-stale">(49 months ago)</span>
+                                
+                            </td>
+                            <td>[NEED SUPPORT] 🇹🇼 (Taiwan #1) A list of neat projects made in Taiwan (MIT)</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Fizzy-Theme</td>
+                            <td><a href="https://github.com/huangyuzhang/Fizzy-Theme" target="_blank" rel="noopener noreferrer">https://github.com/huangyuzhang/Fizzy-Theme</a></td>
+                            <td>288</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 20, 2023
+                                
+                                <br><span class="months-stale">(33 months ago)</span>
+                                
+                            </td>
+                            <td>🥤A tasty blogging theme for Ghost.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>DPlatform-Shell</td>
+                            <td><a href="https://github.com/DFabric/DPlatform-Shell" target="_blank" rel="noopener noreferrer">https://github.com/DFabric/DPlatform-Shell</a></td>
+                            <td>275</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 19, 2018
+                                
+                                <br><span class="months-stale">(93 months ago)</span>
+                                
+                            </td>
+                            <td>Deploy self-hosted apps easily: simple, bloat-free, independent installation</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Awesome-Pentest</td>
+                            <td><a href="https://github.com/Muhammd/Awesome-Pentest" target="_blank" rel="noopener noreferrer">https://github.com/Muhammd/Awesome-Pentest</a></td>
+                            <td>252</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 19, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>Awesome Penetration Testing   A collection of awesome penetration testing resources</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>awesome-nodejs-cn</td>
+                            <td><a href="https://github.com/Pines-Cheng/awesome-nodejs-cn" target="_blank" rel="noopener noreferrer">https://github.com/Pines-Cheng/awesome-nodejs-cn</a></td>
+                            <td>236</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 12, 2018
+                                
+                                <br><span class="months-stale">(96 months ago)</span>
+                                
+                            </td>
+                            <td>Nodejs 资源大全中文版，正在翻译中。。。</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>GitHub-Chinese-Top-Charts</td>
+                            <td><a href="https://github.com/pinkie-ljz/GitHub-Chinese-Top-Charts" target="_blank" rel="noopener noreferrer">https://github.com/pinkie-ljz/GitHub-Chinese-Top-Charts</a></td>
+                            <td>170</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 13, 2020
+                                
+                                <br><span class="months-stale">(62 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>TreehouseShow</td>
+                            <td><a href="https://github.com/MHM5000/TreehouseShow" target="_blank" rel="noopener noreferrer">https://github.com/MHM5000/TreehouseShow</a></td>
+                            <td>167</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 6, 2020
+                                
+                                <br><span class="months-stale">(64 months ago)</span>
+                                
+                            </td>
+                            <td>TeamTreeHouse's Weekly show notes</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>PHP-Webshells-Collection</td>
+                            <td><a href="https://github.com/x-o-r-r-o/PHP-Webshells-Collection" target="_blank" rel="noopener noreferrer">https://github.com/x-o-r-r-o/PHP-Webshells-Collection</a></td>
+                            <td>164</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 19, 2020
+                                
+                                <br><span class="months-stale">(68 months ago)</span>
+                                
+                            </td>
+                            <td>Most Wanted Private and Public PHP Web Shells Can Be Downloaded Here. (Educational Purpose Only)</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-theme-Moegi</td>
+                            <td><a href="https://github.com/moegi-design/ghost-theme-Moegi" target="_blank" rel="noopener noreferrer">https://github.com/moegi-design/ghost-theme-Moegi</a></td>
+                            <td>161</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 16, 2023
+                                
+                                <br><span class="months-stale">(29 months ago)</span>
+                                
+                            </td>
+                            <td>An elegant & fresh ghost theme.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Prometheus</td>
+                            <td><a href="https://github.com/halfrost/Prometheus" target="_blank" rel="noopener noreferrer">https://github.com/halfrost/Prometheus</a></td>
+                            <td>128</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 19, 2024
+                                
+                                <br><span class="months-stale">(22 months ago)</span>
+                                
+                            </td>
+                            <td>🌈 A Clean And Modern Ghost Theme with Progressive Web Apps (PWA)</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Portfolio-Free-Ghost-Theme</td>
+                            <td><a href="https://github.com/GavickPro/Portfolio-Free-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/GavickPro/Portfolio-Free-Ghost-Theme</a></td>
+                            <td>127</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 17, 2017
+                                
+                                <br><span class="months-stale">(100 months ago)</span>
+                                
+                            </td>
+                            <td>Simple portfolio theme for Ghost </td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>CoderGhostTheme</td>
+                            <td><a href="https://github.com/mbejda/CoderGhostTheme" target="_blank" rel="noopener noreferrer">https://github.com/mbejda/CoderGhostTheme</a></td>
+                            <td>127</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 15, 2018
+                                
+                                <br><span class="months-stale">(96 months ago)</span>
+                                
+                            </td>
+                            <td>Coder Ghost Theme for Showcasing Projects</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>docker-compose-ghost-quickstart</td>
+                            <td><a href="https://github.com/robincher/docker-compose-ghost-quickstart" target="_blank" rel="noopener noreferrer">https://github.com/robincher/docker-compose-ghost-quickstart</a></td>
+                            <td>103</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 21, 2024
+                                
+                                <br><span class="months-stale">(25 months ago)</span>
+                                
+                            </td>
+                            <td>:ghost: Ghost blogging platform quick start with docker compose</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-matery2</td>
+                            <td><a href="https://github.com/blinkfox/ghost-matery2" target="_blank" rel="noopener noreferrer">https://github.com/blinkfox/ghost-matery2</a></td>
+                            <td>88</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 17, 2018
+                                
+                                <br><span class="months-stale">(95 months ago)</span>
+                                
+                            </td>
+                            <td>这是又一个采用Material Design和响应式设计的漂亮、简洁且基于Ghost博客的新主题</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>skywalker</td>
+                            <td><a href="https://github.com/flute/skywalker" target="_blank" rel="noopener noreferrer">https://github.com/flute/skywalker</a></td>
+                            <td>83</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 2, 2018
+                                
+                                <br><span class="months-stale">(88 months ago)</span>
+                                
+                            </td>
+                            <td>A material design theme for ghost blog 🙈🌈🍇</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghosler</td>
+                            <td><a href="https://github.com/ItzNotABug/ghosler" target="_blank" rel="noopener noreferrer">https://github.com/ItzNotABug/ghosler</a></td>
+                            <td>82</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 15, 2024
+                                
+                                <br><span class="months-stale">(18 months ago)</span>
+                                
+                            </td>
+                            <td>Send newsletter emails to your Ghost CMS subscribers & members, using your own email credentials!</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>oscar-ghost</td>
+                            <td><a href="https://github.com/oscarmorrison/oscar-ghost" target="_blank" rel="noopener noreferrer">https://github.com/oscarmorrison/oscar-ghost</a></td>
+                            <td>73</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 3, 2020
+                                
+                                <br><span class="months-stale">(70 months ago)</span>
+                                
+                            </td>
+                            <td>👻Simplistic, Clean, Content Focus Single Author Ghost Theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>glee</td>
+                            <td><a href="https://github.com/HexmosTech/glee" target="_blank" rel="noopener noreferrer">https://github.com/HexmosTech/glee</a></td>
+                            <td>71</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 8, 2024
+                                
+                                <br><span class="months-stale">(15 months ago)</span>
+                                
+                            </td>
+                            <td>Dev-friendly Blogging Setup</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Perfetta-Free-Ghost-Theme</td>
+                            <td><a href="https://github.com/GavickPro/Perfetta-Free-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/GavickPro/Perfetta-Free-Ghost-Theme</a></td>
+                            <td>70</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 14, 2015
+                                
+                                <br><span class="months-stale">(127 months ago)</span>
+                                
+                            </td>
+                            <td>Simple restaurant blog theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>mention-ghost-theme</td>
+                            <td><a href="https://github.com/vanila-io/mention-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/vanila-io/mention-ghost-theme</a></td>
+                            <td>66</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 16, 2020
+                                
+                                <br><span class="months-stale">(71 months ago)</span>
+                                
+                            </td>
+                            <td>Mention theme for Ghost blogging platform, built by https://vanila.io</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghosttheme-stockholm</td>
+                            <td><a href="https://github.com/toddbirchard/ghosttheme-stockholm" target="_blank" rel="noopener noreferrer">https://github.com/toddbirchard/ghosttheme-stockholm</a></td>
+                            <td>65</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 18, 2022
+                                
+                                <br><span class="months-stale">(46 months ago)</span>
+                                
+                            </td>
+                            <td>:ghost: :pencil: :sparkles: Clean Ghost theme with advanced features & customization.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>text</td>
+                            <td><a href="https://github.com/imgarylai/text" target="_blank" rel="noopener noreferrer">https://github.com/imgarylai/text</a></td>
+                            <td>63</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 15, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>👻 An elegant ghost blogging theme. Mandarin optimization support.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-matery</td>
+                            <td><a href="https://github.com/blinkfox/ghost-matery" target="_blank" rel="noopener noreferrer">https://github.com/blinkfox/ghost-matery</a></td>
+                            <td>57</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 29, 2016
+                                
+                                <br><span class="months-stale">(118 months ago)</span>
+                                
+                            </td>
+                            <td>这是一个漂亮、简洁、响应式并采用Material Design设计的Ghost博客主题，当然ghost-matery2更好。</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-cms</td>
+                            <td><a href="https://github.com/clean-docker/ghost-cms" target="_blank" rel="noopener noreferrer">https://github.com/clean-docker/ghost-cms</a></td>
+                            <td>56</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 2, 2023
+                                
+                                <br><span class="months-stale">(30 months ago)</span>
+                                
+                            </td>
+                            <td>Clean Ghost CMS + Docker (development & production)</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>FauxGhost</td>
+                            <td><a href="https://github.com/jimbobbennett/FauxGhost" target="_blank" rel="noopener noreferrer">https://github.com/jimbobbennett/FauxGhost</a></td>
+                            <td>54</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 3, 2016
+                                
+                                <br><span class="months-stale">(117 months ago)</span>
+                                
+                            </td>
+                            <td>FauxGhost Ghost blog theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-finder</td>
+                            <td><a href="https://github.com/kingRayhan/ghost-finder" target="_blank" rel="noopener noreferrer">https://github.com/kingRayhan/ghost-finder</a></td>
+                            <td>54</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 10, 2022
+                                
+                                <br><span class="months-stale">(41 months ago)</span>
+                                
+                            </td>
+                            <td>The most advanced ghost search plugin</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Paway</td>
+                            <td><a href="https://github.com/godofredoninja/Paway" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/Paway</a></td>
+                            <td>53</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 17, 2022
+                                
+                                <br><span class="months-stale">(43 months ago)</span>
+                                
+                            </td>
+                            <td>Personal photographer blog theme for Ghost. Beautiful, minimal and sensitive.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>decent</td>
+                            <td><a href="https://github.com/serenader2014/decent" target="_blank" rel="noopener noreferrer">https://github.com/serenader2014/decent</a></td>
+                            <td>52</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 24, 2017
+                                
+                                <br><span class="months-stale">(103 months ago)</span>
+                                
+                            </td>
+                            <td>A Ghost blog theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Masonry-Ghost-Theme</td>
+                            <td><a href="https://github.com/chris-brown/Masonry-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/chris-brown/Masonry-Ghost-Theme</a></td>
+                            <td>50</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 25, 2017
+                                
+                                <br><span class="months-stale">(101 months ago)</span>
+                                
+                            </td>
+                            <td>Theme for Ghost blogging engine</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>buster</td>
+                            <td><a href="https://github.com/daanbeverdam/buster" target="_blank" rel="noopener noreferrer">https://github.com/daanbeverdam/buster</a></td>
+                            <td>49</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 1, 2018
+                                
+                                <br><span class="months-stale">(98 months ago)</span>
+                                
+                            </td>
+                            <td>A responsive, clean card theme for the Ghost blogging platform.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>biron-ghost-theme</td>
+                            <td><a href="https://github.com/brightthemes/biron-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/brightthemes/biron-ghost-theme</a></td>
+                            <td>48</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 9, 2023
+                                
+                                <br><span class="months-stale">(38 months ago)</span>
+                                
+                            </td>
+                            <td>Biron Free Ghost Theme </td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>whisper</td>
+                            <td><a href="https://github.com/stsbd/whisper" target="_blank" rel="noopener noreferrer">https://github.com/stsbd/whisper</a></td>
+                            <td>47</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 11, 2018
+                                
+                                <br><span class="months-stale">(98 months ago)</span>
+                                
+                            </td>
+                            <td>Whisper Ghost Theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Orre-Theme-for-Ghost</td>
+                            <td><a href="https://github.com/lacke/Orre-Theme-for-Ghost" target="_blank" rel="noopener noreferrer">https://github.com/lacke/Orre-Theme-for-Ghost</a></td>
+                            <td>45</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 3, 2016
+                                
+                                <br><span class="months-stale">(118 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Solarized Dark</td>
+                            <td><a href="https://github.com/JollyGrin/solarized-dark-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/JollyGrin/solarized-dark-ghost-theme</a></td>
+                            <td>45</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 5, 2023
+                                
+                                <br><span class="months-stale">(26 months ago)</span>
+                                
+                            </td>
+                            <td>A dark theme for Ghost based on the Solarized color scheme.; Good for developer blogs, needs more maintenance</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>aesto</td>
+                            <td><a href="https://github.com/Inoryum-Ltd/aesto" target="_blank" rel="noopener noreferrer">https://github.com/Inoryum-Ltd/aesto</a></td>
+                            <td>43</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 16, 2024
+                                
+                                <br><span class="months-stale">(26 months ago)</span>
+                                
+                            </td>
+                            <td>Free Ghost theme with membership support. Minimal content focused design with multi author supported. </td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>cusca</td>
+                            <td><a href="https://github.com/wdiazux/cusca" target="_blank" rel="noopener noreferrer">https://github.com/wdiazux/cusca</a></td>
+                            <td>43</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 6, 2023
+                                
+                                <br><span class="months-stale">(32 months ago)</span>
+                                
+                            </td>
+                            <td>A ghost theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>brage-ghost-theme</td>
+                            <td><a href="https://github.com/switchbitio/brage-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/switchbitio/brage-ghost-theme</a></td>
+                            <td>42</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 19, 2017
+                                
+                                <br><span class="months-stale">(99 months ago)</span>
+                                
+                            </td>
+                            <td>A Ghost theme built with Gulp</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>MinimalisticBlogTheme</td>
+                            <td><a href="https://github.com/rriegger/MinimalisticBlogTheme" target="_blank" rel="noopener noreferrer">https://github.com/rriegger/MinimalisticBlogTheme</a></td>
+                            <td>39</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 19, 2014
+                                
+                                <br><span class="months-stale">(134 months ago)</span>
+                                
+                            </td>
+                            <td>Responsive Ghost CMS Blog Theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>heidi</td>
+                            <td><a href="https://github.com/thaiphan/heidi" target="_blank" rel="noopener noreferrer">https://github.com/thaiphan/heidi</a></td>
+                            <td>35</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 30, 2018
+                                
+                                <br><span class="months-stale">(96 months ago)</span>
+                                
+                            </td>
+                            <td>A port of Mark Otto's Hyde theme to Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>the-shell-pro</td>
+                            <td><a href="https://github.com/pinple/the-shell-pro" target="_blank" rel="noopener noreferrer">https://github.com/pinple/the-shell-pro</a></td>
+                            <td>32</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 3, 2023
+                                
+                                <br><span class="months-stale">(36 months ago)</span>
+                                
+                            </td>
+                            <td>👻 a simple dark ghost theme, color schema looks like in the shell.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ganymede</td>
+                            <td><a href="https://github.com/itsmingjie/ganymede" target="_blank" rel="noopener noreferrer">https://github.com/itsmingjie/ganymede</a></td>
+                            <td>31</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 9, 2021
+                                
+                                <br><span class="months-stale">(61 months ago)</span>
+                                
+                            </td>
+                            <td>💫 Content-focused, deploy-ready Ghost theme.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>nextjsghostcms</td>
+                            <td><a href="https://github.com/officialrajdeepsingh/nextjsghostcms" target="_blank" rel="noopener noreferrer">https://github.com/officialrajdeepsingh/nextjsghostcms</a></td>
+                            <td>28</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 12, 2024
+                                
+                                <br><span class="months-stale">(23 months ago)</span>
+                                
+                            </td>
+                            <td>Combine the Nextjs and Ghost CMS API </td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>GhostSolo</td>
+                            <td><a href="https://github.com/lukencode/GhostSolo" target="_blank" rel="noopener noreferrer">https://github.com/lukencode/GhostSolo</a></td>
+                            <td>27</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 6, 2022
+                                
+                                <br><span class="months-stale">(39 months ago)</span>
+                                
+                            </td>
+                            <td>A Ghost theme for solo bloggers.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>kusi-doc</td>
+                            <td><a href="https://github.com/godofredoninja/kusi-doc" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/kusi-doc</a></td>
+                            <td>26</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 30, 2020
+                                
+                                <br><span class="months-stale">(70 months ago)</span>
+                                
+                            </td>
+                            <td>:smile: Beautiful and elegant theme for the documentation</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>DayAndNight</td>
+                            <td><a href="https://github.com/semeano/DayAndNight" target="_blank" rel="noopener noreferrer">https://github.com/semeano/DayAndNight</a></td>
+                            <td>25</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 4, 2015
+                                
+                                <br><span class="months-stale">(130 months ago)</span>
+                                
+                            </td>
+                            <td>Simple responsive theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Asgar</td>
+                            <td><a href="https://github.com/stefanbc/Asgar" target="_blank" rel="noopener noreferrer">https://github.com/stefanbc/Asgar</a></td>
+                            <td>25</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 5, 2023
+                                
+                                <br><span class="months-stale">(30 months ago)</span>
+                                
+                            </td>
+                            <td>A two-column, clean and minimalist theme for @TryGhost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>clonium</td>
+                            <td><a href="https://github.com/centr0/clonium" target="_blank" rel="noopener noreferrer">https://github.com/centr0/clonium</a></td>
+                            <td>24</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 16, 2015
+                                
+                                <br><span class="months-stale">(130 months ago)</span>
+                                
+                            </td>
+                            <td>A Ghost Blog theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Bermuda</td>
+                            <td><a href="https://github.com/jbritten/Bermuda" target="_blank" rel="noopener noreferrer">https://github.com/jbritten/Bermuda</a></td>
+                            <td>21</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 6, 2023
+                                
+                                <br><span class="months-stale">(38 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost theme using Tailwind CSS and webpack</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-docker-compose-nginx-letsencrypt</td>
+                            <td><a href="https://github.com/eliarms/ghost-docker-compose-nginx-letsencrypt" target="_blank" rel="noopener noreferrer">https://github.com/eliarms/ghost-docker-compose-nginx-letsencrypt</a></td>
+                            <td>21</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 13, 2020
+                                
+                                <br><span class="months-stale">(69 months ago)</span>
+                                
+                            </td>
+                            <td>Automate the implementation of Ghost CMS using Docker-Compose, Nginx , letsencrypt and Certbot</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>donnie-dark</td>
+                            <td><a href="https://github.com/kulttuuri/donnie-dark" target="_blank" rel="noopener noreferrer">https://github.com/kulttuuri/donnie-dark</a></td>
+                            <td>20</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 23, 2019
+                                
+                                <br><span class="months-stale">(75 months ago)</span>
+                                
+                            </td>
+                            <td>Donnie Dark is dark, responsive, customizable theme for Ghost 0.5+ blogs. Name of the theme is hats-off for a great movie.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>clean</td>
+                            <td><a href="https://github.com/liuchuana/clean" target="_blank" rel="noopener noreferrer">https://github.com/liuchuana/clean</a></td>
+                            <td>20</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 9, 2022
+                                
+                                <br><span class="months-stale">(46 months ago)</span>
+                                
+                            </td>
+                            <td>clean是一个简洁清新的ghost博客现代主题 </td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>eleventy-plugin-ghost</td>
+                            <td><a href="https://github.com/daviddarnes/eleventy-plugin-ghost" target="_blank" rel="noopener noreferrer">https://github.com/daviddarnes/eleventy-plugin-ghost</a></td>
+                            <td>20</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 1, 2022
+                                
+                                <br><span class="months-stale">(45 months ago)</span>
+                                
+                            </td>
+                            <td>Access the Ghost API in Eleventy 👻🎈</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-theme</td>
+                            <td><a href="https://github.com/JackPu/ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/JackPu/ghost-theme</a></td>
+                            <td>19</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 23, 2020
+                                
+                                <br><span class="months-stale">(72 months ago)</span>
+                                
+                            </td>
+                            <td>a ghost theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>mno</td>
+                            <td><a href="https://github.com/mythsman/mno" target="_blank" rel="noopener noreferrer">https://github.com/mythsman/mno</a></td>
+                            <td>18</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 27, 2024
+                                
+                                <br><span class="months-stale">(22 months ago)</span>
+                                
+                            </td>
+                            <td>Mno, just another ghost theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>spooky-slate</td>
+                            <td><a href="https://github.com/meowomancer/spooky-slate" target="_blank" rel="noopener noreferrer">https://github.com/meowomancer/spooky-slate</a></td>
+                            <td>18</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 3, 2015
+                                
+                                <br><span class="months-stale">(129 months ago)</span>
+                                
+                            </td>
+                            <td>A basic theme for the Ghost blogging platform</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>so-clean</td>
+                            <td><a href="https://github.com/Hashable/so-clean" target="_blank" rel="noopener noreferrer">https://github.com/Hashable/so-clean</a></td>
+                            <td>18</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 10, 2020
+                                
+                                <br><span class="months-stale">(67 months ago)</span>
+                                
+                            </td>
+                            <td>A clean and simple theme for Ghost blogging platform</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>website-theme</td>
+                            <td><a href="https://github.com/m1guelpf/website-theme" target="_blank" rel="noopener noreferrer">https://github.com/m1guelpf/website-theme</a></td>
+                            <td>18</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 6, 2023
+                                
+                                <br><span class="months-stale">(38 months ago)</span>
+                                
+                            </td>
+                            <td>The Ghost theme that powers my website</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>sheet</td>
+                            <td><a href="https://github.com/brianokeefe/sheet" target="_blank" rel="noopener noreferrer">https://github.com/brianokeefe/sheet</a></td>
+                            <td>17</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 24, 2017
+                                
+                                <br><span class="months-stale">(102 months ago)</span>
+                                
+                            </td>
+                            <td>Sheet is a clean, responsive theme for Ghost v1.x.x blogs.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>nomore</td>
+                            <td><a href="https://github.com/abowloflrf/nomore" target="_blank" rel="noopener noreferrer">https://github.com/abowloflrf/nomore</a></td>
+                            <td>17</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 31, 2019
+                                
+                                <br><span class="months-stale">(84 months ago)</span>
+                                
+                            </td>
+                            <td>A minimal theme for Ghost Blog.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-theme-tiny</td>
+                            <td><a href="https://github.com/zhaohaodang/ghost-theme-tiny" target="_blank" rel="noopener noreferrer">https://github.com/zhaohaodang/ghost-theme-tiny</a></td>
+                            <td>17</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 7, 2021
+                                
+                                <br><span class="months-stale">(57 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost博客 Vue风格极简主题</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>docker-ghost</td>
+                            <td><a href="https://github.com/aholbreich/docker-ghost" target="_blank" rel="noopener noreferrer">https://github.com/aholbreich/docker-ghost</a></td>
+                            <td>17</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 3, 2017
+                                
+                                <br><span class="months-stale">(100 months ago)</span>
+                                
+                            </td>
+                            <td>Docker File for Golden Ghost image</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-skeleton</td>
+                            <td><a href="https://github.com/JMKelley/ghost-skeleton" target="_blank" rel="noopener noreferrer">https://github.com/JMKelley/ghost-skeleton</a></td>
+                            <td>16</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 13, 2020
+                                
+                                <br><span class="months-stale">(68 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost.org Skeleton/Bare Bones Theme </td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Hodor-AMP-Ghost</td>
+                            <td><a href="https://github.com/godofredoninja/Hodor-AMP-Ghost" target="_blank" rel="noopener noreferrer">https://github.com/godofredoninja/Hodor-AMP-Ghost</a></td>
+                            <td>16</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 3, 2019
+                                
+                                <br><span class="months-stale">(83 months ago)</span>
+                                
+                            </td>
+                            <td>Simple and elegant AMP  for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>heroku-ipfs-ghost</td>
+                            <td><a href="https://github.com/fission-codes/heroku-ipfs-ghost" target="_blank" rel="noopener noreferrer">https://github.com/fission-codes/heroku-ipfs-ghost</a></td>
+                            <td>15</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 10, 2022
+                                
+                                <br><span class="months-stale">(39 months ago)</span>
+                                
+                            </td>
+                            <td>The Ghost blog system upgraded with Heroku deploys & IPFS support.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>pale-ghost</td>
+                            <td><a href="https://github.com/nahuelsanchez/pale-ghost" target="_blank" rel="noopener noreferrer">https://github.com/nahuelsanchez/pale-ghost</a></td>
+                            <td>15</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 21, 2019
+                                
+                                <br><span class="months-stale">(81 months ago)</span>
+                                
+                            </td>
+                            <td>A blank, dev ready, Ghost theme.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>wonderland_ghost_theme</td>
+                            <td><a href="https://github.com/dyzdyz010/wonderland_ghost_theme" target="_blank" rel="noopener noreferrer">https://github.com/dyzdyz010/wonderland_ghost_theme</a></td>
+                            <td>14</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 29, 2018
+                                
+                                <br><span class="months-stale">(89 months ago)</span>
+                                
+                            </td>
+                            <td>Wonderland - A simple, clean theme for Ghost. https://duyizhuo.com</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghostcode</td>
+                            <td><a href="https://github.com/Joffey/ghostcode" target="_blank" rel="noopener noreferrer">https://github.com/Joffey/ghostcode</a></td>
+                            <td>14</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 8, 2018
+                                
+                                <br><span class="months-stale">(95 months ago)</span>
+                                
+                            </td>
+                            <td>👻 A vscode-like Ghost blog theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>TrueStyle</td>
+                            <td><a href="https://github.com/Zazama/TrueStyle" target="_blank" rel="noopener noreferrer">https://github.com/Zazama/TrueStyle</a></td>
+                            <td>13</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 15, 2015
+                                
+                                <br><span class="months-stale">(127 months ago)</span>
+                                
+                            </td>
+                            <td>A bootstrap theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>gatsby-ghost-stockholm</td>
+                            <td><a href="https://github.com/toddbirchard/gatsby-ghost-stockholm" target="_blank" rel="noopener noreferrer">https://github.com/toddbirchard/gatsby-ghost-stockholm</a></td>
+                            <td>13</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 7, 2023
+                                
+                                <br><span class="months-stale">(36 months ago)</span>
+                                
+                            </td>
+                            <td>🟣 👻 Blog theme exceeding the limitations of Ghost CMS with dynamic features, user accounts, and extended data model.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-ipfs</td>
+                            <td><a href="https://github.com/alexbakers/ghost-ipfs" target="_blank" rel="noopener noreferrer">https://github.com/alexbakers/ghost-ipfs</a></td>
+                            <td>13</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 22, 2023
+                                
+                                <br><span class="months-stale">(38 months ago)</span>
+                                
+                            </td>
+                            <td>IPFS storage adapter for 👻 Ghost.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghostcms-activitypub</td>
+                            <td><a href="https://github.com/josephquigley/ghostcms-activitypub" target="_blank" rel="noopener noreferrer">https://github.com/josephquigley/ghostcms-activitypub</a></td>
+                            <td>13</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 13, 2023
+                                
+                                <br><span class="months-stale">(34 months ago)</span>
+                                
+                            </td>
+                            <td>An ExpressJS server that integrates with GhostCMS to publish ActivityPub content on the Fediverse.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>bees</td>
+                            <td><a href="https://github.com/jyotirmaybarman/bees" target="_blank" rel="noopener noreferrer">https://github.com/jyotirmaybarman/bees</a></td>
+                            <td>12</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 14, 2024
+                                
+                                <br><span class="months-stale">(20 months ago)</span>
+                                
+                            </td>
+                            <td>A website using this theme -</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Callisto-Ghost-Theme</td>
+                            <td><a href="https://github.com/jckyeh/Callisto-Ghost-Theme" target="_blank" rel="noopener noreferrer">https://github.com/jckyeh/Callisto-Ghost-Theme</a></td>
+                            <td>12</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 12, 2019
+                                
+                                <br><span class="months-stale">(77 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost theme for a minimal personal blog and portfolio</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>frontend-garden-ghost-theme</td>
+                            <td><a href="https://github.com/frontend-garden/frontend-garden-ghost-theme" target="_blank" rel="noopener noreferrer">https://github.com/frontend-garden/frontend-garden-ghost-theme</a></td>
+                            <td>12</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 18, 2024
+                                
+                                <br><span class="months-stale">(21 months ago)</span>
+                                
+                            </td>
+                            <td>Frontend Garden 🍀 Ghost theme 👻</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>poppy</td>
+                            <td><a href="https://github.com/hezhii/poppy" target="_blank" rel="noopener noreferrer">https://github.com/hezhii/poppy</a></td>
+                            <td>12</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 13, 2023
+                                
+                                <br><span class="months-stale">(38 months ago)</span>
+                                
+                            </td>
+                            <td>💐 Beautiful and Enticing theme for Ghost.  https://blog.whezh.com</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>gatsby-ghost-novela-theme</td>
+                            <td><a href="https://github.com/draftbox-co/gatsby-ghost-novela-theme" target="_blank" rel="noopener noreferrer">https://github.com/draftbox-co/gatsby-ghost-novela-theme</a></td>
+                            <td>12</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 15, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>A Feature rich Gatsby theme plugin for creating blogs from Ghost.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Ruby-sales</td>
+                            <td><a href="https://github.com/cathysarisky/Ruby-sales" target="_blank" rel="noopener noreferrer">https://github.com/cathysarisky/Ruby-sales</a></td>
+                            <td>11</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 4, 2022
+                                
+                                <br><span class="months-stale">(40 months ago)</span>
+                                
+                            </td>
+                            <td>A Ghost theme with Stripe sales add-on</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>CasperS</td>
+                            <td><a href="https://github.com/hungys/CasperS" target="_blank" rel="noopener noreferrer">https://github.com/hungys/CasperS</a></td>
+                            <td>11</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 22, 2018
+                                
+                                <br><span class="months-stale">(97 months ago)</span>
+                                
+                            </td>
+                            <td>The supercharged Casper theme for Ghost.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-admin-rtl-css</td>
+                            <td><a href="https://github.com/aspirethemes/ghost-admin-rtl-css" target="_blank" rel="noopener noreferrer">https://github.com/aspirethemes/ghost-admin-rtl-css</a></td>
+                            <td>11</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 14, 2020
+                                
+                                <br><span class="months-stale">(70 months ago)</span>
+                                
+                            </td>
+                            <td>Make the Ghost CMS Dashboard and Editor Right to Left (RTL)</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-storage-supabase</td>
+                            <td><a href="https://github.com/raulriera/ghost-storage-supabase" target="_blank" rel="noopener noreferrer">https://github.com/raulriera/ghost-storage-supabase</a></td>
+                            <td>10</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 9, 2021
+                                
+                                <br><span class="months-stale">(55 months ago)</span>
+                                
+                            </td>
+                            <td>Supabase storage adapter for Ghost. Recommended as a completely free storage solution for blogs being hosted on platforms with ephemeral filesystems, like Heroku.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>kaede</td>
+                            <td><a href="https://github.com/HelloWorld017/kaede" target="_blank" rel="noopener noreferrer">https://github.com/HelloWorld017/kaede</a></td>
+                            <td>10</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 4, 2023
+                                
+                                <br><span class="months-stale">(36 months ago)</span>
+                                
+                            </td>
+                            <td>Yet another neat ghost theme</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Stitch-Blue</td>
+                            <td><a href="https://github.com/nileane/Stitch-Blue" target="_blank" rel="noopener noreferrer">https://github.com/nileane/Stitch-Blue</a></td>
+                            <td>10</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 2, 2019
+                                
+                                <br><span class="months-stale">(79 months ago)</span>
+                                
+                            </td>
+                            <td>A nice and elegant theme for Ghost, inspired by the color Stitch blue.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>aws-ghost</td>
+                            <td><a href="https://github.com/phillhocking/aws-ghost" target="_blank" rel="noopener noreferrer">https://github.com/phillhocking/aws-ghost</a></td>
+                            <td>10</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 14, 2022
+                                
+                                <br><span class="months-stale">(45 months ago)</span>
+                                
+                            </td>
+                            <td>Terraform Infrastructure-as-Code project deploying the Ghost CMS to AWS Lightsail instance secured by Bitnami behind Cloudfront CDN distribution requiring an ACM certificate and A record in public DNS outside of AWS; Lightsail instances cannot have DNS properties unless they are instantiated in the us-east-1 region. </td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>spook</td>
+                            <td><a href="https://github.com/calebanthony/spook" target="_blank" rel="noopener noreferrer">https://github.com/calebanthony/spook</a></td>
+                            <td>9</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 8, 2021
+                                
+                                <br><span class="months-stale">(53 months ago)</span>
+                                
+                            </td>
+                            <td>Base Ghost theme built on Bootstrap 4 with Font Awesome</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Ghost-Headless-Cms-Fix</td>
+                            <td><a href="https://github.com/Inosida-se/Ghost-Headless-Cms-Fix" target="_blank" rel="noopener noreferrer">https://github.com/Inosida-se/Ghost-Headless-Cms-Fix</a></td>
+                            <td>9</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 28, 2020
+                                
+                                <br><span class="months-stale">(74 months ago)</span>
+                                
+                            </td>
+                            <td>A open-source theme to fix Ghost cms preview when using a Jamstack site.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>CoFei</td>
+                            <td><a href="https://github.com/XFeiF/CoFei" target="_blank" rel="noopener noreferrer">https://github.com/XFeiF/CoFei</a></td>
+                            <td>9</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 7, 2016
+                                
+                                <br><span class="months-stale">(113 months ago)</span>
+                                
+                            </td>
+                            <td>🍡A simple ghost blog theme. Source -></td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>noir</td>
+                            <td><a href="https://github.com/jeremyhalin/noir" target="_blank" rel="noopener noreferrer">https://github.com/jeremyhalin/noir</a></td>
+                            <td>9</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 11, 2022
+                                
+                                <br><span class="months-stale">(42 months ago)</span>
+                                
+                            </td>
+                            <td>A minimal dark theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>casper-dev-blog-theme</td>
+                            <td><a href="https://github.com/sujinleeme/casper-dev-blog-theme" target="_blank" rel="noopener noreferrer">https://github.com/sujinleeme/casper-dev-blog-theme</a></td>
+                            <td>9</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 18, 2021
+                                
+                                <br><span class="months-stale">(62 months ago)</span>
+                                
+                            </td>
+                            <td>👻 Customized ghost casper theme for developer's blog</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>GhostNow</td>
+                            <td><a href="https://github.com/GhostTheme/GhostNow" target="_blank" rel="noopener noreferrer">https://github.com/GhostTheme/GhostNow</a></td>
+                            <td>8</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 13, 2017
+                                
+                                <br><span class="months-stale">(105 months ago)</span>
+                                
+                            </td>
+                            <td>A fork of Jekyll now theme, Now become GhostNow.  Demo:</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>gatsby-ghost-balsa-theme</td>
+                            <td><a href="https://github.com/draftbox-co/gatsby-ghost-balsa-theme" target="_blank" rel="noopener noreferrer">https://github.com/draftbox-co/gatsby-ghost-balsa-theme</a></td>
+                            <td>8</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 15, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>A Feature rich Gatsby theme plugin for creating blogs from Ghost.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>src</td>
+                            <td><a href="https://github.com/seniorsoftwarevlogger/src" target="_blank" rel="noopener noreferrer">https://github.com/seniorsoftwarevlogger/src</a></td>
+                            <td>8</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 2, 2023
+                                
+                                <br><span class="months-stale">(36 months ago)</span>
+                                
+                            </td>
+                            <td>Patreon / YouTube Members only blog</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-notifier</td>
+                            <td><a href="https://github.com/tq-bit/ghost-notifier" target="_blank" rel="noopener noreferrer">https://github.com/tq-bit/ghost-notifier</a></td>
+                            <td>8</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 26, 2023
+                                
+                                <br><span class="months-stale">(32 months ago)</span>
+                                
+                            </td>
+                            <td>A realtime application that provides notification messages for your Ghost Blog. Winner of the MongoDB Atlas Hackathon 2022</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>triangle</td>
+                            <td><a href="https://github.com/HaeckDesign/triangle" target="_blank" rel="noopener noreferrer">https://github.com/HaeckDesign/triangle</a></td>
+                            <td>7</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 31, 2024
+                                
+                                <br><span class="months-stale">(26 months ago)</span>
+                                
+                            </td>
+                            <td>Triangle Ghost Theme is fully responsive blog styled Ghost theme built w/ UIKit and a few clever features.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Bogeyman</td>
+                            <td><a href="https://github.com/ambitionboxofficial/Bogeyman" target="_blank" rel="noopener noreferrer">https://github.com/ambitionboxofficial/Bogeyman</a></td>
+                            <td>7</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 27, 2020
+                                
+                                <br><span class="months-stale">(71 months ago)</span>
+                                
+                            </td>
+                            <td>A Ghost theme built on top of Casper and Attila theme for blogging on ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>meditation</td>
+                            <td><a href="https://github.com/PeachScript/meditation" target="_blank" rel="noopener noreferrer">https://github.com/PeachScript/meditation</a></td>
+                            <td>7</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 29, 2019
+                                
+                                <br><span class="months-stale">(77 months ago)</span>
+                                
+                            </td>
+                            <td>A deep and refined theme for the Ghost blog engine.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-theme-nanboone</td>
+                            <td><a href="https://github.com/luokailuo/ghost-theme-nanboone" target="_blank" rel="noopener noreferrer">https://github.com/luokailuo/ghost-theme-nanboone</a></td>
+                            <td>7</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 3, 2021
+                                
+                                <br><span class="months-stale">(52 months ago)</span>
+                                
+                            </td>
+                            <td>🌞a ghost theme 一个以图片为主的Ghost主题🌞</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-firebase-storage-adapter</td>
+                            <td><a href="https://github.com/mainawycliffe/ghost-firebase-storage-adapter" target="_blank" rel="noopener noreferrer">https://github.com/mainawycliffe/ghost-firebase-storage-adapter</a></td>
+                            <td>7</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 8, 2020
+                                
+                                <br><span class="months-stale">(64 months ago)</span>
+                                
+                            </td>
+                            <td>Read and write images from Firebase storage in the Ghost blogging platform</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-storage-cloudflare-r2</td>
+                            <td><a href="https://github.com/cinntiq/ghost-storage-cloudflare-r2" target="_blank" rel="noopener noreferrer">https://github.com/cinntiq/ghost-storage-cloudflare-r2</a></td>
+                            <td>7</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 29, 2024
+                                
+                                <br><span class="months-stale">(19 months ago)</span>
+                                
+                            </td>
+                            <td>A simple custom storage adapter to add Cloudflare R2 object storage support for Ghost through S3 API.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-theme-1ite</td>
+                            <td><a href="https://github.com/uvexz/ghost-theme-1ite" target="_blank" rel="noopener noreferrer">https://github.com/uvexz/ghost-theme-1ite</a></td>
+                            <td>6</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 9, 2022
+                                
+                                <br><span class="months-stale">(42 months ago)</span>
+                                
+                            </td>
+                            <td>A lite theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-theme-dres</td>
+                            <td><a href="https://github.com/lynzrand/ghost-theme-dres" target="_blank" rel="noopener noreferrer">https://github.com/lynzrand/ghost-theme-dres</a></td>
+                            <td>6</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 28, 2022
+                                
+                                <br><span class="months-stale">(49 months ago)</span>
+                                
+                            </td>
+                            <td>A minimalistic & stylish theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Primates-Ghost</td>
+                            <td><a href="https://github.com/StanGirard/Primates-Ghost" target="_blank" rel="noopener noreferrer">https://github.com/StanGirard/Primates-Ghost</a></td>
+                            <td>6</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 19, 2020
+                                
+                                <br><span class="months-stale">(69 months ago)</span>
+                                
+                            </td>
+                            <td>Old Ghost Theme for Primates - Medium Like. Now used for https://souslapluie.fr</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>permissive</td>
+                            <td><a href="https://github.com/andyhqtran/permissive" target="_blank" rel="noopener noreferrer">https://github.com/andyhqtran/permissive</a></td>
+                            <td>6</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 3, 2022
+                                
+                                <br><span class="months-stale">(39 months ago)</span>
+                                
+                            </td>
+                            <td>Permissive Theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Gulma</td>
+                            <td><a href="https://github.com/Shrimpstronaut/Gulma" target="_blank" rel="noopener noreferrer">https://github.com/Shrimpstronaut/Gulma</a></td>
+                            <td>6</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 16, 2018
+                                
+                                <br><span class="months-stale">(90 months ago)</span>
+                                
+                            </td>
+                            <td>Bulma theme for the Ghost blogging platform. Beautiful, minimal and responsive.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>website</td>
+                            <td><a href="https://github.com/thesignalteam/website" target="_blank" rel="noopener noreferrer">https://github.com/thesignalteam/website</a></td>
+                            <td>6</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 8, 2022
+                                
+                                <br><span class="months-stale">(39 months ago)</span>
+                                
+                            </td>
+                            <td>The Signal's website.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>blog-svelte</td>
+                            <td><a href="https://github.com/tuliocll/blog-svelte" target="_blank" rel="noopener noreferrer">https://github.com/tuliocll/blog-svelte</a></td>
+                            <td>6</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 3, 2023
+                                
+                                <br><span class="months-stale">(33 months ago)</span>
+                                
+                            </td>
+                            <td>Blog, feito em SvelteKit, Open Source!</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>WasabiBlog</td>
+                            <td><a href="https://github.com/zkSNACKs/WasabiBlog" target="_blank" rel="noopener noreferrer">https://github.com/zkSNACKs/WasabiBlog</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 22, 2022
+                                
+                                <br><span class="months-stale">(46 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-iffy</td>
+                            <td><a href="https://github.com/InternetFreedomFoundation/ghost-iffy" target="_blank" rel="noopener noreferrer">https://github.com/InternetFreedomFoundation/ghost-iffy</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 2, 2023
+                                
+                                <br><span class="months-stale">(34 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost theme for the Internet Freedom Foundation site</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>storyteller</td>
+                            <td><a href="https://github.com/solaymanhaider/storyteller" target="_blank" rel="noopener noreferrer">https://github.com/solaymanhaider/storyteller</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 4, 2021
+                                
+                                <br><span class="months-stale">(61 months ago)</span>
+                                
+                            </td>
+                            <td>A free ghost theme for story writers. Responsive, Modern, Simple, and Auto Dark Mode.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>verdin</td>
+                            <td><a href="https://github.com/IrisThemes/verdin" target="_blank" rel="noopener noreferrer">https://github.com/IrisThemes/verdin</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 5, 2023
+                                
+                                <br><span class="months-stale">(29 months ago)</span>
+                                
+                            </td>
+                            <td>Verdin - A Personal Ghost Blog Theme @ https://iristhemes.com/themes/verdin</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Ingia</td>
+                            <td><a href="https://github.com/stefanbc/Ingia" target="_blank" rel="noopener noreferrer">https://github.com/stefanbc/Ingia</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 3, 2023
+                                
+                                <br><span class="months-stale">(38 months ago)</span>
+                                
+                            </td>
+                            <td>A free, open source theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>papillon-ghost</td>
+                            <td><a href="https://github.com/PapillonApp/papillon-ghost" target="_blank" rel="noopener noreferrer">https://github.com/PapillonApp/papillon-ghost</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 25, 2024
+                                
+                                <br><span class="months-stale">(20 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost blogging theme for the articles of the open-source Papillon project.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>angadi</td>
+                            <td><a href="https://github.com/muneef/angadi" target="_blank" rel="noopener noreferrer">https://github.com/muneef/angadi</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 30, 2017
+                                
+                                <br><span class="months-stale">(104 months ago)</span>
+                                
+                            </td>
+                            <td>[WIP] Angadi theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-bunny.cdn-adapter</td>
+                            <td><a href="https://github.com/nazmirket/ghost-bunny.cdn-adapter" target="_blank" rel="noopener noreferrer">https://github.com/nazmirket/ghost-bunny.cdn-adapter</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 5, 2023
+                                
+                                <br><span class="months-stale">(36 months ago)</span>
+                                
+                            </td>
+                            <td>Bunny CDN (https://bunny.net/) adapter for Ghost CMS</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-minify-output</td>
+                            <td><a href="https://github.com/angeal185/ghost-minify-output" target="_blank" rel="noopener noreferrer">https://github.com/angeal185/ghost-minify-output</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 14, 2017
+                                
+                                <br><span class="months-stale">(105 months ago)</span>
+                                
+                            </td>
+                            <td>ghost middleware to minify compiled handlebars output</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>headless-placeholder</td>
+                            <td><a href="https://github.com/ShortTechDE/headless-placeholder" target="_blank" rel="noopener noreferrer">https://github.com/ShortTechDE/headless-placeholder</a></td>
+                            <td>5</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 30, 2020
+                                
+                                <br><span class="months-stale">(69 months ago)</span>
+                                
+                            </td>
+                            <td>🥴 Headless Ghost placeholder theme with auto redirect and fixed robots.txt for Twitterbot</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>east</td>
+                            <td><a href="https://github.com/aspirethemes/east" target="_blank" rel="noopener noreferrer">https://github.com/aspirethemes/east</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 21, 2023
+                                
+                                <br><span class="months-stale">(30 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghosttheme-warsaw</td>
+                            <td><a href="https://github.com/toddbirchard/ghosttheme-warsaw" target="_blank" rel="noopener noreferrer">https://github.com/toddbirchard/ghosttheme-warsaw</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                May 16, 2020
+                                
+                                <br><span class="months-stale">(70 months ago)</span>
+                                
+                            </td>
+                            <td>:bust_in_silhouette: Theme suitable for displaying personal work.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>casperblue</td>
+                            <td><a href="https://github.com/mcarter960/casperblue" target="_blank" rel="noopener noreferrer">https://github.com/mcarter960/casperblue</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 12, 2022
+                                
+                                <br><span class="months-stale">(39 months ago)</span>
+                                
+                            </td>
+                            <td>Casper Blue GHOST Theme </td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Ghost.Dev.Themes</td>
+                            <td><a href="https://github.com/kirkone/Ghost.Dev.Themes" target="_blank" rel="noopener noreferrer">https://github.com/kirkone/Ghost.Dev.Themes</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 10, 2022
+                                
+                                <br><span class="months-stale">(39 months ago)</span>
+                                
+                            </td>
+                            <td>This is a ready to run development environment for Ghost Blog themes.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Ghostwriter</td>
+                            <td><a href="https://github.com/nknickrehm/Ghostwriter" target="_blank" rel="noopener noreferrer">https://github.com/nknickrehm/Ghostwriter</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 24, 2022
+                                
+                                <br><span class="months-stale">(48 months ago)</span>
+                                
+                            </td>
+                            <td>Lightweight theme for Ghost 4. Elegant design optimized for personal blogs. Latest version available on the releases page 🔗</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>hugo-exec-sh</td>
+                            <td><a href="https://github.com/hfreire/hugo-exec-sh" target="_blank" rel="noopener noreferrer">https://github.com/hfreire/hugo-exec-sh</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 6, 2023
+                                
+                                <br><span class="months-stale">(36 months ago)</span>
+                                
+                            </td>
+                            <td>My personal website for blogging and :pencil2: note-taking</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghostthemewithdocker</td>
+                            <td><a href="https://github.com/officialrajdeepsingh/ghostthemewithdocker" target="_blank" rel="noopener noreferrer">https://github.com/officialrajdeepsingh/ghostthemewithdocker</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 22, 2022
+                                
+                                <br><span class="months-stale">(39 months ago)</span>
+                                
+                            </td>
+                            <td>Built  ghost  cms theme with docker and docker-compose</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>gimi-theme-ghost</td>
+                            <td><a href="https://github.com/mariangibala/gimi-theme-ghost" target="_blank" rel="noopener noreferrer">https://github.com/mariangibala/gimi-theme-ghost</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 27, 2017
+                                
+                                <br><span class="months-stale">(99 months ago)</span>
+                                
+                            </td>
+                            <td>Blog theme "GIMI" for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>research-blog</td>
+                            <td><a href="https://github.com/sdan/research-blog" target="_blank" rel="noopener noreferrer">https://github.com/sdan/research-blog</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                March 21, 2020
+                                
+                                <br><span class="months-stale">(72 months ago)</span>
+                                
+                            </td>
+                            <td>A Ghost Theme that is similar to Distill.pub's style</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>buildpack-ghost-cms-theme</td>
+                            <td><a href="https://github.com/metasansana/buildpack-ghost-cms-theme" target="_blank" rel="noopener noreferrer">https://github.com/metasansana/buildpack-ghost-cms-theme</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                January 14, 2020
+                                
+                                <br><span class="months-stale">(74 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost CMS Theme buildpack for dokku.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Mininim</td>
+                            <td><a href="https://github.com/alivelee/Mininim" target="_blank" rel="noopener noreferrer">https://github.com/alivelee/Mininim</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 2, 2017
+                                
+                                <br><span class="months-stale">(105 months ago)</span>
+                                
+                            </td>
+                            <td>A Clean,minimal and responsive ghost theme for personal use </td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Casper-zh-hans</td>
+                            <td><a href="https://github.com/JerryFZhang/Casper-zh-hans" target="_blank" rel="noopener noreferrer">https://github.com/JerryFZhang/Casper-zh-hans</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                November 19, 2020
+                                
+                                <br><span class="months-stale">(64 months ago)</span>
+                                
+                            </td>
+                            <td>Fork of Ghost's default theme Casper, optimized for Chinese(simplified) users.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>web-hacks</td>
+                            <td><a href="https://github.com/rdimascio/web-hacks" target="_blank" rel="noopener noreferrer">https://github.com/rdimascio/web-hacks</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 6, 2018
+                                
+                                <br><span class="months-stale">(91 months ago)</span>
+                                
+                            </td>
+                            <td>👻🔥Custom Ghost Template built on Zvikov from Haunted Themes - zvikov.hauntedthemes.com</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghostcms2mastodon</td>
+                            <td><a href="https://github.com/sowoi/ghostcms2mastodon" target="_blank" rel="noopener noreferrer">https://github.com/sowoi/ghostcms2mastodon</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 4, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>Send posts from GhostCMS to Mastodon.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>CVE-2023-40028</td>
+                            <td><a href="https://github.com/monke443/CVE-2023-40028" target="_blank" rel="noopener noreferrer">https://github.com/monke443/CVE-2023-40028</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 21, 2024
+                                
+                                <br><span class="months-stale">(15 months ago)</span>
+                                
+                            </td>
+                            <td>Arbitrary file read in Ghost-CMS allows an attacker to upload a malicious ZIP file with a symlink.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>remix-ghost-stack</td>
+                            <td><a href="https://github.com/PhilDL/remix-ghost-stack" target="_blank" rel="noopener noreferrer">https://github.com/PhilDL/remix-ghost-stack</a></td>
+                            <td>4</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 22, 2024
+                                
+                                <br><span class="months-stale">(25 months ago)</span>
+                                
+                            </td>
+                            <td>WIP Remix Ghost Stack</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-theme-ghoststead</td>
+                            <td><a href="https://github.com/ghoststead/ghost-theme-ghoststead" target="_blank" rel="noopener noreferrer">https://github.com/ghoststead/ghost-theme-ghoststead</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 12, 2021
+                                
+                                <br><span class="months-stale">(59 months ago)</span>
+                                
+                            </td>
+                            <td>Default Ghost theme for GhostStead sites.  Built using Bootstrap 5.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghali</td>
+                            <td><a href="https://github.com/terrighost/ghali" target="_blank" rel="noopener noreferrer">https://github.com/terrighost/ghali</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 3, 2021
+                                
+                                <br><span class="months-stale">(61 months ago)</span>
+                                
+                            </td>
+                            <td>Free Ghost v3 theme for fashion, travel and style blogs</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>maxima</td>
+                            <td><a href="https://github.com/aspirethemes/maxima" target="_blank" rel="noopener noreferrer">https://github.com/aspirethemes/maxima</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 21, 2023
+                                
+                                <br><span class="months-stale">(30 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>aspire</td>
+                            <td><a href="https://github.com/aspirethemes/aspire" target="_blank" rel="noopener noreferrer">https://github.com/aspirethemes/aspire</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 21, 2023
+                                
+                                <br><span class="months-stale">(30 months ago)</span>
+                                
+                            </td>
+                            <td>null</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>open-maker</td>
+                            <td><a href="https://github.com/r-bart/open-maker" target="_blank" rel="noopener noreferrer">https://github.com/r-bart/open-maker</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 11, 2022
+                                
+                                <br><span class="months-stale">(38 months ago)</span>
+                                
+                            </td>
+                            <td>Open Maker, a Free Ghost theme to help you build your subscriber list with a clean and modern reading experience.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>liebling-vue</td>
+                            <td><a href="https://github.com/sereneinserenade/liebling-vue" target="_blank" rel="noopener noreferrer">https://github.com/sereneinserenade/liebling-vue</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 30, 2021
+                                
+                                <br><span class="months-stale">(59 months ago)</span>
+                                
+                            </td>
+                            <td>Liebling(a ghost theme) translated in VueJS</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Mica</td>
+                            <td><a href="https://github.com/sawyerpollard/Mica" target="_blank" rel="noopener noreferrer">https://github.com/sawyerpollard/Mica</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 28, 2023
+                                
+                                <br><span class="months-stale">(35 months ago)</span>
+                                
+                            </td>
+                            <td>A Next.js newspaper homepage for Ghost [in development]</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>plum</td>
+                            <td><a href="https://github.com/22Temi/plum" target="_blank" rel="noopener noreferrer">https://github.com/22Temi/plum</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                September 21, 2020
+                                
+                                <br><span class="months-stale">(66 months ago)</span>
+                                
+                            </td>
+                            <td>A clean, responsive Ghost CMS theme.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Crozon</td>
+                            <td><a href="https://github.com/mohoff/Crozon" target="_blank" rel="noopener noreferrer">https://github.com/mohoff/Crozon</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 29, 2018
+                                
+                                <br><span class="months-stale">(92 months ago)</span>
+                                
+                            </td>
+                            <td>A minimal Ghost theme for photos and stories.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>blueskyeden</td>
+                            <td><a href="https://github.com/AnimeshPandey/blueskyeden" target="_blank" rel="noopener noreferrer">https://github.com/AnimeshPandey/blueskyeden</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                December 14, 2017
+                                
+                                <br><span class="months-stale">(99 months ago)</span>
+                                
+                            </td>
+                            <td>A highly customized and reading centric theme for Ghost that I designed.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>voe</td>
+                            <td><a href="https://github.com/Vizards/voe" target="_blank" rel="noopener noreferrer">https://github.com/Vizards/voe</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                April 2, 2017
+                                
+                                <br><span class="months-stale">(107 months ago)</span>
+                                
+                            </td>
+                            <td>Another Ghost theme written by vue & vue-router, still under construction</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-marie</td>
+                            <td><a href="https://github.com/macntech/ghost-marie" target="_blank" rel="noopener noreferrer">https://github.com/macntech/ghost-marie</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                February 25, 2022
+                                
+                                <br><span class="months-stale">(49 months ago)</span>
+                                
+                            </td>
+                            <td>A simple and clean Ghost theme - fully responsible layout, including a lot of features and - dark mode. </td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>newsliner</td>
+                            <td><a href="https://github.com/epilocal/newsliner" target="_blank" rel="noopener noreferrer">https://github.com/epilocal/newsliner</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                July 5, 2021
+                                
+                                <br><span class="months-stale">(56 months ago)</span>
+                                
+                            </td>
+                            <td>A newsletter-first magazine theme for Ghost</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost_theme_yamabuki</td>
+                            <td><a href="https://github.com/SunSeekerX/ghost_theme_yamabuki" target="_blank" rel="noopener noreferrer">https://github.com/SunSeekerX/ghost_theme_yamabuki</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                October 16, 2024
+                                
+                                <br><span class="months-stale">(17 months ago)</span>
+                                
+                            </td>
+                            <td>A theme for ghost blog.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Aupairadise</td>
+                            <td><a href="https://github.com/malte-j/Aupairadise" target="_blank" rel="noopener noreferrer">https://github.com/malte-j/Aupairadise</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                June 10, 2023
+                                
+                                <br><span class="months-stale">(33 months ago)</span>
+                                
+                            </td>
+                            <td>A kinda static Website, generated using Gatsby and a custom theme, with data and embedded images, except for featured images, from a Ghost Blog.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>next-ghost-template</td>
+                            <td><a href="https://github.com/JfrAziz/next-ghost-template" target="_blank" rel="noopener noreferrer">https://github.com/JfrAziz/next-ghost-template</a></td>
+                            <td>3</td>
+                            <td>Theme</td>
+                            <td class="last-update-cell">
+                                August 2, 2021
+                                
+                                <br><span class="months-stale">(55 months ago)</span>
+                                
+                            </td>
+                            <td>Super simple Next.Js + Ghost headless cms template</td>
+                        </tr>
+                        
+                        
+                        <tr class="category-row">
+                            <td colspan="6"><strong>STARTER & DEVELOPMENT THEMES</strong></td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>next-cms-ghost</td>
+                            <td><a href="https://github.com/styxlab/next-cms-ghost" target="_blank" rel="noopener noreferrer">https://github.com/styxlab/next-cms-ghost</a></td>
+                            <td>694</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                August 1, 2023
+                                
+                                <br><span class="months-stale">(31 months ago)</span>
+                                
+                            </td>
+                            <td>Publish flaring fast blogs with Next.js and Ghost CMS</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>astro-starter-ghost</td>
+                            <td><a href="https://github.com/PhilDL/astro-starter-ghost" target="_blank" rel="noopener noreferrer">https://github.com/PhilDL/astro-starter-ghost</a></td>
+                            <td>61</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                September 1, 2023
+                                
+                                <br><span class="months-stale">(30 months ago)</span>
+                                
+                            </td>
+                            <td>A starter template to build lightning fast websites with Ghost and Astro</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>gatsby-ghost-novela-starter</td>
+                            <td><a href="https://github.com/draftbox-co/gatsby-ghost-novela-starter" target="_blank" rel="noopener noreferrer">https://github.com/draftbox-co/gatsby-ghost-novela-starter</a></td>
+                            <td>36</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                December 15, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>A Gatsby starter for creating blogs from headless Ghost CMS.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>starter</td>
+                            <td><a href="https://github.com/quangtt-rks/starter" target="_blank" rel="noopener noreferrer">https://github.com/quangtt-rks/starter</a></td>
+                            <td>29</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                December 12, 2022
+                                
+                                <br><span class="months-stale">(39 months ago)</span>
+                                
+                            </td>
+                            <td>A clean theme for Ghost blog</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>gatsby-ghost-balsa-starter</td>
+                            <td><a href="https://github.com/draftbox-co/gatsby-ghost-balsa-starter" target="_blank" rel="noopener noreferrer">https://github.com/draftbox-co/gatsby-ghost-balsa-starter</a></td>
+                            <td>22</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                December 15, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>A Gatsby starter for creating blogs from headless Ghost CMS.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>nextjs-blog-starter-typescript-ghost</td>
+                            <td><a href="https://github.com/fission-codes/nextjs-blog-starter-typescript-ghost" target="_blank" rel="noopener noreferrer">https://github.com/fission-codes/nextjs-blog-starter-typescript-ghost</a></td>
+                            <td>16</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                February 26, 2021
+                                
+                                <br><span class="months-stale">(61 months ago)</span>
+                                
+                            </td>
+                            <td>Same as official nextjs-blog-starter-typescript, with added support for fetching content from Ghost via its API</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>starter-snowpack-tailwind</td>
+                            <td><a href="https://github.com/clupprich/starter-snowpack-tailwind" target="_blank" rel="noopener noreferrer">https://github.com/clupprich/starter-snowpack-tailwind</a></td>
+                            <td>15</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                January 24, 2022
+                                
+                                <br><span class="months-stale">(48 months ago)</span>
+                                
+                            </td>
+                            <td>A boilerplate for a ghost theme, powered by Snowpack & Tailwind CSS.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>nextjs-ghost-starter</td>
+                            <td><a href="https://github.com/tewarig/nextjs-ghost-starter" target="_blank" rel="noopener noreferrer">https://github.com/tewarig/nextjs-ghost-starter</a></td>
+                            <td>8</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                February 18, 2021
+                                
+                                <br><span class="months-stale">(61 months ago)</span>
+                                
+                            </td>
+                            <td>classic ghost theme template in nextjs</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>Pliny</td>
+                            <td><a href="https://github.com/ascott1/Pliny" target="_blank" rel="noopener noreferrer">https://github.com/ascott1/Pliny</a></td>
+                            <td>7</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                February 28, 2015
+                                
+                                <br><span class="months-stale">(131 months ago)</span>
+                                
+                            </td>
+                            <td>A starter theme for Ghost using Sass and Grunt</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td>ghost-theme-starter</td>
+                            <td><a href="https://github.com/pengwei1024/ghost-theme-starter" target="_blank" rel="noopener noreferrer">https://github.com/pengwei1024/ghost-theme-starter</a></td>
+                            <td>4</td>
+                            <td>Starter</td>
+                            <td class="last-update-cell">
+                                March 6, 2019
+                                
+                                <br><span class="months-stale">(84 months ago)</span>
+                                
+                            </td>
+                            <td>Ghost Theme starter</td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>STALE TOOLS & RESOURCES</h2>
+            <div class="table-wrapper">
+                <table>
+                    <caption>Stale tools and resources</caption>
+                    <thead>
+                        <tr>
+                            <th>Tool / Resource</th>
+                            <th>Link</th>
+                            <th>Last Updated</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr class="item-row">
+                            <td><strong>Penetration-Testing</strong></td>
+                            <td><a href="https://github.com/wtsxDev/Penetration-Testing" target="_blank" rel="noopener noreferrer">https://github.com/wtsxDev/Penetration-Testing</a></td>
+                            <td class="last-update-cell">
+                                October 18, 2023
+                                
+                                <br><span class="months-stale">(27 months ago)</span>
+                                
+                            </td>
+                            <td>List of awesome penetration testing resources, tools and other shiny things</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td><strong>awesome-research</strong></td>
+                            <td><a href="https://github.com/emptymalei/awesome-research" target="_blank" rel="noopener noreferrer">https://github.com/emptymalei/awesome-research</a></td>
+                            <td class="last-update-cell">
+                                August 15, 2023
+                                
+                                <br><span class="months-stale">(29 months ago)</span>
+                                
+                            </td>
+                            <td>:seedling: a curated list of tools to help you with your research/life; I built a front end around this repo, please use the link below [This repo is deprecated. Instead, I maintain all the contents using the following website]</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td><strong>HackingTools-2</strong></td>
+                            <td><a href="https://github.com/ByteHackr/HackingTools-2" target="_blank" rel="noopener noreferrer">https://github.com/ByteHackr/HackingTools-2</a></td>
+                            <td class="last-update-cell">
+                                May 10, 2023
+                                
+                                <br><span class="months-stale">(32 months ago)</span>
+                                
+                            </td>
+                            <td>A collection of awesome lists for hackers, pentesters & security researchers.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td><strong>awesome-jamstack</strong></td>
+                            <td><a href="https://github.com/BolajiAyodeji/awesome-jamstack" target="_blank" rel="noopener noreferrer">https://github.com/BolajiAyodeji/awesome-jamstack</a></td>
+                            <td class="last-update-cell">
+                                August 15, 2024
+                                
+                                <br><span class="months-stale">(17 months ago)</span>
+                                
+                            </td>
+                            <td>:notebook_with_decorative_cover: Curated list of resources: books, videos, articles, speaker decks, tools about using the Jamstack.</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td><strong>tech-and-funding-toolkit</strong></td>
+                            <td><a href="https://github.com/KatherineMichel/tech-and-funding-toolkit" target="_blank" rel="noopener noreferrer">https://github.com/KatherineMichel/tech-and-funding-toolkit</a></td>
+                            <td class="last-update-cell">
+                                February 2, 2024
+                                
+                                <br><span class="months-stale">(23 months ago)</span>
+                                
+                            </td>
+                            <td>:money_with_wings: :chart_with_upwards_trend: :rocket: Tech and Funding Toolkit</td>
+                        </tr>
+                        
+                        <tr class="item-row">
+                            <td><strong>ghost-ssg</strong></td>
+                            <td><a href="https://github.com/rija/ghost-ssg" target="_blank" rel="noopener noreferrer">https://github.com/rija/ghost-ssg</a></td>
+                            <td class="last-update-cell">
+                                March 2, 2023
+                                
+                                <br><span class="months-stale">(36 months ago)</span>
+                                
+                            </td>
+                            <td>A Docker-based pipeline to publish the content of a local Ghost 4 server as static pages.</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <p><strong>Data Source:</strong> GitHub API & automated discovery</p>
+            <p><strong>Staleness Threshold:</strong> Items not updated in 12 months</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Maintained by <a href="https://github.com/runawaydevil" target="_blank" rel="noopener noreferrer">RunawayDevil</a></p>
+            <p>Last updated: April 5, 2026 at 14:55 UTC</p>
+            <p>For broken links or requests to add your resources, please send an email to <a href="mailto:runawaydevil@pm.me">runawaydevil@pm.me</a></p>
+            <p>This project is free and open source. Licensed under <a href="LICENSE" target="_blank" rel="noopener noreferrer">I Literally Don't Care License (ILDCL)</a> - feel free to use, copy, and modify.</p>
+            <p>&copy; <span id="current-year">2025</span> Ghostbuster Directory. No rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Update current year
+        (function() {
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>{{embeddedStyles}}</style>
+</head>
+<body class="page-index">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+        <div class="header-content">
+            <img src="{{logoUrl}}" alt="{{logoAlt}}" class="logo">
+            <h1>{{title}}</h1>
+            <p class="subtitle">{{subtitle}}</p>
+            <div class="button-group">
+                <a href="stale.html" class="stale-button">
+                    ⏰ View Stale Items
+                </a>
+                <a href="{{githubUrl}}" target="_blank" rel="noopener noreferrer" class="github-button">
+                    <svg viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Star on GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="intro">
+            <h2>Introduction</h2>
+            <p>{{introText}}</p>
+        </section>
+
+        {{#if updateMessage}}
+        <section class="updates-section">
+            <h2>Updates</h2>
+            <div class="update-item">
+                <div class="update-date">{{lastUpdate}}</div>
+                <div class="update-message">
+                    <p>{{updateMessage}}</p>
+                </div>
+            </div>
+        </section>
+        {{/if}}
+
+        <hr>
+
+        <section>
+            <h2>ALL THEMES (CONSOLIDATED TABLE)</h2>
+            <div class="table-wrapper">
+                <table>
+                    <caption>All themes by category, sorted by stars within each section</caption>
+                    <thead>
+                        <tr>
+                            <th>Theme Name</th>
+                            <th>Repository URL</th>
+                            <th>Stars</th>
+                            <th>Category</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each categories}}
+                        <tr class="category-row">
+                            <td colspan="5"><strong>{{this.name}}</strong></td>
+                        </tr>
+                        {{#each items}}
+                        <tr class="item-row">
+                            <td>{{this.name}}</td>
+                            <td><a href="{{this.url}}" target="_blank" rel="noopener noreferrer">{{this.url}}</a></td>
+                            <td>{{this.stars}}</td>
+                            <td>{{this.category}}</td>
+                            <td>{{this.description}}{{#if this.notes}}; {{this.notes}}{{/if}}</td>
+                        </tr>
+                        {{/each}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>TOOLS & RESOURCES</h2>
+            <div class="table-wrapper">
+                <table>
+                    <caption>Documentation, validation, and build tools for Ghost theme development</caption>
+                    <thead>
+                        <tr>
+                            <th>Tool / Resource</th>
+                            <th>Link</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each tools}}
+                        <tr class="item-row">
+                            <td><strong>{{this.name}}</strong></td>
+                            <td><a href="{{this.url}}" target="_blank" rel="noopener noreferrer">{{this.url}}</a></td>
+                            <td>{{this.description}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>QUICK REFERENCE BY USE CASE</h2>
+            
+            {{#each useCases}}
+            <h3>{{this.name}}</h3>
+            <ul>
+                {{#each themes}}
+                <li><strong>{{this.name}}</strong> — {{this.description}} ({{this.stars}}⭐)</li>
+                {{/each}}
+            </ul>
+            {{/each}}
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>NOTES FOR THEME SELECTION</h2>
+            <ol>
+                {{#each selectionNotes}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ol>
+        </section>
+
+        <hr>
+
+        <section>
+            <p><strong>Data Source:</strong> {{dataSource}}</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Maintained by <a href="{{maintainerUrl}}" target="_blank" rel="noopener noreferrer">{{maintainerName}}</a></p>
+            <p>Last updated: {{lastUpdate}}</p>
+            <p>Next update: <span id="next-update">Calculating...</span></p>
+            <p>For broken links or requests to add your resources, please send an email to <a href="mailto:{{contactEmail}}">{{contactEmail}}</a></p>
+            <p>This project is free and open source. Licensed under <a href="{{licenseUrl}}" target="_blank" rel="noopener noreferrer">{{licenseName}}</a> - feel free to use, copy, and modify.</p>
+            <p>&copy; <span id="current-year">2025</span> Ghostbuster Directory. No rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Update current year and calculate next update
+        (function() {
+            const currentYearElement = document.getElementById('current-year');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+
+            // Calculate next Monday at 6 AM UTC (scheduled update time)
+            const nextUpdateElement = document.getElementById('next-update');
+            if (nextUpdateElement) {
+                const now = new Date();
+                const nextMonday = new Date(now);
+                
+                // Get days until next Monday (1 = Monday, 0 = Sunday)
+                const currentDay = now.getUTCDay();
+                const daysUntilMonday = currentDay === 0 ? 1 : currentDay === 1 ? 7 : (8 - currentDay);
+                
+                nextMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
+                nextMonday.setUTCHours(6, 0, 0, 0);
+                
+                // If it's Monday and before 6 AM UTC, next update is today
+                if (currentDay === 1 && now.getUTCHours() < 6) {
+                    nextMonday.setUTCDate(now.getUTCDate());
+                }
+                
+                // Format date
+                const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+                const month = months[nextMonday.getUTCMonth()];
+                const day = nextMonday.getUTCDate();
+                const year = nextMonday.getUTCFullYear();
+                const hours = String(nextMonday.getUTCHours()).padStart(2, '0');
+                const minutes = String(nextMonday.getUTCMinutes()).padStart(2, '0');
+                
+                nextUpdateElement.textContent = `${month} ${day}, ${year} at ${hours}:${minutes} UTC`;
+            }
+        })();
+    </script>
+</body>
+</html>
